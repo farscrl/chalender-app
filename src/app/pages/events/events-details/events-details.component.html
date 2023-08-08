@@ -1,0 +1,19 @@
+<ng-container *ngIf="event">
+  <app-back-button/>
+
+  <h1>{{ event.Titel }}</h1>
+
+  <div class="content">
+    <div>
+      <p>{{ event.Descripziun }}</p>
+      <img src="{{ event.Maletg }}" alt="{{ event.Titel }}"/>
+    </div>
+    <div>
+      <hr>
+      <div>
+        {{ event.Lieu }}
+      </div>
+      <hr>
+    </div>
+  </div>
+</ng-container>
