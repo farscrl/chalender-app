@@ -1,0 +1,20 @@
+<h1>S'annunziar</h1>
+
+<form>
+  <div class="flex flex-column gap-2">
+    <label htmlFor="email">Adressa dad e-mail</label>
+    <input pInputText id="email" name="email" aria-describedby="email-help" [(ngModel)]="email"/>
+    <small id="email-help" class="pb-3">Enter your username to reset your password.</small>
+  </div>
+  <div class="flex flex-column gap-2">
+    <label htmlFor="password">Pled-clav</label>
+    <p-password id="password" name="password" aria-describedby="password-help" [(ngModel)]="password"
+                [toggleMask]="true" [styleClass]="'pw-field'"></p-password>
+    <small id="password-help" class="pb-3">Enter your username to reset your password.</small>
+  </div>
+
+  <div class="flex justify-content-end">
+    <p-button label="S'annunziar" (click)="login()"></p-button>
+  </div>
+
+</form>

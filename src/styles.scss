@@ -1,6 +1,11 @@
 @import "styles/normalize";
 @import "styles/fonts";
 
+// prime ng theme
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeflex/primeflex.css";
+
 body {
   background-color: #9a9a9a;
   font-family: Cadiz, sans-serif;
