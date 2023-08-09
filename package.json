@@ -7,7 +7,11 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "dev:ssr": "ng run chalender-frontend:serve-ssr",
+    "serve:ssr": "node dist/chalender-frontend/server/main.js",
+    "build:ssr": "ng build && ng run chalender-frontend:server",
+    "prerender": "ng run chalender-frontend:prerender"
   },
   "private": true,
   "dependencies": {
@@ -18,7 +22,10 @@
     "@angular/forms": "^16.1.0",
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
+    "@angular/platform-server": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@nguniversal/express-engine": "^16.1.2",
+    "express": "^4.15.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -32,7 +39,10 @@
     "@angular-eslint/template-parser": "16.1.0",
     "@angular/cli": "~16.1.0",
     "@angular/compiler-cli": "^16.1.0",
+    "@nguniversal/builders": "^16.1.2",
+    "@types/express": "^4.17.0",
     "@types/jasmine": "~4.3.0",
+    "@types/node": "^16.11.7",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "eslint": "^8.44.0",
