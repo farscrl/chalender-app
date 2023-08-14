@@ -1,10 +1,13 @@
 @import "styles/normalize";
 @import "styles/fonts";
 
-// prime ng theme
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
-@import "primeflex/primeflex.css";
+
+:root {
+  --accent: #3CBFA4;
+}
+
+// bootstrap
+@import "~bootstrap/dist/css/bootstrap.css";
 
 body {
   background-color: #9a9a9a;
@@ -29,6 +32,33 @@ h1 {
   font-family: "CadizBlack", sans-serif;
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button.clndr {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-right: 2rem;
+
+  &:hover {
+    border: 1px solid var(--accent);
+    color: var(--accent);;
+  }
 }
 
 

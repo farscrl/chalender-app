@@ -79,7 +79,7 @@
   }
 
   .content {
-    background-color: #3CBFA4;
+    background-color: var(--accent);
     gap: 300px;
     padding: 70px 150px;
     display: grid;

@@ -1,1 +1,146 @@
-<h1>Crear ina occurrenza</h1>
+<h1>Registrar in’occurrenza</h1>
+
+<form [formGroup]="f">
+    <div class="mb-3">
+        <label for="contactEmail" class="form-label">adressa dad e-mail (betg public, mo per diever
+            administrativ)</label>
+        <input formControlName="contactEmail" type="email" class="form-control" id="contactEmail"
+               [class.is-invalid]="isFieldInvalid('contactEmail')">
+        <div class="invalid-feedback" *ngIf="isFieldInvalid('contactEmail')">
+            Endatescha p.pl. ina adressa dad e-mail da contact.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="title" class="form-label">titel da l’occurrenza *</label>
+        <input formControlName="title" type="text" class="form-control" id="title"
+               [class.is-invalid]="isFieldInvalid('title')">
+        <div class="invalid-feedback" *ngIf="isFieldInvalid('title')">
+            Endatescha p.pl. in titel.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">descripziun (lunghezza recumandada: max. 750 caracters) *</label>
+        <textarea formControlName="description" class="form-control" id="description" style="height: 150px"
+                  [class.is-invalid]="isFieldInvalid('description')"></textarea>
+        <div class="invalid-feedback" *ngIf="isFieldInvalid('description')">
+            Endatescha p.pl. ina descripziun.
+        </div>
+        <div id="descriptionHelp" class="form-text">Hilfe bei der Übersetzung auf Rumantsch / Aiuto con la traduzione in
+            romancio: <a href="https://www.textshuttle.com" target="_blank">www.textshuttle.com</a></div>
+    </div>
+
+    <div class="row">
+        <div class="col" formArrayName="genres">
+            categoria *<br>
+            <div class="form-check" *ngFor="let genre of genres; let i = index"
+                 [class.is-invalid]="isFieldInvalid('genres')">
+                <input class="form-check-input" type="checkbox" value="{{ genre }}" id="genre-{{genre.id}}"
+                       [formControlName]="i">
+                <label class="form-check-label" for="genre-{{genre.id}}">
+                    {{genre.name}}
+                </label>
+            </div>
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('genres')">
+                Tscherna almain ina categoria.
+            </div>
+        </div>
+        <div class="col" formArrayName="regions">
+            regiun *<br>
+            <div class="form-check" *ngFor="let region of regions; let i = index"
+                 [class.is-invalid]="isFieldInvalid('regions')">
+                <input class="form-check-input" type="checkbox" value="{{ region }}" id="region-{{region.id}}"
+                       [formControlName]="i">
+                <label class="form-check-label" for="region-{{region.id}}">
+                    {{region.name}}
+                </label>
+            </div>
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('regions')">
+                Tscherna almain ina regiun.
+            </div>
+        </div>
+    </div>
+
+    <b>lieu da l’occurrenza:</b><br>
+    <div class="mb-3">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="online-only" id="online-only">
+            <label class="form-check-label" for="online-only">
+                l’occurrenza ha mo lieu online
+            </label>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="location" class="form-label">lieu da l’occurrenza *</label>
+        <input type="email" class="form-control" id="location">
+    </div>
+
+    <div class="mb-3">
+        <label for="address" class="form-label">adressa (via, lieu etc.) *</label>
+        <textarea class="form-control" id="address" style="height: 100px"></textarea>
+    </div>
+
+    charta<br>
+    <button type="button" class="clndr">localisaziun sin Googlemaps</button>
+    <br><br>
+
+
+    <b>data da l’occurrenza:</b><br>
+    TODO<br><br>
+
+    <b>ulteriuras infurmaziuns:</b><br>
+    <div class="mb-3" formArrayName="eventLanguages">
+        linguas *<br>
+        <div class="form-check" *ngFor="let language of eventLanguages; let i = index"
+             [class.is-invalid]="isFieldInvalid('eventLanguages')">
+            <input class="form-check-input" type="checkbox" value="{{ language }}" id="language-{{language.id}}"
+                   [formControlName]="i">
+            <label class="form-check-label" for="language-{{language.id}}">
+                {{language.name}}
+            </label>
+        </div>
+        <div class="invalid-feedback" *ngIf="isFieldInvalid('eventLanguages')">
+            Tscherna almain ina lingua.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="organiser" class="form-label">organisatura</label>
+        <input type="text" class="form-control" id="organiser">
+    </div>
+
+    <div class="mb-3">
+        <label for="pricing" class="form-label">infurmaziuns davart pretschs e prevendita</label>
+        <textarea class="form-control" id="pricing" style="height: 100px"></textarea>
+    </div>
+
+    <b>maletgs:</b><br>
+    <div class="form-text">
+        formats acceptads: JPG, PNG<br>
+        grondezza maximala: 5 MB<br>
+    </div>
+    TODO<br><br>
+
+    <b>documents:</b><br>
+    <div class="form-text">
+        formats acceptads: PDF<br>
+        grondezza maximala: 5 MB<br>
+    </div>
+    TODO<br><br>
+
+    <div class="mb-3">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="accept-terms" id="accept-terms">
+            <label class="form-check-label" for="accept-terms">
+                Jau accept la <a href="#">netichetta</a> ed hai ils dretgs dals maletgs utilisads.
+            </label>
+        </div>
+    </div>
+    <br><br>
+
+    <button type="button" class="clndr" (click)="preview()">Prevista</button>
+    <button type="button" class="clndr" (click)="onSubmit(true)">Memorisar sco sboz</button>
+    <button type="button" class="clndr" (click)="onSubmit(false)">Memorisar per la moderaziun</button>
+</form>
