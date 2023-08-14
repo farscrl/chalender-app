@@ -11,7 +11,7 @@ import {LoginComponent} from './pages/u/login/login.component';
 import {LogoutComponent} from './pages/u/logout/logout.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {JwtModule} from "@auth0/angular-jwt";
+import {JWT_OPTIONS, JwtModule} from "@auth0/angular-jwt";
 import {environment} from "../environments/environment";
 import {HelpComponent} from './pages/static/help/help.component';
 import {ContactComponent} from './pages/static/contact/contact.component';
@@ -26,11 +26,14 @@ import {NewEventComponent} from './pages/admin/new-event/new-event.component';
 import {MyEventsComponent} from './pages/admin/my-events/my-events.component';
 import {MySubscriptionsComponent} from './pages/admin/my-subscriptions/my-subscriptions.component';
 import {ProfileComponent} from './pages/admin/profile/profile.component';
+import {AuthenticationService} from "./services/authentication.service";
 
-const TOKEN_KEY = 'token';
-
-export function tokenGetter() {
-  return localStorage.getItem(TOKEN_KEY);
+export function jwtOptionsFactory(authService: AuthenticationService) {
+    return {
+        tokenGetter: () => {
+            return authService.getToken() ?? null;
+        }
+    }
 }
 
 @NgModule({
@@ -63,15 +66,20 @@ export function tokenGetter() {
         FormsModule,
         JwtModule.forRoot({
             config: {
-        tokenGetter: tokenGetter,
                 allowedDomains: [environment.host],
                 disallowedRoutes: [
                     environment.apiBasePath + 'user/auth/signin',
                     environment.apiBasePath + 'user/auth/signup',
                     environment.apiBasePath + 'users/auth/forgot_password',
                 ]
+            },
+            jwtOptionsProvider: {
+                provide: JWT_OPTIONS,
+                useFactory: jwtOptionsFactory,
+                deps: [AuthenticationService]
             }
         }),
+        ReactiveFormsModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

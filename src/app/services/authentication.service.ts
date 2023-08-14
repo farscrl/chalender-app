@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
-import {JwtHelperService} from "@auth0/angular-jwt";
 import {SystemRole} from "../data/security";
 import {SsrCookieService} from "ngx-cookie-service-ssr";
+import jwt_decode from "jwt-decode";
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -20,7 +20,7 @@ export class AuthenticationService {
     private token = '';
     private systemRoles: SystemRole[] = [];
 
-    constructor(private http: HttpClient, private cookieService: SsrCookieService, private jwtHelperService: JwtHelperService) {
+    constructor(private http: HttpClient, private cookieService: SsrCookieService) {
         if (this.cookieService.check(this.TOKEN_KEY)) {
             this.setToken(this.cookieService.get(this.TOKEN_KEY));
         }
@@ -32,10 +32,6 @@ export class AuthenticationService {
             return false;
         }
         return !!this.token;
-    }
-
-    isTokenExpired(): boolean {
-        return !!this.token && this.jwtHelperService.isTokenExpired(this.token);
     }
 
     login(email: string, password: string): Observable<any> {
@@ -57,13 +53,11 @@ export class AuthenticationService {
 
     logout(): void {
         this.token = '';
-        this.cookieService.delete(this.TOKEN_KEY);
-        localStorage.removeItem(this.TOKEN_KEY);
+        this.cookieService.delete(this.TOKEN_KEY, '/');
     }
 
     authSuccess(token: string): void {
-        this.cookieService.set(this.TOKEN_KEY, token);
-        localStorage.setItem(this.TOKEN_KEY, token);
+        this.cookieService.set(this.TOKEN_KEY, token, {path: '/'});
         this.setToken(token);
     }
 
@@ -97,7 +91,7 @@ export class AuthenticationService {
     }
 
     private resolveFeatures(token: string) {
-        const jwtToken = this.jwtHelperService.decodeToken(token);
+        const jwtToken = this.getDecodedToken();
         const authorities: Array<string> = jwtToken.roles;
         authorities.forEach(authority => {
             try {
@@ -113,17 +107,17 @@ export class AuthenticationService {
         return this.isLoggedIn() && this.systemRoles.indexOf(systemRole) !== -1;
     }
 
-    public getId() {
+    public getId(): string {
         if (this.token) {
-            const jwtToken = this.jwtHelperService.decodeToken(this.token);
+            const jwtToken = this.getDecodedToken();
             return jwtToken.id;
         }
         return '';
     }
 
-    public getEmail() {
+    public getEmail(): string {
         if (this.token) {
-            const jwtToken = this.jwtHelperService.decodeToken(this.token);
+            const jwtToken = this.getDecodedToken();
             return jwtToken.email;
         }
         return '';
@@ -131,10 +125,26 @@ export class AuthenticationService {
 
     public getRoles(): SystemRole[] {
         if (this.token) {
-            const jwtToken = this.jwtHelperService.decodeToken(this.token);
+            const jwtToken = this.getDecodedToken();
             return jwtToken.roles;
         } else {
             return [];
         }
+    }
+
+    public getDecodedToken(): any {
+        if (this.token) {
+            return jwt_decode(this.token);
+        }
+        return {};
+    }
+
+    public isTokenExpired(): boolean {
+        const decodedToken = this.getDecodedToken();
+        if (!decodedToken.exp) {
+            return true;
+        }
+
+        return Date.now() > decodedToken.exp * 1000;
     }
 }
