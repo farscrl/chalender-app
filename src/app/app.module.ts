@@ -23,6 +23,13 @@ import { ImprintComponent } from './pages/static/imprint/imprint.component';
 import { PrivacyComponent } from './pages/static/privacy/privacy.component';
 import { OrganisationComponent } from './pages/static/organisation/organisation.component';
 import { NotFoundComponent } from './pages/static/not-found/not-found.component';
+import { EventsComponent } from './pages/u/events/events.component';
+import { ForgotPasswordComponent } from './pages/u/forgot-password/forgot-password.component';
+import { RegisterComponent } from './pages/u/register/register.component';
+import { NewEventComponent } from './pages/admin/new-event/new-event.component';
+import { MyEventsComponent } from './pages/admin/my-events/my-events.component';
+import { MySubscriptionsComponent } from './pages/admin/my-subscriptions/my-subscriptions.component';
+import { ProfileComponent } from './pages/admin/profile/profile.component';
 
 const TOKEN_KEY = 'token';
 
@@ -44,7 +51,14 @@ export function tokenGetter() {
     ImprintComponent,
     PrivacyComponent,
     OrganisationComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    EventsComponent,
+    ForgotPasswordComponent,
+    RegisterComponent,
+    NewEventComponent,
+    MyEventsComponent,
+    MySubscriptionsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

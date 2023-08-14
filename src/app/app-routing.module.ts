@@ -13,13 +13,32 @@ import {ContactComponent} from "./pages/static/contact/contact.component";
 import {OrganisationComponent} from "./pages/static/organisation/organisation.component";
 import {ImprintComponent} from "./pages/static/imprint/imprint.component";
 import {PrivacyComponent} from "./pages/static/privacy/privacy.component";
+import {EventsComponent} from "./pages/u/events/events.component";
+import {ForgotPasswordComponent} from "./pages/u/forgot-password/forgot-password.component";
+import {RegisterComponent} from "./pages/u/register/register.component";
+import {NewEventComponent} from "./pages/admin/new-event/new-event.component";
+import {MyEventsComponent} from "./pages/admin/my-events/my-events.component";
+import {MySubscriptionsComponent} from "./pages/admin/my-subscriptions/my-subscriptions.component";
+import {ProfileComponent} from "./pages/admin/profile/profile.component";
 
 const routes: Routes = [
   {
     path: 'u',
     children: [
+      {path: 'events', component: EventsComponent},
+      {path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [notAuthGuard()]},
       {path: 'login', component: LoginComponent, canActivate: [notAuthGuard()]},
       {path: 'logout', component: LogoutComponent, canActivate: [authGuard()]},
+      {path: 'register', component: RegisterComponent, canActivate: [notAuthGuard()]},
+    ]
+  },
+  {
+    path: 'admin',
+    children: [
+      {path: 'events/new', component: NewEventComponent, canActivate: [authGuard()]},
+      {path: 'events', component: MyEventsComponent, canActivate: [authGuard()]},
+      {path: 'subscriptions', component: MySubscriptionsComponent, canActivate: [authGuard()]},
+      {path: 'profile', component: ProfileComponent, canActivate: [authGuard()]},
     ]
   },
   {path: ':id', canMatch: [canMatchEventId], pathMatch: 'full', component: EventsDetailsComponent},

@@ -37,10 +37,10 @@
     </ul>
 
     <ul class="main-menu-bottom" *ngIf="authService.isLoggedIn()">
-      <li><a (click)="toggleMenu()" href="/admin/events/new">registrar in'occurrenza</a></li>
-      <li><a (click)="toggleMenu()" href="/admin/events">mias occurrenzas</a></li>
-      <li><a (click)="toggleMenu()" href="/admin/subscriptions">mes abunaments</a></li>
-      <li><a (click)="toggleMenu()" href="/admin/profile">mes profil</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/admin/events/new'">registrar in'occurrenza</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/admin/events'">mias occurrenzas</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/admin/subscriptions'">mes abunaments</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/admin/profile'">mes profil</a></li>
       <li><a (click)="toggleMenu()" [routerLink]="'/u/logout'">sortir</a></li>
       <ng-container *ngIf="authService.isModerator()">
         <li>
@@ -59,7 +59,7 @@
 
     <ul class="main-menu-bottom" *ngIf="!authService.isLoggedIn()">
       <li><a (click)="toggleMenu()" [routerLink]="'/u/login'">login</a></li>
-      <li><a (click)="toggleMenu()" href="/u/events">registrar in'occurrenza</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/u/events'">registrar in'occurrenza</a></li>
     </ul>
   </div>
 </div>
