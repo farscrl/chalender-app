@@ -15,6 +15,14 @@ import {PasswordModule} from "primeng/password";
 import {FormsModule} from "@angular/forms";
 import {ButtonModule} from "primeng/button";
 import {HttpClientModule} from "@angular/common/http";
+import {JwtModule} from "@auth0/angular-jwt";
+import {environment} from "../environments/environment";
+
+const TOKEN_KEY = 'token';
+
+export function tokenGetter() {
+  return localStorage.getItem(TOKEN_KEY);
+}
 
 @NgModule({
   declarations: [
@@ -34,7 +42,18 @@ import {HttpClientModule} from "@angular/common/http";
     InputTextModule,
     PasswordModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.host],
+        disallowedRoutes: [
+          environment.apiBasePath + 'user/auth/signin',
+          environment.apiBasePath + 'user/auth/signup',
+          environment.apiBasePath + 'users/auth/forgot_password',
+        ]
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

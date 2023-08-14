@@ -36,25 +36,30 @@
       <li><a (click)="toggleMenu()" href="/privacy">protecziun da datas</a></li>
     </ul>
 
-    <ul class="main-menu-bottom">
+    <ul class="main-menu-bottom" *ngIf="authService.isLoggedIn()">
       <li><a (click)="toggleMenu()" href="/admin/events/new">registrar in'occurrenza</a></li>
       <li><a (click)="toggleMenu()" href="/admin/events">mias occurrenzas</a></li>
       <li><a (click)="toggleMenu()" href="/admin/subscriptions">mes abunaments</a></li>
       <li><a (click)="toggleMenu()" href="/admin/profile">mes profil</a></li>
-      <li><a (click)="toggleMenu()" href="/u/logout">sortir</a></li>
-      <li>
-        <hr>
-      </li>
-      <li><a (click)="toggleMenu()" href="/admin/events/new">administrar occurrenzas</a></li>
-      <li>
-        <hr>
-      </li>
-      <li><a (click)="toggleMenu()" href="/admin/events/new">administrar utilisaders</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/u/logout'">sortir</a></li>
+      <ng-container *ngIf="authService.isModerator()">
+        <li>
+          <hr>
+        </li>
+        <li><a (click)="toggleMenu()" href="/admin/events/new">administrar occurrenzas</a></li>
+
+      </ng-container>
+      <ng-container *ngIf="authService.isAdmin()">
+        <li>
+          <hr>
+        </li>
+        <li><a (click)="toggleMenu()" href="/admin/events/new">administrar utilisaders</a></li>
+      </ng-container>
     </ul>
 
-    <!--<ul class="main-menu-bottom">
-      <li><a (click)="toggleMenu()" href="/u/login">login</a></li>
+    <ul class="main-menu-bottom" *ngIf="!authService.isLoggedIn()">
+      <li><a (click)="toggleMenu()" [routerLink]="'/u/login'">login</a></li>
       <li><a (click)="toggleMenu()" href="/u/events">registrar in'occurrenza</a></li>
-    </ul>-->
+    </ul>
   </div>
 </div>
