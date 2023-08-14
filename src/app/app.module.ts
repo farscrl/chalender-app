@@ -17,6 +17,12 @@ import {ButtonModule} from "primeng/button";
 import {HttpClientModule} from "@angular/common/http";
 import {JwtModule} from "@auth0/angular-jwt";
 import {environment} from "../environments/environment";
+import { HelpComponent } from './pages/static/help/help.component';
+import { ContactComponent } from './pages/static/contact/contact.component';
+import { ImprintComponent } from './pages/static/imprint/imprint.component';
+import { PrivacyComponent } from './pages/static/privacy/privacy.component';
+import { OrganisationComponent } from './pages/static/organisation/organisation.component';
+import { NotFoundComponent } from './pages/static/not-found/not-found.component';
 
 const TOKEN_KEY = 'token';
 
@@ -32,7 +38,13 @@ export function tokenGetter() {
     HeaderComponent,
     BackButtonComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    HelpComponent,
+    ContactComponent,
+    ImprintComponent,
+    PrivacyComponent,
+    OrganisationComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

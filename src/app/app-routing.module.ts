@@ -6,9 +6,15 @@ import {LoginComponent} from "./pages/u/login/login.component";
 import {LogoutComponent} from "./pages/u/logout/logout.component";
 import {notAuthGuard} from "./guards/not-auth.guard";
 import {authGuard} from "./guards/auth.guard";
+import {NotFoundComponent} from "./pages/static/not-found/not-found.component";
+import {canMatchEventId} from "./guards/match-event-id.guard";
+import {HelpComponent} from "./pages/static/help/help.component";
+import {ContactComponent} from "./pages/static/contact/contact.component";
+import {OrganisationComponent} from "./pages/static/organisation/organisation.component";
+import {ImprintComponent} from "./pages/static/imprint/imprint.component";
+import {PrivacyComponent} from "./pages/static/privacy/privacy.component";
 
 const routes: Routes = [
-  {path: ':id', component: EventsDetailsComponent},
   {
     path: 'u',
     children: [
@@ -16,7 +22,14 @@ const routes: Routes = [
       {path: 'logout', component: LogoutComponent, canActivate: [authGuard()]},
     ]
   },
-  {path: '', component: EventsListComponent}
+  {path: ':id', canMatch: [canMatchEventId], pathMatch: 'full', component: EventsDetailsComponent},
+  {path: 'help', pathMatch: 'full', component: HelpComponent},
+  {path: 'contact', pathMatch: 'full', component: ContactComponent},
+  {path: 'organisation', pathMatch: 'full', component: OrganisationComponent},
+  {path: 'imprint', pathMatch: 'full', component: ImprintComponent},
+  {path: 'privacy', pathMatch: 'full', component: PrivacyComponent},
+  {path: '', pathMatch: 'full', component: EventsListComponent},
+  {path: '**', pathMatch: 'full', component: NotFoundComponent},
 ];
 
 @NgModule({

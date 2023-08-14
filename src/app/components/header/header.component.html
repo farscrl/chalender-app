@@ -28,12 +28,12 @@
 <div id="main-menu" class="container" [class.active]="isMenuOpen">
   <div class="content">
     <ul class="main-menu-top">
-      <li><a (click)="toggleMenu()" href="/">occurrenzas</a></li>
-      <li><a (click)="toggleMenu()" href="/help">agid</a></li>
-      <li><a (click)="toggleMenu()" href="/contact">contact</a></li>
-      <li><a (click)="toggleMenu()" href="/organisation">purtaders</a></li>
-      <li><a (click)="toggleMenu()" href="/imprint">impressum</a></li>
-      <li><a (click)="toggleMenu()" href="/privacy">protecziun da datas</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/'">occurrenzas</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/help'">agid</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/contact'">contact</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/organisation'">purtaders</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/imprint'">impressum</a></li>
+      <li><a (click)="toggleMenu()" [routerLink]="'/privacy'">protecziun da datas</a></li>
     </ul>
 
     <ul class="main-menu-bottom" *ngIf="authService.isLoggedIn()">
