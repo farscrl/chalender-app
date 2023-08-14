@@ -4,10 +4,10 @@ import {EventsListComponent} from "./pages/events/events-list/events-list.compon
 import {EventsDetailsComponent} from "./pages/events/events-details/events-details.component";
 import {LoginComponent} from "./pages/u/login/login.component";
 import {LogoutComponent} from "./pages/u/logout/logout.component";
-import {notAuthGuard} from "./guards/not-auth.guard";
-import {authGuard} from "./guards/auth.guard";
+import {notAuthGuard} from "./routing/not-auth.guard";
+import {authGuard} from "./routing/auth.guard";
 import {NotFoundComponent} from "./pages/static/not-found/not-found.component";
-import {canMatchEventId} from "./guards/match-event-id.guard";
+import {canMatchEventId} from "./routing/match-event-id.guard";
 import {HelpComponent} from "./pages/static/help/help.component";
 import {ContactComponent} from "./pages/static/contact/contact.component";
 import {OrganisationComponent} from "./pages/static/organisation/organisation.component";
