@@ -21,6 +21,10 @@ export class EventVersion {
     regions: Region[] = [];
     eventLanguages: EventLanguage[] = [];
     // images: Image[] = [];
+    onlineOnly?: boolean;
+    acceptTerms?: boolean;
+    organiser?: string;
+    pricing?: string;
 }
 
 export class EventDto {
@@ -36,6 +40,10 @@ export class EventDto {
     regions: Region[] = [];
     eventLanguages: EventLanguage[] = [];
     // images: string[] = [];
+    onlineOnly?: boolean;
+    acceptTerms?: boolean;
+    organiser?: string;
+    pricing?: string;
 }
 
 export class EventOccurrences {

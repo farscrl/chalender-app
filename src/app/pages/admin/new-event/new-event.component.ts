@@ -120,11 +120,26 @@ export class NewEventComponent implements OnInit {
             genres: new FormArray([], minCheckboxValidator(1)),
             regions: new FormArray([], minCheckboxValidator(1)),
             eventLanguages: new FormArray([], minCheckboxValidator(1)),
+            onlineOnly: [false],
+            location: ['', Validators.required],
+            address: ['', Validators.required],
+            acceptTerms: [false, Validators.requiredTrue],
+        });
+
+        this.f.get('onlineOnly')!.valueChanges.subscribe(val => {
+            if (val) {
+                this.f.get('location')!.disable();
+                this.f.get('address')!.disable();
+            } else {
+                this.f.get('location')!.enable();
+                this.f.get('address')!.enable();
+            }
+
         });
     }
 
     private transformToEvent(isDraft: boolean): Event {
-        const eventVersion = this.f.getRawValue() as EventVersion;
+        const eventVersion = this.f.value as EventVersion;
         eventVersion.genres = this.transformFormArrayToDto('genres', this.genres);
         eventVersion.regions = this.transformFormArrayToDto('regions', this.regions);
         eventVersion.eventLanguages = this.transformFormArrayToDto('eventLanguages', this.eventLanguages);

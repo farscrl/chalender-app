@@ -62,10 +62,11 @@
         </div>
     </div>
 
-    <b>lieu da l’occurrenza:</b><br>
+    <h2>lieu da l’occurrenza:</h2>
     <div class="mb-3">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="online-only" id="online-only">
+            <input class="form-check-input" type="checkbox" value="online-only" id="online-only"
+                   formControlName="onlineOnly">
             <label class="form-check-label" for="online-only">
                 l’occurrenza ha mo lieu online
             </label>
@@ -74,12 +75,20 @@
 
     <div class="mb-3">
         <label for="location" class="form-label">lieu da l’occurrenza *</label>
-        <input type="email" class="form-control" id="location">
+        <input type="email" class="form-control" id="location" formControlName="location"
+               [class.is-invalid]="isFieldInvalid('location')">
+        <div class="invalid-feedback" *ngIf="isFieldInvalid('location')">
+            Endatescha p.pl. in lieu.
+        </div>
     </div>
 
     <div class="mb-3">
         <label for="address" class="form-label">adressa (via, lieu etc.) *</label>
-        <textarea class="form-control" id="address" style="height: 100px"></textarea>
+        <textarea class="form-control" id="address" style="height: 100px" formControlName="address"
+                  [class.is-invalid]="isFieldInvalid('address')"></textarea>
+        <div class="invalid-feedback" *ngIf="isFieldInvalid('address')">
+            Endatescha p.pl. ina adressa.
+        </div>
     </div>
 
     charta<br>
@@ -87,10 +96,10 @@
     <br><br>
 
 
-    <b>data da l’occurrenza:</b><br>
+    <h2>data da l’occurrenza:</h2>
     TODO<br><br>
 
-    <b>ulteriuras infurmaziuns:</b><br>
+    <h2>ulteriuras infurmaziuns:</h2>
     <div class="mb-3" formArrayName="eventLanguages">
         linguas *<br>
         <div class="form-check" *ngFor="let language of eventLanguages; let i = index"
@@ -132,10 +141,14 @@
 
     <div class="mb-3">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="accept-terms" id="accept-terms">
-            <label class="form-check-label" for="accept-terms">
+            <input class="form-check-input" type="checkbox" value="acceptTerms" id="acceptTerms"
+                   [class.is-invalid]="isFieldInvalid('acceptTerms')">
+            <label class="form-check-label" for="acceptTerms">
                 Jau accept la <a href="#">netichetta</a> ed hai ils dretgs dals maletgs utilisads.
             </label>
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('acceptTerms')">
+                Per inoltrar l'occurrenza stos ti acceptar las cundiziuns d'utilisaziun.
+            </div>
         </div>
     </div>
     <br><br>
