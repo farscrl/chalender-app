@@ -91,13 +91,60 @@
         </div>
     </div>
 
-    charta<br>
+    <!--charta<br>
     <button type="button" class="clndr">localisaziun sin Googlemaps</button>
-    <br><br>
+    <br><br>-->
 
 
     <h2>data da l’occurrenza:</h2>
-    TODO<br><br>
+    <div class="mb-3" formArrayName="occurrences">
+        <div class="form-check occurrence-item"
+             *ngFor="let occurrence of eventOccurrencesFormArray.controls; let i = index"
+             [class.is-invalid]="isFieldInvalid('occurrences')" [formGroupName]="i">
+            <div class="row">
+                <div class="col-5">
+                    <label for="date-{{i}}" class="form-label">Data *</label>
+                    <input type="date" class="form-control" id="date-{{i}}" formControlName="date"
+                           [class.is-invalid]="isOccurrenceFieldInvalid(i, 'date')">
+                    <div class="invalid-feedback" *ngIf="isOccurrenceFieldInvalid(i, 'date')">
+                        Endatescha p.pl. ina data.
+                    </div>
+                </div>
+                <div class="col-5">
+                    <label for="start-{{i}}" class="form-label">Temp *</label>
+                    <div class="d-flex" [class.is-invalid]="isOccurrenceFieldInvalid(i, 'start')">
+                        <input type="time" class="form-control" id="start-{{i}}" formControlName="start"
+                               [class.is-invalid]="isOccurrenceFieldInvalid(i, 'start')">
+                        <span>enfin</span>
+                        <input type="time" class="form-control" id="end-{{i}}" formControlName="end"
+                               [class.is-invalid]="isOccurrenceFieldInvalid(i, 'end')">
+                    </div>
+                    <div class="invalid-feedback" *ngIf="isOccurrenceFieldInvalid(i, 'start')">
+                        <div>Endatescha p.pl. in temp da cumenzament.</div>
+                    </div>
+                </div>
+                <div class="col-1 no-label">
+                    <input class="form-check-input" type="checkbox" value="isAllDay" id="isAllDay-{{i}}"
+                           formControlName="isAllDay" (change)="didToggleAllDay(i)">
+                    <label class="form-check-label" for="isAllDay-{{i}}">tutta di</label>
+                </div>
+                <div class="col-1 no-label">
+                    <button type="button" class="clndr" (click)="removeOccurrence(i)"
+                            *ngIf="eventOccurrencesFormArray.controls.length !== 1">stizzar
+                    </button>
+                </div>
+            </div>
+            <div>
+                <input class="form-check-input form-input-no-margin" type="checkbox" value="isCancelled"
+                       id="isCancelled-{{i}}"
+                       formControlName="isCancelled">
+                <label class="form-check-label" for="isCancelled-{{i}}">marcar questa occurrenza sco annullada.</label>
+            </div>
+
+        </div>
+
+        <button type="button" class="clndr" (click)="addOccurrence()">Agiuntar occurrenza</button>
+    </div>
 
     <h2>ulteriuras infurmaziuns:</h2>
     <div class="mb-3" formArrayName="eventLanguages">
@@ -117,12 +164,12 @@
 
     <div class="mb-3">
         <label for="organiser" class="form-label">organisatura</label>
-        <input type="text" class="form-control" id="organiser">
+        <input type="text" class="form-control" id="organiser" formControlName="organiser">
     </div>
 
     <div class="mb-3">
         <label for="pricing" class="form-label">infurmaziuns davart pretschs e prevendita</label>
-        <textarea class="form-control" id="pricing" style="height: 100px"></textarea>
+        <textarea class="form-control" id="pricing" style="height: 100px" formControlName="pricing"></textarea>
     </div>
 
     <b>maletgs:</b><br>
@@ -142,7 +189,7 @@
     <div class="mb-3">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="acceptTerms" id="acceptTerms"
-                   [class.is-invalid]="isFieldInvalid('acceptTerms')">
+                   formControlName="acceptTerms" [class.is-invalid]="isFieldInvalid('acceptTerms')">
             <label class="form-check-label" for="acceptTerms">
                 Jau accept la <a href="#">netichetta</a> ed hai ils dretgs dals maletgs utilisads.
             </label>

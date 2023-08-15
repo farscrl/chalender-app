@@ -56,6 +56,11 @@ export class NewEventComponent implements OnInit {
         return this.f.get(fieldName)!.invalid && (this.f.get(fieldName)!.dirty || this.f.get(fieldName)!.touched);
     }
 
+    isOccurrenceFieldInvalid(index: number, fieldName: string) {
+        const occurrence = this.eventOccurrencesFormArray.at(index);
+        return occurrence.get(fieldName)!.invalid && (occurrence.get(fieldName)!.dirty || occurrence.get(fieldName)!.touched);
+    }
+
     get genresFormArray(): FormArray {
         return this.f.get('genres') as FormArray;
     }
@@ -66,6 +71,10 @@ export class NewEventComponent implements OnInit {
 
     get eventLanguagesFormArray(): FormArray {
         return this.f.get('eventLanguages') as FormArray;
+    }
+
+    get eventOccurrencesFormArray(): FormArray {
+        return this.f.get('occurrences') as FormArray;
     }
 
     private loadStaticData() {
@@ -123,8 +132,12 @@ export class NewEventComponent implements OnInit {
             onlineOnly: [false],
             location: ['', Validators.required],
             address: ['', Validators.required],
+            organiser: [''],
+            pricing: [''],
             acceptTerms: [false, Validators.requiredTrue],
+            occurrences: new FormArray([]), // TODO: add validator at least one occurrence
         });
+        this.addOccurrence();
 
         this.f.get('onlineOnly')!.valueChanges.subscribe(val => {
             if (val) {
@@ -136,6 +149,32 @@ export class NewEventComponent implements OnInit {
             }
 
         });
+    }
+
+    addOccurrence() {
+        const occurrence = this.fb.group({
+            date: ['', Validators.required],
+            start: ['', Validators.required],
+            end: [''],
+            isAllDay: [false],
+            isCancelled: [false],
+        });
+        this.eventOccurrencesFormArray.push(occurrence);
+    }
+
+    removeOccurrence(occurrenceIndex: number): void {
+        this.eventOccurrencesFormArray.removeAt(occurrenceIndex);
+    }
+
+    didToggleAllDay(occurrenceIndex: number): void {
+        const occurrence = this.eventOccurrencesFormArray.at(occurrenceIndex);
+        if (occurrence.get('isAllDay')!.value) {
+            occurrence.get('start')!.disable();
+            occurrence.get('end')!.disable();
+        } else {
+            occurrence.get('start')!.enable();
+            occurrence.get('end')!.enable();
+        }
     }
 
     private transformToEvent(isDraft: boolean): Event {
