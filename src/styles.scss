@@ -61,6 +61,25 @@ button.clndr {
   }
 }
 
+.tag-element {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 3px 8px;
+  margin: 0 8px;
+  // clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top: 8px solid var(--accent);
+    border-left: 8px solid white;
+    width: 0;
+  }
+}
+
 
 #menu-button {
   .line {

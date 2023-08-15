@@ -25,6 +25,8 @@ export class EventVersion {
     acceptTerms?: boolean;
     organiser?: string;
     pricing?: string;
+    link?: string;
+    contact?: string;
 }
 
 export class EventDto {
@@ -44,12 +46,14 @@ export class EventDto {
     acceptTerms?: boolean;
     organiser?: string;
     pricing?: string;
+    link?: string;
+    contact?: string;
 }
 
 export class EventOccurrences {
-    date?: Date;
-    start?: Date;
-    end?: Date;
+    date?: string;
+    start?: string;
+    end?: string;
     isAllDay?: boolean;
     isCancelled?: boolean;
 }
