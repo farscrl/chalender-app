@@ -1,12 +1,12 @@
 <ul>
     <li *ngFor="let event of events; let i = index">
-        <a [routerLink]="'/' + event.id">
+        <a [routerLink]="'/' + event.eventId">
             <div class="image">
                 <div class="img-holder" style="background-image: url('')"></div>
             </div>
         </a>
         <div class="description">
-            <h3><a [routerLink]="'/' + event.id">{{ event.title }}</a></h3>
+            <h3><a [routerLink]="'/' + event.eventId">{{ event.title }}</a></h3>
 
             <p class="location">{{ event.location }}</p>
             <div class="details">

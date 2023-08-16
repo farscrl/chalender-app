@@ -50,6 +50,21 @@ export class EventDto {
     contact?: string;
 }
 
+export class EventLookup {
+    eventId?: string;
+    title?: string;
+    genres: Genre[] = [];
+    location?: string;
+    regions: Region[] = [];
+    image?: string;
+    eventLanguages: EventLanguage[] = [];
+    date?: string;
+    start?: string;
+    end?: string;
+    isAllDay?: boolean;
+    isCancelled?: boolean;
+}
+
 export class EventOccurrences {
     date?: string;
     start?: string;

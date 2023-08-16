@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {Event, EventDto} from "../data/event";
+import {Event, EventDto, EventLookup} from "../data/event";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+import {Page} from "../data/page";
 
 @Injectable({
     providedIn: 'root'
@@ -14,8 +15,8 @@ export class EventsService {
     constructor(private httpClient: HttpClient,) {
     }
 
-    public getEvents(): Observable<EventDto[]> {
-        return this.httpClient.get<EventDto[]>(this.getUrl());
+    public getEvents(): Observable<Page<EventLookup>> {
+        return this.httpClient.get<Page<EventLookup>>(this.getUrl());
     }
 
     public getEvent(id: number): Observable<EventDto> {

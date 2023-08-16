@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EventsService} from "../../../services/events.service";
-import {Event, EventDto} from "../../../data/event";
+import {EventLookup} from "../../../data/event";
 
 @Component({
     selector: 'app-events-list',
@@ -9,14 +9,14 @@ import {Event, EventDto} from "../../../data/event";
 })
 export class EventsListComponent implements OnInit {
 
-    public events: EventDto[] = [];
+    public events: EventLookup[] = [];
 
     constructor(private eventsService: EventsService) {
     }
 
     ngOnInit() {
         this.eventsService.getEvents().subscribe((events: any) => {
-            this.events = events;
+            this.events = events.content;
         });
     }
 }
