@@ -6,8 +6,8 @@
     --accent: #3CBFA4;
 }
 
-// bootstrap
-@import "~bootstrap/dist/css/bootstrap.css";
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
 
 body {
     background-color: #9a9a9a;
@@ -32,6 +32,10 @@ h1 {
     font-family: "CadizBlack", sans-serif;
     font-size: 2rem;
     margin-bottom: 1rem;
+}
+
+h2 {
+    font-family: "CadizBlack", sans-serif;
 }
 
 a {
@@ -62,21 +66,27 @@ button.clndr {
 }
 
 .tag-element {
-    border: 1px solid var(--accent);
-    color: var(--accent);
+    border: 1px solid black;
+    color: black;
     padding: 3px 8px;
     margin: 0 8px;
     // clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
     position: relative;
 
-    &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        border-top: 8px solid var(--accent);
-        border-left: 8px solid white;
-        width: 0;
+
+    &.active {
+        border: 1px solid var(--accent);
+        color: var(--accent);
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-top: 8px solid var(--accent);
+            border-left: 8px solid white;
+            width: 0;
+        }
     }
 }
 

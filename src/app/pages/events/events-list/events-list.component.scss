@@ -26,7 +26,6 @@ li {
     }
 
     h2 {
-        font-family: 'CadizBlack';
         font-size: 1.5rem;
         margin: 24px 2rem;
     }
@@ -52,4 +51,12 @@ li {
             margin-right: 8px;
         }
     }
+}
+
+.load-next-page {
+    margin: 0;
+    padding: 1rem 3rem;
+    border-radius: 5px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
 }

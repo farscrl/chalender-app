@@ -1,21 +1,35 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EventsService} from "../../../services/events.service";
-import {EventLookup} from "../../../data/event";
+import {EventFilter, EventLookup} from "../../../data/event";
 import * as dayjs from 'dayjs'
 import {rmLocale} from "../../../utils/day-js-locale";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {EventFilterComponent} from "../../../components/events/event-filter/event-filter.component";
+import {EventsFilterService} from "../../../services/events-filter.service";
+import {Page} from "../../../data/page";
 
 @Component({
     selector: 'app-events-list',
     templateUrl: './events-list.component.html',
     styleUrls: ['./events-list.component.scss']
 })
-export class EventsListComponent implements OnInit {
+export class EventsListComponent implements OnInit, OnDestroy {
 
     public events: EventLookup[] = [];
     public categorizedEvents: { date: string, formattedDate: string, events: EventLookup[] }[] = [];
     private dates: string[] = [];
 
-    constructor(private eventsService: EventsService) {
+    private selectedGenresSubscription: any;
+    private selectedRegionsSubscription: any;
+    private selectedStartDateSubscription: any;
+    private searchTermSubscription: any;
+
+    private pageSize = 10;
+    private page = 0;
+    hasMorePages = true;
+    private eventFilter = new EventFilter();
+
+    constructor(private eventsService: EventsService, private modalService: NgbModal, private eventsFilterService: EventsFilterService) {
     }
 
     ngOnInit() {
@@ -23,8 +37,53 @@ export class EventsListComponent implements OnInit {
         dayjs.extend(customParseFormat);
         dayjs.locale('rm', rmLocale);
 
-        this.eventsService.getEvents().subscribe((events: any) => {
-            this.events = events.content;
+        this.search();
+        this.loadCurrentFilters();
+    }
+
+    ngOnDestroy(): void {
+        if (this.selectedGenresSubscription) {
+            this.selectedGenresSubscription.unsubscribe();
+        }
+        if (this.selectedRegionsSubscription) {
+            this.selectedRegionsSubscription.unsubscribe();
+        }
+        if (this.selectedStartDateSubscription) {
+            this.selectedStartDateSubscription.unsubscribe();
+        }
+        if (this.searchTermSubscription) {
+            this.searchTermSubscription.unsubscribe();
+        }
+    }
+
+    openFilter(): void {
+        const modalRef = this.modalService.open(EventFilterComponent, {size: 'lg'});
+    }
+
+    search() {
+        this.page = 0;
+        this.hasMorePages = true;
+        this.executeSearch();
+    }
+
+    loadNextPage() {
+        if (this.hasMorePages) {
+            this.page++;
+            this.executeSearch();
+        }
+    }
+
+    private executeSearch() {
+        // TODO: debounce
+        this.eventsService.getEvents(this.eventFilter, this.page, this.pageSize).subscribe((page: Page<EventLookup>) => {
+            if (page.first) {
+                this.events = page.content;
+            } else {
+                this.events = [...this.events, ...page.content];
+            }
+            if (page.last) {
+                this.hasMorePages = false;
+            }
             this.groupEvents();
         });
     }
@@ -54,6 +113,25 @@ export class EventsListComponent implements OnInit {
                 formattedDate: formattedDate,
                 events: this.events.filter(e => e.date === date),
             }
+        });
+    }
+
+    private loadCurrentFilters() {
+        this.selectedGenresSubscription = this.eventsFilterService.getGenresObservable().subscribe(genres => {
+            this.eventFilter.genres = genres;
+            this.search();
+        });
+        this.selectedRegionsSubscription = this.eventsFilterService.getRegionsObservable().subscribe(regions => {
+            this.eventFilter.regions = regions;
+            this.search();
+        });
+        this.selectedStartDateSubscription = this.eventsFilterService.getStartDateObservable().subscribe(startDate => {
+            this.eventFilter.startDate = dayjs().set('year', startDate.year).set('month', startDate.month - 1).set('date', startDate.day).format('DD-MM-YYYY');
+            this.search();
+        });
+        this.searchTermSubscription = this.eventsFilterService.getSearchTermObservable().subscribe(searchTerm => {
+            this.eventFilter.searchTerm = searchTerm;
+            this.search();
         });
     }
 }

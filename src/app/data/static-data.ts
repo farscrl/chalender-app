@@ -1,10 +1,10 @@
 export interface Genre {
-    id: string;
+    id: number;
     name: string;
 }
 
 export interface Region {
-    id: string;
+    id: number;
     name: string;
 }
 

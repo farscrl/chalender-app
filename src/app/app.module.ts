@@ -29,6 +29,8 @@ import {ProfileComponent} from './pages/admin/profile/profile.component';
 import {AuthenticationService} from "./services/authentication.service";
 import { ShortDomainPipe } from './pipes/short-domain.pipe';
 import { EventCardComponent } from './components/events/event-card/event-card.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EventFilterComponent } from './components/events/event-filter/event-filter.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -61,7 +63,8 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         MySubscriptionsComponent,
         ProfileComponent,
         ShortDomainPipe,
-        EventCardComponent
+        EventCardComponent,
+        EventFilterComponent
     ],
     imports: [
         BrowserModule,
@@ -84,6 +87,7 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
             }
         }),
         ReactiveFormsModule,
+        NgbModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

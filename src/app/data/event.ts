@@ -72,3 +72,10 @@ export class EventOccurrences {
     isAllDay?: boolean;
     isCancelled?: boolean;
 }
+
+export class EventFilter {
+    regions: number[] = [];
+    genres: number[] = [];
+    startDate?: string;
+    searchTerm?: string;
+}
