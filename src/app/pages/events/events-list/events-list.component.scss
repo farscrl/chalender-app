@@ -15,6 +15,11 @@ li {
 .day-title {
     border-top: 1px solid #BBBFC2;
     border-bottom: 1px solid #BBBFC2;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
 
     &:nth-of-type(1) {
         border-top: none;
@@ -23,6 +28,28 @@ li {
     h2 {
         font-family: 'CadizBlack';
         font-size: 1.5rem;
-        margin: 8px 2rem;
+        margin: 24px 2rem;
+    }
+
+    .filter-menu {
+        display: flex;
+        align-items: center;
+
+        > * {
+            margin-left: 20px;
+        }
+    }
+
+    .filter-button {
+        font-family: 'CadizBlack';
+        padding: 8px 16px;
+        margin-right: 2rem;
+        border: 1px solid #A9A9A9;
+        border-radius: 30px;
+        background-color: white;
+
+        .txt {
+            margin-right: 8px;
+        }
     }
 }
