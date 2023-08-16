@@ -27,6 +27,7 @@
     "@auth0/angular-jwt": "^5.1.2",
     "@nguniversal/express-engine": "^16.1.2",
     "bootstrap": "^5.2.3",
+    "dayjs": "^1.11.9",
     "express": "^4.15.2",
     "jwt-decode": "^3.1.2",
     "ngx-bootstrap": "^11.0.2",

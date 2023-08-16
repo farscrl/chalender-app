@@ -3,128 +3,128 @@
 
 
 :root {
-  --accent: #3CBFA4;
+    --accent: #3CBFA4;
 }
 
 // bootstrap
 @import "~bootstrap/dist/css/bootstrap.css";
 
 body {
-  background-color: #9a9a9a;
-  font-family: Cadiz, sans-serif;
+    background-color: #9a9a9a;
+    font-family: Cadiz, sans-serif;
 }
 
 #container {
-  background-color: white;
-  min-height: 100vh;
+    background-color: white;
+    min-height: 100vh;
 }
 
 .container {
-  max-width: 1280px;
-  margin: 0 auto;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 #content {
-  padding: 2rem;
+    // padding: 2rem;
 }
 
 h1 {
-  font-family: "CadizBlack", sans-serif;
-  font-size: 2rem;
-  margin-bottom: 1rem;
+    font-family: "CadizBlack", sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 a {
-  color: var(--accent);
-  text-decoration: none;
+    color: var(--accent);
+    text-decoration: none;
 
-  &:hover {
-    text-decoration: underline;
-  }
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 button.clndr {
-  background-color: white;
-  border: 1px solid black;
-  color: black;
-  padding: 0.5rem 1rem;
-  border-radius: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  margin-right: 2rem;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-right: 2rem;
 
-  &:hover {
-    border: 1px solid var(--accent);
-    color: var(--accent);;
-  }
+    &:hover {
+        border: 1px solid var(--accent);
+        color: var(--accent);;
+    }
 }
 
 .tag-element {
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  padding: 3px 8px;
-  margin: 0 8px;
-  // clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
-  position: relative;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 3px 8px;
+    margin: 0 8px;
+    // clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+    position: relative;
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-top: 8px solid var(--accent);
-    border-left: 8px solid white;
-    width: 0;
-  }
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-top: 8px solid var(--accent);
+        border-left: 8px solid white;
+        width: 0;
+    }
 }
 
 
 #menu-button {
-  .line {
-    fill: none;
-    stroke: black;
-    stroke-width: 6;
-    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
+    .line {
+        fill: none;
+        stroke: black;
+        stroke-width: 6;
+        transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-  .line1 {
-    stroke-dasharray: 60 207;
-    stroke-width: 6;
-  }
-
-  .line2 {
-    stroke-dasharray: 60 60;
-    stroke-width: 6;
-  }
-
-  .line3 {
-    stroke-dasharray: 60 207;
-    stroke-width: 6;
-  }
-
-  &.opened {
     .line1 {
-      stroke-dasharray: 90 207;
-      stroke-dashoffset: -134;
-      stroke-width: 6;
-      stroke: white;
+        stroke-dasharray: 60 207;
+        stroke-width: 6;
     }
 
     .line2 {
-      stroke-dasharray: 1 60;
-      stroke-dashoffset: -30;
-      stroke-width: 6;
-      stroke: white;
+        stroke-dasharray: 60 60;
+        stroke-width: 6;
     }
 
     .line3 {
-      stroke-dasharray: 90 207;
-      stroke-dashoffset: -134;
-      stroke-width: 6;
-      stroke: white;
+        stroke-dasharray: 60 207;
+        stroke-width: 6;
     }
-  }
+
+    &.opened {
+        .line1 {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+            stroke-width: 6;
+            stroke: white;
+        }
+
+        .line2 {
+            stroke-dasharray: 1 60;
+            stroke-dashoffset: -30;
+            stroke-width: 6;
+            stroke: white;
+        }
+
+        .line3 {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+            stroke-width: 6;
+            stroke: white;
+        }
+    }
 }

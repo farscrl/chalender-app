@@ -58,7 +58,7 @@ export class EventLookup {
     regions: Region[] = [];
     image?: string;
     eventLanguages: EventLanguage[] = [];
-    date?: string;
+    date: string = '';
     start?: string;
     end?: string;
     isAllDay?: boolean;

@@ -27,6 +27,8 @@ import {MyEventsComponent} from './pages/admin/my-events/my-events.component';
 import {MySubscriptionsComponent} from './pages/admin/my-subscriptions/my-subscriptions.component';
 import {ProfileComponent} from './pages/admin/profile/profile.component';
 import {AuthenticationService} from "./services/authentication.service";
+import { ShortDomainPipe } from './pipes/short-domain.pipe';
+import { EventCardComponent } from './components/events/event-card/event-card.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -57,7 +59,9 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         NewEventComponent,
         MyEventsComponent,
         MySubscriptionsComponent,
-        ProfileComponent
+        ProfileComponent,
+        ShortDomainPipe,
+        EventCardComponent
     ],
     imports: [
         BrowserModule,

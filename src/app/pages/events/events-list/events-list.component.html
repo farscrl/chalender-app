@@ -1,30 +1,16 @@
-<ul>
+<!--<ul>
     <li *ngFor="let event of events; let i = index">
-        <a [routerLink]="'/' + event.eventId">
-            <div class="image">
-                <div class="img-holder" style="background-image: url('')"></div>
-            </div>
-        </a>
-        <div class="description">
-            <h3><a [routerLink]="'/' + event.eventId">{{ event.title }}</a></h3>
-
-            <p class="location">{{ event.location }}</p>
-            <div class="details">
-                <div class="infos">
-                    <p class="time">19:30</p>
-                    <div class="tags">
-                        <div class="tag" *ngFor="let tag of event.genres">{{ tag.name }}</div>
-                    </div>
-                </div>
-                <div class="arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" viewBox="0 0 30 16" fill="none">
-                        <path d="M1 8L29 8" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"></path>
-                        <path d="M22 1L29 8L22 15" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"></path>
-                    </svg>
-                </div>
-            </div>
-        </div>
+        <app-event-card [event]="event"></app-event-card>
     </li>
-</ul>
+</ul>-->
+
+<ng-container *ngFor="let cat of categorizedEvents; let i = index">
+    <div class="day-title">
+        <h2>{{cat.formattedDate}}</h2>
+    </div>
+    <ul>
+        <li *ngFor="let event of cat.events; let i = index">
+            <app-event-card [event]="event"></app-event-card>
+        </li>
+    </ul>
+</ng-container>
