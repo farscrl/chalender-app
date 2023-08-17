@@ -8,12 +8,23 @@
 }
 
 .links {
+    a {
+        color: black;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     > * {
         margin-left: 2rem;
     }
 }
 
 .logos {
+    display: flex;
+    align-items: center;
+
     > * {
         margin-right: 2rem;
     }
@@ -22,4 +33,5 @@
 .logo-far {
     font-family: "CadizBlack", sans-serif;
     font-size: 1.25rem;
+    color: #778085;
 }

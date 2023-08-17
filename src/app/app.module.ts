@@ -32,6 +32,8 @@ import { EventCardComponent } from './components/events/event-card/event-card.co
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventFilterComponent } from './components/events/event-filter/event-filter.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { ConfirmEmailComponent } from './pages/u/confirm-email/confirm-email.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -66,7 +68,9 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         ShortDomainPipe,
         EventCardComponent,
         EventFilterComponent,
-        FooterComponent
+        FooterComponent,
+        MessagesComponent,
+        ConfirmEmailComponent
     ],
     imports: [
         BrowserModule,

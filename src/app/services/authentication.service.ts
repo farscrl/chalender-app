@@ -41,14 +41,18 @@ export class AuthenticationService {
         }, httpOptions);
     }
 
-    register(user: any): Observable<any> {
+    register(email: string, password: string, name: string, organisation: string): Observable<any> {
         return this.http.post(environment.apiBasePath + 'user/auth/signup', {
-            displayName: user.displayName,
-            email: user.email,
-            password: user.password,
-            matchingPassword: user.matchingPassword,
+            displayName: name,
+            organisation: organisation,
+            email: email,
+            password: password,
             socialProvider: 'LOCAL'
         }, httpOptions);
+    }
+
+    confirmEmail(code: string): Observable<any> {
+        return this.http.post(environment.apiBasePath + 'user/auth/confirm-email?code=' + code, httpOptions);
     }
 
     logout(): void {

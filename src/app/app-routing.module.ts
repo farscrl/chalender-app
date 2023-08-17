@@ -20,42 +20,44 @@ import {NewEventComponent} from "./pages/admin/new-event/new-event.component";
 import {MyEventsComponent} from "./pages/admin/my-events/my-events.component";
 import {MySubscriptionsComponent} from "./pages/admin/my-subscriptions/my-subscriptions.component";
 import {ProfileComponent} from "./pages/admin/profile/profile.component";
+import {ConfirmEmailComponent} from "./pages/u/confirm-email/confirm-email.component";
 
 const routes: Routes = [
-  {
-    path: 'u',
-    children: [
-      {path: 'events', component: EventsComponent},
-      {path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [notAuthGuard()]},
-      {path: 'login', component: LoginComponent, canActivate: [notAuthGuard()]},
-      {path: 'logout', component: LogoutComponent, canActivate: [authGuard()]},
-      {path: 'register', component: RegisterComponent, canActivate: [notAuthGuard()]},
-    ]
-  },
-  {
-    path: 'admin',
-    children: [
-      {path: 'events/new', component: NewEventComponent, canActivate: [authGuard()]},
-      {path: 'events', component: MyEventsComponent, canActivate: [authGuard()]},
-      {path: 'subscriptions', component: MySubscriptionsComponent, canActivate: [authGuard()]},
-      {path: 'profile', component: ProfileComponent, canActivate: [authGuard()]},
-    ]
-  },
-  {path: ':id', canMatch: [canMatchEventId], pathMatch: 'full', component: EventsDetailsComponent},
-  {path: 'help', pathMatch: 'full', component: HelpComponent},
-  {path: 'contact', pathMatch: 'full', component: ContactComponent},
-  {path: 'organisation', pathMatch: 'full', component: OrganisationComponent},
-  {path: 'imprint', pathMatch: 'full', component: ImprintComponent},
-  {path: 'privacy', pathMatch: 'full', component: PrivacyComponent},
-  {path: '', pathMatch: 'full', component: EventsListComponent},
-  {path: '**', pathMatch: 'full', component: NotFoundComponent},
+    {
+        path: 'u',
+        children: [
+            {path: 'events', component: EventsComponent},
+            {path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [notAuthGuard()]},
+            {path: 'login', component: LoginComponent, canActivate: [notAuthGuard()]},
+            {path: 'logout', component: LogoutComponent, canActivate: [authGuard()]},
+            {path: 'register', component: RegisterComponent, canActivate: [notAuthGuard()]},
+            {path: 'confirm-email', component: ConfirmEmailComponent, canActivate: [notAuthGuard()]},
+        ]
+    },
+    {
+        path: 'admin',
+        children: [
+            {path: 'events/new', component: NewEventComponent, canActivate: [authGuard()]},
+            {path: 'events', component: MyEventsComponent, canActivate: [authGuard()]},
+            {path: 'subscriptions', component: MySubscriptionsComponent, canActivate: [authGuard()]},
+            {path: 'profile', component: ProfileComponent, canActivate: [authGuard()]},
+        ]
+    },
+    {path: ':id', canMatch: [canMatchEventId], pathMatch: 'full', component: EventsDetailsComponent},
+    {path: 'help', pathMatch: 'full', component: HelpComponent},
+    {path: 'contact', pathMatch: 'full', component: ContactComponent},
+    {path: 'organisation', pathMatch: 'full', component: OrganisationComponent},
+    {path: 'imprint', pathMatch: 'full', component: ImprintComponent},
+    {path: 'privacy', pathMatch: 'full', component: PrivacyComponent},
+    {path: '', pathMatch: 'full', component: EventsListComponent},
+    {path: '**', pathMatch: 'full', component: NotFoundComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabledBlocking'
-  })],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, {
+        initialNavigation: 'enabledBlocking'
+    })],
+    exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

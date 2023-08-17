@@ -1,0 +1,6 @@
+<div class="container">
+    <ngb-alert [type]="message.type" (closed)="notificationsService.dismissMessage(message)"
+               *ngFor="let message of notificationsService.messages"><b>{{ message.title }}.</b> {{ message.message }}
+    </ngb-alert>
+</div>
+

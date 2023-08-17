@@ -1,0 +1,26 @@
+<section class="content-narrow">
+    <h1>Confermar tia adressa dad e-mail</h1>
+
+    <ng-container *ngIf="isCurrentlyValidating">
+        <div class="d-flex">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Confermar tia adressa dad e-mail...</span>
+            </div>
+            <p class="ms-3">Tia adressa dad e-mail vegn confermada...</p>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="showCodeEmptyError">
+        <ngb-alert [type]="'danger'" [dismissible]="false">
+            <b>Nagin code</b>
+            Il link na cuntegna nagin code.
+        </ngb-alert>
+    </ng-container>
+
+    <ng-container *ngIf="showInvalidCodeError">
+        <ngb-alert [type]="'danger'" [dismissible]="false">
+            <b>Code nunvalid</b>
+            Quest code n'è betg valid.
+        </ngb-alert>
+    </ng-container>
+</section>
