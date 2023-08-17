@@ -1,0 +1,25 @@
+:host {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #BBBFC2;
+    align-items: center;
+}
+
+.links {
+    > * {
+        margin-left: 2rem;
+    }
+}
+
+.logos {
+    > * {
+        margin-right: 2rem;
+    }
+}
+
+.logo-far {
+    font-family: "CadizBlack", sans-serif;
+    font-size: 1.25rem;
+}
