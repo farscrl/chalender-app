@@ -55,6 +55,14 @@ export class AuthenticationService {
         return this.http.post(environment.apiBasePath + 'user/auth/confirm-email?code=' + code, httpOptions);
     }
 
+    resetPassword(email: string): Observable<any> {
+        return this.http.post(environment.apiBasePath + 'user/auth/reset-password?email=' + email, httpOptions);
+    }
+
+    resetRedefinePassword(token: string, password: string): Observable<any> {
+        return this.http.post(environment.apiBasePath + 'user/auth/redefine-password?token=' + token + '&password=' + password, httpOptions);
+    }
+
     logout(): void {
         this.token = '';
         this.cookieService.delete(this.TOKEN_KEY, '/');

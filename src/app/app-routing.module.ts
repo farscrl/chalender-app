@@ -21,6 +21,7 @@ import {MyEventsComponent} from "./pages/admin/my-events/my-events.component";
 import {MySubscriptionsComponent} from "./pages/admin/my-subscriptions/my-subscriptions.component";
 import {ProfileComponent} from "./pages/admin/profile/profile.component";
 import {ConfirmEmailComponent} from "./pages/u/confirm-email/confirm-email.component";
+import {ConfirmPasswordComponent} from "./pages/u/confirm-password/confirm-password.component";
 
 const routes: Routes = [
     {
@@ -32,6 +33,7 @@ const routes: Routes = [
             {path: 'logout', component: LogoutComponent, canActivate: [authGuard()]},
             {path: 'register', component: RegisterComponent, canActivate: [notAuthGuard()]},
             {path: 'confirm-email', component: ConfirmEmailComponent, canActivate: [notAuthGuard()]},
+            {path: 'confirm-password', component: ConfirmPasswordComponent, canActivate: [notAuthGuard()]},
         ]
     },
     {

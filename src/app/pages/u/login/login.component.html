@@ -8,7 +8,7 @@
         </ngb-alert>
     </ng-container>
 
-    <form [formGroup]="f">
+    <form [formGroup]="f" (ngSubmit)="login()">
         <div class="mb-3">
             <label for="email" class="form-label">Adressa dad e-mail</label>
             <input type="email" id="email" name="email" class="form-control" formControlName="email"

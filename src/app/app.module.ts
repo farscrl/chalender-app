@@ -34,6 +34,7 @@ import { EventFilterComponent } from './components/events/event-filter/event-fil
 import { FooterComponent } from './components/footer/footer.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { ConfirmEmailComponent } from './pages/u/confirm-email/confirm-email.component';
+import { ConfirmPasswordComponent } from './pages/u/confirm-password/confirm-password.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -70,7 +71,8 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         EventFilterComponent,
         FooterComponent,
         MessagesComponent,
-        ConfirmEmailComponent
+        ConfirmEmailComponent,
+        ConfirmPasswordComponent
     ],
     imports: [
         BrowserModule,
