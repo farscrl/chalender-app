@@ -36,6 +36,7 @@ import {MessagesComponent} from './components/messages/messages.component';
 import {ConfirmEmailComponent} from './pages/u/confirm-email/confirm-email.component';
 import {ConfirmPasswordComponent} from './pages/u/confirm-password/confirm-password.component';
 import { ChangePasswordComponent } from './pages/admin/change-password/change-password.component';
+import { NewEventButtonComponent } from './components/new-event-button/new-event-button.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -82,7 +83,8 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         MessagesComponent,
         ConfirmEmailComponent,
         ConfirmPasswordComponent,
-        ChangePasswordComponent
+        ChangePasswordComponent,
+        NewEventButtonComponent
     ],
     imports: [
         BrowserModule,

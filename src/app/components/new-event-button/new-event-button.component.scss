@@ -1,0 +1,67 @@
+.fab {
+  display: block;
+  position: fixed;
+  bottom: 45px;
+  right: 45px;
+  z-index: 999999999;
+
+  .fab-button {
+    display: block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    background: var(--accent);
+    color: #fff;
+    line-height: 60px;
+    position: absolute;
+    border-radius: 50% 50%;
+    bottom: 0;
+    right: 0;
+    opacity: 1;
+    transition: all 0.4s;
+
+    svg {
+      transform: rotate(0deg);
+      transition: all 0.4s;
+    }
+  }
+
+  .fab-menu {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    /* width: 200px; */
+    display: none;
+    height: 60px;
+    padding-left: 30px;
+    padding-right: 80px;
+    font-size: 1.25rem;
+    background-color: #8AD9C8;
+    white-space: nowrap;
+    align-items: center;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+}
+
+.fab.open .fab-menu {
+  display: flex;
+  align-items: center;
+}
+
+.fab.open .fab-button svg {
+  transform: rotate(315deg);
+}
+
+.fab-inner {
+  position: relative;
+}
+
+
+
+
+
+
+
+
