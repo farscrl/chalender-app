@@ -40,7 +40,7 @@ const routes: Routes = [
     {
         path: 'admin',
         children: [
-            {path: 'events/new', component: NewEventComponent, canActivate: [authGuard()]},
+            {path: 'events/new', component: NewEventComponent},
             {path: 'events', component: MyEventsComponent, canActivate: [authGuard()]},
             {path: 'subscriptions', component: MySubscriptionsComponent, canActivate: [authGuard()]},
             {path: 'profile', component: ProfileComponent, canActivate: [authGuard()]},

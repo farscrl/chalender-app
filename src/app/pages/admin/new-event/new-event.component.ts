@@ -1,11 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {
-    FormArray,
-    FormBuilder,
-    FormControl,
-    FormGroup,
-    Validators
-} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {StaticDataService} from "../../../services/static-data.service";
 import {EventLanguage, Genre, Region} from "../../../data/static-data";
@@ -138,6 +132,10 @@ export class NewEventComponent implements OnInit {
             occurrences: new FormArray([]), // TODO: add validator at least one occurrence
         });
         this.addOccurrence();
+
+        if (isLoggedIn) {
+            this.f.get('contactEmail')!.disable();
+        }
 
         this.f.get('onlineOnly')!.valueChanges.subscribe(val => {
             if (val) {

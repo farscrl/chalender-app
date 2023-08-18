@@ -2,7 +2,7 @@
     <h1>Registrar in’occurrenza</h1>
 
     <form [formGroup]="f">
-        <div class="mb-3">
+        <div class="mb-3" *ngIf="f.controls['contactEmail'].enabled">
             <label for="contactEmail" class="form-label">adressa dad e-mail (betg public, mo per diever
                 administrativ)</label>
             <input formControlName="contactEmail" type="email" class="form-control" id="contactEmail"

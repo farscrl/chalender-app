@@ -12,6 +12,10 @@ export class EventsComponent {
     }
 
     login(): void {
-        this.router.navigate(['/u/login']);
+        this.router.navigate(['/u/login'], {queryParams: {redirectTo: '/admin/events/new'}});
+    }
+
+    createEvent(): void {
+        this.router.navigate(['/admin/events/new']);
     }
 }
