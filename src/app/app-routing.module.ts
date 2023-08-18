@@ -22,6 +22,7 @@ import {MySubscriptionsComponent} from "./pages/admin/my-subscriptions/my-subscr
 import {ProfileComponent} from "./pages/admin/profile/profile.component";
 import {ConfirmEmailComponent} from "./pages/u/confirm-email/confirm-email.component";
 import {ConfirmPasswordComponent} from "./pages/u/confirm-password/confirm-password.component";
+import {ChangePasswordComponent} from "./pages/admin/change-password/change-password.component";
 
 const routes: Routes = [
     {
@@ -43,6 +44,7 @@ const routes: Routes = [
             {path: 'events', component: MyEventsComponent, canActivate: [authGuard()]},
             {path: 'subscriptions', component: MySubscriptionsComponent, canActivate: [authGuard()]},
             {path: 'profile', component: ProfileComponent, canActivate: [authGuard()]},
+            {path: 'change-password', component: ChangePasswordComponent, canActivate: [authGuard()]},
         ]
     },
     {path: ':id', canMatch: [canMatchEventId], pathMatch: 'full', component: EventsDetailsComponent},

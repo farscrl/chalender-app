@@ -27,17 +27,26 @@ import {MyEventsComponent} from './pages/admin/my-events/my-events.component';
 import {MySubscriptionsComponent} from './pages/admin/my-subscriptions/my-subscriptions.component';
 import {ProfileComponent} from './pages/admin/profile/profile.component';
 import {AuthenticationService} from "./services/authentication.service";
-import { ShortDomainPipe } from './pipes/short-domain.pipe';
-import { EventCardComponent } from './components/events/event-card/event-card.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { EventFilterComponent } from './components/events/event-filter/event-filter.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { MessagesComponent } from './components/messages/messages.component';
-import { ConfirmEmailComponent } from './pages/u/confirm-email/confirm-email.component';
-import { ConfirmPasswordComponent } from './pages/u/confirm-password/confirm-password.component';
+import {ShortDomainPipe} from './pipes/short-domain.pipe';
+import {EventCardComponent} from './components/events/event-card/event-card.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {EventFilterComponent} from './components/events/event-filter/event-filter.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {MessagesComponent} from './components/messages/messages.component';
+import {ConfirmEmailComponent} from './pages/u/confirm-email/confirm-email.component';
+import {ConfirmPasswordComponent} from './pages/u/confirm-password/confirm-password.component';
+import { ChangePasswordComponent } from './pages/admin/change-password/change-password.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
+        allowedDomains: [environment.host],
+        disallowedRoutes: [
+            environment.apiBasePath + 'user/auth/signin',
+            environment.apiBasePath + 'user/auth/signup',
+            environment.apiBasePath + 'users/auth/confirm-email',
+            environment.apiBasePath + 'users/auth/reset-password',
+            environment.apiBasePath + 'users/auth/redefine-password',
+        ],
         tokenGetter: () => {
             return authService.getToken() ?? null;
         }
@@ -72,7 +81,8 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         FooterComponent,
         MessagesComponent,
         ConfirmEmailComponent,
-        ConfirmPasswordComponent
+        ConfirmPasswordComponent,
+        ChangePasswordComponent
     ],
     imports: [
         BrowserModule,
@@ -80,19 +90,11 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         HttpClientModule,
         FormsModule,
         JwtModule.forRoot({
-            config: {
-                allowedDomains: [environment.host],
-                disallowedRoutes: [
-                    environment.apiBasePath + 'user/auth/signin',
-                    environment.apiBasePath + 'user/auth/signup',
-                    environment.apiBasePath + 'users/auth/forgot_password',
-                ]
-            },
             jwtOptionsProvider: {
                 provide: JWT_OPTIONS,
                 useFactory: jwtOptionsFactory,
                 deps: [AuthenticationService]
-            }
+            },
         }),
         ReactiveFormsModule,
         NgbModule,

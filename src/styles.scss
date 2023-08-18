@@ -72,6 +72,13 @@ button.clndr {
     &:disabled, &.accent:disabled {
         border: 1px solid grey;
         color: gray;
+        background-color: white;
+
+        &:hover {
+            border: 1px solid grey;
+            color: gray;
+            background-color: white;
+        }
     }
 
     &.accent {

@@ -63,6 +63,24 @@ export class AuthenticationService {
         return this.http.post(environment.apiBasePath + 'user/auth/redefine-password?token=' + token + '&password=' + password, httpOptions);
     }
 
+    loadProfile(): Observable<any> {
+        return this.http.get(environment.apiBasePath + 'user/auth/profile', httpOptions);
+    }
+
+    saveProfile(displayName: string, organisation: string): Observable<any> {
+        return this.http.post(environment.apiBasePath + 'user/auth/profile', {
+            displayName: displayName,
+            organisation: organisation
+        }, httpOptions);
+    }
+
+    changePassword(currentPassword: string, newPassword: string): Observable<any> {
+        return this.http.post(environment.apiBasePath + 'user/auth/change-password', {
+            currentPassword: currentPassword,
+            newPassword: newPassword
+        }, httpOptions);
+    }
+
     logout(): void {
         this.token = '';
         this.cookieService.delete(this.TOKEN_KEY, '/');
