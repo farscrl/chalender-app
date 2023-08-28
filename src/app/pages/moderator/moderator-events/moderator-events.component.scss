@@ -1,0 +1,21 @@
+span.button {
+    margin-right: 12px;
+
+    &.inactive {
+        &:hover {
+            cursor: default;
+        }
+
+        svg {
+            fill: gray;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    svg {
+        fill: var(--accent);
+    }
+}

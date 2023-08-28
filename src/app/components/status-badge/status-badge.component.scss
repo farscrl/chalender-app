@@ -1,0 +1,35 @@
+.badge {
+    font-weight: normal;
+    width: 100px;
+    padding: 8px;
+    
+    &.draft {
+        background-color: #DFDFDF;
+        color: #9C9C9C;
+        border: 1px solid #9C9C9C;
+    }
+
+    &.in-review {
+        background-color: #FFD76F;
+        color: #CE9400;
+        border: 1px solid #CE9400;
+    }
+
+    &.published {
+        background-color: #CFF1BF;
+        color: #5AA637;
+        border: 1px solid #5AA637;
+    }
+
+    &.new-modification {
+        background-color: #FFC28A;
+        color: #CE4A00;
+        border: 1px solid #CE4A00;
+    }
+
+    &.invalid {
+        background-color: #6769ff;
+        color: #1e21ff;
+        border: 1px solid #1e21ff;
+    }
+}

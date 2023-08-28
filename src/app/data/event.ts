@@ -3,13 +3,17 @@ import {EventLanguage, Genre, Region} from "./static-data";
 export class Event {
     id?: string;
 
-    currentlyPublished?: EventVersion;
     draft?: EventVersion;
-    inReview?: EventVersion;
-    lastReviewed?: EventVersion;
+    currentlyPublished?: EventVersion;
+    waitingForReview?: EventVersion;
 
     versions: EventVersion[] = [];
+
+    eventStatus?: EventStatusTypes = 'INVALID';
+    ownerEmail?: string;
 }
+
+export type EventStatusTypes = 'DRAFT' | 'IN_REVIEW' | 'PUBLISHED' | 'NEW_MODIFICATION' | 'INVALID';
 
 export class EventVersion {
     title?: string;

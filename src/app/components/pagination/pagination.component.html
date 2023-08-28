@@ -1,0 +1,48 @@
+<nav aria-label="Pagination">
+    <ul>
+        <li>
+            <button
+                aria-label="Siglir a la pagina precedenta"
+                [attr.aria-disabled]="current === 0"
+                [disabled]="current === 0"
+                (click)="onPrevious()"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 6L9 12L15 18" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </li>
+        <li *ngFor="let page of pages; index as i">
+            <a
+                *ngIf="page !== -1; else more"
+                class="internal"
+                [attr.aria-current]="page === current ? 'page' : null"
+                [attr.aria-label]="
+          page === current ? 'Current Page, Page ' + page : 'Siglir a la pagina ' + page
+        "
+                [class.current]="page === current"
+                tabindex="0"
+                (click)="onGoTo(page)"
+                (keyup.enter)="onGoTo(page)"
+            >{{ page + 1 }}</a
+            >
+            <ng-template #more>
+                <div class="more">...</div>
+            </ng-template>
+        </li>
+        <li>
+            <button
+                aria-label="Siglir a la proxima pagina"
+                [attr.aria-disabled]="current === total - 1"
+                [disabled]="current === total - 1"
+                (click)="onNext()"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 18L15 12L9 6" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </li>
+    </ul>
+</nav>

@@ -189,7 +189,7 @@ export class NewEventComponent implements OnInit {
         }
 
         return {
-            inReview: eventVersion,
+            waitingForReview: eventVersion,
             versions: [],
         };
     }

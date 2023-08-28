@@ -35,8 +35,11 @@ import {FooterComponent} from './components/footer/footer.component';
 import {MessagesComponent} from './components/messages/messages.component';
 import {ConfirmEmailComponent} from './pages/u/confirm-email/confirm-email.component';
 import {ConfirmPasswordComponent} from './pages/u/confirm-password/confirm-password.component';
-import { ChangePasswordComponent } from './pages/admin/change-password/change-password.component';
-import { NewEventButtonComponent } from './components/new-event-button/new-event-button.component';
+import {ChangePasswordComponent} from './pages/admin/change-password/change-password.component';
+import {NewEventButtonComponent} from './components/new-event-button/new-event-button.component';
+import {ModeratorEventsComponent} from './pages/moderator/moderator-events/moderator-events.component';
+import { StatusBadgeComponent } from './components/status-badge/status-badge.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -84,7 +87,10 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         ConfirmEmailComponent,
         ConfirmPasswordComponent,
         ChangePasswordComponent,
-        NewEventButtonComponent
+        NewEventButtonComponent,
+        ModeratorEventsComponent,
+        StatusBadgeComponent,
+        PaginationComponent
     ],
     imports: [
         BrowserModule,

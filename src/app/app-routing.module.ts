@@ -23,6 +23,7 @@ import {ProfileComponent} from "./pages/admin/profile/profile.component";
 import {ConfirmEmailComponent} from "./pages/u/confirm-email/confirm-email.component";
 import {ConfirmPasswordComponent} from "./pages/u/confirm-password/confirm-password.component";
 import {ChangePasswordComponent} from "./pages/admin/change-password/change-password.component";
+import {ModeratorEventsComponent} from "./pages/moderator/moderator-events/moderator-events.component";
 
 const routes: Routes = [
     {
@@ -35,6 +36,12 @@ const routes: Routes = [
             {path: 'register', component: RegisterComponent, canActivate: [notAuthGuard()]},
             {path: 'confirm-email', component: ConfirmEmailComponent, canActivate: [notAuthGuard()]},
             {path: 'confirm-password', component: ConfirmPasswordComponent, canActivate: [notAuthGuard()]},
+        ]
+    },
+    {
+        path: 'moderator',
+        children: [
+            {path: 'events', component: ModeratorEventsComponent, canActivate: [authGuard()]}, // TODO: needs Moderation Role
         ]
     },
     {

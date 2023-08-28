@@ -1,0 +1,62 @@
+<section class="content-wide">
+    <h1>Moderaziun da las occurrenzas</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Datas</th>
+            <th scope="col">User</th>
+            <th scope="col">Titel</th>
+            <th scope="col">Status</th>
+            <th scope="col">Acziuns</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let event of events; let i = index">
+            <td>
+                <span class="date"
+                      *ngFor="let occurrence of getEventVersion(event)?.occurrences">{{occurrence.date}}</span>
+            </td>
+            <td>{{event.ownerEmail}}</td>
+            <th scope="row">{{getEventVersion(event)?.title}}</th>
+            <td>
+                <app-status-badge [status]="event.eventStatus!"></app-status-badge>
+            </td>
+            <td>
+                <span class="button" placement="bottom" ngbTooltip="Prevista" (click)="showPreview(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path
+                        d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"/></svg>
+                </span>
+                <span class="button" placement="bottom" ngbTooltip="Mussar midadas"
+                      (click)="event.eventStatus === 'NEW_MODIFICATION' ? showDiff(event) : false"
+                      [class.inactive]="event.eventStatus !== 'NEW_MODIFICATION'">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path
+                        d="M0 168v-16c0-13.255 10.745-24 24-24h360V80c0-21.367 25.899-32.042 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.956 271.982 384 261.456 384 240v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.314-25.862-32.08-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.057 463.997 128 453.437 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"/></svg>
+                </span>
+                <span class="button" placement="bottom" ngbTooltip="Acceptar midadas"
+                      (click)="hasChanges(event) ? accept(event) : false"
+                      [class.inactive]="!hasChanges(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path
+                        d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg>
+                </span>
+                <span class="button" placement="bottom" ngbTooltip="Refusar midadas"
+                      (click)="hasChanges(event) ? reject(event) : false"
+                      [class.inactive]="!hasChanges(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 352 512"><path
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></svg>
+                </span>
+                <span class="button" placement="bottom" ngbTooltip="Modifitgar eveniment" (click)="edit(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path
+                        d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>
+                </span>
+                <span class="button" placement="bottom" ngbTooltip="Stizzar eveniment" (click)="delete(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path
+                        d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"/></svg>
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <app-pagination [total]="total" [current]="current" (goTo)="goToPage($event)"></app-pagination>
+</section>
