@@ -1,0 +1,21 @@
+.badge {
+  font-weight: normal;
+  width: 80px;
+  padding: 8px;
+  background-color: #DFDFDF;
+  color: #9C9C9C;
+  border: 1px solid #9C9C9C;
+  margin-right: 12px;
+
+  &.moderator {
+    background-color: #CFF1BF;
+    color: #5AA637;
+    border: 1px solid #5AA637;
+  }
+
+  &.administrator {
+    background-color: #FFD76F;
+    color: #CE9400;
+    border: 1px solid #CE9400;
+  }
+}

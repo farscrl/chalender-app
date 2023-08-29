@@ -5,6 +5,7 @@ import {environment} from "../../environments/environment";
 import {SystemRole} from "../data/security";
 import {SsrCookieService} from "ngx-cookie-service-ssr";
 import jwt_decode from "jwt-decode";
+import {UserDto} from "../data/user";
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -63,15 +64,12 @@ export class AuthenticationService {
         return this.http.post(environment.apiBasePath + 'user/auth/redefine-password?token=' + token + '&password=' + password, httpOptions);
     }
 
-    loadProfile(): Observable<any> {
-        return this.http.get(environment.apiBasePath + 'user/auth/profile', httpOptions);
+    loadProfile(): Observable<UserDto> {
+        return this.http.get<UserDto>(environment.apiBasePath + 'user/auth/profile', httpOptions);
     }
 
-    saveProfile(displayName: string, organisation: string): Observable<any> {
-        return this.http.post(environment.apiBasePath + 'user/auth/profile', {
-            displayName: displayName,
-            organisation: organisation
-        }, httpOptions);
+    saveProfile(userDto: UserDto): Observable<UserDto> {
+        return this.http.post<UserDto>(environment.apiBasePath + 'user/auth/profile', JSON.stringify(userDto), httpOptions);
     }
 
     changePassword(currentPassword: string, newPassword: string): Observable<any> {

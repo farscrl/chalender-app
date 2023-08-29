@@ -1,0 +1,39 @@
+.filter {
+  display: flex;
+  justify-content: right;
+
+  .filter-right {
+    display: flex;
+
+    input[type="text"] {
+      margin-right: 12px;
+      max-width: 300px;
+    }
+
+    button {
+      margin-right: 0;
+    }
+  }
+}
+
+span.button {
+  margin-right: 12px;
+
+  &.inactive {
+    &:hover {
+      cursor: default;
+    }
+
+    svg {
+      fill: gray;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  svg {
+    fill: var(--accent);
+  }
+}

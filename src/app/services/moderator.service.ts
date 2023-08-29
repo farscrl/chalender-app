@@ -39,25 +39,25 @@ export class ModeratorService {
         const httpOptions = {
             params: params
         };
-        return this.httpClient.get<Page<Event>>(this.getUrl() + '/events', httpOptions);
+        return this.httpClient.get<Page<Event>>(this.getUrl('events'), httpOptions);
     }
 
     public getEvent(id: string): Observable<Event> {
-        return this.httpClient.get<Event>(this.getUrl(id));
+        return this.httpClient.get<Event>(this.getUrl('events', id));
     }
 
     public acceptEvent(id: string): Observable<Event> {
-        return this.httpClient.post<Event>(this.getUrl(id) + '/accept', null);
+        return this.httpClient.post<Event>(this.getUrl('events', id) + '/accept', null);
     }
 
     public refuseEvent(id: string): Observable<Event> {
-        return this.httpClient.post<Event>(this.getUrl(id) + '/refuse', null);
+        return this.httpClient.post<Event>(this.getUrl('events', id) + '/refuse', null);
     }
 
-    getUrl(id?: string) {
+    getUrl(type: string, id?: string) {
         if (id) {
-            return environment.apiBasePath.concat(this.basePath).concat('/events/' + id);
+            return environment.apiBasePath.concat(this.basePath).concat('/' + type).concat('/' + id);
         }
-        return environment.apiBasePath.concat(this.basePath);
+        return environment.apiBasePath.concat(this.basePath).concat('/' + type);
     }
 }

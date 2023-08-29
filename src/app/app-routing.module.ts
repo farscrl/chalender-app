@@ -24,6 +24,7 @@ import {ConfirmEmailComponent} from "./pages/u/confirm-email/confirm-email.compo
 import {ConfirmPasswordComponent} from "./pages/u/confirm-password/confirm-password.component";
 import {ChangePasswordComponent} from "./pages/admin/change-password/change-password.component";
 import {ModeratorEventsComponent} from "./pages/moderator/moderator-events/moderator-events.component";
+import {UsersComponent} from "./pages/administrator/users/users.component";
 
 const routes: Routes = [
     {
@@ -42,6 +43,12 @@ const routes: Routes = [
         path: 'moderator',
         children: [
             {path: 'events', component: ModeratorEventsComponent, canActivate: [authGuard()]}, // TODO: needs Moderation Role
+        ]
+    },
+    {
+        path: 'administrator',
+        children: [
+            {path: 'users', component: UsersComponent, canActivate: [authGuard()]}, // TODO: needs Admin Role
         ]
     },
     {

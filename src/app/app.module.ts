@@ -38,11 +38,15 @@ import {ConfirmPasswordComponent} from './pages/u/confirm-password/confirm-passw
 import {ChangePasswordComponent} from './pages/admin/change-password/change-password.component';
 import {NewEventButtonComponent} from './components/new-event-button/new-event-button.component';
 import {ModeratorEventsComponent} from './pages/moderator/moderator-events/moderator-events.component';
-import { StatusBadgeComponent } from './components/status-badge/status-badge.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
-import { EventPreviewComponent } from './components/event-preview/event-preview.component';
-import { EventDiffComponent } from './components/event-diff/event-diff.component';
-import { DiffFieldComponent } from './components/event-diff/diff-field/diff-field.component';
+import {StatusBadgeComponent} from './components/status-badge/status-badge.component';
+import {PaginationComponent} from './components/pagination/pagination.component';
+import {EventPreviewComponent} from './components/event-preview/event-preview.component';
+import {EventDiffComponent} from './components/event-diff/event-diff.component';
+import {DiffFieldComponent} from './components/event-diff/diff-field/diff-field.component';
+import {UsersComponent} from "./pages/administrator/users/users.component";
+import { RoleBadgeComponent } from './components/role-badge/role-badge.component';
+import { UserComponent } from './components/forms/user/user.component';
+import { ChangeUserComponent } from './components/change-user/change-user.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -96,7 +100,11 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         PaginationComponent,
         EventPreviewComponent,
         EventDiffComponent,
-        DiffFieldComponent
+        DiffFieldComponent,
+        UsersComponent,
+        RoleBadgeComponent,
+        UserComponent,
+        ChangeUserComponent
     ],
     imports: [
         BrowserModule,

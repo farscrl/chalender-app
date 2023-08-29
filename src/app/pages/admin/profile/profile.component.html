@@ -15,34 +15,12 @@
         </ngb-alert>
     </ng-container>
 
-    <form [formGroup]="f" *ngIf="this.profile">
-        <div class="mb-3">
-            <label for="email" class="form-label">Adressa dad e-mail</label>
-            <input type="email" id="email" name="email" class="form-control" formControlName="email">
-        </div>
-
-        <div class="mb-3">
-            <label for="displayName" class="form-label">Num</label>
-            <input type="text" id="displayName" name="displayName" class="form-control" formControlName="displayName"
-                   [class.is-invalid]="isFieldInvalid('displayName')">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('displayName')">
-                Endatescha p.pl. ina num.
-            </div>
-        </div>
-
-        <div class="mb-3">
-            <label for="organisation" class="form-label">Organisaziun (facultativ)</label>
-            <input type="text" id="organisation" name="organisation" class="form-control"
-                   formControlName="organisation">
-        </div>
-
-
-        <div class="flex justify-content-end">
-            <button type="button" class="clndr accent" (click)="update()" [disabled]="didSubmit">
-                Actualisar il profil
-            </button>
-        </div>
-    </form>
+    <app-user></app-user>
+    <div class="flex justify-content-end">
+        <button type="button" class="clndr accent" (click)="update()" [disabled]="didSubmit">
+            Actualisar il profil
+        </button>
+    </div>
 
     <div class="links">
         <a [routerLink]="'/admin/change-password'">Midar il pled-clav</a>

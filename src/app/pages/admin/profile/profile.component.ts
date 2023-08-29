@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../../services/authentication.service";
-import {Profile} from "../../../data/user";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UserFormService} from "../../../services/user-form.service";
 
 @Component({
     selector: 'app-profile',
@@ -9,39 +8,34 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
     styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-    f: FormGroup = new FormGroup<any>({});
     didSubmit = false;
-    profile?: Profile;
     showSuccess = false;
     showError = false;
 
-    constructor(private authService: AuthenticationService, private fb: FormBuilder) {
+    constructor(public ufs: UserFormService, private authService: AuthenticationService) {
     }
 
     ngOnInit() {
-        this.authService.loadProfile().subscribe(profile => {
-            this.profile = profile;
-            this.initForm();
+        this.authService.loadProfile().subscribe(userDto => {
+            this.ufs.setDto(userDto);
         });
     }
 
-    isFieldInvalid(fieldName: string) {
-        return this.f.get(fieldName)!.invalid && (this.f.get(fieldName)!.dirty || this.f.get(fieldName)!.touched);
-    }
 
     update() {
-        this.f.markAllAsTouched();
+        this.ufs.f.markAllAsTouched();
 
-        if (!this.f.valid) {
+        if (!this.ufs.f.valid) {
             return;
         }
 
         this.didSubmit = true;
         this.showError = false;
         this.showSuccess = false;
-        this.authService.saveProfile(this.f.value.displayName, this.f.value.organisation).subscribe({
-            next: profile => {
-                this.profile = profile;
+
+        this.authService.saveProfile(this.ufs.getDto()).subscribe({
+            next: userDto => {
+                this.ufs.setDto(userDto);
                 this.didSubmit = false;
                 this.showSuccess = true;
             },
@@ -51,14 +45,5 @@ export class ProfileComponent implements OnInit {
                 this.showError = true;
             }
         });
-    }
-
-    private initForm() {
-        this.f = this.fb.group({
-            email: [this.profile?.email, [Validators.required, Validators.email]],
-            displayName: [this.profile?.displayName, [Validators.required]],
-            organisation: [this.profile?.organisation],
-        });
-        this.f.controls['email'].disable();
     }
 }
