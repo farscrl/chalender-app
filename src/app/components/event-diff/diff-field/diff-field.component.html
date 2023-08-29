@@ -1,0 +1,7 @@
+<div class="diff">
+    <ng-container *ngFor="let d of diff">
+        <span *ngIf="d[0] === 0">{{d[1]}}</span>
+        <span *ngIf="d[0] === -1 && type === 'removed'" class="removed">{{d[1]}}</span>
+        <span *ngIf="d[0] === 1 && type === 'added'" class="added">{{d[1]}}</span>
+    </ng-container>
+</div>

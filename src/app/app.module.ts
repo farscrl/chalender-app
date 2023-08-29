@@ -41,6 +41,8 @@ import {ModeratorEventsComponent} from './pages/moderator/moderator-events/moder
 import { StatusBadgeComponent } from './components/status-badge/status-badge.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { EventPreviewComponent } from './components/event-preview/event-preview.component';
+import { EventDiffComponent } from './components/event-diff/event-diff.component';
+import { DiffFieldComponent } from './components/event-diff/diff-field/diff-field.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -92,7 +94,9 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         ModeratorEventsComponent,
         StatusBadgeComponent,
         PaginationComponent,
-        EventPreviewComponent
+        EventPreviewComponent,
+        EventDiffComponent,
+        DiffFieldComponent
     ],
     imports: [
         BrowserModule,

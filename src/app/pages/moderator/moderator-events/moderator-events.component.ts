@@ -3,6 +3,7 @@ import {ModeratorService} from "../../../services/moderator.service";
 import {Event, EventFilter, EventVersion} from "../../../data/event";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {EventPreviewComponent} from "../../../components/event-preview/event-preview.component";
+import {EventDiffComponent} from "../../../components/event-diff/event-diff.component";
 
 @Component({
     selector: 'app-moderator-events',
@@ -55,6 +56,9 @@ export class ModeratorEventsComponent implements OnInit {
 
     showDiff(event: Event) {
         console.log("show diff", event);
+        const modalRef = this.modalService.open(EventDiffComponent, {size: 'xl'});
+        modalRef.componentInstance.oldEventVersion = event.currentlyPublished!;
+        modalRef.componentInstance.newEventVersion = event.waitingForReview!;
     }
 
     accept(event: Event) {
