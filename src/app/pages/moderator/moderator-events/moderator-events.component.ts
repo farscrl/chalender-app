@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ModeratorService} from "../../../services/moderator.service";
 import {Event, EventFilter, EventVersion} from "../../../data/event";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {EventPreviewComponent} from "../../../components/event-preview/event-preview.component";
 
 @Component({
     selector: 'app-moderator-events',
@@ -16,7 +18,7 @@ export class ModeratorEventsComponent implements OnInit {
     private eventFilter: EventFilter = new EventFilter();
     private page: number = 0;
 
-    constructor(private moderatorService: ModeratorService) {
+    constructor(private moderatorService: ModeratorService, private modalService: NgbModal) {
     }
 
     ngOnInit(): void {
@@ -48,7 +50,7 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     showPreview(event: Event) {
-        console.log("show preview", event);
+        const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
     }
 
     showDiff(event: Event) {
@@ -56,11 +58,17 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     accept(event: Event) {
+        this.moderatorService.acceptEvent(event.id!).subscribe(event => {
+            this.search();
+        });
         console.log("accept", event);
     }
 
-    reject(event: Event) {
-        console.log("reject", event);
+    refuse(event: Event) {
+        this.moderatorService.refuseEvent(event.id!).subscribe(event => {
+            this.search();
+        });
+        console.log("refuse", event);
     }
 
     edit(event: Event) {

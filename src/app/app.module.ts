@@ -40,6 +40,7 @@ import {NewEventButtonComponent} from './components/new-event-button/new-event-b
 import {ModeratorEventsComponent} from './pages/moderator/moderator-events/moderator-events.component';
 import { StatusBadgeComponent } from './components/status-badge/status-badge.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { EventPreviewComponent } from './components/event-preview/event-preview.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -90,7 +91,8 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         NewEventButtonComponent,
         ModeratorEventsComponent,
         StatusBadgeComponent,
-        PaginationComponent
+        PaginationComponent,
+        EventPreviewComponent
     ],
     imports: [
         BrowserModule,

@@ -6,6 +6,8 @@ import {EventLanguage, Genre, Region} from "../../../data/static-data";
 import {minCheckboxValidator} from "../../../validators/mincheckbox.validator";
 import {Event, EventVersion} from "../../../data/event";
 import {EventsService} from "../../../services/events.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {EventPreviewComponent} from "../../../components/event-preview/event-preview.component";
 
 @Component({
     selector: 'app-new-event',
@@ -21,7 +23,13 @@ export class NewEventComponent implements OnInit {
 
     f: FormGroup = new FormGroup<any>({});
 
-    constructor(private authService: AuthenticationService, private staticData: StaticDataService, private fb: FormBuilder, private eventsService: EventsService) {
+    constructor(
+        private authService: AuthenticationService,
+        private staticData: StaticDataService,
+        private fb: FormBuilder,
+        private eventsService: EventsService,
+        private modalService: NgbModal,
+    ) {
     }
 
     ngOnInit(): void {
@@ -44,6 +52,7 @@ export class NewEventComponent implements OnInit {
 
     preview() {
         console.log(this.transformToEvent(true));
+        const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
     }
 
     isFieldInvalid(fieldName: string) {

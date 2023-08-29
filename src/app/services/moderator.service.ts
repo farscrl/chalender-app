@@ -42,9 +42,21 @@ export class ModeratorService {
         return this.httpClient.get<Page<Event>>(this.getUrl() + '/events', httpOptions);
     }
 
-    getUrl(id?: number) {
+    public getEvent(id: string): Observable<Event> {
+        return this.httpClient.get<Event>(this.getUrl(id));
+    }
+
+    public acceptEvent(id: string): Observable<Event> {
+        return this.httpClient.post<Event>(this.getUrl(id) + '/accept', null);
+    }
+
+    public refuseEvent(id: string): Observable<Event> {
+        return this.httpClient.post<Event>(this.getUrl(id) + '/refuse', null);
+    }
+
+    getUrl(id?: string) {
         if (id) {
-            return environment.apiBasePath.concat(this.basePath).concat('/' + id);
+            return environment.apiBasePath.concat(this.basePath).concat('/events/' + id);
         }
         return environment.apiBasePath.concat(this.basePath);
     }
