@@ -3,6 +3,45 @@ import {EventVersion} from "../../../data/event";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
+type Reason = { id: string, description: string };
+
+const reasonsAccept: Reason[] = [
+    {id: 'no', description: 'Nagina remartga.'},
+
+    {id: 'german', description: 'Per la proxima giada: Per plaschair emplenir il formular per rumantsch. Grazia fitg!'},
+
+    {id: 'other', description: 'Auter'},
+];
+
+const reasonsRefuse: Reason[] = [
+    {id: 'no', description: 'Nagina remartga.'},
+
+    {
+        id: 'german',
+        description: 'Cuntegn tudestg. chalender.ch è ina plattafurma rumantscha. https://textshuttle.com/rm/ kann bei der Übersetzung helfen.'
+    },
+    {
+        id: 'nonacceptable',
+        description: 'Cuntegn che violescha las directivas da noss servetsch.'
+    },
+    {
+        id: 'illegal',
+        description: 'Cuntegn illegal.'
+    },
+
+    {id: 'other', description: 'Auter'},
+];
+
+const reasonsEdit: Reason[] = [
+    {id: 'no', description: 'Nagina remartga.'},
+
+    {id: 'orthografic', description: 'Mo curregì sbagls ortografics.'},
+    {id: 'minor', description: 'Mo midà piculezzas.'},
+    {id: 'web', description: 'Adattà tenor las infurmaziuns sin la pagina d\'internet.'},
+
+    {id: 'other', description: 'Auter'},
+];
+
 @Component({
     selector: 'app-reason-for-change',
     templateUrl: './reason-for-change.component.html',
@@ -14,18 +53,20 @@ export class ReasonForChangeComponent {
 
     public f: FormGroup = new FormGroup({});
 
-    reasons = [
-        {id: 'no', description: 'Nagina remartga.'},
-        {id: 'tudestg', description: 'Eveniment ei cumplettamain redigius per tudestg'},
-        {id: 'b', description: 'b'},
-        {id: 'other', description: 'auter'},
-
-    ]
+    reasons: Reason[] = [];
 
     constructor(public activeModal: NgbActiveModal) {
     }
 
     ngOnInit(): void {
+        if (this.type === 'accept') {
+            this.reasons = reasonsAccept;
+        } else if (this.type === 'refuse') {
+            this.reasons = reasonsRefuse;
+        } else if (this.type === 'edit') {
+            this.reasons = reasonsEdit;
+        }
+
         this.initForm();
     }
 
