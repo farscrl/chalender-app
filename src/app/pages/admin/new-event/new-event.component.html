@@ -181,14 +181,16 @@
             formats acceptads: JPG, PNG<br>
             grondezza maximala: 5 MB<br>
         </div>
-        TODO<br><br>
+        <app-file-list [allowedMimeTypes]="['image/jpeg', 'image/png']"></app-file-list>
+        <br><br>
 
         <b>documents:</b><br>
         <div class="form-text">
             formats acceptads: PDF<br>
             grondezza maximala: 5 MB<br>
         </div>
-        TODO<br><br>
+        <app-file-list [allowedMimeTypes]="['application/pdf']"></app-file-list>
+        <br><br>
 
         <div class="mb-3">
             <div class="form-check">

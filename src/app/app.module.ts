@@ -44,9 +44,11 @@ import {EventPreviewComponent} from './components/event-preview/event-preview.co
 import {EventDiffComponent} from './components/event-diff/event-diff.component';
 import {DiffFieldComponent} from './components/event-diff/diff-field/diff-field.component';
 import {UsersComponent} from "./pages/administrator/users/users.component";
-import { RoleBadgeComponent } from './components/role-badge/role-badge.component';
-import { UserComponent } from './components/forms/user/user.component';
-import { ChangeUserComponent } from './components/change-user/change-user.component';
+import {RoleBadgeComponent} from './components/role-badge/role-badge.component';
+import {UserComponent} from './components/forms/user/user.component';
+import {ChangeUserComponent} from './components/change-user/change-user.component';
+import {NgxFileDropModule} from "ngx-file-drop";
+import { FileListComponent } from './components/file-list/file-list.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -104,7 +106,8 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         UsersComponent,
         RoleBadgeComponent,
         UserComponent,
-        ChangeUserComponent
+        ChangeUserComponent,
+        FileListComponent
     ],
     imports: [
         BrowserModule,
@@ -120,6 +123,7 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         }),
         ReactiveFormsModule,
         NgbModule,
+        NgxFileDropModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
