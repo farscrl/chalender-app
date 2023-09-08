@@ -1,0 +1,6 @@
+<div class="modal-body" *ngIf="event">
+    <p>Vuls ti propi stizzar definitivamain l'eveniment «{{event.title}}»?</p>
+
+    <button type="button" class="clndr" (click)="activeModal.dismiss('Save click')">Interrumper</button>
+    <button type="button" class="clndr accent" (click)="activeModal.close('delete')">Gea, stizzar</button>
+</div>

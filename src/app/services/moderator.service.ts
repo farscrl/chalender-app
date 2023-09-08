@@ -54,6 +54,10 @@ export class ModeratorService {
         return this.httpClient.post<Event>(this.getUrl('events', id) + '/refuse', null);
     }
 
+    public deleteEvent(id: string): Observable<Event> {
+        return this.httpClient.delete<Event>(this.getUrl('events', id));
+    }
+
     getUrl(type: string, id?: string) {
         if (id) {
             return environment.apiBasePath.concat(this.basePath).concat('/' + type).concat('/' + id);

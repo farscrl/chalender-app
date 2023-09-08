@@ -4,6 +4,7 @@ import {Event, EventFilter, EventVersion} from "../../../data/event";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {EventPreviewComponent} from "../../../components/event-preview/event-preview.component";
 import {EventDiffComponent} from "../../../components/event-diff/event-diff.component";
+import {DeleteEventComponent} from "../../../components/modals/delete-event/delete-event.component";
 
 @Component({
     selector: 'app-moderator-events',
@@ -80,7 +81,17 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     delete(event: Event) {
-        console.log("delete", event);
+        const modalRef = this.modalService.open(DeleteEventComponent, {size: 'lg'});
+        modalRef.componentInstance.event = this.getEventVersion(event);
+
+        modalRef.closed.subscribe(reason => {
+            console.log("delete reason", reason);
+            if (reason === 'delete') {
+                this.moderatorService.deleteEvent(event.id!).subscribe(event => {
+                    this.search();
+                });
+            }
+        });
     }
 
     private search() {

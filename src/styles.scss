@@ -8,6 +8,7 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+@import "styles/bootstrap-overrides";
 
 body {
   background-color: #9a9a9a;
