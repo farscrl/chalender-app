@@ -5,6 +5,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {EventPreviewComponent} from "../../../components/event-preview/event-preview.component";
 import {EventDiffComponent} from "../../../components/event-diff/event-diff.component";
 import {DeleteEventComponent} from "../../../components/modals/delete-event/delete-event.component";
+import {ReasonForChangeComponent} from "../../../components/modals/reason-for-change/reason-for-change.component";
 
 @Component({
     selector: 'app-moderator-events',
@@ -62,18 +63,31 @@ export class ModeratorEventsComponent implements OnInit {
         modalRef.componentInstance.newEventVersion = event.waitingForReview!;
     }
 
-    accept(event: Event) {
-        this.moderatorService.acceptEvent(event.id!).subscribe(event => {
-            this.search();
+    accept(event: Event): void {
+        const modalRef = this.modalService.open(ReasonForChangeComponent, {size: 'lg'});
+        modalRef.componentInstance.event = this.getEventVersion(event);
+        modalRef.componentInstance.type = 'accept';
+
+        modalRef.closed.subscribe(reason => {
+            console.debug("reason", reason);
+            this.moderatorService.acceptEvent(event.id!, reason).subscribe(event => {
+                this.search();
+            });
         });
-        console.log("accept", event);
     }
 
-    refuse(event: Event) {
-        this.moderatorService.refuseEvent(event.id!).subscribe(event => {
-            this.search();
+    refuse(event: Event): void {
+
+        const modalRef = this.modalService.open(ReasonForChangeComponent, {size: 'lg'});
+        modalRef.componentInstance.event = this.getEventVersion(event);
+        modalRef.componentInstance.type = 'refuse';
+
+        modalRef.closed.subscribe(reason => {
+            console.debug("reason", reason);
+            this.moderatorService.refuseEvent(event.id!, reason).subscribe(event => {
+                this.search();
+            });
         });
-        console.log("refuse", event);
     }
 
     edit(event: Event) {
@@ -85,7 +99,6 @@ export class ModeratorEventsComponent implements OnInit {
         modalRef.componentInstance.event = this.getEventVersion(event);
 
         modalRef.closed.subscribe(reason => {
-            console.log("delete reason", reason);
             if (reason === 'delete') {
                 this.moderatorService.deleteEvent(event.id!).subscribe(event => {
                     this.search();

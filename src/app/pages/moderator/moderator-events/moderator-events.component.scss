@@ -1,21 +1,30 @@
 span.button {
-    margin-right: 12px;
+  margin-right: 12px;
 
-    &.inactive {
-        &:hover {
-            cursor: default;
-        }
-
-        svg {
-            fill: gray;
-        }
-    }
-
+  &.inactive {
     &:hover {
-        cursor: pointer;
+      cursor: default;
     }
 
-    svg {
-        fill: var(--accent);
+    &.fill svg {
+      fill: gray;
     }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.fill {
+    svg {
+      fill: var(--accent);
+    }
+  }
+}
+
+.vr {
+  margin-right: 12px;
+  height: 20px;
+  bottom: -6px;
+  position: relative;
 }

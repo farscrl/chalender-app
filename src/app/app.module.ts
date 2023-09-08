@@ -50,6 +50,7 @@ import {ChangeUserComponent} from './components/change-user/change-user.componen
 import {NgxFileDropModule} from "ngx-file-drop";
 import { FileListComponent } from './components/file-list/file-list.component';
 import { DeleteEventComponent } from './components/modals/delete-event/delete-event.component';
+import { ReasonForChangeComponent } from './components/modals/reason-for-change/reason-for-change.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -109,7 +110,8 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         UserComponent,
         ChangeUserComponent,
         FileListComponent,
-        DeleteEventComponent
+        DeleteEventComponent,
+        ReasonForChangeComponent
     ],
     imports: [
         BrowserModule,

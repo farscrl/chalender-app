@@ -46,12 +46,12 @@ export class ModeratorService {
         return this.httpClient.get<Event>(this.getUrl('events', id));
     }
 
-    public acceptEvent(id: string): Observable<Event> {
-        return this.httpClient.post<Event>(this.getUrl('events', id) + '/accept', null);
+    public acceptEvent(id: string, reason: string): Observable<Event> {
+        return this.httpClient.post<Event>(this.getUrl('events', id) + '/accept', {comment: reason});
     }
 
-    public refuseEvent(id: string): Observable<Event> {
-        return this.httpClient.post<Event>(this.getUrl('events', id) + '/refuse', null);
+    public refuseEvent(id: string, reason: string): Observable<Event> {
+        return this.httpClient.post<Event>(this.getUrl('events', id) + '/refuse', {comment: reason});
     }
 
     public deleteEvent(id: string): Observable<Event> {
