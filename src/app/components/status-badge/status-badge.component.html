@@ -1,5 +1,18 @@
-<span class="badge draft" *ngIf="status === 'DRAFT'">Sboz</span>
-<span class="badge in-review" *ngIf="status === 'IN_REVIEW'">Pendent</span>
-<span class="badge published" *ngIf="status === 'PUBLISHED'">Publitgà</span>
-<span class="badge new-modification" *ngIf="status === 'NEW_MODIFICATION'">Midadà</span>
-<span class="badge invalid" *ngIf="status === 'INVALID'">Nunvalid</span>
+<span class="badge draft" *ngIf="status === 'DRAFT'">
+    {{ 'COMPONENTS.STATUS.DRAFT' | translate }}
+</span>
+<span class="badge in-review" *ngIf="status === 'IN_REVIEW'">
+    {{ 'COMPONENTS.STATUS.IN_REVIEW' | translate }}
+</span>
+<span class="badge published" *ngIf="status === 'PUBLISHED'">
+    {{ 'COMPONENTS.STATUS.PUBLISHED' | translate }}
+</span>
+<span class="badge new-modification" *ngIf="status === 'NEW_MODIFICATION'">
+    {{ 'COMPONENTS.STATUS.NEW_MODIFICATION' | translate }}
+</span>
+<span class="badge rejected" *ngIf="status === 'REJECTED'">
+    {{ 'COMPONENTS.STATUS.REJECTED' | translate }}
+</span>
+<span class="badge invalid" *ngIf="status === 'INVALID'">
+    {{ 'COMPONENTS.STATUS.INVALID' | translate }}
+</span>

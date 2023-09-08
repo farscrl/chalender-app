@@ -13,7 +13,7 @@ export class Event {
     ownerEmail?: string;
 }
 
-export type EventStatusTypes = 'DRAFT' | 'IN_REVIEW' | 'PUBLISHED' | 'NEW_MODIFICATION' | 'INVALID';
+export type EventStatusTypes = 'DRAFT' | 'IN_REVIEW' | 'PUBLISHED' | 'NEW_MODIFICATION' | 'REJECTED' | 'INVALID';
 
 export class EventVersion {
     title?: string;

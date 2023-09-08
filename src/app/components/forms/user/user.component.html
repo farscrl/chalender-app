@@ -1,31 +1,35 @@
 <form [formGroup]="ufs.f" *ngIf="this.ufs.isInitialized">
     <div class="mb-3">
-        <label for="email" class="form-label">Adressa dad e-mail</label>
+        <label for="email" class="form-label">{{ 'FORMS.USER.EMAIL' | translate }}</label>
         <input type="email" id="email" name="email" class="form-control" formControlName="email">
     </div>
 
     <div class="mb-3">
-        <label for="firstName" class="form-label">Prenum</label>
+        <label for="firstName" class="form-label">{{ 'FORMS.USER.FIRST_NAME' | translate }}</label>
         <input type="text" id="firstName" name="firstName" class="form-control" formControlName="firstName"
                [class.is-invalid]="ufs.isFieldInvalid('firstName')">
         <div class="invalid-feedback" *ngIf="ufs.isFieldInvalid('firstName')">
-            Endatescha p.pl. in prenum.
+            {{ 'FORMS.USER.FIRST_NAME_MISSING' | translate }}
         </div>
     </div>
 
     <div class="mb-3">
-        <label for="lastName" class="form-label">Num</label>
+        <label for="lastName" class="form-label">{{ 'FORMS.USER.LAST_NAME' | translate }}</label>
         <input type="text" id="lastName" name="lastName" class="form-control" formControlName="lastName"
                [class.is-invalid]="ufs.isFieldInvalid('lastName')">
         <div class="invalid-feedback" *ngIf="ufs.isFieldInvalid('lastName')">
-            Endatescha p.pl. in num.
+            {{ 'FORMS.USER.LAST_NAME_MISSING' | translate }}
         </div>
     </div>
 
     <div class="mb-3">
-        <label for="organisation" class="form-label">Organisaziun (facultativ)</label>
-        <input type="text" id="organisation" name="organisation" class="form-control"
-               formControlName="organisation">
+        <label for="organisation" class="form-label">{{ 'FORMS.USER.ORGANIZATION' | translate }}</label>
+        <input type="text" id="organisation" name="organisation" class="form-control" formControlName="organisation">
+    </div>
+
+    <div class="mb-3">
+        <label for="phone" class="form-label">{{ 'FORMS.USER.PHONE' | translate }}</label>
+        <input type="text" id="phone" name="phone" class="form-control" formControlName="phone">
     </div>
 
     <div class="mb-3" *ngIf="ufs.isAdmin">

@@ -10,7 +10,7 @@ import {BackButtonComponent} from './components/back-button/back-button.componen
 import {LoginComponent} from './pages/u/login/login.component';
 import {LogoutComponent} from './pages/u/logout/logout.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {JWT_OPTIONS, JwtModule} from "@auth0/angular-jwt";
 import {environment} from "../environments/environment";
 import {HelpComponent} from './pages/static/help/help.component';
@@ -48,9 +48,11 @@ import {RoleBadgeComponent} from './components/role-badge/role-badge.component';
 import {UserComponent} from './components/forms/user/user.component';
 import {ChangeUserComponent} from './components/change-user/change-user.component';
 import {NgxFileDropModule} from "ngx-file-drop";
-import { FileListComponent } from './components/file-list/file-list.component';
-import { DeleteEventComponent } from './components/modals/delete-event/delete-event.component';
-import { ReasonForChangeComponent } from './components/modals/reason-for-change/reason-for-change.component';
+import {FileListComponent} from './components/file-list/file-list.component';
+import {DeleteEventComponent} from './components/modals/delete-event/delete-event.component';
+import {ReasonForChangeComponent} from './components/modals/reason-for-change/reason-for-change.component';
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -66,6 +68,10 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
             return authService.getToken() ?? null;
         }
     }
+}
+
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -128,6 +134,14 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         ReactiveFormsModule,
         NgbModule,
         NgxFileDropModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            },
+            defaultLanguage: 'rm'
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent]

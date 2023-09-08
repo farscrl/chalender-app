@@ -6,6 +6,7 @@ export class UserDto {
     lastName?: string;
     organisation?: string;
     email?: string;
+    phone?: string;
     roles?: SystemRole[];
     isActive?: boolean;
 

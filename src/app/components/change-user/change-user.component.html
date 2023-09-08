@@ -1,17 +1,17 @@
 <section class="content-narrow">
-    <h1>Utilisader</h1>
+    <h1>{{ 'COMPONENTS.CHANGE_USER.TITLE' | translate }}</h1>
 
     <ng-container *ngIf="showError">
         <ngb-alert [type]="'danger'">
-            <b>Errur cun actualisar.</b>
-            Ina errur è cumparida cun actualisar il profil. Emprova pli tard anc ina giada.
+            <b>{{ 'COMPONENTS.CHANGE_USER.ERROR.TITLE' | translate }}.</b>
+            {{ 'COMPONENTS.CHANGE_USER.ERROR.MESSAGE' | translate }}
         </ngb-alert>
     </ng-container>
 
     <app-user></app-user>
     <div class="flex justify-content-end">
         <button type="button" class="clndr accent" (click)="update()" [disabled]="didSubmit">
-            Midar
+            {{ 'COMPONENTS.CHANGE_USER.CHANGE' | translate }}
         </button>
     </div>
 </section>

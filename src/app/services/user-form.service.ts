@@ -24,14 +24,13 @@ export class UserFormService {
         this.userDto.firstName = this.f.value.firstName;
         this.userDto.lastName = this.f.value.lastName;
         this.userDto.organisation = this.f.value.organisation;
+        this.userDto.phone = this.f.value.phone;
 
         if (this.isAdmin) {
             this.userDto.roles = this.f.value.roles;
             this.userDto.email = this.f.value.email;
         }
-
-        console.log(this.f.value.roles);
-
+        
         return this.userDto;
     }
 
@@ -43,6 +42,7 @@ export class UserFormService {
             firstName: [this.userDto?.firstName, [Validators.required]],
             lastName: [this.userDto?.lastName, [Validators.required]],
             organisation: [this.userDto?.organisation],
+            phone: [this.userDto?.phone],
             roles: new FormArray([]),
         });
 

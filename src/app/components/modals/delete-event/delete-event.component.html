@@ -1,6 +1,10 @@
 <div class="modal-body" *ngIf="event">
-    <p>Vuls ti propi stizzar definitivamain l'eveniment «{{event.title}}»?</p>
+    <p>{{ 'COMPONENTS.MODALS.DELETE_EVENT.TITLE' | translate:{eventTitle: event.title} }}</p>
 
-    <button type="button" class="clndr" (click)="activeModal.dismiss('Save click')">Interrumper</button>
-    <button type="button" class="clndr accent" (click)="activeModal.close('delete')">Gea, stizzar</button>
+    <button type="button" class="clndr" (click)="activeModal.dismiss('Save click')">
+        {{ 'COMPONENTS.MODALS.DELETE_EVENT.CANCEL' | translate }}
+    </button>
+    <button type="button" class="clndr accent" (click)="activeModal.close('delete')">
+        {{ 'COMPONENTS.MODALS.DELETE_EVENT.DELETE' | translate }}
+    </button>
 </div>
