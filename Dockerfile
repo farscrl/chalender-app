@@ -1,6 +1,6 @@
 ### Stage: 1 ###
 ARG ANGULAR_ENV=prod
-FROM node:latest as node
+FROM node:18 as node
 # https://benkyriakou.com/posts/docker-args-empty
 ARG ANGULAR_ENV
 RUN echo "Building Angular configuration: $ANGULAR_ENV"
