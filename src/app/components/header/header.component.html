@@ -42,19 +42,16 @@
             <li><a (click)="toggleMenu()" [routerLink]="'/admin/subscriptions'">mes abunaments</a></li>
             <li><a (click)="toggleMenu()" [routerLink]="'/admin/profile'">mes profil</a></li>
             <li><a (click)="toggleMenu()" [routerLink]="'/u/logout'">sortir</a></li>
-            <ng-container *ngIf="authService.isModerator()">
-                <li>
-                    <hr>
-                </li>
-                <li><a (click)="toggleMenu()" href="/moderator/events">administrar occurrenzas</a></li>
-
-            </ng-container>
-            <ng-container *ngIf="authService.isAdmin()">
-                <li>
-                    <hr>
-                </li>
-                <li><a (click)="toggleMenu()" href="/administrator/users">administrar utilisaders</a></li>
-            </ng-container>
+            <li *ngIf="authService.isModerator() || authService.isAdmin()" class="section-title">
+                <hr>
+                administraziun
+            </li>
+            <li *ngIf="authService.isModerator()">
+                <a (click)="toggleMenu()" href="/moderator/events">occurrenzas</a>
+            </li>
+            <li *ngIf="authService.isAdmin()">
+                <a (click)="toggleMenu()" href="/administrator/users">utilisaders</a>
+            </li>
         </ul>
 
         <ul class="main-menu-bottom" *ngIf="!authService.isLoggedIn()">
