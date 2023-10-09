@@ -1,19 +1,22 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {EventsService} from "../../../services/events.service";
-import {EventFilter, EventLookup} from "../../../data/event";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { EventsService } from "../../../services/events.service";
+import { EventFilter, EventLookup } from "../../../data/event";
 import * as dayjs from 'dayjs'
-import {rmLocale} from "../../../utils/day-js-locale";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {EventFilterComponent} from "../../../components/events/event-filter/event-filter.component";
-import {EventsFilterService} from "../../../services/events-filter.service";
-import {Page} from "../../../data/page";
+import { rmLocale } from "../../../utils/day-js-locale";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { EventFilterComponent } from "../../../components/events/event-filter/event-filter.component";
+import { EventsFilterService } from "../../../services/events-filter.service";
+import { Page } from "../../../data/page";
+import { OnAttach, OnDetach } from '../../../routing/app-router-outlet.directive';
+
+const LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION = 'events-scroll-position';
 
 @Component({
     selector: 'app-events-list',
     templateUrl: './events-list.component.html',
     styleUrls: ['./events-list.component.scss']
 })
-export class EventsListComponent implements OnInit, OnDestroy {
+export class EventsListComponent implements OnInit, OnDestroy, OnAttach, OnDetach {
 
     public events: EventLookup[] = [];
     public categorizedEvents: { date: string, formattedDate: string, events: EventLookup[] }[] = [];
@@ -54,6 +57,18 @@ export class EventsListComponent implements OnInit, OnDestroy {
         if (this.searchTermSubscription) {
             this.searchTermSubscription.unsubscribe();
         }
+    }
+
+    onAttach(): void {
+        const scrollPosition = +(localStorage.getItem(LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION) || 0);
+        window.scrollTo({
+            top: scrollPosition,
+            behavior: 'instant',
+        });
+    }
+
+    onDetach(): void {
+        localStorage.setItem(LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION, window.scrollY.toString());
     }
 
     openFilter(): void {
