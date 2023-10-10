@@ -1,62 +1,60 @@
-<!--<ul>
-    <li *ngFor="let event of events; let i = index">
-        <app-event-card [event]="event"></app-event-card>
-    </li>
-</ul>-->
+<div class="filter-menu">
+    <div class="style-selection">
+        <div class="style-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="13" y="3" width="8" height="8" rx="1" fill="#3CBFA4"/>
+                <rect x="2" y="3" width="8" height="8" rx="1" fill="#3CBFA4"/>
+                <rect x="2" y="13" width="8" height="8" rx="1" fill="#3CBFA4"/>
+                <rect x="13" y="13" width="8" height="8" rx="1" fill="#3CBFA4"/>
+            </svg>
+        </div>
+        <div class="style-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M8 6H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 12H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M8 18H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M3 6H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M3 12H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M3 18H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M8 6H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 12H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M8 18H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M3 6H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M3 12H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M3 18H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
 
-<ng-container *ngFor="let cat of categorizedEvents; let i = index">
-    <div class="day-title">
-        <h2>{{cat.formattedDate}}</h2>
-        <div class="filter-menu">
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <rect x="13" y="3" width="8" height="8" rx="1" fill="#3CBFA4"/>
-                    <rect x="2" y="3" width="8" height="8" rx="1" fill="#3CBFA4"/>
-                    <rect x="2" y="13" width="8" height="8" rx="1" fill="#3CBFA4"/>
-                    <rect x="13" y="13" width="8" height="8" rx="1" fill="#3CBFA4"/>
-                </svg>
-            </div>
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M8 6H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M8 12H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                    <path d="M8 18H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                    <path d="M3 6H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                    <path d="M3 12H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                    <path d="M3 18H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                    <path d="M8 6H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M8 12H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                    <path d="M8 18H21" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                    <path d="M3 6H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                    <path d="M3 12H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                    <path d="M3 18H3.01" stroke="#1C2B33" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <button class="filter-button" (click)="openFilter()">
-                <span class="txt">filter</span>
-                <span>
+    <button class="filter-button" (click)="openFilter()">
+        <span class="txt">mussar il filter</span>
+        <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18" fill="none">
                       <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M0.612676 2.65286C0.728742 2.4027 0.979445 2.24265 1.25522 2.24265H15.4219C15.6977 2.24265 15.9484 2.4027 16.0644 2.65286C16.1805 2.90302 16.1408 3.1978 15.9627 3.40837L10.4636 9.91117V15.701C10.4636 15.9465 10.3364 16.1745 10.1276 16.3035C9.91878 16.4326 9.65802 16.4443 9.43844 16.3345L6.60511 14.9179C6.36514 14.7979 6.21355 14.5526 6.21355 14.2843V9.91117L0.714356 3.40837C0.536282 3.1978 0.49661 2.90302 0.612676 2.65286ZM2.78189 3.65931L7.46275 9.19442C7.57088 9.3223 7.63022 9.48435 7.63022 9.65181V13.8465L9.04688 14.5549V9.65181C9.04688 9.48435 9.10622 9.3223 9.21436 9.19442L13.8952 3.65931H2.78189Z"
                             fill="#1C2B33"/>
                     </svg>
                 </span>
-            </button>
-        </div>
+    </button>
+</div>
+
+<ng-container *ngFor="let cat of categorizedEvents; let i = index">
+    <div class="day-title">
+        <h2>{{cat.formattedDate}}</h2>
     </div>
     <ul>
         <li *ngFor="let event of cat.events; let i = index">
-            <app-event-card [event]="event"></app-event-card>
+            <app-event-card [event]="event" [isFirst]="i === 0"></app-event-card>
         </li>
     </ul>
 </ng-container>

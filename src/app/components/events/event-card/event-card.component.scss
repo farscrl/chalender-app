@@ -1,11 +1,140 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
 
-.evt:hover .img-holder {
-    transform: scale(1.05);
+.evt {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-bottom: 1rem;
+    border-top: 1px solid #DADADA;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &.first {
+        border-top: none;
+    }
+
+    @include media-breakpoint-up(md) {
+        flex-direction: column;
+        border: 1.15px solid #DADADA;
+        box-shadow: 0 0 18.40504px 0 rgba(0, 0, 0, 0.15);
+        padding-bottom: 0;
+    }
+
+    .image {
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 86px;
+        height: 86px;
+        background-color: var(--accent);
+        background: linear-gradient(138deg, #03CEA4 1.05%, #479E8C 103.94%);
+
+        @include media-breakpoint-up(md) {
+            width: 100%;
+            height: unset;
+            aspect-ratio: 1/1;
+        }
+    }
+
+    .description {
+        flex-grow: 1;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+
+        @include media-breakpoint-up(md) {
+            padding: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+            margin: 0.5rem 0 0 0;
+            font-family: 'CadizBlack', sans-serif;
+            color: black;
+            transition: all .5s;
+
+            @include media-breakpoint-up(md) {
+                margin: 0;
+            }
+        }
+
+        .location {
+            color: black;
+            margin: 0;
+            font-size: 0.85rem;
+            flex-grow: 1;
+        }
+
+        .details {
+            font-size: 0.85rem;
+            @include media-breakpoint-up(md) {
+                flex-grow: 1;
+                display: flex;
+                align-items: flex-end;
+            }
+
+            .infos {
+                display: flex;
+                justify-content: space-between;
+                color: black;
+                flex-grow: 1;
+
+                @include media-breakpoint-up(md) {
+                    flex-direction: column;
+                }
+
+                .tags {
+                    display: flex;
+
+                    .tag {
+                        background-color: var(--accent);
+                        color: white;
+                        padding: 2px 4px;
+                        font-size: 0.85rem;
+                        margin-right: 6px;
+                    }
+                }
+            }
+
+            .arrow {
+                display: none;
+
+                @include media-breakpoint-up(md) {
+                    display: block;
+                    width: 40px;
+                    align-self: flex-end;
+
+                    svg {
+                        width: 0;
+                        transition: all .4s;
+                    }
+                }
+            }
+        }
+    }
 }
 
+
+.evt:hover {
+    .img-holder {
+        transform: scale(1.05);
+    }
+
+    .description {
+        h3 {
+            color: var(--accent);
+        }
+
+        .details .arrow svg {
+            width: 36px;
+        }
+    }
+}
+
+/*
 .image {
-    width: 100%;
-    background-color: var(--accent);
     overflow: hidden;
 }
 
@@ -17,73 +146,4 @@
     background-repeat: no-repeat;
     transition: all 1s;
 }
-
-.description {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    padding: 1rem;
-
-    h3 {
-        margin: 0;
-        font-family: 'CadizBlack', sans-serif;
-        transition: all .5s;
-
-        a {
-            color: black;
-            text-decoration: none;
-        }
-    }
-
-    .location {
-        margin: 0;
-    }
-
-    .details {
-        flex-grow: 1;
-        display: flex;
-        align-items: flex-end;
-
-        .infos {
-            flex-grow: 1;
-
-            p {
-                margin: 0;
-            }
-
-            .tags {
-                display: flex;
-            }
-
-            .tag {
-                background-color: var(--accent);
-                color: white;
-                padding: 2px 6px;
-                font-size: 14px;
-                margin-right: 6px;
-            }
-        }
-
-        .arrow {
-            width: 40px;
-            align-self: flex-end;
-        }
-
-        .arrow svg {
-            width: 0;
-            transition: all .4s;
-        }
-    }
-}
-
-.evt:hover {
-    .description {
-        h3 a {
-            color: var(--accent);
-        }
-
-        .details .arrow svg {
-            width: 36px;
-        }
-    }
-}
+*/

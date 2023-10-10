@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {Event, EventLookup} from "../../../data/event";
+import { Component, Input } from '@angular/core';
+import { EventLookup } from "../../../data/event";
 
 @Component({
     selector: 'app-event-card',
@@ -11,4 +11,6 @@ export class EventCardComponent {
     @Input()
     public event?: EventLookup;
 
+    @Input()
+    public isFirst = false;
 }
