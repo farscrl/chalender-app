@@ -29,7 +29,7 @@ import { ProfileComponent } from './pages/admin/profile/profile.component';
 import { AuthenticationService } from "./services/authentication.service";
 import { ShortDomainPipe } from './pipes/short-domain.pipe';
 import { EventCardComponent } from './components/events/event-card/event-card.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerI18n, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventFilterComponent } from './components/events/event-filter/event-filter.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MessagesComponent } from './components/messages/messages.component';
@@ -56,6 +56,8 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { RouteReuseStrategy } from '@angular/router';
 import { RouterReuseStrategy } from './routing/router-reuse.strategy';
 import { AppRouterOutletDirective } from './routing/app-router-outlet.directive';
+import { EventFilterModalComponent } from './components/events/event-filter-modal/event-filter-modal.component';
+import { DatepickerTranslatorService } from './services/datepicker-translator.service';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -122,6 +124,7 @@ export function createTranslateLoader(http: HttpClient) {
         DeleteEventComponent,
         ReasonForChangeComponent,
         AppRouterOutletDirective,
+        EventFilterModalComponent,
     ],
     imports: [
         BrowserModule,
@@ -151,6 +154,10 @@ export function createTranslateLoader(http: HttpClient) {
         {
             provide: RouteReuseStrategy,
             useClass: RouterReuseStrategy
+        },
+        {
+            provide: NgbDatepickerI18n,
+            useClass: DatepickerTranslatorService
         },
         provideClientHydration()
     ],

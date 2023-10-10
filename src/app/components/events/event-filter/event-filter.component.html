@@ -1,37 +1,38 @@
-<div class="modal-header">
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
-</div>
+<div class="filter">
+    <input class="search-term" type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchTermUpdated()"
+           placeholder="tschertgar">
 
-<div class="container">
-    <div class="row p-1">
-        <div class="col-4">
-            <h2>regiun</h2>
-            <div class="tags">
-                <ng-container *ngFor="let region of regions">
+    <hr>
+
+    <h2>data d’entschatta</h2>
+    <ngb-datepicker [(ngModel)]="selectedStartDate" (dateSelect)="dateSelected($event)"></ngb-datepicker>
+
+    <hr>
+
+    <h2>regiun</h2>
+    <div class="tags">
+        <ng-container *ngFor="let region of regions">
                     <span class="tag-element" [class.active]="selectedRegionIds.includes(region.id)"
                           (click)="toggleRegion(region.id)">{{ region.name }}</span><br>
-                </ng-container>
-            </div>
-        </div>
-        <div class="col-4">
-            <h2>gener</h2>
-            <div class="tags">
-                <ng-container *ngFor="let genre of genres">
+        </ng-container>
+    </div>
+
+    <hr>
+
+    <h2>gener</h2>
+    <div class="tags">
+        <ng-container *ngFor="let genre of genres">
                     <span class="tag-element" [class.active]="selectedGenreIds.includes(genre.id)"
                           (click)="toggleGenre(genre.id)">{{ genre.name }}</span><br>
-                </ng-container>
-            </div>
-        </div>
-        <div class="col-4">
-            <h2>data d’entschatta</h2>
-            <ngb-datepicker [(ngModel)]="selectedStartDate" (dateSelect)="dateSelected($event)"></ngb-datepicker>
-            <h2 class="mt-3">tschertga</h2>
-            <input class="search-term" type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchTermUpdated()">
-        </div>
+        </ng-container>
     </div>
-</div>
-<div class="modal-footer d-flex justify-content-center">
-    <button type="button" class="clndr" (click)="resetFilters();activeModal.close('Close click')">stizzar il filter
+
+    <hr>
+
+    <button type="button" class="clndr accent" (click)="resetFilters()">
+        stizzar il filter
     </button>
-    <button type="button" class="clndr" (click)="activeModal.close('Close click')">abunar quest filter</button>
+    <button type="button" class="clndr accent" (click)="close()">
+        abunar quest filter
+    </button>
 </div>

@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NgbActiveModal, NgbCalendar, NgbDate, NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
-import {StaticDataService} from "../../../services/static-data.service";
-import {Genre, Region} from "../../../data/static-data";
-import {EventsFilterService} from "../../../services/events-filter.service";
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { NgbCalendar, NgbDate, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
+import { StaticDataService } from "../../../services/static-data.service";
+import { Genre, Region } from "../../../data/static-data";
+import { EventsFilterService } from "../../../services/events-filter.service";
 
 @Component({
     selector: 'app-event-filter',
@@ -19,13 +19,16 @@ export class EventFilterComponent implements OnInit, OnDestroy {
     selectedStartDate: NgbDateStruct;
     searchTerm: string = '';
 
+    @Output()
+    hideFilterIfNeeded: EventEmitter<void> = new EventEmitter<void>();
+
     private selectedGenresSubscription: any;
     private selectedRegionsSubscription: any;
     private selectedStartDateSubscription: any;
     private searchTermSubscription: any;
 
 
-    constructor(public activeModal: NgbActiveModal, private staticData: StaticDataService, private eventsFilterService: EventsFilterService, private calendar: NgbCalendar) {
+    constructor(private staticData: StaticDataService, private eventsFilterService: EventsFilterService, private calendar: NgbCalendar) {
         // this.startDate = this.calendar.getToday();
         this.selectedStartDate = {year: 2023, month: 4, day: 1}; // TODO: change to today
     }
@@ -68,6 +71,11 @@ export class EventFilterComponent implements OnInit, OnDestroy {
 
     resetFilters() {
         this.eventsFilterService.resetFilters();
+        this.hideFilterIfNeeded.emit();
+    }
+
+    close() {
+        this.hideFilterIfNeeded.emit();
     }
 
     private loadStaticData() {

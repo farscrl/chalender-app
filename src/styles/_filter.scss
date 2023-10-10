@@ -1,0 +1,38 @@
+.filter {
+    ngb-datepicker {
+        border: none;
+
+        .ngb-dp-header, .ngb-dp-weekdays {
+            background-color: unset;
+        }
+
+        .ngb-dp-weekdays {
+            border-bottom: 0;
+        }
+
+        .ngb-dp-weekday {
+            color: #3C3C4399;
+            font-style: unset;
+        }
+
+        .ngb-dp-arrow-btn {
+            color: var(--accent);
+        }
+
+        select.form-select:first-of-type {
+            margin-right: 2px;
+        }
+
+        div.ngb-dp-day div.btn-light.bg-primary {
+            background-color: var(--accent) !important;
+            border-radius: 20px;
+        }
+
+        [ngbDatepickerDayView]:hover:not(.bg-primary),
+        [ngbDatepickerDayView].active:not(.bg-primary) {
+            background-color: #f8f9fa;
+            outline: 1px solid var(--accent);
+            border-radius: 20px;
+        }
+    }
+}

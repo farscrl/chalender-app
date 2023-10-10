@@ -1,0 +1,27 @@
+:host {
+    max-height: 100vh;
+    overflow-y: scroll;
+    padding: 1rem;
+}
+
+.modal-header {
+    border-bottom: none;
+    padding-left: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .close-button {
+        background-color: unset;
+        border: none;
+        margin-top: -6px;
+        margin-bottom: 6px;
+    }
+}
+
+.filter {
+    overflow-y: scroll;
+}

@@ -4,10 +4,10 @@ import { EventFilter, EventLookup } from "../../../data/event";
 import * as dayjs from 'dayjs'
 import { rmLocale } from "../../../utils/day-js-locale";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { EventFilterComponent } from "../../../components/events/event-filter/event-filter.component";
 import { EventsFilterService } from "../../../services/events-filter.service";
 import { Page } from "../../../data/page";
 import { OnAttach, OnDetach } from '../../../routing/app-router-outlet.directive';
+import { EventFilterModalComponent } from '../../../components/events/event-filter-modal/event-filter-modal.component';
 
 const LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION = 'events-scroll-position';
 
@@ -72,7 +72,9 @@ export class EventsListComponent implements OnInit, OnDestroy, OnAttach, OnDetac
     }
 
     openFilter(): void {
-        const modalRef = this.modalService.open(EventFilterComponent, {size: 'lg'});
+        const modalRef = this.modalService.open(EventFilterModalComponent, {
+            fullscreen: true,
+        });
     }
 
     search() {
