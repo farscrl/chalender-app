@@ -62,11 +62,11 @@ export class EventFilterComponent implements OnInit, OnDestroy {
     }
 
     dateSelected(date: NgbDate) {
-        this.eventsFilterService.selectedStartDate.next(date);
+        this.eventsFilterService.setStartDate(date);
     }
 
     searchTermUpdated() {
-        this.eventsFilterService.searchTerm.next(this.searchTerm);
+        this.eventsFilterService.setSearchterm(this.searchTerm);
     }
 
     resetFilters() {

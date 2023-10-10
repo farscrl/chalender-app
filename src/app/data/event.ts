@@ -1,4 +1,4 @@
-import {EventLanguage, Genre, Region} from "./static-data";
+import { EventLanguage, Genre, Region } from "./static-data";
 
 export class Event {
     id?: string;
@@ -82,4 +82,10 @@ export class EventFilter {
     genres: number[] = [];
     startDate?: string;
     searchTerm?: string;
+}
+
+export class CategorizedEvents {
+    date: string = '';
+    formattedDate?: string = '';
+    events: EventLookup[] = [];
 }

@@ -58,6 +58,8 @@ import { RouterReuseStrategy } from './routing/router-reuse.strategy';
 import { AppRouterOutletDirective } from './routing/app-router-outlet.directive';
 import { EventFilterModalComponent } from './components/events/event-filter-modal/event-filter-modal.component';
 import { DatepickerTranslatorService } from './services/datepicker-translator.service';
+import { EventsListCardsComponent } from './components/events/events-list/events-list-cards/events-list-cards.component';
+import { EventsListTableComponent } from './components/events/events-list/events-list-table/events-list-table.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -125,6 +127,8 @@ export function createTranslateLoader(http: HttpClient) {
         ReasonForChangeComponent,
         AppRouterOutletDirective,
         EventFilterModalComponent,
+        EventsListCardsComponent,
+        EventsListTableComponent,
     ],
     imports: [
         BrowserModule,
