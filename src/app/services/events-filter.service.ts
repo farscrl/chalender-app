@@ -10,7 +10,7 @@ import * as dayjs from 'dayjs';
     providedIn: 'root'
 })
 export class EventsFilterService {
-    public selectedView: 'cards' | 'list' = 'cards';
+    public selectedView: 'cards' | 'list' = 'list';
     public numberOfFilters = 0;
 
     private events: EventLookup[] = [];

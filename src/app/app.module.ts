@@ -61,6 +61,7 @@ import { DatepickerTranslatorService } from './services/datepicker-translator.se
 import { EventsListCardsComponent } from './components/events/events-list/events-list-cards/events-list-cards.component';
 import { EventsListTableComponent } from './components/events/events-list/events-list-table/events-list-table.component';
 import { ViewSelectionComponent } from './components/events/view-selection/view-selection.component';
+import { EventListItemComponent } from './components/events/event-list-item/event-list-item.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -131,6 +132,7 @@ export function createTranslateLoader(http: HttpClient) {
         EventsListCardsComponent,
         EventsListTableComponent,
         ViewSelectionComponent,
+        EventListItemComponent,
     ],
     imports: [
         BrowserModule,

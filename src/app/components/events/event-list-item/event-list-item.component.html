@@ -1,0 +1,13 @@
+<a *ngIf="event" class="evt" [routerLink]="'/' + event.eventId" [class.first]="isFirst">
+    <div class="title">
+        <span class="inline-time">19:30</span>
+        {{ event.title }}
+    </div>
+    <div class="location">
+        {{ event.location }}
+    </div>
+    <div class="time">19:30</div>
+    <div class="tags">
+        <div class="tag" *ngFor="let tag of event.genres">{{ tag.name }}</div>
+    </div>
+</a>

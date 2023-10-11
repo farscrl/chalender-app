@@ -1,0 +1,63 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+.evt {
+    &:hover {
+        text-decoration: none;
+    }
+
+    @include media-breakpoint-up(md) {
+        display: grid;
+        grid-template-columns: 5fr 4fr 1fr 2fr;
+    }
+}
+
+.title {
+    color: black;
+    font-family: 'CadizBlack', sans-serif;
+
+    @include media-breakpoint-up(md) {
+
+    }
+
+    .inline-time {
+        background-color: black;
+        color: white;
+        border-radius: 3px;
+        padding: 0 2px;
+
+        @include media-breakpoint-up(md) {
+            display: none;
+        }
+    }
+}
+
+.location {
+    color: black;
+}
+
+.time {
+    display: none;
+
+    @include media-breakpoint-up(md) {
+        display: block;
+    }
+}
+
+.tags {
+    display: none;
+
+    @include media-breakpoint-up(md) {
+        display: flex;
+        align-items: flex-start;
+
+        .tag {
+            background-color: var(--accent);
+            color: white;
+            padding: 2px 4px;
+            font-size: 0.85rem;
+            margin-right: 6px;
+        }
+    }
+}
