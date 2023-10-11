@@ -1,13 +1,15 @@
 @font-face {
     font-family: 'Cadiz';
-    src: url('/assets/fonts/Cadiz-Regular.woff2') format('woff2');
+    src: url('/assets/fonts/CadizWeb-Regular.woff2') format('woff2'),
+    url('/assets/fonts/CadizWeb-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'CadizBlack';
-    src: url('/assets/fonts/Cadiz-Black.woff2') format('woff2');
+    src: url('/assets/fonts/CadizWeb-Black.woff2') format('woff2'),
+    url('/assets/fonts/CadizWeb-Black.woff') format('woff');
     font-weight: 800;
     font-style: normal;
 }
