@@ -29,8 +29,7 @@ export class EventFilterComponent implements OnInit, OnDestroy {
 
 
     constructor(private staticData: StaticDataService, private eventsFilterService: EventsFilterService, private calendar: NgbCalendar) {
-        // this.startDate = this.calendar.getToday();
-        this.selectedStartDate = {year: 2023, month: 4, day: 1}; // TODO: change to today
+        this.selectedStartDate = this.calendar.getToday();
     }
 
     ngOnInit(): void {

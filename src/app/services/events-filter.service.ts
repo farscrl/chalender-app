@@ -10,12 +10,14 @@ import * as dayjs from 'dayjs';
     providedIn: 'root'
 })
 export class EventsFilterService {
-    public events: EventLookup[] = [];
+    public selectedView: 'cards' | 'list' = 'cards';
+    public numberOfFilters = 0;
+
+    private events: EventLookup[] = [];
 
     private selectedRegions = new BehaviorSubject<number[]>([]);
     private selectedGenres = new BehaviorSubject<number[]>([]);
-    // selectedStartDate = new BehaviorSubject<NgbDateStruct>(this.calendar.getToday());
-    private selectedStartDate = new BehaviorSubject<NgbDateStruct>({year: 2023, month: 3, day: 1}); // TODO: change to today
+    private selectedStartDate = new BehaviorSubject<NgbDateStruct>(this.calendar.getToday());
     private searchTerm = new BehaviorSubject<string>('');
     private searchResults = new BehaviorSubject<EventLookup[]>([]);
 
@@ -29,6 +31,7 @@ export class EventsFilterService {
     }
 
     search() {
+        this.recalculateNumberOfFilters();
         this.page = 0;
         this.hasMorePages = true;
         this.executeSearch();
@@ -60,11 +63,11 @@ export class EventsFilterService {
     resetFilters() {
         this.selectedRegions.next([]);
         this.selectedGenres.next([]);
-        // this.selectedStartDate.next(this.calendar.getToday());
-        this.selectedStartDate.next({year: 2023, month: 3, day: 1}); // TODO: change to today
+        this.selectedStartDate.next(this.calendar.getToday());
         this.searchTerm.next('');
 
         this.eventFilter = new EventFilter();
+        this.search();
     }
 
     toggleRegion(regionId: number) {
@@ -123,5 +126,27 @@ export class EventsFilterService {
 
     getSearchResultsObservable(): Observable<EventLookup[]> {
         return this.searchResults.asObservable();
+    }
+
+    private recalculateNumberOfFilters() {
+        this.numberOfFilters = 0;
+
+        if (this.selectedGenres.getValue().length > 0) {
+            this.numberOfFilters++;
+        }
+
+        if (this.selectedRegions.getValue().length > 0) {
+            this.numberOfFilters++;
+        }
+
+        if (this.selectedStartDate.getValue().year !== new Date().getFullYear()
+            || this.selectedStartDate.getValue().month !== new Date().getMonth() + 1
+            || this.selectedStartDate.getValue().day !== new Date().getDate()) {
+            this.numberOfFilters++;
+        }
+
+        if (this.searchTerm.getValue().length > 0) {
+            this.numberOfFilters++;
+        }
     }
 }

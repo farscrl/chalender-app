@@ -1,0 +1,23 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+.view-selection {
+    display: flex;
+    margin-left: 1rem;
+
+    .style-button {
+        margin-right: 0.5rem;
+        cursor: pointer;
+    }
+
+    @include media-breakpoint-up(md) {
+        margin-left: 0;
+        margin-right: 2rem;
+
+        > * {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+    }
+}

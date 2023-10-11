@@ -60,6 +60,7 @@ import { EventFilterModalComponent } from './components/events/event-filter-moda
 import { DatepickerTranslatorService } from './services/datepicker-translator.service';
 import { EventsListCardsComponent } from './components/events/events-list/events-list-cards/events-list-cards.component';
 import { EventsListTableComponent } from './components/events/events-list/events-list-table/events-list-table.component';
+import { ViewSelectionComponent } from './components/events/view-selection/view-selection.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -129,6 +130,7 @@ export function createTranslateLoader(http: HttpClient) {
         EventFilterModalComponent,
         EventsListCardsComponent,
         EventsListTableComponent,
+        ViewSelectionComponent,
     ],
     imports: [
         BrowserModule,

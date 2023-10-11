@@ -1,4 +1,4 @@
-<div class="d-none d-md-block">
+<div class="filter-area d-none d-md-block">
     <div #collapse="ngbCollapse" [(ngbCollapse)]="isFilterCollapsed"
          [horizontal]="true" class="filter">
         <app-event-filter></app-event-filter>
@@ -6,8 +6,9 @@
 </div>
 
 <div class="events">
-    <app-events-list-cards (toggleFilter)="toggleFilter()"></app-events-list-cards>
-    <app-events-list-table></app-events-list-table>
+    <app-events-list-cards (toggleFilter)="toggleFilter()"
+                           *ngIf="eventsFilterService.selectedView === 'cards'"></app-events-list-cards>
+    <app-events-list-table *ngIf="eventsFilterService.selectedView === 'list'"></app-events-list-table>
 </div>
 
 <!--

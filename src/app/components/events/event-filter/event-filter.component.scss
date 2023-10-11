@@ -11,6 +11,7 @@ h2 {
 }
 
 .tags {
+    font-size: 0.9rem;
     display: flex;
     flex-wrap: wrap;
 }
@@ -19,6 +20,7 @@ h2 {
     margin-bottom: 6px;
     margin-left: 0;
     cursor: pointer;
+    padding: 2px 6px;
 }
 
 hr {

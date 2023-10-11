@@ -19,7 +19,7 @@ export class EventsListComponent implements OnInit, OnDestroy, OnAttach, OnDetac
 
     public isFilterCollapsed = false;
 
-    constructor(private eventsFilterService: EventsFilterService, private datesUtil: DatesUtil) {
+    constructor(public eventsFilterService: EventsFilterService, private datesUtil: DatesUtil) {
     }
 
     ngOnInit() {

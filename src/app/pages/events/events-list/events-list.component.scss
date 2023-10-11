@@ -6,10 +6,18 @@
     display: flex;
 }
 
+.filter-area {
+    position: sticky;
+    top: 0;
+    align-self: flex-start; // needed for sticky to work
+}
+
 .filter {
     padding: 2rem;
     width: 300px;
     max-width: 300px;
+    max-height: 100vh;
+    overflow-y: scroll;
 }
 
 .events {
