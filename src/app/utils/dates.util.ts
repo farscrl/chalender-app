@@ -29,6 +29,8 @@ export class DatesUtil {
             return {
                 date: date,
                 formattedDate: formattedDate,
+                formattedDateShort: dateObj.format('DD-MM-YYYY'),
+                formattedWeekday: dateObj.format('dddd'),
                 events: events.filter(e => e.date === date),
             }
         });

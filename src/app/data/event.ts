@@ -87,5 +87,7 @@ export class EventFilter {
 export class CategorizedEvents {
     date: string = '';
     formattedDate?: string = '';
+    formattedWeekday?: string = '';
+    formattedDateShort?: string = '';
     events: EventLookup[] = [];
 }
