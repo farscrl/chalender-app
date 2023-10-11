@@ -23,38 +23,66 @@
                 <app-status-badge [status]="event.eventStatus!"></app-status-badge>
             </td>
             <td>
-                <span class="button fill" placement="bottom" ngbTooltip="Prevista" (click)="showPreview(event)"
+                <span class="button stroke" placement="bottom" ngbTooltip="Prevista" (click)="showPreview(event)"
                       [class.inactive]="event.eventStatus === 'NEW_MODIFICATION'">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path
-                            d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"
+                            stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"/>
+                      <path
+                          d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </span>
-                <span class="button fill" placement="bottom" ngbTooltip="Mussar midadas"
+                <span class="button stroke" placement="bottom" ngbTooltip="Mussar midadas"
                       (click)="event.eventStatus === 'NEW_MODIFICATION' ? showDiff(event) : false"
                       [class.inactive]="event.eventStatus !== 'NEW_MODIFICATION'">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path
-                            d="M0 168v-16c0-13.255 10.745-24 24-24h360V80c0-21.367 25.899-32.042 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.956 271.982 384 261.456 384 240v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.314-25.862-32.08-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.057 463.997 128 453.437 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.6562 2.7085L21.8989 6.95114L17.6562 11.1938" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21.8984 6.9511L8.99974 6.95144" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.24219 21.1923L1.99955 16.9497L6.24219 12.707" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1.99961 16.9496L14.9993 16.9485" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </span>
 
                 <div class="vr"></div>
 
-                <span class="button fill" placement="bottom" ngbTooltip="Acceptar midadas"
+                <span class="button stroke" placement="bottom" ngbTooltip="Acceptar midadas"
                       (click)="hasChanges(event) ? accept(event) : false"
                       [class.inactive]="!hasChanges(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path
-                            d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M9 11L12 14L22 4" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"/>
+                      <path
+                          d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </span>
-                <span class="button fill" placement="bottom" ngbTooltip="Refusar midadas"
+                <span class="button stroke" placement="bottom" ngbTooltip="Refusar midadas"
                       (click)="hasChanges(event) ? refuse(event) : false"
                       [class.inactive]="!hasChanges(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 352 512"><path
-                            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path
+                          d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9 9L15 15" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"/>
+                      <path d="M15 9L9 15" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"/>
+                    </svg>
                 </span>
-                <span class="button" placement="bottom" ngbTooltip="Modifitgar eveniment" (click)="edit(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" fill="none">
-                      <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13"
-                            stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M18.5 2.50023C18.8978 2.1024 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.1024 21.5 2.50023C21.8978 2.89805 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.1024 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z"
-                            stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <span class="button stroke" placement="bottom" ngbTooltip="Modifitgar eveniment" (click)="edit(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path
+                          d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path
+                          d="M18.5 2.50023C18.8978 2.1024 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.1024 21.5 2.50023C21.8978 2.89805 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.1024 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </span>
 
@@ -65,7 +93,21 @@
                 </span>
                 <div ngbDropdown class="d-inline-block" #optionsDropdown="ngbDropdown">
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem (click)="delete(event)">Stizzar</button>
+                        <button ngbDropdownItem (click)="delete(event)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                 fill="none" style="margin-bottom: 4px;margin-right: 4px;">
+                                <path d="M3 6H5H21" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                <path
+                                    d="M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6"
+                                    stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10 11V17" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                <path d="M14 11V17" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                            </svg>
+                            <span>Stizzar</span>
+                        </button>
                     </div>
                 </div>
             </td>
