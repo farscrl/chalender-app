@@ -11,11 +11,11 @@ RUN npm install
 RUN npm run build:ssr
 
 ### Stage: 2 ###
-FROM node:latest
+FROM node:20-alpine3.17
 WORKDIR /app
 COPY --from=node /app/package.json /app
 COPY --from=node /app/dist /app/dist
 
-EXPOSE 4000
+EXPOSE 8080
 
 CMD ["npm", "run", "serve:ssr"]
