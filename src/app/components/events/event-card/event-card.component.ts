@@ -13,4 +13,8 @@ export class EventCardComponent {
 
     @Input()
     public isFirst = false;
+
+    get imgUrl() {
+        return this.event!.imageUrl + '?width=400&aspect_ratio=1:1&crop_gravity=center&auto_optimize=medium';
+    }
 }

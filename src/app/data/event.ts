@@ -60,13 +60,13 @@ export class EventLookup {
     genres: Genre[] = [];
     location?: string;
     regions: Region[] = [];
-    image?: string;
     eventLanguages: EventLanguage[] = [];
     date: string = '';
     start?: string;
     end?: string;
     isAllDay?: boolean;
     isCancelled?: boolean;
+    imageUrl?: string;
 }
 
 export class EventOccurrences {

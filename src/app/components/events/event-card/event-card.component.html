@@ -1,6 +1,8 @@
 <a *ngIf="event" class="evt" [routerLink]="'/' + event.eventId" [class.first]="isFirst">
     <div class="image">
-        <div class="img-holder" style="background-image: url('')"></div>
+        <div class="img-holder">
+            <img src="{{ imgUrl }}" alt="{{ event.title }}" *ngIf="event.imageUrl" style="width: 100%">
+        </div>
     </div>
     <div class="description">
         <h3>{{ event.title }}</h3>
