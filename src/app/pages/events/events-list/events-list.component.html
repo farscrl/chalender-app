@@ -8,7 +8,8 @@
 <div class="events">
     <app-events-list-cards (toggleFilter)="toggleFilter()"
                            *ngIf="eventsFilterService.selectedView === 'cards'"></app-events-list-cards>
-    <app-events-list-table *ngIf="eventsFilterService.selectedView === 'list'"></app-events-list-table>
+    <app-events-list-table (toggleFilter)="toggleFilter()"
+                           *ngIf="eventsFilterService.selectedView === 'list'"></app-events-list-table>
 </div>
 
 <!--
