@@ -8,7 +8,7 @@ RUN echo "Building Angular configuration: $ANGULAR_ENV"
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm run build:ssr
+RUN npm run build:ssr -c $ANGULAR_ENV
 
 ### Stage: 2 ###
 FROM node:20-alpine3.17
