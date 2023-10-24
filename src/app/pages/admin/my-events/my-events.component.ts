@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
-import {Event, EventFilter, EventVersion} from "../../../data/event";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {EventPreviewComponent} from "../../../components/event-preview/event-preview.component";
-import {EventDiffComponent} from "../../../components/event-diff/event-diff.component";
-import {UserService} from "../../../services/user.service";
+import { Component } from '@angular/core';
+import { Event, EventFilter, EventVersion } from "../../../data/event";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { EventPreviewComponent } from "../../../components/event-preview/event-preview.component";
+import { EventDiffComponent } from "../../../components/event-diff/event-diff.component";
+import { UserService } from "../../../services/user.service";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-my-events',
@@ -18,7 +19,7 @@ export class MyEventsComponent {
     private eventFilter: EventFilter = new EventFilter();
     private page: number = 0;
 
-    constructor(private userService: UserService, private modalService: NgbModal) {
+    constructor(private userService: UserService, private modalService: NgbModal, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -62,6 +63,9 @@ export class MyEventsComponent {
 
     edit(event: Event) {
         console.log("edit", event);
+        this.router.navigateByUrl('/admin/events/new', {
+            state: {event},
+        });
     }
 
     delete(event: Event) {

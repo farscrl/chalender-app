@@ -6,11 +6,13 @@ export class Event {
     draft?: EventVersion;
     currentlyPublished?: EventVersion;
     waitingForReview?: EventVersion;
+    rejected?: EventVersion;
 
     versions: EventVersion[] = [];
 
     eventStatus?: EventStatusTypes = 'INVALID';
     ownerEmail?: string;
+    contactEmail?: string;
 }
 
 export type EventStatusTypes = 'DRAFT' | 'IN_REVIEW' | 'PUBLISHED' | 'NEW_MODIFICATION' | 'REJECTED' | 'INVALID';
@@ -35,7 +37,8 @@ export class EventVersion {
 
 export class EventDto {
     id?: string;
-    status?: string;
+    status?: EventStatusTypes;
+    contactEmail?: string;
 
     title?: string;
     genres: Genre[] = [];

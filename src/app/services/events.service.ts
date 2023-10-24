@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {Event, EventDto, EventFilter, EventLookup} from "../data/event";
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {environment} from "../../environments/environment";
-import {Page} from "../data/page";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { EventDto, EventFilter, EventLookup } from "../data/event";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { environment } from "../../environments/environment";
+import { Page } from "../data/page";
 
 @Injectable({
     providedIn: 'root'
@@ -42,16 +42,21 @@ export class EventsService {
         return this.httpClient.get<Page<EventLookup>>(this.getUrl(), httpOptions);
     }
 
-    public getEvent(id: number): Observable<EventDto> {
+    public getEvent(id: string): Observable<EventDto> {
         return this.httpClient.get<EventDto>(this.getUrl(id));
     }
 
-    public createEvent(event: Event): Observable<Event> {
+    public createEvent(event: EventDto): Observable<EventDto> {
         const body: any = Object.assign({}, event);
-        return this.httpClient.post<Event>(this.getUrl(), body);
+        return this.httpClient.post<EventDto>(this.getUrl(), body);
     }
 
-    getUrl(id?: number) {
+    public updateEvent(event: EventDto): Observable<EventDto> {
+        const body: any = Object.assign({}, event);
+        return this.httpClient.post<EventDto>(this.getUrl(event.id), body);
+    }
+
+    getUrl(id?: string) {
         if (id) {
             return environment.apiBasePath.concat(this.basePath).concat('/' + id);
         }
