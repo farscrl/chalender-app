@@ -1,105 +1,105 @@
 {
-  "COMPONENTS": {
-    "BACK_BUTTON": {
-      "BACK": "Turnar"
+    "COMPONENTS": {
+        "BACK_BUTTON": {
+            "BACK": "Turnar"
+        },
+        "CHANGE_USER": {
+            "TITLE": "Utilisader",
+            "ERROR": {
+                "TITLE": "Errur cun actualisar",
+                "MESSAGE": "Ina errur è cumparida cun actualisar il profil. Emprova pli tard anc ina giada."
+            },
+            "CHANGE": "Midar"
+        },
+        "EVENT_DIFF": {
+            "TITLE": "Differenzas tranter las versiuns",
+            "FIELDS": {
+                "TITLE": "Titel",
+                "DESCRIPTION": "Descripziun",
+                "CATEGORIES": "Categorias",
+                "REGIONS": "Regiuns",
+                "LANGUAGES": "Linguas",
+                "LOCATION": "Lieu",
+                "ADDRESS": "Adressa",
+                "ONLINE_ONLY": "Mo online",
+                "ORGANIZER": "Organisatur",
+                "PRICE": "Pretsch",
+                "URL": "Link",
+                "CONTACT": "Contact"
+            }
+        },
+        "FOOTER": {
+            "IMPRINT": "impressum",
+            "DATA_PRIVACY": "protecziun da datas",
+            "ORGANISATION": "purtaders"
+        },
+        "HEADER": {
+            "SUB_MENU": {
+                "EVENTS": "occurrenzas",
+                "NOTICE_BOARD": "tavla naira"
+            },
+            "MAIN_MENU": {
+                "EVENTS": "occurrenzas",
+                "HELP": "agid",
+                "CONTACT": "contact",
+                "ORGANISATION": "purtaders",
+                "IMPRINT": "impressum",
+                "PRIVACY": "protecziun da datas"
+            },
+            "PROFILE_MENU": {
+                "NEW_EVENT": "registrar in'occurrenza",
+                "MY_EVENTS": "mias occurrenzas",
+                "MY_ABOS": "mes abunaments",
+                "PROFILE": "mes profil",
+                "LOGOUT": "sortir"
+            },
+            "ADMIN": {
+                "ADMIN": "administraziun",
+                "EVENTS": "occurrenzas",
+                "USERS": "utilisaders"
+            },
+            "SIGNUP": {
+                "LOGIN": "login",
+                "NEW_EVENT": "registrar in'occurrenza"
+            }
+        },
+        "MODALS": {
+            "DELETE_EVENT": {
+                "TITLE": "Vuls ti propi stizzar definitivamain l'eveniment «{{eventTitle}}»?",
+                "DELETE": "Gea, stizzar",
+                "CANCEL": "Interrumper"
+            }
+        },
+        "NEW_EVENT_BTN": {
+            "NEW_EVENT": "registrar in’occurrenza"
+        },
+        "PAGINATION": {
+            "PREV_DESC": "Siglir a la pagina precedenta",
+            "NEXT_DESC": "Siglir a la proxima pagina"
+        },
+        "ROLE": {
+            "ADMIN": "admin",
+            "MODERATOR": "moderatur",
+            "USER": "utilisader"
+        },
+        "STATUS": {
+            "DRAFT": "sboz",
+            "IN_REVIEW": "pendent",
+            "PUBLISHED": "publitgà",
+            "NEW_MODIFICATION": "midà",
+            "REJECTED": "refusà",
+            "INVALID": "nunvalid"
+        }
     },
-    "CHANGE_USER": {
-      "TITLE": "Utilisader",
-      "ERROR": {
-        "TITLE": "Errur cun actualisar",
-        "MESSAGE": "Ina errur è cumparida cun actualisar il profil. Emprova pli tard anc ina giada."
-      },
-      "CHANGE": "Midar"
-    },
-    "EVENT_DIFF": {
-      "TITLE": "Differenzas tranter las versiuns",
-      "FIELDS": {
-        "TITLE": "Titel",
-        "DESCRIPTION": "Descripziun",
-        "CATEGORIES": "Categorias",
-        "REGIONS": "Regiuns",
-        "LANGUAGES": "Linguas",
-        "LOCATION": "Lieu",
-        "ADDRESS": "Adressa",
-        "ONLINE_ONLY": "Mo online",
-        "ORGANIZER": "Organisatur",
-        "PRICE": "Pretsch",
-        "URL": "Link",
-        "CONTACT": "Contact"
-      }
-    },
-    "FOOTER": {
-      "IMPRINT": "impressum",
-      "DATA_PRIVACY": "protecziun da datas",
-      "ORGANISATION": "purtaders"
-    },
-    "HEADER": {
-      "SUB_MENU": {
-        "EVENTS": "occurrenzas",
-        "NOTICE_BOARD": "tavla naira"
-      },
-      "MAIN_MENU": {
-        "EVENTS": "occurrenzas",
-        "HELP": "agid",
-        "CONTACT": "contact",
-        "ORGANISATION": "purtaders",
-        "IMPRINT": "impressum",
-        "PRIVACY": "protecziun da datas"
-      },
-      "PROFILE_MENU": {
-        "NEW_EVENT": "registrar in'occurrenza",
-        "MY_EVENTS": "mias occurrenzas",
-        "MY_ABOS": "mes abunaments",
-        "PROFILE": "profilmes profil",
-        "LOGOUT": "sortir"
-      },
-      "ADMIN": {
-        "ADMIN": "administraziun",
-        "EVENTS": "occurrenzas",
-        "USERS": "utilisaders"
-      },
-      "SIGNUP": {
-        "LOGIN": "login",
-        "NEW_EVENT": "registrar in'occurrenza"
-      }
-    },
-    "MODALS": {
-      "DELETE_EVENT": {
-        "TITLE": "Vuls ti propi stizzar definitivamain l'eveniment «{{eventTitle}}»?",
-        "DELETE": "Gea, stizzar",
-        "CANCEL": "Interrumper"
-      }
-    },
-    "NEW_EVENT_BTN": {
-      "NEW_EVENT": "registrar in’occurrenza"
-    },
-    "PAGINATION": {
-      "PREV_DESC": "Siglir a la pagina precedenta",
-      "NEXT_DESC": "Siglir a la proxima pagina"
-    },
-    "ROLE": {
-      "ADMIN": "admin",
-      "MODERATOR": "moderatur",
-      "USER": "utilisader"
-    },
-    "STATUS": {
-      "DRAFT": "sboz",
-      "IN_REVIEW": "pendent",
-      "PUBLISHED": "publitgà",
-      "NEW_MODIFICATION": "midà",
-      "REJECTED": "refusà",
-      "INVALID": "nunvalid"
+    "FORMS": {
+        "USER": {
+            "EMAIL": "Adressa dad e-mail",
+            "FIRST_NAME": "Prenum",
+            "FIRST_NAME_MISSING": "Endatescha p.pl. in prenum.",
+            "LAST_NAME": "Num",
+            "LAST_NAME_MISSING": "Endatescha p.pl. in num.",
+            "ORGANIZATION": "Organisaziun (facultativ)",
+            "PHONE": "Telefon (facultativ, per contactar en cas da dumondas)"
+        }
     }
-  },
-  "FORMS": {
-    "USER": {
-      "EMAIL": "Adressa dad e-mail",
-      "FIRST_NAME": "Prenum",
-      "FIRST_NAME_MISSING": "Endatescha p.pl. in prenum.",
-      "LAST_NAME": "Num",
-      "LAST_NAME_MISSING": "Endatescha p.pl. in num.",
-      "ORGANIZATION": "Organisaziun (facultativ)",
-      "PHONE": "Telefon (facultativ, per contactar en cas da dumondas)"
-    }
-  }
 }

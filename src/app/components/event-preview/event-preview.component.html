@@ -1,17 +1,13 @@
-<div class="event-teasers">
+<div class="event-teasers" *ngIf="eventDto">
     <div>
         <div class="event-teaser-desktop">
             Prevista event-teaser desktop
-        </div>
-    </div>
-
-    <div>
-        <div class="event-teaser-mobile">
-            Prevista event-teaser mobile
+            <app-event-card [event]="eventLookup"></app-event-card>
         </div>
     </div>
 </div>
 
-<div class="event-details">
+<div class="event-details" *ngIf="eventDto">
     Prevista event-detail
+    <app-event-details [event]="eventDto"></app-event-details>
 </div>

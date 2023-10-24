@@ -26,7 +26,7 @@ export class EventVersion {
     occurrences: EventOccurrences[] = [];
     regions: Region[] = [];
     eventLanguages: EventLanguage[] = [];
-    // images: Image[] = [];
+    images: Image[] = [];
     onlineOnly?: boolean;
     acceptTerms?: boolean;
     organiser?: string;
@@ -48,13 +48,20 @@ export class EventDto {
     occurrences: EventOccurrences[] = [];
     regions: Region[] = [];
     eventLanguages: EventLanguage[] = [];
-    // images: string[] = [];
+    images: Image[] = [];
     onlineOnly?: boolean;
     acceptTerms?: boolean;
     organiser?: string;
     pricing?: string;
     link?: string;
     contact?: string;
+}
+
+export class Image {
+    id?: string;
+    used: boolean = false;
+    originalName?: string;
+    url?: string;
 }
 
 export class EventLookup {

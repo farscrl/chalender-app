@@ -5,6 +5,7 @@ import { EventPreviewComponent } from "../../../components/event-preview/event-p
 import { EventDiffComponent } from "../../../components/event-diff/event-diff.component";
 import { UserService } from "../../../services/user.service";
 import { Router } from '@angular/router';
+import { EventsService } from '../../../services/events.service';
 
 @Component({
     selector: 'app-my-events',
@@ -19,7 +20,12 @@ export class MyEventsComponent {
     private eventFilter: EventFilter = new EventFilter();
     private page: number = 0;
 
-    constructor(private userService: UserService, private modalService: NgbModal, private router: Router) {
+    constructor(
+        private userService: UserService,
+        private modalService: NgbModal,
+        private router: Router,
+        private eventService: EventsService,
+    ) {
     }
 
     ngOnInit(): void {
@@ -52,6 +58,9 @@ export class MyEventsComponent {
 
     showPreview(event: Event) {
         const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
+        this.eventService.getEvent(event.id!).subscribe(eventDto => {
+            modalRef.componentInstance.eventDto = eventDto;
+        });
     }
 
     showDiff(event: Event) {

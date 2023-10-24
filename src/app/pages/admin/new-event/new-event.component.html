@@ -196,6 +196,14 @@
         </div>
 
         <b>maletgs:</b><br>
+        <div class="image-previews">
+            <div class="image-preview" *ngFor="let image of images">
+                <div class="preview">
+                    <img [src]="image.url + '?width=150&auto_optimize=medium'" alt="image preview">
+                    <div class="filename">{{image.originalName}}</div>
+                </div>
+            </div>
+        </div>
         <div class="form-text">
             formats acceptads: JPG, PNG<br>
             grondezza maximala: 5 MB<br>

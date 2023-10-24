@@ -62,6 +62,7 @@ import { EventsListCardsComponent } from './components/events/events-list/events
 import { EventsListTableComponent } from './components/events/events-list/events-list-table/events-list-table.component';
 import { ViewSelectionComponent } from './components/events/view-selection/view-selection.component';
 import { EventListItemComponent } from './components/events/event-list-item/event-list-item.component';
+import { EventDetailsComponent } from './components/events/event-details/event-details.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -133,6 +134,7 @@ export function createTranslateLoader(http: HttpClient) {
         EventsListTableComponent,
         ViewSelectionComponent,
         EventListItemComponent,
+        EventDetailsComponent,
     ],
     imports: [
         BrowserModule,

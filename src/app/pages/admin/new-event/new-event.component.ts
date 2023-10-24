@@ -4,13 +4,14 @@ import { AuthenticationService } from "../../../services/authentication.service"
 import { StaticDataService } from "../../../services/static-data.service";
 import { EventLanguage, Genre, Region } from "../../../data/static-data";
 import { minCheckboxValidator } from "../../../validators/mincheckbox.validator";
-import { EventDto, EventStatusTypes } from "../../../data/event";
+import { EventDto, EventStatusTypes, Image } from "../../../data/event";
 import { EventsService } from "../../../services/events.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { EventPreviewComponent } from "../../../components/event-preview/event-preview.component";
 import * as dayjs from 'dayjs';
 import { Router } from '@angular/router';
 import { rmLocale } from '../../../utils/day-js-locale';
+import { NotificationsService } from '../../../services/notifications.service';
 
 const regexUrl = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
@@ -26,6 +27,8 @@ export class NewEventComponent implements OnInit {
     regions: Region[] = [];
     eventLanguages: EventLanguage[] = [];
 
+    images: Image[] = [];
+
     f: FormGroup = new FormGroup<any>({});
 
     isLoggedIn = false;
@@ -40,6 +43,7 @@ export class NewEventComponent implements OnInit {
         private eventsService: EventsService,
         private modalService: NgbModal,
         private router: Router,
+        private notificationsService: NotificationsService,
     ) {
         const navigation = this.router.getCurrentNavigation();
         if (navigation && navigation.extras.state) {
@@ -81,22 +85,41 @@ export class NewEventComponent implements OnInit {
         if (this.eventToChange) {
             event.id = this.eventToChange.id;
             this.eventsService.updateEvent(event).subscribe(event => {
-                console.log(event);
-                this.eventToChange = event;
-                this.initForm();
+                this.notificationsService.successMessage(
+                    'Creà eveniment',
+                    "Ti has memorisà cun success l'eveniment «" + event.title + "»."
+                );
+
+                this.router.navigateByUrl('/admin/events');
+                // console.log(event);
+                // this.eventToChange = event;
+                // this.initForm();
             });
         } else {
             this.eventsService.createEvent(event).subscribe(event => {
-                console.log(event);
-                this.eventToChange = event;
-                this.initForm();
+
+                this.notificationsService.successMessage(
+                    'Creà eveniment',
+                    "Ti has memorisà cun success l'eveniment «" + event.title + "»."
+                );
+
+                if (this.isLoggedIn) {
+                    this.router.navigateByUrl('/admin/events');
+                } else {
+                    this.router.navigateByUrl('/');
+                }
+                // console.log(event);
+                // this.eventToChange = event;
+                // this.initForm();
             });
         }
     }
 
     preview() {
         console.log(this.transformToEventDto(true));
+        const dto = this.transformToEventDto(true);
         const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
+        modalRef.componentInstance.eventDto = dto;
     }
 
     isFieldInvalid(fieldName: string) {
@@ -161,6 +184,10 @@ export class NewEventComponent implements OnInit {
         if (this.authService.isLoggedIn()) {
             contactEmail = this.authService.getEmail();
             this.isLoggedIn = true;
+        }
+
+        if (this.eventToChange) {
+            this.images = this.eventToChange.images;
         }
 
         this.f = this.fb.group({
@@ -273,6 +300,7 @@ export class NewEventComponent implements OnInit {
         eventDto.eventLanguages = this.transformFormArrayToDto('eventLanguages', this.eventLanguages);
 
         eventDto.occurrences = this.transformOccurrencesToDto(this.eventOccurrencesFormArray.value);
+        eventDto.images = this.images;
 
         return eventDto;
     }

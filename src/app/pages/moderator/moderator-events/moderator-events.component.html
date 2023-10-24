@@ -14,8 +14,8 @@
         <tbody>
         <tr *ngFor="let event of events; let i = index">
             <td>
-                <span class="date"
-                      *ngFor="let occurrence of getEventVersion(event)?.occurrences">{{occurrence.date}}</span>
+                <div class="date"
+                     *ngFor="let occurrence of getEventVersion(event)?.occurrences">{{occurrence.date}}</div>
             </td>
             <td>{{event.ownerEmail}}</td>
             <th scope="row">{{getEventVersion(event)?.title}}</th>

@@ -1,11 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {ModeratorService} from "../../../services/moderator.service";
-import {Event, EventFilter, EventVersion} from "../../../data/event";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {EventPreviewComponent} from "../../../components/event-preview/event-preview.component";
-import {EventDiffComponent} from "../../../components/event-diff/event-diff.component";
-import {DeleteEventComponent} from "../../../components/modals/delete-event/delete-event.component";
-import {ReasonForChangeComponent} from "../../../components/modals/reason-for-change/reason-for-change.component";
+import { Component, OnInit } from '@angular/core';
+import { ModeratorService } from "../../../services/moderator.service";
+import { Event, EventFilter, EventVersion } from "../../../data/event";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { EventPreviewComponent } from "../../../components/event-preview/event-preview.component";
+import { EventDiffComponent } from "../../../components/event-diff/event-diff.component";
+import { DeleteEventComponent } from "../../../components/modals/delete-event/delete-event.component";
+import { ReasonForChangeComponent } from "../../../components/modals/reason-for-change/reason-for-change.component";
+import { Router } from '@angular/router';
+import { EventsService } from '../../../services/events.service';
 
 @Component({
     selector: 'app-moderator-events',
@@ -21,7 +23,12 @@ export class ModeratorEventsComponent implements OnInit {
     private eventFilter: EventFilter = new EventFilter();
     private page: number = 0;
 
-    constructor(private moderatorService: ModeratorService, private modalService: NgbModal) {
+    constructor(
+        private moderatorService: ModeratorService,
+        private modalService: NgbModal,
+        private router: Router,
+        private eventService: EventsService,
+    ) {
     }
 
     ngOnInit(): void {
@@ -54,6 +61,9 @@ export class ModeratorEventsComponent implements OnInit {
 
     showPreview(event: Event) {
         const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
+        this.eventService.getEvent(event.id!).subscribe(eventDto => {
+            modalRef.componentInstance.eventDto = eventDto;
+        });
     }
 
     showDiff(event: Event) {
@@ -92,6 +102,9 @@ export class ModeratorEventsComponent implements OnInit {
 
     edit(event: Event) {
         console.log("edit", event);
+        this.router.navigateByUrl('/admin/events/new', {
+            state: {event},
+        });
     }
 
     delete(event: Event) {
