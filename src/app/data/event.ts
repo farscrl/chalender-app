@@ -64,6 +64,13 @@ export class Image {
     url?: string;
 }
 
+export class File {
+    id?: string;
+    used: boolean = false;
+    originalName?: string;
+    url?: string;
+}
+
 export class EventLookup {
     eventId?: string;
     title?: string;

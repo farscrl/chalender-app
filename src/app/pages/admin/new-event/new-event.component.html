@@ -196,19 +196,13 @@
         </div>
 
         <b>maletgs:</b><br>
-        <div class="image-previews">
-            <div class="image-preview" *ngFor="let image of images">
-                <div class="preview">
-                    <img [src]="image.url + '?width=150&auto_optimize=medium'" alt="image preview">
-                    <div class="filename">{{image.originalName}}</div>
-                </div>
-            </div>
-        </div>
+        <app-file-list [files]="images" [type]="'image'"></app-file-list>
         <div class="form-text">
             formats acceptads: JPG, PNG<br>
             grondezza maximala: 5 MB<br>
         </div>
-        <app-file-list [allowedMimeTypes]="['image/jpeg', 'image/png']"></app-file-list>
+        <app-file-upload [allowedMimeTypes]="['image/jpeg', 'image/png']"
+                         (fileAdded)="images.push($event)"></app-file-upload>
         <br><br>
 
         <b>documents:</b><br>
@@ -216,7 +210,7 @@
             formats acceptads: PDF<br>
             grondezza maximala: 5 MB<br>
         </div>
-        <app-file-list [allowedMimeTypes]="['application/pdf']"></app-file-list>
+        <app-file-upload [allowedMimeTypes]="['application/pdf']"></app-file-upload>
         <br><br>
 
         <div class="mb-3">

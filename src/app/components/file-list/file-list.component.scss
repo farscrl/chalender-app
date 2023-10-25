@@ -1,35 +1,26 @@
-::ng-deep {
-  .dropzone {
-    border-radius: 10px;
-    border: 1px dashed #667080;
-    padding: 1rem;
-  }
-
-  .dropzone-content {
+.image-previews {
     display: flex;
-    justify-content: center;
 
-    .file-drop-icon {
-      margin-right: 16px;
+    .image-preview {
+        max-width: 160px;
+        padding: 5px;
+        margin-right: 5px;
+        border: 1px solid gray;
+        display: flex;
+        flex-direction: column;
+
+        .filename {
+            word-wrap: break-word;
+            font-size: .85rem;
+            flex-grow: 1;
+        }
+
+        .image-handle {
+            text-align: right;
+
+            svg {
+                cursor: grab;
+            }
+        }
     }
-
-    a {
-      color: var(--accent) !important;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
-
-  &.dropzone-denied {
-    border: 2px dashed red;
-  }
-
-  &.dropzone-allowed {
-    border: 2px dashed green;
-  }
 }
-
-
-

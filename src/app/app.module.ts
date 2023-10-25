@@ -48,7 +48,7 @@ import { RoleBadgeComponent } from './components/role-badge/role-badge.component
 import { UserComponent } from './components/forms/user/user.component';
 import { ChangeUserComponent } from './components/change-user/change-user.component';
 import { NgxFileDropModule } from "ngx-file-drop";
-import { FileListComponent } from './components/file-list/file-list.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { DeleteEventComponent } from './components/modals/delete-event/delete-event.component';
 import { ReasonForChangeComponent } from './components/modals/reason-for-change/reason-for-change.component';
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
@@ -68,6 +68,8 @@ import { ViewSelectionComponent } from './components/events/view-selection/view-
 import { EventListItemComponent } from './components/events/event-list-item/event-list-item.component';
 import { EventDetailsComponent } from './components/events/event-details/event-details.component';
 import { DeleteAccountComponent } from './pages/admin/delete-account/delete-account.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FileListComponent } from './components/file-list/file-list.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -130,7 +132,7 @@ export function createTranslateLoader(http: HttpClient) {
         RoleBadgeComponent,
         UserComponent,
         ChangeUserComponent,
-        FileListComponent,
+        FileUploadComponent,
         DeleteEventComponent,
         ReasonForChangeComponent,
         AppRouterOutletDirective,
@@ -141,9 +143,11 @@ export function createTranslateLoader(http: HttpClient) {
         EventListItemComponent,
         EventDetailsComponent,
         DeleteAccountComponent,
+        FileListComponent,
     ],
     imports: [
         BrowserModule,
+        DragDropModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule,

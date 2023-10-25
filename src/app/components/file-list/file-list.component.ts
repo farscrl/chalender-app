@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {NgxFileDropEntry} from "ngx-file-drop";
-import {concatMap, Subject} from "rxjs";
-import {ImagesService} from "../../services/images.service";
+import { Component, Input } from '@angular/core';
+import { File, Image } from '../../data/event';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { ImagesService } from '../../services/images.service';
 
 @Component({
     selector: 'app-file-list',
@@ -10,60 +10,22 @@ import {ImagesService} from "../../services/images.service";
 })
 export class FileListComponent {
 
+    @Input() files!: File[] | Image[];
+
     @Input()
-    public allowedMimeTypes: string[] = [];
-
-    public dropZoneClassName = 'dropzone';
-    public dropZoneContentClassName = 'dropzone-content';
-
-    private uploadImagesQueue = new Subject<File>();
+    type: 'image' | 'file' = 'image';
 
     constructor(private imagesService: ImagesService) {
-        this.uploadImagesQueue.pipe(concatMap((file) => imagesService.uploadImage(file)))
-            .subscribe((result) => {
-                console.log(result);
-            });
     }
 
-    public dropped(files: NgxFileDropEntry[]) {
-        this.dropZoneClassName = 'dropzone';
-
-        for (const droppedFile of files) {
-            if (droppedFile.fileEntry.isFile) {
-                const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-                fileEntry.file((file: File) => {
-
-                    if (!this.allowedMimeTypes.includes(file.type)) {
-                        console.error('File type not allowed: ' + file.type);
-                        return;
-                    }
-
-                    // Here you can access the real file
-                    console.log(droppedFile.relativePath, file);
-
-                    // add file to queue, so files are uploaded one after another
-                    this.uploadImagesQueue.next(file);
-                });
-            } else {
-                // ignoring directories
-            }
-        }
+    reorderImages(event: CdkDragDrop<File[] | Image[]>) {
+        moveItemInArray(this.files, event.previousIndex, event.currentIndex);
     }
 
-    public fileOver(event: DragEvent) {
-        if (event.dataTransfer) {
-            for (let i = 0; i < event.dataTransfer.items.length; i++) {
-                if (!this.allowedMimeTypes.includes(event.dataTransfer.items[i].type)) {
-                    this.dropZoneClassName = 'dropzone dropzone-denied';
-                    return;
-                }
-            }
-        }
-
-        this.dropZoneClassName = 'dropzone dropzone-allowed';
-    }
-
-    public fileLeave(event: any) {
-        this.dropZoneClassName = 'dropzone';
+    deleteFile(file: File | Image) {
+        this.imagesService.unlinkImage(file.id!).subscribe(img => {
+            const idx = this.files.findIndex((obj) => obj.id === file.id);
+            this.files.splice(idx, 1);
+        });
     }
 }
