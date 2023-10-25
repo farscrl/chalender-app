@@ -6,6 +6,7 @@
 
 :root {
     --accent: #3CBFA4;
+    --danger: #D30000;
 }
 
 /* Importing Bootstrap SCSS file. */
@@ -103,6 +104,16 @@ button.clndr {
 
         &:hover {
             background-color: var(--accent);
+            color: white;
+        }
+    }
+
+    &.danger {
+        border: 1px solid var(--danger);
+        color: var(--danger);
+
+        &:hover {
+            background-color: var(--danger);
             color: white;
         }
     }

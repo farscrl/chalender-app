@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from "../../../services/authentication.service";
-import {UserFormService} from "../../../services/user-form.service";
+import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from "../../../services/authentication.service";
+import { UserFormService } from "../../../services/user-form.service";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-profile',
@@ -12,7 +13,11 @@ export class ProfileComponent implements OnInit {
     showSuccess = false;
     showError = false;
 
-    constructor(public ufs: UserFormService, private authService: AuthenticationService) {
+    constructor(
+        public ufs: UserFormService,
+        private authService: AuthenticationService,
+        private router: Router,
+    ) {
     }
 
     ngOnInit() {
@@ -45,5 +50,9 @@ export class ProfileComponent implements OnInit {
                 this.showError = true;
             }
         });
+    }
+
+    deleteAccount() {
+        this.router.navigate(['/admin/delete']);
     }
 }

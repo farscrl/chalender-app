@@ -58,11 +58,16 @@ import { RouterReuseStrategy } from './routing/router-reuse.strategy';
 import { AppRouterOutletDirective } from './routing/app-router-outlet.directive';
 import { EventFilterModalComponent } from './components/events/event-filter-modal/event-filter-modal.component';
 import { DatepickerTranslatorService } from './services/datepicker-translator.service';
-import { EventsListCardsComponent } from './components/events/events-list/events-list-cards/events-list-cards.component';
-import { EventsListTableComponent } from './components/events/events-list/events-list-table/events-list-table.component';
+import {
+    EventsListCardsComponent
+} from './components/events/events-list/events-list-cards/events-list-cards.component';
+import {
+    EventsListTableComponent
+} from './components/events/events-list/events-list-table/events-list-table.component';
 import { ViewSelectionComponent } from './components/events/view-selection/view-selection.component';
 import { EventListItemComponent } from './components/events/event-list-item/event-list-item.component';
 import { EventDetailsComponent } from './components/events/event-details/event-details.component';
+import { DeleteAccountComponent } from './pages/admin/delete-account/delete-account.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -135,6 +140,7 @@ export function createTranslateLoader(http: HttpClient) {
         ViewSelectionComponent,
         EventListItemComponent,
         EventDetailsComponent,
+        DeleteAccountComponent,
     ],
     imports: [
         BrowserModule,

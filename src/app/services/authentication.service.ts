@@ -80,6 +80,14 @@ export class AuthenticationService {
         }, httpOptions);
     }
 
+    deleteProfile(password: string, mode: string): Observable<void> {
+        const data = {
+            password: password,
+            mode: mode
+        };
+        return this.http.post<void>(environment.apiBasePath + 'user/auth/profile/delete', JSON.stringify(data), httpOptions);
+    }
+
     logout(): void {
         this.token = '';
         this.cookieService.delete(this.TOKEN_KEY, '/');

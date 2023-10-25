@@ -25,6 +25,7 @@ import { ConfirmPasswordComponent } from "./pages/u/confirm-password/confirm-pas
 import { ChangePasswordComponent } from "./pages/admin/change-password/change-password.component";
 import { ModeratorEventsComponent } from "./pages/moderator/moderator-events/moderator-events.component";
 import { UsersComponent } from "./pages/administrator/users/users.component";
+import { DeleteAccountComponent } from './pages/admin/delete-account/delete-account.component';
 
 const routes: Routes = [
     {
@@ -59,6 +60,7 @@ const routes: Routes = [
             {path: 'subscriptions', component: MySubscriptionsComponent, canActivate: [authGuard()]},
             {path: 'profile', component: ProfileComponent, canActivate: [authGuard()]},
             {path: 'change-password', component: ChangePasswordComponent, canActivate: [authGuard()]},
+            {path: 'delete', component: DeleteAccountComponent, canActivate: [authGuard()]},
         ]
     },
     {path: ':id', canMatch: [canMatchEventId], pathMatch: 'full', component: EventsDetailsComponent},

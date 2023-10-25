@@ -100,6 +100,23 @@
             "LAST_NAME_MISSING": "Endatescha p.pl. in num.",
             "ORGANIZATION": "Organisaziun (facultativ)",
             "PHONE": "Telefon (facultativ, per contactar en cas da dumondas)"
+        },
+        "DELETE_USER": {
+            "TITLE": "Stizzar il conto",
+            "EXPLICATION": "Donn che ti ans bandunas! Tge vuls ti far?",
+            "DELETE_EVENTS": "Stizzar mes profil, dentant mantegnair en il chalender mias occurrenzas endatadas",
+            "KEEP_EVENTS": "Stizzar mes profil ed era stizzar mias 4 occurrenzas endatadas",
+            "SELECT_DELETE_MODE": "Tscherna per plaschair tge che duai capitar cun tias occurrenzas.",
+            "PASSWORD": "Pled-clav",
+            "PASSWORD_MISSING": "Endatescha p.pl. tes pled-clav.",
+            "DELETE_WARNING": "Tias datas vegnan stizzadas definitivamain!",
+            "DELETE_BUTTON": "Stizzar definitivamain il conto",
+            "SUCCESS_TITLE": "Stizzà cun success il conto",
+            "SUCCESS_DESCRIPTION": "Il conto è vegnì stizzà cun success.",
+            "ERROR_PW_TITLE": "Pled-clav nunvalid",
+            "ERROR_PW_DESCRIPTION": "Il pled-clav endatà n'è betg correct",
+            "ERROR_TITLE": "Errur nunenconuschenta",
+            "ERROR_DESCRIPTION": "Ina errur nunenconuschenta è cumparida cun stizzar il conto. Emprova anc ina giada pli tard."
         }
     }
 }
