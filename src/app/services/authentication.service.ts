@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {environment} from "../../environments/environment";
-import {SystemRole} from "../data/security";
-import {SsrCookieService} from "ngx-cookie-service-ssr";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { environment } from "../../environments/environment";
+import { SystemRole } from "../data/security";
+import { SsrCookieService } from "ngx-cookie-service-ssr";
 import jwt_decode from "jwt-decode";
-import {UserDto} from "../data/user";
+import { UserDto } from "../data/user";
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -42,9 +42,10 @@ export class AuthenticationService {
         }, httpOptions);
     }
 
-    register(email: string, password: string, name: string, organisation: string): Observable<any> {
+    register(email: string, password: string, firstName: string, lastName: string, organisation: string): Observable<any> {
         return this.http.post(environment.apiBasePath + 'user/auth/signup', {
-            displayName: name,
+            firstName: firstName,
+            lastName: lastName,
             organisation: organisation,
             email: email,
             password: password,

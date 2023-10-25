@@ -6,11 +6,20 @@
 
     <form [formGroup]="f">
         <div class="mb-3">
-            <label for="displayName" class="form-label">Num</label>
-            <input type="text" id="displayName" name="displayName" class="form-control" formControlName="displayName"
-                   [class.is-invalid]="isFieldInvalid('displayName')">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('displayName')">
-                Endatescha p.pl. ina num.
+            <label for="firstName" class="form-label">Prenum</label>
+            <input type="text" id="firstName" name="firstName" class="form-control" formControlName="firstName"
+                   [class.is-invalid]="isFieldInvalid('firstName')">
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('firstName')">
+                Endatescha p.pl. in prenum.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Num</label>
+            <input type="text" id="lastName" name="lastName" class="form-control" formControlName="lastName"
+                   [class.is-invalid]="isFieldInvalid('lastName')">
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('lastName')">
+                Endatescha p.pl. in num.
             </div>
         </div>
 

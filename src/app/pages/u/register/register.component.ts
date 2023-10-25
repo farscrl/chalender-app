@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from "../../../services/authentication.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {NotificationsService} from "../../../services/notifications.service";
+import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from "../../../services/authentication.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { NotificationsService } from "../../../services/notifications.service";
 
 class NotificationService {
 }
@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
 
         this.didSubmit = true;
         this.notificationsService.clearMessages();
-        this.authService.register(this.f.value.email, this.f.value.password, this.f.value.displayName, this.f.value.organisation).subscribe(token => {
+        this.authService.register(this.f.value.email, this.f.value.password, this.f.value.firstName, this.f.value.lastName, this.f.value.organisation).subscribe(token => {
             this.notificationsService.successMessage(
                 'Registrà cun success',
                 "Ti t'es registrà cun success. Ti retschaivas bainprest in e-mail. Confermar p.pl. tia adressa dad e-mail per cuntinuar."
@@ -63,7 +63,8 @@ export class RegisterComponent implements OnInit {
 
     private initForm() {
         this.f = this.fb.group({
-            displayName: ['', Validators.required],
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
             organisation: [''],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(8)]],
