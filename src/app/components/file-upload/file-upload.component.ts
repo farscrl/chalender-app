@@ -2,7 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgxFileDropEntry } from "ngx-file-drop";
 import { concatMap, Subject } from "rxjs";
 import { ImagesService } from "../../services/images.service";
-import { Image } from '../../data/event';
+import { Document, Image } from '../../data/event';
+import { DocumentsService } from '../../services/documents.service';
 
 @Component({
     selector: 'app-file-upload',
@@ -15,15 +16,27 @@ export class FileUploadComponent {
     allowedMimeTypes: string[] = [];
 
     @Output()
-    fileAdded: EventEmitter<Image> = new EventEmitter<Image>();
+    fileAdded: EventEmitter<Image | Document> = new EventEmitter<Image | Document>();
+
+    @Input()
+    type: 'image' | 'document' = 'image';
 
     public dropZoneClassName = 'dropzone';
     public dropZoneContentClassName = 'dropzone-content';
 
     private uploadImagesQueue = new Subject<File>();
 
-    constructor(private imagesService: ImagesService) {
-        this.uploadImagesQueue.pipe(concatMap((file) => imagesService.uploadImage(file)))
+    constructor(
+        private imagesService: ImagesService,
+        private documentsService: DocumentsService,
+    ) {
+        this.uploadImagesQueue.pipe(concatMap((file) => {
+            if (this.type === 'image') {
+                return imagesService.uploadImage(file)
+            } else {
+                return documentsService.uploadDocument(file)
+            }
+        }))
             .subscribe((result) => {
                 this.fileAdded.next(result);
                 console.log(result);

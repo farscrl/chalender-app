@@ -4,7 +4,7 @@ import { AuthenticationService } from "../../../services/authentication.service"
 import { StaticDataService } from "../../../services/static-data.service";
 import { EventLanguage, Genre, Region } from "../../../data/static-data";
 import { minCheckboxValidator } from "../../../validators/mincheckbox.validator";
-import { EventDto, EventStatusTypes, Image } from "../../../data/event";
+import { Document, EventDto, EventStatusTypes, Image } from "../../../data/event";
 import { EventsService } from "../../../services/events.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { EventPreviewComponent } from "../../../components/event-preview/event-preview.component";
@@ -28,6 +28,7 @@ export class NewEventComponent implements OnInit {
     eventLanguages: EventLanguage[] = [];
 
     images: Image[] = [];
+    documents: Document[] = [];
 
     f: FormGroup = new FormGroup<any>({});
 
@@ -188,6 +189,7 @@ export class NewEventComponent implements OnInit {
 
         if (this.eventToChange) {
             this.images = this.eventToChange.images;
+            this.documents = this.eventToChange.documents;
         }
 
         this.f = this.fb.group({
@@ -301,6 +303,7 @@ export class NewEventComponent implements OnInit {
 
         eventDto.occurrences = this.transformOccurrencesToDto(this.eventOccurrencesFormArray.value);
         eventDto.images = this.images;
+        eventDto.documents = this.documents;
 
         return eventDto;
     }

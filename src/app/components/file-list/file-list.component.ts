@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { File, Image } from '../../data/event';
+import { Document, Image } from '../../data/event';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ImagesService } from '../../services/images.service';
 
@@ -10,19 +10,19 @@ import { ImagesService } from '../../services/images.service';
 })
 export class FileListComponent {
 
-    @Input() files!: File[] | Image[];
+    @Input() files!: Document[] | Image[];
 
     @Input()
-    type: 'image' | 'file' = 'image';
+    type: 'image' | 'document' = 'image';
 
     constructor(private imagesService: ImagesService) {
     }
 
-    reorderImages(event: CdkDragDrop<File[] | Image[]>) {
+    reorderImages(event: CdkDragDrop<Document[] | Image[]>) {
         moveItemInArray(this.files, event.previousIndex, event.currentIndex);
     }
 
-    deleteFile(file: File | Image) {
+    deleteFile(file: Document | Image) {
         this.imagesService.unlinkImage(file.id!).subscribe(img => {
             const idx = this.files.findIndex((obj) => obj.id === file.id);
             this.files.splice(idx, 1);

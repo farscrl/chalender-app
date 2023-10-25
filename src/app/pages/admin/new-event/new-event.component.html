@@ -202,15 +202,17 @@
             grondezza maximala: 5 MB<br>
         </div>
         <app-file-upload [allowedMimeTypes]="['image/jpeg', 'image/png']"
-                         (fileAdded)="images.push($event)"></app-file-upload>
+                         (fileAdded)="images.push($event)" [type]="'image'"></app-file-upload>
         <br><br>
 
         <b>documents:</b><br>
+        <app-file-list [files]="documents" [type]="'document'"></app-file-list>
         <div class="form-text">
             formats acceptads: PDF<br>
             grondezza maximala: 5 MB<br>
         </div>
-        <app-file-upload [allowedMimeTypes]="['application/pdf']"></app-file-upload>
+        <app-file-upload [allowedMimeTypes]="['application/pdf']"
+                         (fileAdded)="documents.push($event)" [type]="'document'"></app-file-upload>
         <br><br>
 
         <div class="mb-3">

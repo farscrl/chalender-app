@@ -2,12 +2,20 @@
     display: flex;
 
     .image-preview {
-        max-width: 160px;
+        width: 160px;
         padding: 5px;
         margin-right: 5px;
         border: 1px solid gray;
         display: flex;
         flex-direction: column;
+
+        .file-icon {
+            text-align: center;
+
+            svg {
+                height: 77px;
+            }
+        }
 
         .filename {
             word-wrap: break-word;

@@ -27,6 +27,7 @@ export class EventVersion {
     regions: Region[] = [];
     eventLanguages: EventLanguage[] = [];
     images: Image[] = [];
+    documents: Document[] = [];
     onlineOnly?: boolean;
     acceptTerms?: boolean;
     organiser?: string;
@@ -49,6 +50,7 @@ export class EventDto {
     regions: Region[] = [];
     eventLanguages: EventLanguage[] = [];
     images: Image[] = [];
+    documents: Document[] = [];
     onlineOnly?: boolean;
     acceptTerms?: boolean;
     organiser?: string;
@@ -64,7 +66,7 @@ export class Image {
     url?: string;
 }
 
-export class File {
+export class Document {
     id?: string;
     used: boolean = false;
     originalName?: string;
