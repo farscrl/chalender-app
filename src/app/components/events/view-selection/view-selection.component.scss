@@ -11,13 +11,11 @@
         cursor: pointer;
 
         svg * {
-            stroke: #1C2B33;
             fill: #1C2B33;
         }
 
         &.active {
             svg * {
-                stroke: #3CBFA4;
                 fill: #3CBFA4;
             }
         }
