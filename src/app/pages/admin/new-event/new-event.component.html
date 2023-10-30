@@ -231,7 +231,7 @@
 
         <button type="button" class="clndr accent" (click)="preview()">Prevista</button>
         <button type="button" class="clndr accent" (click)="onSubmit(true)"
-                *ngIf="isLoggedIn">Memorisar sco sboz
+                *ngIf="canSaveAsDraft()">Memorisar sco sboz
         </button>
         <button type="button" class="clndr accent" (click)="onSubmit(false)">Memorisar per la moderaziun</button>
     </form>

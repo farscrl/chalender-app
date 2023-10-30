@@ -206,7 +206,7 @@ export class NewEventComponent implements OnInit {
             contact: [this.eventToChange ? this.eventToChange.contact : ''],
             link: [this.eventToChange ? this.eventToChange.link : '', Validators.pattern(regexUrl)],
             pricing: [this.eventToChange ? this.eventToChange.pricing : ''],
-            acceptTerms: [false, Validators.requiredTrue],
+            acceptTerms: [this.eventToChange ? this.eventToChange.acceptTerms : false, Validators.requiredTrue],
             occurrences: new FormArray([]),
         });
         this.addOccurrences();
@@ -231,20 +231,14 @@ export class NewEventComponent implements OnInit {
         }
 
         this.f.get('onlineOnly')!.valueChanges.subscribe(val => {
-            if (val) {
-                this.f.get('location')!.disable();
-                this.f.get('address')!.disable();
-            } else {
-                this.f.get('location')!.enable();
-                this.f.get('address')!.enable();
-            }
-
+            this.setOnlyOnlineFields(val);
         });
+        this.setOnlyOnlineFields(this.f.get('onlineOnly')!.value);
     }
 
     addOccurrences() {
         if (this.eventToChange) {
-            this.eventToChange.occurrences.forEach(occurrence => {
+            this.eventToChange.occurrences.forEach((occurrence, idx) => {
                 const o = this.fb.group({
                     date: [dayjs(occurrence.date, 'D-M-YYYY').format('YYYY-MM-DD'), Validators.required],
                     start: [occurrence.start, Validators.required],
@@ -253,6 +247,7 @@ export class NewEventComponent implements OnInit {
                     isCancelled: [occurrence.isCancelled],
                 });
                 this.eventOccurrencesFormArray.push(o);
+                this.setAllDayFields(idx);
             });
         } else {
             const o = this.fb.group({
@@ -271,14 +266,19 @@ export class NewEventComponent implements OnInit {
     }
 
     didToggleAllDay(occurrenceIndex: number): void {
-        const occurrence = this.eventOccurrencesFormArray.at(occurrenceIndex);
-        if (occurrence.get('isAllDay')!.value) {
-            occurrence.get('start')!.disable();
-            occurrence.get('end')!.disable();
-        } else {
-            occurrence.get('start')!.enable();
-            occurrence.get('end')!.enable();
+        this.setAllDayFields(occurrenceIndex);
+    }
+
+    canSaveAsDraft(): boolean {
+        if (!this.isLoggedIn) {
+            return false;
         }
+
+        if (this.eventToChange && this.eventToChange.status !== "DRAFT") {
+            return false;
+        }
+
+        return true;
     }
 
     private transformToEventDto(isDraft: boolean): EventDto {
@@ -364,5 +364,26 @@ export class NewEventComponent implements OnInit {
                 }
             }
         });
+    }
+
+    private setOnlyOnlineFields(value: any): void {
+        if (value) {
+            this.f.get('location')!.disable();
+            this.f.get('address')!.disable();
+        } else {
+            this.f.get('location')!.enable();
+            this.f.get('address')!.enable();
+        }
+    }
+
+    private setAllDayFields(occurrenceIndex: number): void {
+        const occurrence = this.eventOccurrencesFormArray.at(occurrenceIndex);
+        if (occurrence.get('isAllDay')!.value) {
+            occurrence.get('start')!.disable();
+            occurrence.get('end')!.disable();
+        } else {
+            occurrence.get('start')!.enable();
+            occurrence.get('end')!.enable();
+        }
     }
 }
