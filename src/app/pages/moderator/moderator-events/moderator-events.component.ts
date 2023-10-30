@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ModeratorService } from "../../../services/moderator.service";
-import { Event, EventFilter, EventVersion } from "../../../data/event";
+import { Event, EventVersion } from "../../../data/event";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { EventPreviewComponent } from "../../../components/event-preview/event-preview.component";
 import { EventDiffComponent } from "../../../components/event-diff/event-diff.component";
@@ -8,6 +8,8 @@ import { DeleteEventComponent } from "../../../components/modals/delete-event/de
 import { ReasonForChangeComponent } from "../../../components/modals/reason-for-change/reason-for-change.component";
 import { Router } from '@angular/router';
 import { EventsService } from '../../../services/events.service';
+import { ModerationEventsFilter } from '../../../data/filter';
+import { SortableDirective, SortEvent } from '../../../utils/sortable.directive';
 
 @Component({
     selector: 'app-moderator-events',
@@ -20,8 +22,11 @@ export class ModeratorEventsComponent implements OnInit {
     total: number = 0;
     current: number = 0;
 
-    private eventFilter: EventFilter = new EventFilter();
+    filter = new ModerationEventsFilter();
+
     private page: number = 0;
+
+    @ViewChildren(SortableDirective) headers: QueryList<SortableDirective> | undefined;
 
     constructor(
         private moderatorService: ModeratorService,
@@ -120,8 +125,33 @@ export class ModeratorEventsComponent implements OnInit {
         });
     }
 
-    private search() {
-        this.moderatorService.getEvents(this.eventFilter, this.page, 20).subscribe(events => {
+    updateSearchTerm(searchTerm: string) {
+        this.filter.searchTerm = searchTerm;
+        this.search();
+    }
+
+
+    onSort({column, direction}: SortEvent) {
+        if (!this.headers) {
+            return;
+        }
+
+        // resetting other headers
+        this.headers.forEach((header) => {
+            if (header.sortable !== column) {
+                header.direction = '';
+            }
+        });
+
+        this.filter.sortOrder = direction;
+        this.filter.sortBy = column;
+        this.search();
+    }
+
+    search() {
+        console.log(this.filter);
+
+        this.moderatorService.getEvents(this.filter, this.page, 20).subscribe(events => {
             this.events = events.content;
             this.total = events.totalPages;
             this.current = events.number;

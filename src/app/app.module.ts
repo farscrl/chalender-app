@@ -70,6 +70,7 @@ import { EventDetailsComponent } from './components/events/event-details/event-d
 import { DeleteAccountComponent } from './pages/admin/delete-account/delete-account.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FileListComponent } from './components/file-list/file-list.component';
+import { SortableDirective } from './utils/sortable.directive';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -144,6 +145,7 @@ export function createTranslateLoader(http: HttpClient) {
         EventDetailsComponent,
         DeleteAccountComponent,
         FileListComponent,
+        SortableDirective,
     ],
     imports: [
         BrowserModule,

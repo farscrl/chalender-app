@@ -1,13 +1,58 @@
 <section class="content-wide">
     <h1>Moderaziun da las occurrenzas</h1>
 
+    <div class="filter">
+        <div class="status">
+            <b>Status:</b>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inReview"
+                       [(ngModel)]="filter.includeStateInReview" (ngModelChange)="search()">
+                <label class="form-check-label" for="inReview">nov</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="newModification"
+                       [(ngModel)]="filter.includeStateNewModification" (ngModelChange)="search()">
+                <label class="form-check-label" for="newModification">midada</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="published"
+                       [(ngModel)]="filter.includeStatePublished" (ngModelChange)="search()">
+                <label class="form-check-label" for="published">publitgà</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="rejected"
+                       [(ngModel)]="filter.includeStateRejected" (ngModelChange)="search()">
+                <label class="form-check-label" for="rejected">refusà</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="invalid"
+                       [(ngModel)]="filter.includeStateInvalid" (ngModelChange)="search()">
+                <label class="form-check-label" for="invalid">nunvalid</label>
+            </div>
+        </div>
+
+
+        <form (ngSubmit)="updateSearchTerm(searchTerm.value)" class="filter-right">
+            <div class="time-selection">
+                <select class="form-select form-select-lg" [(ngModel)]="filter.dates"
+                        [ngModelOptions]="{standalone: true}" (ngModelChange)="search()">
+                    <option value="FUTURE" selected>be futur</option>
+                    <option value="PAST">be passà</option>
+                    <option value="ALL">tut</option>
+                </select>
+            </div>
+
+            <input type="text" class="form-control" #searchTerm>
+            <button class="clndr accent" type="submit">Tschertgar</button>
+        </form>
+    </div>
     <table class="table table-striped">
-        <thead>
+        <thead class="table-light">
         <tr>
-            <th scope="col">Datas</th>
-            <th scope="col">User</th>
-            <th scope="col">Titel</th>
-            <th scope="col">Status</th>
+            <th scope="col" sortable="DATE" (sort)="onSort($event)">Datas</th>
+            <th scope="col" sortable="USER" (sort)="onSort($event)">User</th>
+            <th scope="col" sortable="TITLE" (sort)="onSort($event)">Titel</th>
+            <th scope="col" sortable="STATE" (sort)="onSort($event)">Status</th>
             <th scope="col">Acziuns</th>
         </tr>
         </thead>
@@ -18,7 +63,7 @@
                      *ngFor="let occurrence of getEventVersion(event)?.occurrences">{{occurrence.date}}</div>
             </td>
             <td>{{event.ownerEmail}}</td>
-            <th scope="row">{{getEventVersion(event)?.title}}</th>
+            <td scope="row">{{getEventVersion(event)?.title}}</td>
             <td>
                 <app-status-badge [status]="event.eventStatus!"></app-status-badge>
             </td>
