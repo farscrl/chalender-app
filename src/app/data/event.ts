@@ -94,6 +94,7 @@ export class EventOccurrences {
     end?: string;
     isAllDay?: boolean;
     isCancelled?: boolean;
+    occurrenceUid?: string;
 }
 
 export class EventFilter {

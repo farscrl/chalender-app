@@ -46,6 +46,12 @@ export class EventsService {
         return this.httpClient.get<EventDto>(this.getUrl(id));
     }
 
+    public getEventIcs(id: string, uid: string): Observable<string> {
+        return this.httpClient.get<string>(this.getUrl(id) + '/ics/' + uid, {
+            responseType: 'text' as 'json',
+        });
+    }
+
     public createEvent(event: EventDto): Observable<EventDto> {
         const body: any = Object.assign({}, event);
         return this.httpClient.post<EventDto>(this.getUrl(), body);
