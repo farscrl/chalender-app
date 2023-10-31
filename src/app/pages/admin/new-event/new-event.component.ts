@@ -51,7 +51,6 @@ export class NewEventComponent implements OnInit {
             const event = navigation.extras.state['event'];
             if (event) {
                 this.eventToChangeId = event.id;
-                console.log('eventToChangeId', this.eventToChangeId);
             }
         }
     }
@@ -92,9 +91,6 @@ export class NewEventComponent implements OnInit {
                 );
 
                 this.router.navigateByUrl('/admin/events');
-                // console.log(event);
-                // this.eventToChange = event;
-                // this.initForm();
             });
         } else {
             this.eventsService.createEvent(event).subscribe(event => {
@@ -109,15 +105,11 @@ export class NewEventComponent implements OnInit {
                 } else {
                     this.router.navigateByUrl('/');
                 }
-                // console.log(event);
-                // this.eventToChange = event;
-                // this.initForm();
             });
         }
     }
 
     preview() {
-        console.log(this.transformToEventDto(true));
         const dto = this.transformToEventDto(true);
         const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
         modalRef.componentInstance.eventDto = dto;

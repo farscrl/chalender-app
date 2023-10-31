@@ -29,7 +29,6 @@ export class EventsListCardsComponent implements OnInit, OnDestroy {
         dayjs.locale('rm', rmLocale);
 
         this.datesSubscription = this.eventsFilterService.getSearchResultsObservable().subscribe(dates => {
-            console.log(dates);
             this.categorizedEvents = this.datesUtil.groupEvents(dates);
         });
     }

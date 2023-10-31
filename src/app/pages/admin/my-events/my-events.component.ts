@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Event, EventFilter, EventVersion } from "../../../data/event";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { EventPreviewComponent } from "../../../components/event-preview/event-preview.component";
-import { EventDiffComponent } from "../../../components/event-diff/event-diff.component";
 import { UserService } from "../../../services/user.service";
 import { Router } from '@angular/router';
 import { EventsService } from '../../../services/events.service';
@@ -63,15 +62,7 @@ export class MyEventsComponent {
         });
     }
 
-    showDiff(event: Event) {
-        console.log("show diff", event);
-        const modalRef = this.modalService.open(EventDiffComponent, {size: 'xl'});
-        modalRef.componentInstance.oldEventVersion = event.currentlyPublished!;
-        modalRef.componentInstance.newEventVersion = event.waitingForReview!;
-    }
-
     edit(event: Event) {
-        console.log("edit", event);
         this.router.navigateByUrl('/admin/events/new', {
             state: {event},
         });

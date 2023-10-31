@@ -39,7 +39,6 @@ export class FileUploadComponent {
         }))
             .subscribe((result) => {
                 this.fileAdded.next(result);
-                console.log(result);
             });
     }
 
@@ -55,9 +54,6 @@ export class FileUploadComponent {
                         console.error('File type not allowed: ' + file.type);
                         return;
                     }
-
-                    // Here you can access the real file
-                    console.log(droppedFile.relativePath, file);
 
                     // add file to queue, so files are uploaded one after another
                     this.uploadImagesQueue.next(file);

@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {AuthenticationService} from "../../../services/authentication.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {NotificationsService} from "../../../services/notifications.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Message} from "../../../data/notifications";
+import { Component } from '@angular/core';
+import { AuthenticationService } from "../../../services/authentication.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { NotificationsService } from "../../../services/notifications.service";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Message } from "../../../data/notifications";
 
 @Component({
     selector: 'app-confirm-password',
@@ -26,7 +26,6 @@ export class ConfirmPasswordComponent {
     ngOnInit() {
         this.route.queryParams
             .subscribe(params => {
-                    console.log(params)
                     this.token = params['token'];
                     if (!this.token || this.token.length === 0) {
                         this.isCodeEmpty = true;

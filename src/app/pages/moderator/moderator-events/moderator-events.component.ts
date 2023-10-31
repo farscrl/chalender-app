@@ -68,7 +68,7 @@ export class ModeratorEventsComponent implements OnInit {
         if (!this.canShowPreview(event)) {
             return;
         }
-        
+
         const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
         this.eventService.getEvent(event.id!).subscribe(eventDto => {
             modalRef.componentInstance.eventDto = eventDto;
@@ -114,7 +114,6 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     edit(event: Event) {
-        console.log("edit", event);
         this.router.navigateByUrl('/admin/events/new', {
             state: {event},
         });
@@ -157,8 +156,6 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     search() {
-        console.log(this.filter);
-
         this.moderatorService.getEvents(this.filter, this.page, 20).subscribe(events => {
             this.events = events.content;
             this.total = events.totalPages;

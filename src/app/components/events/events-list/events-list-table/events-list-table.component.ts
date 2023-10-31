@@ -29,7 +29,6 @@ export class EventsListTableComponent {
         dayjs.locale('rm', rmLocale);
 
         this.datesSubscription = this.eventsFilterService.getSearchResultsObservable().subscribe(dates => {
-            console.log(dates);
             this.categorizedEvents = this.datesUtil.groupEvents(dates);
         });
     }
