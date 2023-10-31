@@ -15,6 +15,6 @@ export class EventCardComponent {
     public isFirst = false;
 
     get imgUrl() {
-        return this.event!.imageUrl + '?width=400&aspect_ratio=1:1&crop_gravity=center&auto_optimize=medium';
+        return this.event!.imageUrl + '?width=400&aspect_ratio=100:101&crop_gravity=center&auto_optimize=medium';
     }
 }
