@@ -30,6 +30,7 @@
         height: 86px;
         background-color: var(--accent);
         background: linear-gradient(138deg, #03CEA4 1.05%, #479E8C 103.94%);
+        overflow: hidden; // used for zoom effect
 
         @include media-breakpoint-up(md) {
             width: 100%;
