@@ -25,7 +25,10 @@
                 "ORGANIZER": "Organisatur",
                 "PRICE": "Pretsch",
                 "URL": "Link",
-                "CONTACT": "Contact"
+                "CONTACT": "Contact",
+                "OCCURRENCES": "Occurrenzas",
+                "IMAGES": "Maletgs",
+                "DOCUMENTS": "Documents"
             }
         },
         "FOOTER": {

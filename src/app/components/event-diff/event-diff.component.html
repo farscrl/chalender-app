@@ -111,6 +111,71 @@
                 <app-diff-field type="added" [diff]="contactDiff"></app-diff-field>
             </td>
         </tr>
+        <tr>
+            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.OCCURRENCES' | translate }}</th>
+            <td>
+                <table>
+                    <tr *ngFor="let o of oldEventVersion.occurrences">
+                        <td>
+                            {{ o.date }},
+                            <ng-container *ngIf="o.isAllDay">
+                                tuttadi
+                            </ng-container>
+                            <ng-container *ngIf="!o.isAllDay">
+                                {{o.start}}
+                                <ng-container *ngIf="o.end">
+                                    - {{o.end}}
+                                </ng-container>
+                            </ng-container>
+                            <span *ngIf="o.isCancelled">ANNULLÀ</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr *ngFor="let o of newEventVersion.occurrences">
+                        <td>
+                            {{ o.date }},
+                            <ng-container *ngIf="o.isAllDay">
+                                tuttadi
+                            </ng-container>
+                            <ng-container *ngIf="!o.isAllDay">
+                                {{o.start}}
+                                <ng-container *ngIf="o.end">
+                                    - {{o.end}}
+                                </ng-container>
+                            </ng-container>
+                            <span *ngIf="o.isCancelled">ANNULLÀ</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.IMAGES' | translate }}</th>
+            <td>
+                <img src="{{img.url + '?width=150&auto_optimize=medium' }}" alt="{{ img.originalName }}"
+                     *ngFor="let img of oldEventVersion.images">
+            </td>
+            <td>
+                <img src="{{img.url + '?width=150&auto_optimize=medium' }}" alt="{{ img.originalName }}"
+                     *ngFor="let img of newEventVersion.images">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.DOCUMENTS' | translate }}</th>
+            <td>
+                <a href="{{ doc.url }}" target="_blank" *ngFor="let doc of oldEventVersion.documents">
+                    {{ doc.originalName }}
+                </a>
+            </td>
+            <td>
+                <a href="{{ doc.url }}" target="_blank" *ngFor="let doc of newEventVersion.documents">
+                    {{ doc.originalName }}
+                </a>
+            </td>
+        </tr>
         </tbody>
     </table>
 </section>

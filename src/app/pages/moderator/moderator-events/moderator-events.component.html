@@ -69,7 +69,7 @@
             </td>
             <td>
                 <span class="button stroke" placement="bottom" ngbTooltip="Prevista" (click)="showPreview(event)"
-                      [class.inactive]="event.eventStatus === 'NEW_MODIFICATION'">
+                      [class.inactive]="!canShowPreview(event)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                       <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"
                             stroke-width="2"

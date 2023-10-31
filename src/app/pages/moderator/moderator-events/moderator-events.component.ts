@@ -65,10 +65,18 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     showPreview(event: Event) {
+        if (!this.canShowPreview(event)) {
+            return;
+        }
+        
         const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
         this.eventService.getEvent(event.id!).subscribe(eventDto => {
             modalRef.componentInstance.eventDto = eventDto;
         });
+    }
+
+    canShowPreview(event: Event) {
+        return event.eventStatus === 'NEW_MODIFICATION';
     }
 
     showDiff(event: Event) {
