@@ -1,5 +1,16 @@
 <div class="container" *ngIf="event">
-    <app-back-button/>
+    <div class="navi">
+        <app-back-button/>
 
-    <app-event-details [event]="event"></app-event-details>
+        <div class="cancelled" *ngIf="allOccurrencesCancelled">
+            occurrenza annullada!
+        </div>
+    </div>
+
+
+    <section class="content-narrow">
+        <app-event-details [event]="event"></app-event-details>
+    </section>
 </div>
+
+

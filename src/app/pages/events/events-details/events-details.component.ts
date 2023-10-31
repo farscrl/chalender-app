@@ -12,10 +12,14 @@ export class EventsDetailsComponent {
 
     public event?: EventDto;
 
+    public allOccurrencesCancelled = false;
+
     constructor(private eventsService: EventsService, private route: ActivatedRoute) {
         this.route.params.subscribe(params => {
             this.eventsService.getEvent(params['id']).subscribe((event: EventDto) => {
                 this.event = event;
+
+                this.allOccurrencesCancelled = event.occurrences.filter(o => o.isCancelled).length === event.occurrences.length;
             });
         });
     }

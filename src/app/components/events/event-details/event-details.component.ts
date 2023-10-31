@@ -25,4 +25,36 @@ export class EventDetailsComponent {
             element.click()
         });
     }
+
+    completeUrl(url: string) {
+        if (!/^https?:\/\//i.test(url)) {
+            url = 'http://' + url;
+        }
+        return url;
+    }
+
+    shareOnFacebook() {
+        const url = this.completeUrl(window.location.href);
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    }
+
+    shareOnTwitter() {
+        const url = this.completeUrl(window.location.href);
+        window.open(`https://twitter.com/intent/tweet?url=${url}`, '_blank');
+    }
+
+    shareOnWhatsapp() {
+        const url = this.completeUrl(window.location.href);
+        window.open(`https://wa.me/?text=${url}`, '_blank');
+    }
+
+    shareViaEmail() {
+        const url = this.completeUrl(window.location.href);
+        window.open(`mailto:?body=${url}`, '_blank');
+    }
+
+    copyLink() {
+        const url = this.completeUrl(window.location.href);
+        navigator.clipboard.writeText(url);
+    }
 }
