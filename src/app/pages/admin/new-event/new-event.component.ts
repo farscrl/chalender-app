@@ -250,15 +250,19 @@ export class NewEventComponent implements OnInit {
                 this.setAllDayFields(idx);
             });
         } else {
-            const o = this.fb.group({
-                date: ['', Validators.required],
-                start: ['', Validators.required],
-                end: [''],
-                isAllDay: [false],
-                isCancelled: [false],
-            });
-            this.eventOccurrencesFormArray.push(o);
+            this.addNewOccurrence();
         }
+    }
+
+    addNewOccurrence() {
+        const o = this.fb.group({
+            date: ['', Validators.required],
+            start: ['', Validators.required],
+            end: [''],
+            isAllDay: [false],
+            isCancelled: [false],
+        });
+        this.eventOccurrencesFormArray.push(o);
     }
 
     removeOccurrence(occurrenceIndex: number): void {
