@@ -119,7 +119,7 @@
                         <td>
                             {{ o.date }},
                             <ng-container *ngIf="o.isAllDay">
-                                tuttadi
+                                {{ 'COMPONENTS.EVENT_DIFF.ALLDAY' | translate }}
                             </ng-container>
                             <ng-container *ngIf="!o.isAllDay">
                                 {{o.start}}
@@ -127,7 +127,7 @@
                                     - {{o.end}}
                                 </ng-container>
                             </ng-container>
-                            <span *ngIf="o.isCancelled">ANNULLÀ</span>
+                            <span *ngIf="o.isCancelled">{{ 'COMPONENTS.EVENT_DIFF.CANCELLED' | translate }}</span>
                         </td>
                     </tr>
                 </table>

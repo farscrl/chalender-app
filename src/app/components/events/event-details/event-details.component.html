@@ -39,7 +39,7 @@
                                 </ng-container>
                             </ng-container>
                             <ng-container *ngIf="occ.isAllDay">
-                                tuttadi
+                                {{ 'EVENT_DETAILS.ALLDAY' | translate }}
                             </ng-container>
                         </span>
                         <div class="date-icon" (click)="downloadIcs(occ.occurrenceUid!)" *ngIf="!occ.isCancelled">
@@ -60,7 +60,7 @@
                             </svg>
                         </div>
                         <span *ngIf="occ.isCancelled" class="cancelled">
-                            annullà!
+                            {{ 'EVENT_DETAILS.CANCELLED' | translate }}
                         </span>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
             <ng-container *ngIf="event.genres.length > 0">
                 <hr>
                 <div class="d-flex genres">
-                    <div class="highlight">gener</div>
+                    <div class="highlight">{{ 'EVENT_DETAILS.GENRE' | translate }}</div>
                     <div>
                         <ng-container *ngFor="let genre of event.genres">
                             <span class="tag-element active">{{ genre.name }}</span>
@@ -81,7 +81,7 @@
             <ng-container *ngIf="event.regions.length > 0">
                 <hr>
                 <div class="d-flex regions">
-                    <div class="highlight">regiun</div>
+                    <div class="highlight">{{ 'EVENT_DETAILS.REGION' | translate }}</div>
                     <div>
                         <ng-container *ngFor="let region of event.regions">
                             <span class="tag-element active">{{ region.name }}</span>
@@ -92,7 +92,7 @@
 
             <hr>
             <div class="languages" *ngIf="event.eventLanguages.length > 0">
-                <div class="highlight">lingua</div>
+                <div class="highlight">{{ 'EVENT_DETAILS.LANGUAGE' | translate }}</div>
                 <div>
                     <ng-container *ngFor="let lang of event.eventLanguages; let i = index">
                         {{lang.name}}{{i === event.eventLanguages.length - 1 ? '' : ',' }}
@@ -101,37 +101,46 @@
             </div>
 
             <div class="address" *ngIf="event.address">
-                <div class="highlight">adressa</div>
+                <div class="highlight">{{ 'EVENT_DETAILS.ADDRESS' | translate }}</div>
                 <div>
                     {{event.address}}
                 </div>
             </div>
 
             <div class="pricing" *ngIf="event.pricing">
-                <div class="highlight">pretsch/prevendita</div>
+                <div class="highlight">{{ 'EVENT_DETAILS.PRICE' | translate }}</div>
                 <div>
                     {{event.pricing}}
                 </div>
             </div>
 
             <div class="link" *ngIf="event.link">
-                <div class="highlight">link</div>
+                <div class="highlight">{{ 'EVENT_DETAILS.URL' | translate }}</div>
                 <div>
                     <a href="{{ completeUrl(event.link) }}" target="_blank">{{event.link | shortDomain}}</a>
                 </div>
             </div>
 
             <div class="organiser" *ngIf="event.organiser">
-                <div class="highlight">organisatura</div>
+                <div class="highlight">{{ 'EVENT_DETAILS.ORGANIZER' | translate }}</div>
                 <div>
                     {{event.organiser}}
                 </div>
             </div>
 
             <div class="organiser" *ngIf="event.contact">
-                <div class="highlight">contact</div>
+                <div class="highlight">{{ 'EVENT_DETAILS.CONTACT' | translate }}</div>
                 <div>
                     {{event.contact}}
+                </div>
+            </div>
+
+            <div class="docuemnts">
+                <div class="highlight">{{ 'EVENT_DETAILS.DOCUMENTS' | translate }}</div>
+                <div>
+                    <ng-container *ngFor="let doc of event.documents">
+                        <a href="{{ doc.url }}" target="_blank">{{ doc.originalName }}</a>
+                    </ng-container>
                 </div>
             </div>
 

@@ -45,6 +45,7 @@
 
 <div class="text-center pb-5">
     <button class="clndr load-next-page" (click)="eventsFilterService.loadNextPage()"
-            *ngIf="eventsFilterService.hasMorePages">mussar ulteriuras occurrenzas
+            *ngIf="eventsFilterService.hasMorePages">
+        {{ 'EVENT_LIST.LOAD_MORE' | translate }}
     </button>
 </div>

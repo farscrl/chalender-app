@@ -27,8 +27,8 @@ export class FileUploadComponent {
     private uploadImagesQueue = new Subject<File>();
 
     constructor(
-        private imagesService: ImagesService,
-        private documentsService: DocumentsService,
+        imagesService: ImagesService,
+        documentsService: DocumentsService,
     ) {
         this.uploadImagesQueue.pipe(concatMap((file) => {
             if (this.type === 'image') {

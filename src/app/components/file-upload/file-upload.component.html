@@ -22,9 +22,13 @@
                 </svg>
             </span>
         <div>
-            <a (click)="openFileSelector()" *ngIf="type === 'image'">agiuntar in maletg</a>
-            <a (click)="openFileSelector()" *ngIf="type === 'document'">agiuntar in document</a>
-            u l'inserir qua cun trair e deponer.
+            <a (click)="openFileSelector()" *ngIf="type === 'image'">
+                {{ 'FORMS.EVENT.ADD_IMAGE_PREFIX' | translate }}
+            </a>
+            <a (click)="openFileSelector()" *ngIf="type === 'document'">
+                {{ 'FORMS.EVENT.ADD_DOCUMENT_PREFIX' | translate }}
+            </a>
+            {{ 'FORMS.EVENT.ADD_IMAGE_OR_DOCUMENT_SUFFIX' | translate }}
         </div>
     </ng-template>
 </ngx-file-drop>

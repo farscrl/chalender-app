@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {EventVersion} from "../../data/event";
-import {Diff, diff_match_patch} from "diff-match-patch";
+import { Component, Input, OnInit } from '@angular/core';
+import { EventVersion } from "../../data/event";
+import { Diff, diff_match_patch } from "diff-match-patch";
 
 @Component({
     selector: 'app-event-diff',
@@ -27,9 +27,6 @@ export class EventDiffComponent implements OnInit {
     pricingDiff: Diff[] = [];
     linkDiff: Diff[] = [];
     contactDiff: Diff[] = [];
-
-    // imagesDiff: Diff[] = [];
-    // occurrencesDiff: Diff[] = [];
 
     ngOnInit() {
         const diff = new diff_match_patch();

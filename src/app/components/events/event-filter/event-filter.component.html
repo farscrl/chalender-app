@@ -1,15 +1,15 @@
 <div class="filter">
     <input class="search-term" type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchTermUpdated()"
-           placeholder="tschertgar">
+           [placeholder]="'COMPONENTS.FILTER.SEARCH' | translate">
 
     <hr>
 
-    <h2>data d’entschatta</h2>
+    <h2>{{ 'COMPONENTS.FILTER.START_DATE' | translate }}</h2>
     <ngb-datepicker [(ngModel)]="selectedStartDate" (dateSelect)="dateSelected($event)"></ngb-datepicker>
 
     <hr>
 
-    <h2>regiun</h2>
+    <h2>{{ 'COMPONENTS.FILTER.REGION' | translate }}</h2>
     <div class="tags">
         <ng-container *ngFor="let region of regions">
                     <span class="tag-element" [class.active]="selectedRegionIds.includes(region.id)"
@@ -19,7 +19,7 @@
 
     <hr>
 
-    <h2>gener</h2>
+    <h2>{{ 'COMPONENTS.FILTER.GENRE' | translate }}</h2>
     <div class="tags">
         <ng-container *ngFor="let genre of genres">
                     <span class="tag-element" [class.active]="selectedGenreIds.includes(genre.id)"
@@ -30,9 +30,9 @@
     <hr>
 
     <button type="button" class="clndr accent" (click)="resetFilters()">
-        stizzar il filter
+        {{ 'COMPONENTS.FILTER.DELETE_FILTER' | translate }}
     </button>
     <button type="button" class="clndr accent" (click)="close()">
-        abunar quest filter
+        {{ 'COMPONENTS.FILTER.ABO_FILTER' | translate }}
     </button>
 </div>

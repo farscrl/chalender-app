@@ -29,7 +29,9 @@
                 "OCCURRENCES": "Occurrenzas",
                 "IMAGES": "Maletgs",
                 "DOCUMENTS": "Documents"
-            }
+            },
+            "ALLDAY": "tuttadi",
+            "CANCELLED": "ANNULLÀ"
         },
         "FOOTER": {
             "IMPRINT": "impressum",
@@ -71,6 +73,19 @@
                 "TITLE": "Vuls ti propi stizzar definitivamain l'eveniment «{{eventTitle}}»?",
                 "DELETE": "Gea, stizzar",
                 "CANCEL": "Interrumper"
+            },
+            "FEEDBACK": {
+                "TITLE_ACCEPT": "Remartga cun acceptar",
+                "TITLE_REJECT": "Remartga cun refusar",
+                "TITLE_DELETE": "Remartga cun stizzar",
+                "TITLE_EDIT": "Remartga cun modifitgar",
+                "DESCRIPTION_ACCEPT": "Trametter ina remartga cun acceptar l'eveniment «{{eventTitle}}»?",
+                "DESCRIPTION_REJECT": "Trametter ina remartga cun refusar l'eveniment «{{eventTitle}}»?",
+                "DESCRIPTION_EDIT": "Trametter ina remartga cun modifitgar l'eveniment «{{eventTitle}}»?",
+                "PERSONALIZED": "Remartga persunalisada",
+                "COMMENT": "Endatescha p.pl. ina remartga (u tscherneer in auter motiv sura).",
+                "CANCEL": "Interrumper",
+                "SAVE": "Memorisar"
             }
         },
         "NEW_EVENT_BTN": {
@@ -92,6 +107,14 @@
             "NEW_MODIFICATION": "midà",
             "REJECTED": "refusà",
             "INVALID": "nunvalid"
+        },
+        "FILTER": {
+            "SEARCH": "tschertgar",
+            "START_DATE": "data d’entschatta",
+            "REGION": "regiun",
+            "GENRE": "categoria",
+            "DELETE_FILTER": "stizzar il filter",
+            "ABO_FILTER": "abunar quest filter"
         }
     },
     "FORMS": {
@@ -102,7 +125,8 @@
             "LAST_NAME": "Num",
             "LAST_NAME_MISSING": "Endatescha p.pl. in num.",
             "ORGANIZATION": "Organisaziun (facultativ)",
-            "PHONE": "Telefon (facultativ, per contactar en cas da dumondas)"
+            "PHONE": "Telefon (facultativ, per contactar en cas da dumondas)",
+            "ROLES": "Rollas:"
         },
         "DELETE_USER": {
             "TITLE": "Stizzar il conto",
@@ -120,6 +144,30 @@
             "ERROR_PW_DESCRIPTION": "Il pled-clav endatà n'è betg correct",
             "ERROR_TITLE": "Errur nunenconuschenta",
             "ERROR_DESCRIPTION": "Ina errur nunenconuschenta è cumparida cun stizzar il conto. Emprova anc ina giada pli tard."
+        },
+        "EVENT": {
+            "ADD_IMAGE_PREFIX": "agiuntar in maletg",
+            "ADD_DOCUMENT_PREFIX": "agiuntar in document",
+            "ADD_IMAGE_OR_DOCUMENT_SUFFIX": "u l'inserir qua cun trair e deponer."
         }
+    },
+    "EVENT_LIST": {
+        "LOAD_MORE": "mussar ulteriuras occurrenzas",
+        "SHOW_FILTER": "mussar il filter",
+        "GRAPHIC_VIEW": "vista grafica",
+        "LIST_VIEW": "vista tabellara"
+    },
+    "EVENT_DETAILS": {
+        "ALLDAY": "tuttadi",
+        "CANCELLED": "annullà",
+        "GENRE": "categoria",
+        "REGION": "regiun",
+        "LANGUAGE": "lingua",
+        "ADDRESS": "adressa",
+        "PRICE": "pretsch/prevendita",
+        "URL": "link",
+        "ORGANIZER": "organisatura",
+        "CONTACT": "contact",
+        "DOCUMENTS": "documents"
     }
 }
