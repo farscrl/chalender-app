@@ -72,6 +72,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FileListComponent } from './components/file-list/file-list.component';
 import { SortableDirective } from './utils/sortable.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { NotLoggedInComponent } from './components/modals/not-logged-in/not-logged-in.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -147,6 +148,7 @@ export function createTranslateLoader(http: HttpClient) {
         DeleteAccountComponent,
         FileListComponent,
         SortableDirective,
+        NotLoggedInComponent,
     ],
     imports: [
         BrowserModule,

@@ -86,6 +86,12 @@
                 "COMMENT": "Endatescha p.pl. ina remartga (u tscherneer in auter motiv sura).",
                 "CANCEL": "Interrumper",
                 "SAVE": "Memorisar"
+            },
+            "NOT_LOGGED_IN": {
+                "TITLE": "Ti n'ès actualmain betg annunzià sin la pagina.",
+                "DESCRIPTION": "Per pudair abunar eveniments, stos ti avair in conto e s'annunziar",
+                "LOGIN_BUTTON": "S'annunziar",
+                "CANCEL_BUTTON": "Interrumper"
             }
         },
         "NEW_EVENT_BTN": {

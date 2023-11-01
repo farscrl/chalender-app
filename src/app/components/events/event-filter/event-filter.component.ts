@@ -1,8 +1,13 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { NgbCalendar, NgbDate, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
+import { NgbCalendar, NgbDate, NgbDateStruct, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { StaticDataService } from "../../../services/static-data.service";
 import { Genre, Region } from "../../../data/static-data";
 import { EventsFilterService } from "../../../services/events-filter.service";
+import { AuthenticationService } from '../../../services/authentication.service';
+import { NotLoggedInComponent } from '../../modals/not-logged-in/not-logged-in.component';
+import { Router } from '@angular/router';
+import { Subscription } from '../../../data/subscription';
+import { SubscriptionsService } from '../../../services/subscriptions.service';
 
 @Component({
     selector: 'app-event-filter',
@@ -27,8 +32,15 @@ export class EventFilterComponent implements OnInit, OnDestroy {
     private selectedStartDateSubscription: any;
     private searchTermSubscription: any;
 
-
-    constructor(private staticData: StaticDataService, private eventsFilterService: EventsFilterService, private calendar: NgbCalendar) {
+    constructor(
+        private staticData: StaticDataService,
+        private eventsFilterService: EventsFilterService,
+        private authService: AuthenticationService,
+        private subscriptionsService: SubscriptionsService,
+        private calendar: NgbCalendar,
+        private modalService: NgbModal,
+        private router: Router,
+    ) {
         this.selectedStartDate = this.calendar.getToday();
     }
 
@@ -73,8 +85,29 @@ export class EventFilterComponent implements OnInit, OnDestroy {
         this.hideFilterIfNeeded.emit();
     }
 
-    close() {
-        this.hideFilterIfNeeded.emit();
+    createSubscription() {
+        if (!this.authService.isLoggedIn()) {
+            const modalRef = this.modalService.open(NotLoggedInComponent, {size: 'md'});
+
+            modalRef.closed.subscribe(reason => {
+                if (reason === 'login') {
+                    this.hideFilterIfNeeded.emit();
+                    this.router.navigateByUrl("/u/login");
+                }
+            });
+
+            return;
+        }
+
+        const subscription = new Subscription();
+        subscription.genres = this.genres.filter(genre => this.selectedGenreIds.includes(genre.id));
+        subscription.regions = this.regions.filter(region => this.selectedRegionIds.includes(region.id));
+        subscription.searchTerm = this.searchTerm;
+
+        this.subscriptionsService.createSubscription(subscription).subscribe(() => {
+            this.hideFilterIfNeeded.emit();
+            this.router.navigateByUrl("/admin/subscriptions");
+        });
     }
 
     private loadStaticData() {

@@ -1,0 +1,13 @@
+<div class="modal-body">
+    <p>{{ 'COMPONENTS.MODALS.NOT_LOGGED_IN.TITLE' | translate }}</p>
+    <p>{{ 'COMPONENTS.MODALS.NOT_LOGGED_IN.DESCRIPTION' | translate }}</p>
+
+    <div class="buttons">
+        <button type="button" class="clndr" (click)="activeModal.dismiss('cancel')">
+            {{ 'COMPONENTS.MODALS.NOT_LOGGED_IN.CANCEL_BUTTON' | translate }}
+        </button>
+        <button type="button" class="clndr accent" (click)="activeModal.close('login')">
+            {{ 'COMPONENTS.MODALS.NOT_LOGGED_IN.LOGIN_BUTTON' | translate }}
+        </button>
+    </div>
+</div>
