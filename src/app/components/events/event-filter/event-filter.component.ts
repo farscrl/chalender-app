@@ -107,15 +107,6 @@ export class EventFilterComponent implements OnInit, OnDestroy {
 
         const modalRef = this.modalService.open(NewSubscriptionComponent, {size: 'lg'});
         modalRef.componentInstance.subscription = subscription;
-
-        modalRef.closed.subscribe(sub => {
-            if (sub) {
-                this.subscriptionsService.createSubscription(sub).subscribe(() => {
-                    this.hideFilterIfNeeded.emit();
-                    this.router.navigateByUrl("/admin/subscriptions");
-                });
-            }
-        });
     }
 
     private loadStaticData() {

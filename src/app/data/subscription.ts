@@ -6,6 +6,7 @@ export class Subscription {
 
     name?: string;
     type?: SubscriptionType;
+    active: boolean = true;
 
     genres: Genre[] = [];
     occurrences: EventOccurrences[] = [];

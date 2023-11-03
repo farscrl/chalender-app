@@ -74,6 +74,8 @@ import { SortableDirective } from './utils/sortable.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NotLoggedInComponent } from './components/modals/not-logged-in/not-logged-in.component';
 import { NewSubscriptionComponent } from './components/modals/new-subscription/new-subscription.component';
+import { EditSubscriptionComponent } from './pages/admin/edit-subscription/edit-subscription.component';
+import { SubscriptionComponent } from './components/forms/subscription/subscription.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -151,6 +153,8 @@ export function createTranslateLoader(http: HttpClient) {
         SortableDirective,
         NotLoggedInComponent,
         NewSubscriptionComponent,
+        EditSubscriptionComponent,
+        SubscriptionComponent,
     ],
     imports: [
         BrowserModule,

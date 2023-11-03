@@ -34,9 +34,7 @@ export class MySubscriptionsComponent {
     }
 
     edit(subscription: Subscription) {
-        this.router.navigateByUrl('/admin/events/new', {
-            state: {subscription},
-        });
+        this.router.navigateByUrl('/admin/subscriptions/' + subscription.id);
     }
 
     delete(subscription: Subscription) {

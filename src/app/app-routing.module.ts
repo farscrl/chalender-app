@@ -26,6 +26,7 @@ import { ChangePasswordComponent } from "./pages/admin/change-password/change-pa
 import { ModeratorEventsComponent } from "./pages/moderator/moderator-events/moderator-events.component";
 import { UsersComponent } from "./pages/administrator/users/users.component";
 import { DeleteAccountComponent } from './pages/admin/delete-account/delete-account.component';
+import { EditSubscriptionComponent } from './pages/admin/edit-subscription/edit-subscription.component';
 
 const routes: Routes = [
     {
@@ -57,7 +58,19 @@ const routes: Routes = [
         children: [
             {path: 'events/new', component: NewEventComponent},
             {path: 'events', component: MyEventsComponent, canActivate: [authGuard()]},
-            {path: 'subscriptions', component: MySubscriptionsComponent, canActivate: [authGuard()]},
+            {
+                path: 'subscriptions', children: [
+                    {
+                        path: '',
+                        component: MySubscriptionsComponent, canActivate: [authGuard()]
+                    },
+                    {
+                        path: ':id',
+                        pathMatch: 'full',
+                        component: EditSubscriptionComponent
+                    },
+                ]
+            },
             {path: 'profile', component: ProfileComponent, canActivate: [authGuard()]},
             {path: 'change-password', component: ChangePasswordComponent, canActivate: [authGuard()]},
             {path: 'delete', component: DeleteAccountComponent, canActivate: [authGuard()]},
