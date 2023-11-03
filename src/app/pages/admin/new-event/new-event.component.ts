@@ -86,7 +86,7 @@ export class NewEventComponent implements OnInit {
             event.id = this.eventToChange.id;
             this.eventsService.updateEvent(event).subscribe(event => {
                 this.notificationsService.successMessage(
-                    'Creà eveniment',
+                    'Creà l\'eveniment',
                     "Ti has memorisà cun success l'eveniment «" + event.title + "»."
                 );
 
@@ -96,7 +96,7 @@ export class NewEventComponent implements OnInit {
             this.eventsService.createEvent(event).subscribe(event => {
 
                 this.notificationsService.successMessage(
-                    'Creà eveniment',
+                    'Creà l\'eveniment',
                     "Ti has memorisà cun success l'eveniment «" + event.title + "»."
                 );
 
