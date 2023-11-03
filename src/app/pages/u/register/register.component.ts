@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
         this.authService.register(this.f.value.email, this.f.value.password, this.f.value.firstName, this.f.value.lastName, this.f.value.organisation).subscribe(token => {
             this.notificationsService.successMessage(
                 'Registrà cun success',
-                "Ti t'es registrà cun success. Ti retschaivas bainprest in e-mail. Confermar p.pl. tia adressa dad e-mail per cuntinuar."
+                "Ti retschaivas bainprest in e-mail. Confermar p.pl. tia adressa dad e-mail per cuntinuar."
             );
             this.router.navigateByUrl("/u/login");
         }, error => {
