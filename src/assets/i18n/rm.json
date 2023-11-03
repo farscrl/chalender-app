@@ -92,6 +92,10 @@
                 "DESCRIPTION": "Per pudair abunar eveniments, stos ti avair in conto e s'annunziar",
                 "LOGIN_BUTTON": "S'annunziar",
                 "CANCEL_BUTTON": "Interrumper"
+            },
+            "NEW_SUBSCRIPTION": {
+                "TITLE": "Crear in nov abunament",
+                "DESCRIPTION": "Ti poss abunar occurrenzas sin basa da tes criteris."
             }
         },
         "NEW_EVENT_BTN": {
@@ -155,6 +159,17 @@
             "ADD_IMAGE_PREFIX": "agiuntar in maletg",
             "ADD_DOCUMENT_PREFIX": "agiuntar in document",
             "ADD_IMAGE_OR_DOCUMENT_SUFFIX": "u l'inserir qua cun trair e deponer."
+        },
+        "SUBSCRIPTION": {
+            "NAME": "Num",
+            "NAME_ERROR": "Endatescha p.pl. in num.",
+            "TYPE": "Con savens vuls ti retschaiver ils e-mails?",
+            "TYPE_DESC_INSTANT": "Direct sche ina occurrenza vegn publitgada",
+            "TYPE_DESC_WEEKLY": "Ina resumaziun ina giada l'emna",
+            "TYPE_ERROR": "Tscherna p.pl. in tip.",
+            "CREATE": "Crear abunament",
+            "SAVE": "Memorisar midadas",
+            "CANCEL": "Interrumper"
         }
     },
     "EVENT_LIST": {

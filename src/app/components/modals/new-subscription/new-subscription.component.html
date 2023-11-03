@@ -1,0 +1,47 @@
+<div class="modal-header" *ngIf="subscription">
+    <h4 class="modal-title">
+        {{ 'COMPONENTS.MODALS.NEW_SUBSCRIPTION.TITLE' | translate }}
+    </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body" *ngIf="subscription">
+    <form [formGroup]="f">
+        <p>
+            {{ 'COMPONENTS.MODALS.NEW_SUBSCRIPTION.DESCRIPTION' | translate }}
+        </p>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">
+                {{ 'FORMS.SUBSCRIPTION.NAME' | translate }}
+            </label>
+            <input formControlName="name" type="text" class="form-control" id="name"
+                   [class.is-invalid]="isFieldInvalid('name')">
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('name')">
+                {{ 'FORMS.SUBSCRIPTION.NAME_ERROR' | translate }}
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="type" class="form-label">
+                {{ 'FORMS.SUBSCRIPTION.TYPE' | translate }}
+            </label>
+            <select id="type" class="form-select"
+                    [class.is-invalid]="isFieldInvalid('type')">
+                <option value="WEEKLY" selected>{{ 'FORMS.SUBSCRIPTION.TYPE_DESC_WEEKLY' | translate }}</option>
+                <option value="INSTANT">{{ 'FORMS.SUBSCRIPTION.TYPE_DESC_INSTANT' | translate }}</option>
+            </select>
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('type')">
+                {{ 'FORMS.SUBSCRIPTION.TYPE_ERROR' | translate }}
+            </div>
+        </div>
+    </form>
+
+    <div class="buttons">
+        <button type="button" class="clndr" (click)="activeModal.dismiss('')">
+            {{ 'FORMS.SUBSCRIPTION.CANCEL' | translate }}
+        </button>
+        <button type="button" class="clndr accent" (click)="saveChanges()">
+            <ng-container *ngIf="!subscription.id">{{ 'FORMS.SUBSCRIPTION.CREATE' | translate }}</ng-container>
+            <ng-container *ngIf="subscription.id">{{ 'FORMS.SUBSCRIPTION.SAVE' | translate }}</ng-container>
+        </button>
+    </div>
+</div>

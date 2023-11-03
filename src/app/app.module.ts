@@ -73,6 +73,7 @@ import { FileListComponent } from './components/file-list/file-list.component';
 import { SortableDirective } from './utils/sortable.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NotLoggedInComponent } from './components/modals/not-logged-in/not-logged-in.component';
+import { NewSubscriptionComponent } from './components/modals/new-subscription/new-subscription.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -149,6 +150,7 @@ export function createTranslateLoader(http: HttpClient) {
         FileListComponent,
         SortableDirective,
         NotLoggedInComponent,
+        NewSubscriptionComponent,
     ],
     imports: [
         BrowserModule,

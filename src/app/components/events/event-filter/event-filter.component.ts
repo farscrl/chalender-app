@@ -8,6 +8,7 @@ import { NotLoggedInComponent } from '../../modals/not-logged-in/not-logged-in.c
 import { Router } from '@angular/router';
 import { Subscription } from '../../../data/subscription';
 import { SubscriptionsService } from '../../../services/subscriptions.service';
+import { NewSubscriptionComponent } from '../../modals/new-subscription/new-subscription.component';
 
 @Component({
     selector: 'app-event-filter',
@@ -104,9 +105,16 @@ export class EventFilterComponent implements OnInit, OnDestroy {
         subscription.regions = this.regions.filter(region => this.selectedRegionIds.includes(region.id));
         subscription.searchTerm = this.searchTerm;
 
-        this.subscriptionsService.createSubscription(subscription).subscribe(() => {
-            this.hideFilterIfNeeded.emit();
-            this.router.navigateByUrl("/admin/subscriptions");
+        const modalRef = this.modalService.open(NewSubscriptionComponent, {size: 'lg'});
+        modalRef.componentInstance.subscription = subscription;
+
+        modalRef.closed.subscribe(sub => {
+            if (sub) {
+                this.subscriptionsService.createSubscription(sub).subscribe(() => {
+                    this.hideFilterIfNeeded.emit();
+                    this.router.navigateByUrl("/admin/subscriptions");
+                });
+            }
         });
     }
 
