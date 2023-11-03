@@ -27,6 +27,9 @@ import { ModeratorEventsComponent } from "./pages/moderator/moderator-events/mod
 import { UsersComponent } from "./pages/administrator/users/users.component";
 import { DeleteAccountComponent } from './pages/admin/delete-account/delete-account.component';
 import { EditSubscriptionComponent } from './pages/admin/edit-subscription/edit-subscription.component';
+import {
+    DeactivateSubscriptionComponent
+} from './pages/admin/deactivate-subscription/deactivate-subscription.component';
 
 const routes: Routes = [
     {
@@ -68,6 +71,11 @@ const routes: Routes = [
                         path: ':id',
                         pathMatch: 'full',
                         component: EditSubscriptionComponent
+                    },
+                    {
+                        path: 'disable/:id',
+                        pathMatch: 'full',
+                        component: DeactivateSubscriptionComponent
                     },
                 ]
             },

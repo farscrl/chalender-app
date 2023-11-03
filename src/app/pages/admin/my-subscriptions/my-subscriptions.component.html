@@ -9,6 +9,7 @@
             <th scope="col">Categoria(s)</th>
             <th scope="col">Regiun(s)</th>
             <th scope="col">Term da tschertgar</th>
+            <th scope="col">Activ?</th>
             <th scope="col">Acziuns</th>
         </tr>
         </thead>
@@ -27,6 +28,10 @@
                 {{ getRegions(sub) ? getRegions(sub) : '-' }}
             <td>
                 {{ sub.searchTerm ? sub.searchTerm : '-' }}
+            </td>
+            <td>
+                <span *ngIf="sub.active">activ</span>
+                <span *ngIf="!sub.active">inactiv</span>
             </td>
             <td>
                 <span class="button" placement="bottom" ngbTooltip="Modifitgar abunament" (click)="edit(sub)">

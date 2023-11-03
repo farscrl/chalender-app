@@ -21,6 +21,10 @@ export class SubscriptionsService {
         return this.httpClient.get<Subscription>(this.getUrl(id));
     }
 
+    public disableSubscription(id: string): Observable<void> {
+        return this.httpClient.post<void>(this.getUrl(id) + '/disable', null);
+    }
+
     public createSubscription(subscription: Subscription): Observable<Subscription> {
         const body: any = Object.assign({}, subscription);
         return this.httpClient.post<Subscription>(this.getUrl(), body);

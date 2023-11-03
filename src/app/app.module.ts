@@ -76,6 +76,7 @@ import { NotLoggedInComponent } from './components/modals/not-logged-in/not-logg
 import { NewSubscriptionComponent } from './components/modals/new-subscription/new-subscription.component';
 import { EditSubscriptionComponent } from './pages/admin/edit-subscription/edit-subscription.component';
 import { SubscriptionComponent } from './components/forms/subscription/subscription.component';
+import { DeactivateSubscriptionComponent } from './pages/admin/deactivate-subscription/deactivate-subscription.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -155,6 +156,7 @@ export function createTranslateLoader(http: HttpClient) {
         NewSubscriptionComponent,
         EditSubscriptionComponent,
         SubscriptionComponent,
+        DeactivateSubscriptionComponent,
     ],
     imports: [
         BrowserModule,
