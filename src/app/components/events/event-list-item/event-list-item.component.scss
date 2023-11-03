@@ -51,6 +51,8 @@
     @include media-breakpoint-up(md) {
         display: flex;
         align-items: flex-start;
+        flex-wrap: wrap;
+        white-space: nowrap;
 
         .tag {
             background-color: var(--accent);
@@ -58,6 +60,7 @@
             padding: 2px 4px;
             font-size: 0.85rem;
             margin-right: 6px;
+            margin-bottom: 2px;
         }
     }
 }

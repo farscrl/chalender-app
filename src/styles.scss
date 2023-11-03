@@ -128,6 +128,8 @@ button.clndr {
     // clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
     position: relative;
 
+    flex-wrap: wrap;
+    white-space: nowrap;
 
     &.active {
         border: 1px solid var(--accent);
