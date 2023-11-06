@@ -50,6 +50,8 @@ export class ModeratorEventsComponent implements OnInit {
                 return event.currentlyPublished;
             case 'NEW_MODIFICATION':
                 return event.waitingForReview;
+            case "REJECTED":
+                return event.rejected;
             default:
                 return undefined;
         }
