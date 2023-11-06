@@ -1,5 +1,5 @@
-import { NgModule, isDevMode } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { isDevMode, NgModule } from '@angular/core';
+import { BrowserModule, provideClientHydration, TransferState } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,7 +52,6 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { DeleteEventComponent } from './components/modals/delete-event/delete-event.component';
 import { ReasonForChangeComponent } from './components/modals/reason-for-change/reason-for-change.component';
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { RouteReuseStrategy } from '@angular/router';
 import { RouterReuseStrategy } from './routing/router-reuse.strategy';
 import { AppRouterOutletDirective } from './routing/app-router-outlet.directive';
@@ -76,7 +75,10 @@ import { NotLoggedInComponent } from './components/modals/not-logged-in/not-logg
 import { NewSubscriptionComponent } from './components/modals/new-subscription/new-subscription.component';
 import { EditSubscriptionComponent } from './pages/admin/edit-subscription/edit-subscription.component';
 import { SubscriptionComponent } from './components/forms/subscription/subscription.component';
-import { DeactivateSubscriptionComponent } from './pages/admin/deactivate-subscription/deactivate-subscription.component';
+import {
+    DeactivateSubscriptionComponent
+} from './pages/admin/deactivate-subscription/deactivate-subscription.component';
+import { translateBrowserLoaderFactory } from './utils/translate-browser.loader';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -92,10 +94,6 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
             return authService.getToken() ?? null;
         }
     }
-}
-
-export function createTranslateLoader(http: HttpClient) {
-    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -177,16 +175,16 @@ export function createTranslateLoader(http: HttpClient) {
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
-                deps: [HttpClient]
+                useFactory: translateBrowserLoaderFactory,
+                deps: [HttpClient, TransferState]
             },
             defaultLanguage: 'rm'
         }),
         ServiceWorkerModule.register('ngsw-worker.js', {
-          enabled: !isDevMode(),
-          // Register the ServiceWorker as soon as the application is stable
-          // or after 30 seconds (whichever comes first).
-          registrationStrategy: 'registerWhenStable:30000'
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
         }),
     ],
     providers: [
