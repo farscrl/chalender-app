@@ -151,10 +151,22 @@
                     },
                     "configurations": {
                         "prod": {
-                            "outputHashing": "media"
+                            "outputHashing": "media",
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ]
                         },
                         "staging": {
-                            "outputHashing": "media"
+                            "outputHashing": "media",
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.staging.ts"
+                                }
+                            ]
                         },
                         "dev": {
                             "buildOptimizer": false,
