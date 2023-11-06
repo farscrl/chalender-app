@@ -45,6 +45,8 @@ hr {
     }
 
     .description {
+        width: 100%;
+        
         @include media-breakpoint-up(md) {
             margin-right: 20px;
         }
