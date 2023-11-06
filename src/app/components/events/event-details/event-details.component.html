@@ -82,7 +82,7 @@
                 <hr>
                 <div class="d-flex regions">
                     <div class="highlight">{{ 'EVENT_DETAILS.REGION' | translate }}</div>
-                    <div>
+                    <div class="tags">
                         <ng-container *ngFor="let region of event.regions">
                             <span class="tag-element active">{{ region.name }}</span>
                         </ng-container>
@@ -135,7 +135,7 @@
                 </div>
             </div>
 
-            <div class="docuemnts">
+            <div class="docuemnts" *ngIf="event.documents.length > 0">
                 <div class="highlight">{{ 'EVENT_DETAILS.DOCUMENTS' | translate }}</div>
                 <div>
                     <ng-container *ngFor="let doc of event.documents">
