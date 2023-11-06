@@ -70,7 +70,7 @@
         },
         "MODALS": {
             "DELETE_EVENT": {
-                "TITLE": "Vuls ti propi stizzar definitivamain l'eveniment «{{eventTitle}}»?",
+                "TITLE": "Vuls ti propi stizzar definitivamain l'occurrenza «{{eventTitle}}»?",
                 "DELETE": "Gea, stizzar",
                 "CANCEL": "Interrumper"
             },
@@ -79,9 +79,9 @@
                 "TITLE_REJECT": "Remartga cun refusar",
                 "TITLE_DELETE": "Remartga cun stizzar",
                 "TITLE_EDIT": "Remartga cun modifitgar",
-                "DESCRIPTION_ACCEPT": "Trametter ina remartga cun acceptar l'eveniment «{{eventTitle}}»?",
-                "DESCRIPTION_REJECT": "Trametter ina remartga cun refusar l'eveniment «{{eventTitle}}»?",
-                "DESCRIPTION_EDIT": "Trametter ina remartga cun modifitgar l'eveniment «{{eventTitle}}»?",
+                "DESCRIPTION_ACCEPT": "Trametter ina remartga cun acceptar l'occurrenza «{{eventTitle}}»?",
+                "DESCRIPTION_REJECT": "Trametter ina remartga cun refusar l'occurrenza «{{eventTitle}}»?",
+                "DESCRIPTION_EDIT": "Trametter ina remartga cun modifitgar l'occurrenza «{{eventTitle}}»?",
                 "PERSONALIZED": "Remartga persunalisada",
                 "COMMENT": "Endatescha p.pl. ina remartga (u tscherneer in auter motiv sura).",
                 "CANCEL": "Interrumper",
@@ -89,7 +89,7 @@
             },
             "NOT_LOGGED_IN": {
                 "TITLE": "Ti n'ès actualmain betg annunzià sin la pagina.",
-                "DESCRIPTION": "Per pudair abunar eveniments, stos ti avair in conto e s'annunziar",
+                "DESCRIPTION": "Per pudair abunar occurrenzas, stos ti avair in conto e s'annunziar",
                 "LOGIN_BUTTON": "S'annunziar",
                 "CANCEL_BUTTON": "Interrumper"
             },

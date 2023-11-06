@@ -86,8 +86,8 @@ export class NewEventComponent implements OnInit {
             event.id = this.eventToChange.id;
             this.eventsService.updateEvent(event).subscribe(event => {
                 this.notificationsService.successMessage(
-                    'Creà l\'eveniment',
-                    "Ti has memorisà cun success l'eveniment «" + event.title + "»."
+                    'Creà l\'occurrenza',
+                    "Ti has memorisà cun success l'occurrenza «" + event.title + "»."
                 );
 
                 this.router.navigateByUrl('/admin/events');
@@ -96,8 +96,8 @@ export class NewEventComponent implements OnInit {
             this.eventsService.createEvent(event).subscribe(event => {
 
                 this.notificationsService.successMessage(
-                    'Creà l\'eveniment',
-                    "Ti has memorisà cun success l'eveniment «" + event.title + "»."
+                    'Creà l\'occurrenza',
+                    "Ti has memorisà cun success l'occurrenza «" + event.title + "»."
                 );
 
                 if (this.isLoggedIn) {
