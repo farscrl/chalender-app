@@ -2,10 +2,10 @@
     display: flex;
 
     .image-preview {
-        width: 160px;
-        padding: 5px;
-        margin-right: 5px;
-        border: 1px solid gray;
+        width: 190px;
+        padding: 14px;
+        margin-right: 25px;
+        border: 1px solid #dee2e6;
         display: flex;
         flex-direction: column;
 
@@ -25,6 +25,7 @@
 
         .image-handle {
             text-align: right;
+            margin-bottom: 6px;
 
             svg {
                 cursor: grab;
