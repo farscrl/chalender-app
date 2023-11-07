@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EventsService } from "../../../services/events.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { EventDto } from "../../../data/event";
 import { Meta } from '@angular/platform-browser';
+import { EventDto } from '../../../shared/data/event';
+import { EventsService } from '../../../shared/services/events.service';
 
 @Component({
     selector: 'app-events-details',

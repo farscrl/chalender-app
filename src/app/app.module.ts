@@ -1,15 +1,11 @@
 import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, TransferState } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventsListComponent } from './pages/events/events-list/events-list.component';
 import { EventsDetailsComponent } from './pages/events/events-details/events-details.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BackButtonComponent } from './components/back-button/back-button.component';
-import { LoginComponent } from './pages/u/login/login.component';
-import { LogoutComponent } from './pages/u/logout/logout.component';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { JWT_OPTIONS, JwtModule } from "@auth0/angular-jwt";
 import { environment } from "../environments/environment";
@@ -19,36 +15,15 @@ import { ImprintComponent } from './pages/static/imprint/imprint.component';
 import { PrivacyComponent } from './pages/static/privacy/privacy.component';
 import { OrganisationComponent } from './pages/static/organisation/organisation.component';
 import { NotFoundComponent } from './pages/static/not-found/not-found.component';
-import { EventsComponent } from './pages/u/events/events.component';
-import { ForgotPasswordComponent } from './pages/u/forgot-password/forgot-password.component';
-import { RegisterComponent } from './pages/u/register/register.component';
-import { NewEventComponent } from './pages/admin/new-event/new-event.component';
-import { MyEventsComponent } from './pages/admin/my-events/my-events.component';
-import { MySubscriptionsComponent } from './pages/admin/my-subscriptions/my-subscriptions.component';
-import { ProfileComponent } from './pages/admin/profile/profile.component';
-import { AuthenticationService } from "./services/authentication.service";
-import { ShortDomainPipe } from './pipes/short-domain.pipe';
 import { EventCardComponent } from './components/events/event-card/event-card.component';
-import { NgbDatepickerI18n, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 import { EventFilterComponent } from './components/events/event-filter/event-filter.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MessagesComponent } from './components/messages/messages.component';
-import { ConfirmEmailComponent } from './pages/u/confirm-email/confirm-email.component';
-import { ConfirmPasswordComponent } from './pages/u/confirm-password/confirm-password.component';
-import { ChangePasswordComponent } from './pages/admin/change-password/change-password.component';
 import { NewEventButtonComponent } from './components/new-event-button/new-event-button.component';
-import { ModeratorEventsComponent } from './pages/moderator/moderator-events/moderator-events.component';
-import { StatusBadgeComponent } from './components/status-badge/status-badge.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
 import { EventPreviewComponent } from './components/event-preview/event-preview.component';
 import { EventDiffComponent } from './components/event-diff/event-diff.component';
 import { DiffFieldComponent } from './components/event-diff/diff-field/diff-field.component';
-import { UsersComponent } from "./pages/administrator/users/users.component";
-import { RoleBadgeComponent } from './components/role-badge/role-badge.component';
-import { UserComponent } from './components/forms/user/user.component';
-import { ChangeUserComponent } from './components/change-user/change-user.component';
-import { NgxFileDropModule } from "ngx-file-drop";
-import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { DeleteEventComponent } from './components/modals/delete-event/delete-event.component';
 import { ReasonForChangeComponent } from './components/modals/reason-for-change/reason-for-change.component';
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
@@ -56,7 +31,6 @@ import { RouteReuseStrategy } from '@angular/router';
 import { RouterReuseStrategy } from './routing/router-reuse.strategy';
 import { AppRouterOutletDirective } from './routing/app-router-outlet.directive';
 import { EventFilterModalComponent } from './components/events/event-filter-modal/event-filter-modal.component';
-import { DatepickerTranslatorService } from './services/datepicker-translator.service';
 import {
     EventsListCardsComponent
 } from './components/events/events-list/events-list-cards/events-list-cards.component';
@@ -66,19 +40,14 @@ import {
 import { ViewSelectionComponent } from './components/events/view-selection/view-selection.component';
 import { EventListItemComponent } from './components/events/event-list-item/event-list-item.component';
 import { EventDetailsComponent } from './components/events/event-details/event-details.component';
-import { DeleteAccountComponent } from './pages/admin/delete-account/delete-account.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { FileListComponent } from './components/file-list/file-list.component';
-import { SortableDirective } from './utils/sortable.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NotLoggedInComponent } from './components/modals/not-logged-in/not-logged-in.component';
 import { NewSubscriptionComponent } from './components/modals/new-subscription/new-subscription.component';
-import { EditSubscriptionComponent } from './pages/admin/edit-subscription/edit-subscription.component';
-import { SubscriptionComponent } from './components/forms/subscription/subscription.component';
-import {
-    DeactivateSubscriptionComponent
-} from './pages/admin/deactivate-subscription/deactivate-subscription.component';
-import { translateBrowserLoaderFactory } from './utils/translate-browser.loader';
+
+import { SharedModule } from './shared/shared.module';
+import { AuthenticationService } from './shared/services/authentication.service';
+import { translateBrowserLoaderFactory } from './shared/utils/translate-browser.loader';
+import { DatepickerTranslatorService } from './shared/services/datepicker-translator.service';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -103,41 +72,20 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         EventsDetailsComponent,
         HeaderComponent,
         BackButtonComponent,
-        LoginComponent,
-        LogoutComponent,
         HelpComponent,
         ContactComponent,
         ImprintComponent,
         PrivacyComponent,
         OrganisationComponent,
         NotFoundComponent,
-        EventsComponent,
-        ForgotPasswordComponent,
-        RegisterComponent,
-        NewEventComponent,
-        MyEventsComponent,
-        MySubscriptionsComponent,
-        ProfileComponent,
-        ShortDomainPipe,
         EventCardComponent,
         EventFilterComponent,
         FooterComponent,
         MessagesComponent,
-        ConfirmEmailComponent,
-        ConfirmPasswordComponent,
-        ChangePasswordComponent,
         NewEventButtonComponent,
-        ModeratorEventsComponent,
-        StatusBadgeComponent,
-        PaginationComponent,
         EventPreviewComponent,
         EventDiffComponent,
         DiffFieldComponent,
-        UsersComponent,
-        RoleBadgeComponent,
-        UserComponent,
-        ChangeUserComponent,
-        FileUploadComponent,
         DeleteEventComponent,
         ReasonForChangeComponent,
         AppRouterOutletDirective,
@@ -147,21 +95,13 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         ViewSelectionComponent,
         EventListItemComponent,
         EventDetailsComponent,
-        DeleteAccountComponent,
-        FileListComponent,
-        SortableDirective,
         NotLoggedInComponent,
         NewSubscriptionComponent,
-        EditSubscriptionComponent,
-        SubscriptionComponent,
-        DeactivateSubscriptionComponent,
     ],
     imports: [
         BrowserModule,
-        DragDropModule,
         AppRoutingModule,
         HttpClientModule,
-        FormsModule,
         JwtModule.forRoot({
             jwtOptionsProvider: {
                 provide: JWT_OPTIONS,
@@ -169,9 +109,6 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
                 deps: [AuthenticationService]
             },
         }),
-        ReactiveFormsModule,
-        NgbModule,
-        NgxFileDropModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -186,6 +123,7 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000'
         }),
+        SharedModule,
     ],
     providers: [
         {

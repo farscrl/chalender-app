@@ -1,12 +1,12 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { CategorizedEvents } from '../../../../data/event';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EventsFilterService } from '../../../../services/events-filter.service';
 import * as dayjs from 'dayjs';
-import { rmLocale } from '../../../../utils/day-js-locale';
 import { EventFilterModalComponent } from '../../event-filter-modal/event-filter-modal.component';
 import { Subscription } from 'rxjs';
-import { DatesUtil } from '../../../../utils/dates.util';
+import { CategorizedEvents } from '../../../../shared/data/event';
+import { EventsFilterService } from '../../../../shared/services/events-filter.service';
+import { DatesUtil } from '../../../../shared/utils/dates.util';
+import { rmLocale } from '../../../../shared/utils/day-js-locale';
 
 @Component({
     selector: 'app-events-list-cards',

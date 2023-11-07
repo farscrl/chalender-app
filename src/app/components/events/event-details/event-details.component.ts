@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { EventDto } from '../../../data/event';
-import { EventsService } from '../../../services/events.service';
+import { EventsService } from '../../../shared/services/events.service';
+import { EventDto } from '../../../shared/data/event';
 
 @Component({
     selector: 'app-event-details',

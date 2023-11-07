@@ -44,17 +44,20 @@
 
         <ul class="main-menu-bottom" *ngIf="authService.isLoggedIn()">
             <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/admin/events/new'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.NEW_EVENT' | translate }}</a>
+                   [routerLink]="'/user/event-form'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.NEW_EVENT' | translate }}</a>
             </li>
             <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/admin/events'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_EVENTS' | translate }}</a></li>
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/admin/subscriptions'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_ABOS' | translate }}</a>
+                   [routerLink]="'/user/events'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_EVENTS' | translate }}</a>
             </li>
             <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/admin/profile'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.PROFILE' | translate }}</a></li>
+                   [routerLink]="'/user/subscriptions'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_ABOS' | translate }}</a>
+            </li>
             <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/u/logout'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.LOGOUT' | translate }}</a></li>
+                   [routerLink]="'/user/profile'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.PROFILE' | translate }}</a>
+            </li>
+            <li><a (click)="toggleMenu(menu)"
+                   [routerLink]="'/user/logout'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.LOGOUT' | translate }}</a>
+            </li>
             <li *ngIf="authService.isModerator() || authService.isAdmin()" class="section-title">
                 <hr>
                 {{ 'COMPONENTS.HEADER.ADMIN.ADMIN' | translate }}
@@ -71,9 +74,11 @@
 
         <ul class="main-menu-bottom" *ngIf="!authService.isLoggedIn()">
             <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/u/login'">{{ 'COMPONENTS.HEADER.SIGNUP.LOGIN' | translate }}</a></li>
+                   [routerLink]="'/user/login'">{{ 'COMPONENTS.HEADER.SIGNUP.LOGIN' | translate }}</a>
+            </li>
             <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/u/events'">{{ 'COMPONENTS.HEADER.SIGNUP.NEW_EVENT' | translate }}</a></li>
+                   [routerLink]="'/user/events'">{{ 'COMPONENTS.HEADER.SIGNUP.NEW_EVENT' | translate }}</a>
+            </li>
         </ul>
     </div>
 </ng-template>

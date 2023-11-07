@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { EventDto, EventLookup } from '../../data/event';
-import { EventTransformerUtil } from '../../utils/event-transformer.util';
+import { EventDto, EventLookup } from '../../shared/data/event';
+import { EventTransformerUtil } from '../../shared/utils/event-transformer.util';
 
 @Component({
     selector: 'app-event-preview',

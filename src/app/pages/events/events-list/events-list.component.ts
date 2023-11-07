@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OnAttach, OnDetach } from '../../../routing/app-router-outlet.directive';
 import * as dayjs from 'dayjs';
-import { rmLocale } from '../../../utils/day-js-locale';
-import { EventsFilterService } from '../../../services/events-filter.service';
 import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
-import { NotificationsService } from '../../../services/notifications.service';
 import { NavigationStart, Router } from '@angular/router';
+import { EventsFilterService } from '../../../shared/services/events-filter.service';
+import { NotificationsService } from '../../../shared/services/notifications.service';
+import { rmLocale } from '../../../shared/utils/day-js-locale';
 
 const LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION = 'events-scroll-position';
 

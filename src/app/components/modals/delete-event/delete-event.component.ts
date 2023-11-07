@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {EventVersion} from "../../../data/event";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import { Component, Input } from '@angular/core';
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { EventVersion } from '../../../shared/data/event';
 
 @Component({
     selector: 'app-delete-event',

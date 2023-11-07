@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { EventLookup } from '../../../data/event';
+import { EventLookup } from '../../../shared/data/event';
 
 @Component({
     selector: 'app-event-list-item',

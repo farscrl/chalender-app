@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {EventVersion} from "../../../data/event";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { Component, Input } from '@angular/core';
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { EventVersion } from '../../../shared/data/event';
 
 type Reason = { id: string, description: string };
 

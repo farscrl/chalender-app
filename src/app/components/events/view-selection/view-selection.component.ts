@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EventsFilterService } from '../../../services/events-filter.service';
+import { EventsFilterService } from '../../../shared/services/events-filter.service';
 
 @Component({
     selector: 'app-view-selection',

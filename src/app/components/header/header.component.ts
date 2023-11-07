@@ -1,6 +1,6 @@
 import { Component, TemplateRef } from '@angular/core';
-import { AuthenticationService } from "../../services/authentication.service";
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { AuthenticationService } from '../../shared/services/authentication.service';
 
 @Component({
     selector: 'app-header',

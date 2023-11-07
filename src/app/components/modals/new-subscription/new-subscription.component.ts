@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Subscription } from '../../../data/subscription';
 import { Router } from '@angular/router';
+import { Subscription } from '../../../shared/data/subscription';
 
 @Component({
     selector: 'app-new-subscription',

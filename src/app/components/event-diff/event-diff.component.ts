@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { EventVersion } from "../../data/event";
 import { Diff, diff_match_patch } from "diff-match-patch";
+import { EventVersion } from '../../shared/data/event';
 
 @Component({
     selector: 'app-event-diff',

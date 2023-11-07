@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {NotificationsService} from "../../services/notifications.service";
+import { Component } from '@angular/core';
+import { NotificationsService } from '../../shared/services/notifications.service';
 
 @Component({
     selector: 'app-messages',

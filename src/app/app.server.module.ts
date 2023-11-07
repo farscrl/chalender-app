@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
-
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { translateServerLoaderFactory } from './utils/translate-server.loader';
 import { TransferState } from '@angular/platform-browser';
+import { translateServerLoaderFactory } from './shared/utils/translate-server.loader';
 
 @NgModule({
     imports: [

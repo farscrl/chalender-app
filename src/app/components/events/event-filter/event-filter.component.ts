@@ -1,14 +1,14 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { NgbCalendar, NgbDate, NgbDateStruct, NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { StaticDataService } from "../../../services/static-data.service";
-import { Genre, Region } from "../../../data/static-data";
-import { EventsFilterService } from "../../../services/events-filter.service";
-import { AuthenticationService } from '../../../services/authentication.service';
 import { NotLoggedInComponent } from '../../modals/not-logged-in/not-logged-in.component';
 import { Router } from '@angular/router';
-import { Subscription } from '../../../data/subscription';
-import { SubscriptionsService } from '../../../services/subscriptions.service';
 import { NewSubscriptionComponent } from '../../modals/new-subscription/new-subscription.component';
+import { Genre, Region } from '../../../shared/data/static-data';
+import { StaticDataService } from '../../../shared/services/static-data.service';
+import { EventsFilterService } from '../../../shared/services/events-filter.service';
+import { AuthenticationService } from '../../../shared/services/authentication.service';
+import { SubscriptionsService } from '../../../shared/services/subscriptions.service';
+import { Subscription } from '../../../shared/data/subscription';
 
 @Component({
     selector: 'app-event-filter',
