@@ -195,7 +195,7 @@
             <textarea class="form-control" id="pricing" style="height: 100px" formControlName="pricing"></textarea>
         </div>
 
-        <b>maletgs:</b><br>
+        <h2>maletgs:</h2>
         <app-file-list [files]="images" [type]="'image'" [isUploading]="isUploadingImage"></app-file-list>
         <div class="form-text">
             formats acceptads: JPG, PNG<br>
@@ -205,7 +205,7 @@
                          (fileAdded)="images.push($event)" [type]="'image'"></app-file-upload>
         <br><br>
 
-        <b>documents:</b><br>
+        <h2>documents:</h2>
         <app-file-list [files]="documents" [type]="'document'" [isUploading]="isUploadingDocument"></app-file-list>
         <div class="form-text">
             formats acceptads: PDF<br>
