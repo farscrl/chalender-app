@@ -18,6 +18,9 @@ export function app(): express.Express {
         bootstrap: AppServerModule
     }));
 
+    const compression = require('compression');
+    server.use(compression({level: 8}));
+
     server.set('view engine', 'html');
     server.set('views', distFolder);
 
