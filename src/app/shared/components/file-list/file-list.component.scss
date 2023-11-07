@@ -33,3 +33,29 @@
         }
     }
 }
+
+.placeholder {
+    background-color: #dee2e6;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.image-handle-placeholder {
+    height: 31px;
+    width: 160px;
+}

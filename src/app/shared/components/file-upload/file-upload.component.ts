@@ -15,6 +15,9 @@ export class FileUploadComponent {
     @Input()
     allowedMimeTypes: string[] = [];
 
+    @Input()
+    isUploading = false;
+
     @Output()
     fileAdded: EventEmitter<Image | Document> = new EventEmitter<Image | Document>();
 
@@ -33,13 +36,15 @@ export class FileUploadComponent {
         documentsService: DocumentsService,
     ) {
         this.uploadImagesQueue.pipe(concatMap((file) => {
+            this.isUploading = true;
             if (this.type === 'image') {
-                return imagesService.uploadImage(file)
+                return imagesService.uploadImage(file);
             } else {
-                return documentsService.uploadDocument(file)
+                return documentsService.uploadDocument(file);
             }
         }))
             .subscribe((result) => {
+                this.isUploading = false;
                 this.fileAdded.next(result);
             });
     }

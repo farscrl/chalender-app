@@ -12,6 +12,8 @@ export class FileListComponent {
 
     @Input() files!: Document[] | Image[];
 
+    @Input() isUploading = false;
+
     @Input()
     type: 'image' | 'document' = 'image';
 

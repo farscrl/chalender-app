@@ -29,6 +29,8 @@ export class NewEventComponent implements OnInit {
 
     images: Image[] = [];
     documents: Document[] = [];
+    isUploadingImage = false;
+    isUploadingDocument = false;
 
     f: FormGroup = new FormGroup<any>({});
 
