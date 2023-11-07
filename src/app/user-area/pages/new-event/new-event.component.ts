@@ -126,6 +126,11 @@ export class NewEventComponent implements OnInit {
         return occurrence.get(fieldName)!.invalid && (occurrence.get(fieldName)!.dirty || occurrence.get(fieldName)!.touched);
     }
 
+    isFieldError(fieldName: string, errorName: string) {
+        const field = this.f.get(fieldName)!;
+        return field.hasError(errorName);
+    }
+
     get genresFormArray(): FormArray {
         return this.f.get('genres') as FormArray;
     }

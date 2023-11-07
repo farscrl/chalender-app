@@ -27,7 +27,12 @@
             <textarea formControlName="description" class="form-control" id="description" style="height: 150px"
                       [class.is-invalid]="isFieldInvalid('description')"></textarea>
             <div class="invalid-feedback" *ngIf="isFieldInvalid('description')">
-                Endatescha p.pl. ina descripziun.
+                <ng-container *ngIf="isFieldError('description', 'required')">
+                    Endatescha p.pl. ina descripziun.
+                </ng-container>
+                <ng-container *ngIf="isFieldError('description', 'maxlength')">
+                    La descripziun na dastga betg esser pli lunga che 750 caracters.
+                </ng-container>
             </div>
             <div id="descriptionHelp" class="form-text">Hilfe bei der Übersetzung auf Rumantsch / Aiuto con la
                 traduzione in
