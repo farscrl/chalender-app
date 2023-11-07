@@ -24,6 +24,8 @@ export class FileUploadComponent {
     public dropZoneClassName = 'dropzone';
     public dropZoneContentClassName = 'dropzone-content';
 
+    public showFormatError = false;
+
     private uploadImagesQueue = new Subject<File>();
 
     constructor(
@@ -43,6 +45,7 @@ export class FileUploadComponent {
     }
 
     public dropped(files: NgxFileDropEntry[]) {
+        this.showFormatError = false;
         this.dropZoneClassName = 'dropzone';
 
         for (const droppedFile of files) {
@@ -51,6 +54,7 @@ export class FileUploadComponent {
                 fileEntry.file((file: File) => {
 
                     if (!this.allowedMimeTypes.includes(file.type)) {
+                        this.showFormatError = true;
                         console.error('File type not allowed: ' + file.type);
                         return;
                     }

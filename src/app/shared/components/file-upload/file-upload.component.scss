@@ -1,35 +1,39 @@
 ::ng-deep {
-  .dropzone {
-    border-radius: 10px;
-    border: 1px dashed #667080;
-    padding: 1rem;
-  }
-
-  .dropzone-content {
-    display: flex;
-    justify-content: center;
-
-    .file-drop-icon {
-      margin-right: 16px;
+    .dropzone {
+        border-radius: 10px;
+        border: 1px dashed #667080;
+        padding: 1rem;
     }
 
-    a {
-      color: var(--accent) !important;
+    .dropzone-content {
+        display: flex;
+        justify-content: center;
 
-      &:hover {
-        cursor: pointer;
-      }
+        .file-drop-icon {
+            margin-right: 16px;
+        }
+
+        a {
+            color: var(--accent) !important;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
-  }
 
-  &.dropzone-denied {
-    border: 2px dashed red;
-  }
+    &.dropzone-denied {
+        border: 2px dashed red;
+    }
 
-  &.dropzone-allowed {
-    border: 2px dashed green;
-  }
+    &.dropzone-allowed {
+        border: 2px dashed green;
+    }
 }
 
-
-
+.format-error {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: var(--bs-form-invalid-color);
+}

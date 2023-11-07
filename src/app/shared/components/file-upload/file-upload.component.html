@@ -32,3 +32,6 @@
         </div>
     </ng-template>
 </ngx-file-drop>
+<div class="format-error" *ngIf="showFormatError">
+    {{ 'FORMS.EVENT.ADD_IMAGE_OR_DOCUMENT_INVALID_FORMAT_ERROR' | translate }}
+</div>
