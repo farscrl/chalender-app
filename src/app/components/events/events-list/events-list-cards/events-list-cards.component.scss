@@ -74,6 +74,11 @@ ul {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 30px;
     }
+
+    @include media-breakpoint-up(xxl) {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 40px;
+    }
 }
 
 li app-event-card {
