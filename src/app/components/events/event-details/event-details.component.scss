@@ -46,7 +46,7 @@ hr {
 
     .description {
         width: 100%;
-        
+
         @include media-breakpoint-up(md) {
             margin-right: 20px;
         }
@@ -106,4 +106,8 @@ img {
     .tag-element {
         margin-bottom: 2px;
     }
+}
+
+.line-wrap {
+    white-space: pre-wrap;
 }

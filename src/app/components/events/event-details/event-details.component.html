@@ -3,7 +3,7 @@
 
     <div class="content">
         <div class="description">
-            <p>{{ event.description }}</p>
+            <p class="line-wrap">{{ event.description }}</p>
 
             <ngb-carousel *ngIf="event.images"
                           [showNavigationArrows]="event.images.length > 1"
@@ -102,14 +102,14 @@
 
             <div class="address" *ngIf="event.address">
                 <div class="highlight">{{ 'EVENT_DETAILS.ADDRESS' | translate }}</div>
-                <div>
+                <div class="line-wrap">
                     {{event.address}}
                 </div>
             </div>
 
             <div class="pricing" *ngIf="event.pricing">
                 <div class="highlight">{{ 'EVENT_DETAILS.PRICE' | translate }}</div>
-                <div>
+                <div class="line-wrap">
                     {{event.pricing}}
                 </div>
             </div>
@@ -130,7 +130,7 @@
 
             <div class="organiser" *ngIf="event.contact">
                 <div class="highlight">{{ 'EVENT_DETAILS.CONTACT' | translate }}</div>
-                <div>
+                <div class="line-wrap">
                     {{event.contact}}
                 </div>
             </div>
