@@ -19,7 +19,7 @@ export class NewSubscriptionComponent implements OnInit {
 
     success() {
         this.activeModal.close();
-        this.router.navigateByUrl("/admin/subscriptions");
+        this.router.navigateByUrl("/user/subscriptions");
     }
 
     cancel() {
