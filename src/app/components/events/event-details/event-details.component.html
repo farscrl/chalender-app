@@ -139,7 +139,7 @@
                 <div class="highlight">{{ 'EVENT_DETAILS.DOCUMENTS' | translate }}</div>
                 <div>
                     <ng-container *ngFor="let doc of event.documents">
-                        <a href="{{ doc.url }}" target="_blank">{{ doc.originalName }}</a>
+                        <a href="{{ doc.url }}" target="_blank" style="display: block">{{ doc.originalName }}</a>
                     </ng-container>
                 </div>
             </div>
