@@ -20,7 +20,6 @@ import { NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 import { EventFilterComponent } from './components/events/event-filter/event-filter.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MessagesComponent } from './components/messages/messages.component';
-import { NewEventButtonComponent } from './components/new-event-button/new-event-button.component';
 import { EventPreviewComponent } from './components/event-preview/event-preview.component';
 import { EventDiffComponent } from './components/event-diff/event-diff.component';
 import { DiffFieldComponent } from './components/event-diff/diff-field/diff-field.component';
@@ -82,7 +81,6 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         EventFilterComponent,
         FooterComponent,
         MessagesComponent,
-        NewEventButtonComponent,
         EventPreviewComponent,
         EventDiffComponent,
         DiffFieldComponent,

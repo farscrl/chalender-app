@@ -13,6 +13,8 @@ import { FileListComponent } from './components/file-list/file-list.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SubscriptionComponent } from './components/forms/subscription/subscription.component';
+import { NewEventButtonComponent } from './components/new-event-button/new-event-button.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { SubscriptionComponent } from './components/forms/subscription/subscript
         FileUploadComponent,
         FileListComponent,
         SubscriptionComponent,
+        NewEventButtonComponent,
     ],
     imports: [
         CommonModule,
@@ -34,6 +37,7 @@ import { SubscriptionComponent } from './components/forms/subscription/subscript
         TranslateModule,
         NgxFileDropModule,
         DragDropModule,
+        RouterModule,
     ],
     exports: [
         // Export the same modules so they can be used in feature modules
@@ -50,6 +54,7 @@ import { SubscriptionComponent } from './components/forms/subscription/subscript
         FileUploadComponent,
         FileListComponent,
         SubscriptionComponent,
+        NewEventButtonComponent,
     ]
 })
 export class SharedModule {
