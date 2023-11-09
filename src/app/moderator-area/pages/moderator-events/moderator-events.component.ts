@@ -116,7 +116,10 @@ export class ModeratorEventsComponent implements OnInit {
 
     edit(event: Event) {
         this.router.navigateByUrl('/user/event-form', {
-            state: {event},
+            state: {
+                event,
+                returnToModeratorView: true,
+            },
         });
     }
 

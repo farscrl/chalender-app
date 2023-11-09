@@ -38,6 +38,7 @@ export class NewEventComponent implements OnInit {
 
     private eventToChangeId?: string;
     private eventToChange?: EventDto;
+    private returnToModeratorView = false;
 
     constructor(
         private authService: AuthenticationService,
@@ -53,6 +54,11 @@ export class NewEventComponent implements OnInit {
             const event = navigation.extras.state['event'];
             if (event) {
                 this.eventToChangeId = event.id;
+            }
+
+            const returnToModeratorView = navigation.extras.state['returnToModeratorView'];
+            if (returnToModeratorView) {
+                this.returnToModeratorView = true;
             }
         }
     }
@@ -92,7 +98,11 @@ export class NewEventComponent implements OnInit {
                     "Ti has memorisà cun success l'occurrenza «" + event.title + "»."
                 );
 
-                this.router.navigateByUrl('/user/events');
+                if (this.returnToModeratorView) {
+                    this.router.navigateByUrl('/moderator/events');
+                } else {
+                    this.router.navigateByUrl('/user/events');
+                }
             });
         } else {
             this.eventsService.createEvent(event).subscribe(event => {
@@ -103,7 +113,11 @@ export class NewEventComponent implements OnInit {
                 );
 
                 if (this.isLoggedIn) {
-                    this.router.navigateByUrl('/user/events');
+                    if (this.returnToModeratorView) {
+                        this.router.navigateByUrl('/moderator/events');
+                    } else {
+                        this.router.navigateByUrl('/user/events');
+                    }
                 } else {
                     this.router.navigateByUrl('/');
                 }
