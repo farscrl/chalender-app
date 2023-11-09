@@ -1,13 +1,19 @@
 <div class="event-teasers" *ngIf="eventDto">
     <div>
         <div class="event-teaser-desktop">
-            Prevista event-teaser desktop
+            <div class="inline-description">
+                Prevista survista
+            </div>
             <app-event-card [event]="eventLookup"></app-event-card>
         </div>
     </div>
 </div>
 
+<hr>
+
 <div class="event-details" *ngIf="eventDto">
-    Prevista event-detail
+    <div class="inline-description">
+        Prevista pagina da detagl
+    </div>
     <app-event-details [event]="eventDto"></app-event-details>
 </div>
