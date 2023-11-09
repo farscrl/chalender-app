@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EventDto, EventLookup } from '../../shared/data/event';
 import { EventTransformerUtil } from '../../shared/utils/event-transformer.util';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-event-preview',
@@ -25,7 +26,7 @@ export class EventPreviewComponent implements OnInit {
 
     public eventLookup?: EventLookup;
 
-    constructor(private eventTransformerUtil: EventTransformerUtil) {
+    constructor(private eventTransformerUtil: EventTransformerUtil, private modal: NgbActiveModal) {
     }
 
     ngOnInit(): void {
@@ -36,5 +37,9 @@ export class EventPreviewComponent implements OnInit {
 
     private getEventLookup(): void {
         this.eventLookup = this.eventTransformerUtil.getEventLookup(this._eventDto!);
+    }
+
+    close() {
+        this.modal.close();
     }
 }
