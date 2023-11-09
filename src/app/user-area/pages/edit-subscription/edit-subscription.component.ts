@@ -25,10 +25,10 @@ export class EditSubscriptionComponent {
     }
 
     success() {
-        this.router.navigateByUrl("/admin/subscriptions");
+        this.router.navigateByUrl("/user/subscriptions");
     }
 
     cancel() {
-        this.router.navigateByUrl("/admin/subscriptions");
+        this.router.navigateByUrl("/user/subscriptions");
     }
 }
