@@ -124,7 +124,7 @@
                  *ngFor="let occurrence of eventOccurrencesFormArray.controls; let i = index"
                  [class.is-invalid]="isFieldInvalid('occurrences')" [formGroupName]="i">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-md-3">
                         <label for="date-{{i}}" class="form-label">Data *</label>
                         <input type="date" class="form-control" id="date-{{i}}" formControlName="date"
                                [class.is-invalid]="isOccurrenceFieldInvalid(i, 'date')">
@@ -132,7 +132,7 @@
                             Endatescha p.pl. ina data.
                         </div>
                     </div>
-                    <div class="col-2" [class.is-invalid]="isOccurrenceFieldInvalid(i, 'start')">
+                    <div class="col-md-2" [class.is-invalid]="isOccurrenceFieldInvalid(i, 'start')">
                         <label for="start-{{i}}" class="form-label">entschatta *</label>
                         <input type="time" class="form-control" id="start-{{i}}" formControlName="start"
                                [class.is-invalid]="isOccurrenceFieldInvalid(i, 'start')">
@@ -140,7 +140,7 @@
                             <div>Endatescha p.pl. in temp da cumenzament.</div>
                         </div>
                     </div>
-                    <div class="col-2" [class.is-invalid]="isOccurrenceFieldInvalid(i, 'end')">
+                    <div class="col-md-2" [class.is-invalid]="isOccurrenceFieldInvalid(i, 'end')">
                         <label for="end-{{i}}" class="form-label">fin</label>
                         <input type="time" class="form-control" id="end-{{i}}" formControlName="end"
                                [class.is-invalid]="isOccurrenceFieldInvalid(i, 'end')">
@@ -148,13 +148,13 @@
                             <div>Endatescha p.pl. in temp da finiziun valaivel.</div>
                         </div>
                     </div>
-                    <div class="col-1">&nbsp;</div>
-                    <div class="col-2 no-label">
-                        <input class="form-check-input" type="checkbox" value="isAllDay" id="isAllDay-{{i}}"
+                    <div class="col-md-1">&nbsp;</div>
+                    <div class="col-md-2 no-label">
+                        <input class="form-check-input no-negative" type="checkbox" value="isAllDay" id="isAllDay-{{i}}"
                                formControlName="isAllDay" (change)="didToggleAllDay(i)">
                         <label class="form-check-label" for="isAllDay-{{i}}">tutta di</label>
                     </div>
-                    <div class="col-2 no-label">
+                    <div class="col-md-2 no-label">
                         <button type="button" class="clndr accent" (click)="removeOccurrence(i)"
                                 *ngIf="eventOccurrencesFormArray.controls.length !== 1">stizzar
                         </button>
