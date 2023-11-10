@@ -48,13 +48,13 @@ export class LoginComponent implements OnInit, OnDestroy {
                 this.errorMessage = {
                     type: 'danger',
                     title: 'Conto betg activà',
-                    message: "Tes conto n'è betg activ. Controllescha sche ti has confermà tia adressa dad e-mail"
+                    message: "Tes conto n'è betg activ. Controllescha sche ti has confermà tia adressa dad e-mail."
                 };
             } else {
                 this.errorMessage = {
                     type: 'danger',
                     title: 'Errur',
-                    message: "Betg pussaivel da s'annunziar cun questas datas"
+                    message: "Betg pussaivel da s'annunziar cun questas datas."
                 };
             }
             console.error(error);

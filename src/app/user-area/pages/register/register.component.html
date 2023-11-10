@@ -43,7 +43,12 @@
             <input type="password" id="password" name="password" class="form-control" formControlName="password"
                    [class.is-invalid]="isFieldInvalid('password')">
             <div class="invalid-feedback" *ngIf="isFieldInvalid('password')">
-                Endatescha p.pl. ina pled-clav cun almain 8 caracters.
+                <ng-container *ngIf="isFieldError('password', 'required')">
+                    Endatescha in pled-clav.
+                </ng-container>
+                <ng-container *ngIf="isFieldError('password', 'minlength')">
+                    Il pled-clav sto avair ina lunghezza dad almain 8 caracters.
+                </ng-container>
             </div>
         </div>
 

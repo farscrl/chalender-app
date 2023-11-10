@@ -26,6 +26,11 @@ export class ChangePasswordComponent {
         return this.f.get(fieldName)!.invalid && (this.f.get(fieldName)!.dirty || this.f.get(fieldName)!.touched);
     }
 
+    isFieldError(fieldName: string, errorName: string) {
+        const field = this.f.get(fieldName)!;
+        return field.hasError(errorName);
+    }
+
     update() {
         this.f.markAllAsTouched();
 

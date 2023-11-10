@@ -67,6 +67,11 @@ export class RegisterComponent implements OnInit {
         return this.f.get(fieldName)!.invalid && (this.f.get(fieldName)!.dirty || this.f.get(fieldName)!.touched);
     }
 
+    isFieldError(fieldName: string, errorName: string) {
+        const field = this.f.get(fieldName)!;
+        return field.hasError(errorName);
+    }
+
     private initForm() {
         this.f = this.fb.group({
             firstName: ['', Validators.required],

@@ -25,7 +25,7 @@ export class ConfirmPasswordComponent {
         private fb: FormBuilder,
     ) {
         this.f = this.fb.group({
-            password: ['', [Validators.required]],
+            password: ['', [Validators.required, Validators.minLength(8)]],
         });
     }
 
@@ -67,5 +67,10 @@ export class ConfirmPasswordComponent {
 
     isFieldInvalid(fieldName: string) {
         return this.f.get(fieldName)!.invalid && (this.f.get(fieldName)!.dirty || this.f.get(fieldName)!.touched);
+    }
+
+    isFieldError(fieldName: string, errorName: string) {
+        const field = this.f.get(fieldName)!;
+        return field.hasError(errorName);
     }
 }
