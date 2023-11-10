@@ -93,7 +93,7 @@ export class EventFilterComponent implements OnInit, OnDestroy {
             modalRef.closed.subscribe(reason => {
                 if (reason === 'login') {
                     this.hideFilterIfNeeded.emit();
-                    this.router.navigateByUrl("/u/login");
+                    this.router.navigateByUrl("/user/login");
                 }
             });
 

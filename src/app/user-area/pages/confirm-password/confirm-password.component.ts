@@ -54,7 +54,7 @@ export class ConfirmPasswordComponent {
                 "Midà cun success test pled-clav",
                 "Ti pos ussa s'annunziar cun il nov pled-clav."
             );
-            this.router.navigateByUrl("/u/login");
+            this.router.navigateByUrl("/user/login");
         }, error => {
             this.errorMessage = {
                 type: 'danger',

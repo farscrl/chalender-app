@@ -45,7 +45,7 @@ export class ConfirmEmailComponent implements OnInit {
                 "Confermà cun success tia adressa dad email",
                 "Ti pos ussa s'annunziar."
             );
-            this.router.navigateByUrl("/u/login");
+            this.router.navigateByUrl("/user/login");
         }, () => {
             this.isCurrentlyValidating = false;
             this.showInvalidCodeError = true;

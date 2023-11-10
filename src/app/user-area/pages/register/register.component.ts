@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
                 'Registrà cun success',
                 "Ti retschaivas bainprest in e-mail. Confermar p.pl. tia adressa dad e-mail per cuntinuar."
             );
-            this.router.navigateByUrl("/u/login");
+            this.router.navigateByUrl("/user/login");
         }, error => {
             console.error(error);
             this.didSubmit = false;
