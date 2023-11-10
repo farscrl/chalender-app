@@ -1,13 +1,17 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { NavigationService } from '../../services/navigation.service';
 
 @Component({
-  selector: 'app-back-button',
-  templateUrl: './back-button.component.html',
-  styleUrls: ['./back-button.component.scss']
+    selector: 'app-back-button',
+    templateUrl: './back-button.component.html',
+    styleUrls: ['./back-button.component.scss']
 })
 export class BackButtonComponent {
 
-  goBack() {
-    window.history.back();
-  }
+    constructor(private navigationService: NavigationService) {
+    }
+
+    goBack() {
+        this.navigationService.back();
+    }
 }
