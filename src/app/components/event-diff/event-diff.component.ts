@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Diff, diff_match_patch } from "diff-match-patch";
-import { EventVersion } from '../../shared/data/event';
+import { EventOccurrences, EventVersion } from '../../shared/data/event';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-event-diff',
@@ -27,6 +28,10 @@ export class EventDiffComponent implements OnInit {
     pricingDiff: Diff[] = [];
     linkDiff: Diff[] = [];
     contactDiff: Diff[] = [];
+    occurrenceDiff: Diff[][] = [];
+
+    constructor(private translateService: TranslateService) {
+    }
 
     ngOnInit() {
         const diff = new diff_match_patch();
@@ -72,5 +77,36 @@ export class EventDiffComponent implements OnInit {
 
         this.contactDiff = diff.diff_main(this.oldEventVersion.contact ?? '', this.newEventVersion.contact ?? '');
         diff.diff_cleanupSemantic(this.contactDiff);
+
+        const occurrencesLength = Math.max(this.oldEventVersion.occurrences?.length ?? 0, this.newEventVersion.occurrences?.length ?? 0);
+        for (let i = 0; i < occurrencesLength; i++) {
+            const oldOccurrence = this.oldEventVersion.occurrences?.[i];
+            const newOccurrence = this.newEventVersion.occurrences?.[i];
+
+            const occurrenceDiff = diff.diff_main(this.generateOccurrenceString(oldOccurrence), this.generateOccurrenceString(newOccurrence));
+            diff.diff_cleanupSemantic(occurrenceDiff);
+
+            this.occurrenceDiff.push(occurrenceDiff);
+        }
+    }
+
+    private generateOccurrenceString(occurrence: EventOccurrences): string {
+        if (!occurrence) {
+            return '';
+        }
+        let string = occurrence.date;
+        if (occurrence.isAllDay) {
+            string = string + ', ' + this.translateService.instant('COMPONENTS.EVENT_DIFF.ALLDAY');
+        } else {
+            string = string + ', ' + occurrence.start;
+
+            if (occurrence.end) {
+                string = string + ' - ' + occurrence.end;
+            }
+        }
+        if (occurrence.isCancelled) {
+            string = string + ', ' + this.translateService.instant('COMPONENTS.EVENT_DIFF.CANCELLED');
+        }
+        return string;
     }
 }

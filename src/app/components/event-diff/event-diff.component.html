@@ -115,38 +115,18 @@
             <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.OCCURRENCES' | translate }}</th>
             <td>
                 <table>
-                    <tr *ngFor="let o of oldEventVersion.occurrences">
+                    <tr *ngFor="let oDiff of occurrenceDiff">
                         <td>
-                            {{ o.date }},
-                            <ng-container *ngIf="o.isAllDay">
-                                {{ 'COMPONENTS.EVENT_DIFF.ALLDAY' | translate }}
-                            </ng-container>
-                            <ng-container *ngIf="!o.isAllDay">
-                                {{o.start}}
-                                <ng-container *ngIf="o.end">
-                                    - {{o.end}}
-                                </ng-container>
-                            </ng-container>
-                            <span *ngIf="o.isCancelled">{{ 'COMPONENTS.EVENT_DIFF.CANCELLED' | translate }}</span>
+                            <app-diff-field type="removed" [diff]="oDiff"></app-diff-field>
                         </td>
                     </tr>
                 </table>
             </td>
             <td>
                 <table>
-                    <tr *ngFor="let o of newEventVersion.occurrences">
+                    <tr *ngFor="let oDiff of occurrenceDiff">
                         <td>
-                            {{ o.date }},
-                            <ng-container *ngIf="o.isAllDay">
-                                tuttadi
-                            </ng-container>
-                            <ng-container *ngIf="!o.isAllDay">
-                                {{o.start}}
-                                <ng-container *ngIf="o.end">
-                                    - {{o.end}}
-                                </ng-container>
-                            </ng-container>
-                            <span *ngIf="o.isCancelled">ANNULLÀ</span>
+                            <app-diff-field type="added" [diff]="oDiff"></app-diff-field>
                         </td>
                     </tr>
                 </table>
@@ -166,12 +146,14 @@
         <tr>
             <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.DOCUMENTS' | translate }}</th>
             <td>
-                <a href="{{ doc.url }}" target="_blank" *ngFor="let doc of oldEventVersion.documents">
+                <a href="{{ doc.url }}" target="_blank" *ngFor="let doc of oldEventVersion.documents"
+                   style="display: block">
                     {{ doc.originalName }}
                 </a>
             </td>
             <td>
-                <a href="{{ doc.url }}" target="_blank" *ngFor="let doc of newEventVersion.documents">
+                <a href="{{ doc.url }}" target="_blank" *ngFor="let doc of newEventVersion.documents"
+                   style="display: block">
                     {{ doc.originalName }}
                 </a>
             </td>
