@@ -1,0 +1,13 @@
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+.buttons {
+    margin-top: 48px;
+    display: flex;
+    justify-content: flex-end;
+
+    button.accent {
+        margin-right: 0;
+    }
+}

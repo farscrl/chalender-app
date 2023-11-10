@@ -57,17 +57,27 @@
     </div>
 
     <div class="mb-3">
-        <label for="type" class="form-label">
-            {{ 'FORMS.SUBSCRIPTION.TYPE' | translate }}
-        </label>
-        <select id="type" class="form-select" formControlName="type"
-                [class.is-invalid]="isFieldInvalid('type')">
-            <option value="WEEKLY" selected>{{ 'FORMS.SUBSCRIPTION.TYPE_DESC_WEEKLY' | translate }}</option>
-            <option value="INSTANT">{{ 'FORMS.SUBSCRIPTION.TYPE_DESC_INSTANT' | translate }}</option>
-        </select>
-        <div class="invalid-feedback" *ngIf="isFieldInvalid('type')">
-            {{ 'FORMS.SUBSCRIPTION.TYPE_ERROR' | translate }}
-        </div>
+        <fieldset>
+            <div>
+                <input type="radio" id="weekly" name="type" value="WEEKLY"
+                       formControlName="type"/>
+                <label for="weekly">
+                    {{ 'FORMS.SUBSCRIPTION.TYPE_DESC_WEEKLY' | translate }}
+                </label>
+            </div>
+
+            <div [class.is-invalid]="isFieldInvalid('type')">
+                <input type="radio" id="instant" name="type" value="INSTANT"
+                       formControlName="type"/>
+                <label for="instant">
+                    {{ 'FORMS.SUBSCRIPTION.TYPE_DESC_INSTANT' | translate }}
+                </label>
+            </div>
+
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('type')">
+                {{ 'FORMS.SUBSCRIPTION.TYPE_ERROR' | translate }}
+            </div>
+        </fieldset>
     </div>
 
     <div class="mb-3" *ngIf="subscription?.id">
