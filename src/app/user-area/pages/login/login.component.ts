@@ -80,8 +80,8 @@ export class LoginComponent implements OnInit, OnDestroy {
             redirectTo = '/' + queryParams['redirectTo']!.slice(1);
         } else {
             this.notificationsService.successMessage(
-                'S\'annunzià',
-                "Ti es t'annunzià cun success."
+                'Annunzia reussida',
+                "Ti es annunzià."
             )
         }
         await this.router.navigateByUrl(decodeURI(redirectTo));
