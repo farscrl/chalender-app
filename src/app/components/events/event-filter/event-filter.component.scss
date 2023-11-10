@@ -1,5 +1,42 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+:host {
+    max-height: 100vh;
+    // overflow-y: scroll;
+
+    @include media-breakpoint-up(md) {
+        max-height: 100vh;
+    }
+}
+
+.modal-header {
+    display: flex;
+    padding: 0;
+    margin: 1rem 1rem 0 1rem;
+    border-bottom: 0;
+
+    h2 {
+        font-size: 1.25rem;
+        flex-grow: 1;
+        margin-bottom: 0;
+    }
+
+    .close-button {
+        background-color: unset;
+        border: none;
+        flex-grow: 0;
+        padding: 0;
+    }
+}
+
 .filter {
-    //overflow-y: scroll;
+    margin: 1rem;
+
+    @include media-breakpoint-up(md) {
+        margin: 2rem;
+    }
 }
 
 h2 {
@@ -34,7 +71,38 @@ hr {
     opacity: unset;
 }
 
-button {
-    width: 100%;
-    margin-bottom: 1rem;
+.buttons {
+    margin: 1rem 1rem 0 1rem;
+    position: sticky;
+    bottom: 0;
+    height: 116px;
+
+    border-top: 1px solid #BBBFC2;
+    background-color: white;
+    padding-top: 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include media-breakpoint-up(md) {
+        margin: 1rem 2rem 0 2rem;
+        height: 66px;
+        //position: unset;
+    }
+
+    .button-row {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    button {
+        flex-grow: 1;
+        margin-right: 0;
+        height: 34px;
+        padding: 4px;
+    }
 }

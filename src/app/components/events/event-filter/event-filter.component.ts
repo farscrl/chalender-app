@@ -35,7 +35,7 @@ export class EventFilterComponent implements OnInit, OnDestroy {
 
     constructor(
         private staticData: StaticDataService,
-        private eventsFilterService: EventsFilterService,
+        public eventsFilterService: EventsFilterService,
         private authService: AuthenticationService,
         private subscriptionsService: SubscriptionsService,
         private calendar: NgbCalendar,
@@ -107,6 +107,10 @@ export class EventFilterComponent implements OnInit, OnDestroy {
 
         const modalRef = this.modalService.open(NewSubscriptionComponent, {size: 'lg'});
         modalRef.componentInstance.subscription = subscription;
+    }
+
+    close() {
+        this.hideFilterIfNeeded.emit();
     }
 
     private loadStaticData() {

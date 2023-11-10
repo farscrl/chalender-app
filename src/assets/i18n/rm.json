@@ -123,8 +123,9 @@
             "START_DATE": "data d’entschatta",
             "REGION": "regiun",
             "GENRE": "categoria",
-            "DELETE_FILTER": "stizzar il filter",
-            "ABO_FILTER": "abunar quest filter"
+            "OK": "OK",
+            "DELETE_FILTER": "deactivar",
+            "ABO_FILTER": "abunar"
         }
     },
     "FORMS": {

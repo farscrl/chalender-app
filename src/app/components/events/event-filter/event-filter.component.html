@@ -1,3 +1,16 @@
+<div class="modal-header d-md-none">
+    <h2>filter</h2>
+    <button type="button" class="close-button" aria-label="Close" (click)="close()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="7 7 25 25" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M30.399 8.60095C31.0337 9.23555 31.0337 10.2644 30.399 10.899L10.899 30.399C10.2644 31.0337 9.23555 31.0337 8.60095 30.399C7.96635 29.7644 7.96635 28.7356 8.60095 28.101L28.101 8.60095C28.7356 7.96635 29.7644 7.96635 30.399 8.60095Z"
+                  fill="#1C2B33"/>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M8.60095 8.60095C9.23555 7.96635 10.2644 7.96635 10.899 8.60095L30.399 28.101C31.0337 28.7356 31.0337 29.7644 30.399 30.399C29.7644 31.0337 28.7356 31.0337 28.101 30.399L8.60095 10.899C7.96635 10.2644 7.96635 9.23555 8.60095 8.60095Z"
+                  fill="#1C2B33"/>
+        </svg>
+    </button>
+</div>
 <div class="filter">
     <input class="search-term" type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchTermUpdated()"
            [placeholder]="'COMPONENTS.FILTER.SEARCH' | translate">
@@ -26,13 +39,23 @@
                           (click)="toggleGenre(genre.id)">{{ genre.name }}</span><br>
         </ng-container>
     </div>
+</div>
 
-    <hr>
+<div class="buttons">
+    <div class="button-row d-md-none">
+        <button type="button" class="clndr accent" (click)="close()">
+            {{ 'COMPONENTS.FILTER.OK' | translate }}
+        </button>
+    </div>
+    <div class="button-row">
+        <button type="button" class="clndr accent" (click)="resetFilters()"
+                [disabled]="eventsFilterService.numberOfFilters === 0">
+            {{ 'COMPONENTS.FILTER.DELETE_FILTER' | translate }}
+        </button>
+        <button type="button" class="clndr accent" (click)="createSubscription()"
+                [disabled]="eventsFilterService.numberOfFilters === 0">
+            {{ 'COMPONENTS.FILTER.ABO_FILTER' | translate }}
+        </button>
+    </div>
 
-    <button type="button" class="clndr accent" (click)="resetFilters()">
-        {{ 'COMPONENTS.FILTER.DELETE_FILTER' | translate }}
-    </button>
-    <button type="button" class="clndr accent" (click)="createSubscription()">
-        {{ 'COMPONENTS.FILTER.ABO_FILTER' | translate }}
-    </button>
 </div>

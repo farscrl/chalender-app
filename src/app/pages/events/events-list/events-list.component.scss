@@ -10,14 +10,20 @@
     position: sticky;
     top: 0;
     align-self: flex-start; // needed for sticky to work
+    max-height: calc(100vh);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .filter {
-    padding: 2rem;
-    width: 300px;
-    max-width: 300px;
+    width: 320px;
+    max-width: 320px;
     max-height: 100vh;
-    overflow-y: scroll;
+    overflow-y: hidden;
+
+    @include media-breakpoint-up(md) {
+        max-height: unset;
+    }
 }
 
 .events {
