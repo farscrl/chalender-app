@@ -10,7 +10,7 @@
         <p class="location">{{ event.location }}</p>
         <div class="details">
             <div class="infos">
-                <span class="time">19:30</span>
+                <span class="time">{{ event.start ? event.start : 'tuttadi' }}</span>
                 <div class="tags">
                     <div class="tag" *ngFor="let tag of event.genres">{{ tag.name }}</div>
                 </div>
