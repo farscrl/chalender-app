@@ -247,16 +247,26 @@ button.clndr {
 }
 
 .cdk-drag-preview.image-preview {
-    max-width: 160px;
-    padding: 5px;
-    margin-right: 5px;
-    border: 1px solid gray;
+    width: 190px;
+    padding: 14px;
+    margin-right: 25px;
+    border: 1px solid #dee2e6;
     display: flex;
     flex-direction: column;
+    border-radius: var(--bs-border-radius);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
 
     .filename {
         word-wrap: break-word;
         font-size: .85rem;
         flex-grow: 1;
+    }
+
+    .actions {
+        span {
+            margin-right: 5px;
+        }
     }
 }

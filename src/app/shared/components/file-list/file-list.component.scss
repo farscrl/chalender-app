@@ -27,8 +27,13 @@
         }
 
         .actions {
-            * {
+            span {
                 margin-right: 5px;
+                cursor: pointer;
+            }
+
+            span.dragdrop {
+                cursor: grab;
             }
         }
     }
