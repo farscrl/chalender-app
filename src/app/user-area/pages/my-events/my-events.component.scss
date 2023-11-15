@@ -1,21 +1,55 @@
-span.button {
-  margin-right: 12px;
+.filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
 
-  &.inactive {
+    b {
+        margin-right: 8px;
+    }
+
+    .time-selection {
+        margin-right: 8px;
+
+        select {
+            min-width: 140px;
+            font-size: 1rem;
+        }
+    }
+
+    .filter-right {
+        display: flex;
+
+        input[type="text"] {
+            margin-right: 12px;
+            max-width: 300px;
+        }
+
+        button {
+            margin-right: 0;
+        }
+    }
+}
+
+div.button {
+    margin-right: 12px;
+    display: inline-block;
+
+    &.inactive {
+        &:hover {
+            cursor: default;
+        }
+
+        svg {
+            fill: gray;
+        }
+    }
+
     &:hover {
-      cursor: default;
+        cursor: pointer;
     }
 
     svg {
-      fill: gray;
+        fill: var(--accent);
     }
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  svg {
-    fill: var(--accent);
-  }
 }

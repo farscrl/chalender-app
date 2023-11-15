@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { EventPreviewComponent } from "../../../components/event-preview/event-preview.component";
 import { Router } from '@angular/router';
-import { Event, EventFilter, EventVersion } from '../../../shared/data/event';
+import { Event, EventVersion } from '../../../shared/data/event';
 import { UserService } from '../../../shared/services/user.service';
 import { EventsService } from '../../../shared/services/events.service';
+import { ModerationEventsFilter } from '../../../shared/data/filter';
 
 @Component({
     selector: 'app-my-events',
@@ -16,8 +17,11 @@ export class MyEventsComponent {
     total: number = 0;
     current: number = 0;
 
-    private eventFilter: EventFilter = new EventFilter();
+    isLoading: boolean = false;
+
     private page: number = 0;
+
+    filter = new ModerationEventsFilter();
 
     constructor(
         private userService: UserService,
@@ -74,11 +78,18 @@ export class MyEventsComponent {
         console.log("delete", event);
     }
 
-    private search() {
-        this.userService.getEvents(this.eventFilter, this.page, 20).subscribe(events => {
+    updateSearchTerm(searchTerm: string) {
+        this.filter.searchTerm = searchTerm;
+        this.search();
+    }
+
+    search() {
+        this.isLoading = true;
+        this.userService.getEvents(this.filter, this.page, 20).subscribe(events => {
             this.events = events.content;
             this.total = events.totalPages;
             this.current = events.number;
+            this.isLoading = false;
         });
     }
 }

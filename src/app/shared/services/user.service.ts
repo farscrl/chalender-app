@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { Event, EventFilter } from "../data/event";
+import { Event } from "../data/event";
 import { Observable } from "rxjs";
 import { Page } from "../data/page";
 import { environment } from '../../../environments/environment';
+import { ModerationEventsFilter } from '../data/filter';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +15,7 @@ export class UserService {
     constructor(private httpClient: HttpClient,) {
     }
 
-    public getEvents(filter: EventFilter, page = 0, pageSize = 20): Observable<Page<Event>> {
+    public getEvents(filter: ModerationEventsFilter, page = 0, pageSize = 20): Observable<Page<Event>> {
         let params: HttpParams = new HttpParams();
         if (page != 0) {
             params = params.set('page', page);
@@ -22,17 +23,19 @@ export class UserService {
         if (pageSize != 20) {
             params = params.set('size', pageSize);
         }
-        if (filter.genres != null && filter.genres.length > 0) {
-            params = params.set('genres', filter.genres.join(','));
-        }
-        if (filter.regions != null && filter.regions.length > 0) {
-            params = params.set('regions', filter.regions.join(','));
-        }
+
         if (filter.searchTerm != null && filter.searchTerm.length > 0) {
             params = params.set('searchTerm', filter.searchTerm);
         }
-        if (filter.startDate != null) {
-            params = params.set('date', filter.startDate);
+        if (filter.dates != null) {
+            params = params.set('dates', filter.dates);
+        }
+
+        if (filter.sortBy != null) {
+            params = params.set('sortBy', filter.sortBy);
+        }
+        if (filter.sortOrder != null) {
+            params = params.set('sortOrder', filter.sortOrder);
         }
 
         const httpOptions = {
