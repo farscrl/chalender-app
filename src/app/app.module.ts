@@ -47,6 +47,7 @@ import { SharedModule } from './shared/shared.module';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { translateBrowserLoaderFactory } from './shared/utils/translate-browser.loader';
 import { DatepickerTranslatorService } from './shared/services/datepicker-translator.service';
+import { DatepickerHeaderComponent } from './components/datepicker-header/datepicker-header.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -95,6 +96,7 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         EventDetailsComponent,
         NotLoggedInComponent,
         NewSubscriptionComponent,
+        DatepickerHeaderComponent,
     ],
     imports: [
         BrowserModule,

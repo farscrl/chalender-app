@@ -1,0 +1,33 @@
+:host {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+    flex-grow: 1;
+}
+
+.today {
+    display: flex;
+    width: 25px;
+    height: 20px;
+    padding: 1.637px 6.55px 3.275px 6.55px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: white;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+svg {
+    float: left;
+}
+
+.last, .next, .today {
+    cursor: pointer;
+}

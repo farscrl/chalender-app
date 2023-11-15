@@ -1,0 +1,21 @@
+<h2>{{ date }}</h2>
+
+<div class="last" (click)="back()">
+    <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="-0.5" y="0.5" width="19" height="19" transform="matrix(-1 0 0 1 19.0002 0.285645)" stroke="#3CBFA4"/>
+        <path d="M12.5002 15.7856L7.50024 10.2856L12.5002 4.78564" stroke="#3CBFA4" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </svg>
+</div>
+
+<div class="today" (click)="today()">
+    oz
+</div>
+
+<div class="next" (click)="forward()">
+    <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.500244" y="0.785645" width="19" height="19" stroke="#3CBFA4"/>
+        <path d="M7.50024 15.7856L12.5002 10.2856L7.50024 4.78564" stroke="#3CBFA4" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </svg>
+</div>

@@ -35,4 +35,9 @@ export class DatesUtil {
             }
         });
     }
+
+    getMonthYearString(month: number, year: number): string {
+        const date = dayjs().month(month - 1).year(year);
+        return date.format('MMMM YYYY');
+    }
 }
