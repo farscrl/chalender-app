@@ -35,31 +35,36 @@
             border-radius: 20px;
         }
 
-        ngb-datepicker-navigation {
-            display: flex;
-
-            .ngb-dp-month-name {
-                order: 1;
-                flex-grow: 1;
-                background-color: unset;
-                font-family: "CadizBlack", sans-serif;
-                text-align: left;
-            }
-
-            .ngb-dp-arrow-prev {
-                order: 2;
-                flex-grow: 0;
-            }
-
-            .ngb-dp-arrow-next {
-                order: 3;
-                flex-grow: 0;
-            }
-        }
-
         &.no-navigation {
             ngb-datepicker-navigation {
                 display: none;
+            }
+        }
+
+        &.full-width {
+            width: 100%;
+
+            .ngb-dp-month {
+                width: 100%;
+
+                div.ngb-dp-weekday {
+                    width: calc(100% / 7);
+                }
+
+                div.ngb-dp-day {
+                    width: calc(100% / 7);
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+
+                    .btn-light {
+                        min-width: 32px;
+                    }
+
+                    [ngbdatepickerdayview] {
+                        width: calc(100% / 7);
+                    }
+                }
             }
         }
     }
