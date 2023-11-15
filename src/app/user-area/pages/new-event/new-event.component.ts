@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { EventPreviewComponent } from "../../../components/event-preview/event-preview.component";
@@ -12,6 +12,7 @@ import { EventsService } from '../../../shared/services/events.service';
 import { NotificationsService } from '../../../shared/services/notifications.service';
 import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { minCheckboxValidator } from '../../../shared/validators/mincheckbox.validator';
+import { debounceTime, fromEvent, take } from 'rxjs';
 
 const regexUrl = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
@@ -48,6 +49,7 @@ export class NewEventComponent implements OnInit {
         private modalService: NgbModal,
         private router: Router,
         private notificationsService: NotificationsService,
+        private el: ElementRef,
     ) {
         const navigation = this.router.getCurrentNavigation();
         if (navigation && navigation.extras.state) {
@@ -84,6 +86,7 @@ export class NewEventComponent implements OnInit {
 
         if (!isDraft) {
             if (!this.f.valid) {
+                this.scrollToFirstInvalidControl();
                 return;
             }
         }
@@ -402,5 +405,31 @@ export class NewEventComponent implements OnInit {
             occurrence.get('start')!.enable();
             occurrence.get('end')!.enable();
         }
+    }
+
+    private scrollToFirstInvalidControl() {
+        const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
+            "form .ng-invalid"
+        );
+
+        window.scroll({
+            top: this.getTopOffset(firstInvalidControl),
+            left: 0,
+            behavior: "smooth"
+        });
+
+        // focus field after scroll
+        // https://medium.com/javascript-everyday/how-to-scroll-to-first-invalid-control-once-a-form-has-been-submitted-eb47d9fbc6e
+        fromEvent(window, "scroll")
+            .pipe(
+                debounceTime(100),
+                take(1)
+            )
+            .subscribe(() => firstInvalidControl.focus());
+    }
+
+    private getTopOffset(controlEl: HTMLElement): number {
+        const labelOffset = 50;
+        return controlEl.getBoundingClientRect().top + window.scrollY - labelOffset;
     }
 }
