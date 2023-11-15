@@ -206,7 +206,7 @@
             formats acceptads: JPG, PNG<br>
             grondezza maximala: 5 MB<br>
         </div>
-        <app-file-upload [allowedMimeTypes]="['image/jpeg', 'image/png']" [isUploading]="isUploadingImage"
+        <app-file-upload [allowedMimeTypes]="['image/jpeg', 'image/png']" [(isUploading)]="isUploadingImage"
                          (fileAdded)="images.push($event)" [type]="'image'"></app-file-upload>
         <br><br>
 
@@ -216,7 +216,7 @@
             formats acceptads: PDF<br>
             grondezza maximala: 5 MB<br>
         </div>
-        <app-file-upload [allowedMimeTypes]="['application/pdf']" [isUploading]="isUploadingDocument"
+        <app-file-upload [allowedMimeTypes]="['application/pdf']" [(isUploading)]="isUploadingDocument"
                          (fileAdded)="documents.push($event)" [type]="'document'"></app-file-upload>
         <br><br>
 

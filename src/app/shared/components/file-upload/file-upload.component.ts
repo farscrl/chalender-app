@@ -19,6 +19,10 @@ export class FileUploadComponent {
     isUploading = false;
 
     @Output()
+    isUploadingChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+
+    @Output()
     fileAdded: EventEmitter<Image | Document> = new EventEmitter<Image | Document>();
 
     @Input()
@@ -36,7 +40,7 @@ export class FileUploadComponent {
         documentsService: DocumentsService,
     ) {
         this.uploadImagesQueue.pipe(concatMap((file) => {
-            this.isUploading = true;
+            this.isUploadingChange.emit(true);
             if (this.type === 'image') {
                 return imagesService.uploadImage(file);
             } else {
@@ -44,7 +48,7 @@ export class FileUploadComponent {
             }
         }))
             .subscribe((result) => {
-                this.isUploading = false;
+                this.isUploadingChange.emit(false);
                 this.fileAdded.next(result);
             });
     }

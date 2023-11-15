@@ -1,13 +1,6 @@
 <div class="image-previews" cdkDropList cdkDropListOrientation="horizontal"
      (cdkDropListDropped)="reorderImages($event)">
     <div class="image-preview" *ngFor="let file of files" cdkDrag>
-        <div class="image-handle" cdkDragHandle>
-            <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                    d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
-                <path d="M0 0h24v24H0z" fill="none"></path>
-            </svg>
-        </div>
         <img [src]="file.url + '?width=160&auto_optimize=medium'" alt="image preview" *ngIf="type === 'image'">
         <span class="file-icon" *ngIf="type === 'document'">
                 <svg xmlns="http://www.w3.org/2000/svg" width="54" height="66" viewBox="0 0 18 22" fill="none">
@@ -41,13 +34,37 @@
                   <path d="M14 11V17" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </span>
+
+            <span class="dragdrop" cdkDragHandle>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <g clip-path="url(#clip0_1809_9503)">
+                    <rect width="22" height="22" fill="white"/>
+                    <path d="M3.12506 10.7393L19.9778 10.7393" stroke="#3CBFA4" stroke-width="1.83333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M17.226 7.63665L20.4511 10.8618L17.226 14.0869" stroke="#3CBFA4" stroke-width="1.83333"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.10254 14.0469L1.87741 10.8218L5.10254 7.59668" stroke="#3CBFA4" stroke-width="1.83333"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11.2668 18.8809L11.2668 2.02815" stroke="#3CBFA4" stroke-width="1.83333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M14.369 4.78027L11.1439 1.55514L7.91876 4.78027" stroke="#3CBFA4" stroke-width="1.83333"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7.95946 16.9023L11.1846 20.1275L14.4097 16.9023" stroke="#3CBFA4" stroke-width="1.83333"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1809_9503">
+                      <rect width="22" height="22" fill="white"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+            </span>
         </div>
     </div>
 
     <div class="image-preview" *ngIf="isUploading">
-        <div class="image-handle-placeholder">
-
-        </div>
         <div class="placeholder">
             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                 <path

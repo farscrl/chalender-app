@@ -8,6 +8,9 @@
         border: 1px solid #dee2e6;
         display: flex;
         flex-direction: column;
+        border-radius: var(--bs-border-radius);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
 
         .file-icon {
             text-align: center;
@@ -23,12 +26,9 @@
             flex-grow: 1;
         }
 
-        .image-handle {
-            text-align: right;
-            margin-bottom: 6px;
-
-            svg {
-                cursor: grab;
+        .actions {
+            * {
+                margin-right: 5px;
             }
         }
     }
@@ -53,9 +53,4 @@
     100% {
         transform: rotate(360deg);
     }
-}
-
-.image-handle-placeholder {
-    height: 31px;
-    width: 160px;
 }
