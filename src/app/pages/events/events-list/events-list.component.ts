@@ -18,8 +18,6 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach {
 
     @ViewChild(NgbCollapse) filterCollapsable!: NgbCollapse;
 
-    public isFilterCollapsed = false;
-
     constructor(
         public eventsFilterService: EventsFilterService,
         private notificationsService: NotificationsService,
@@ -44,15 +42,6 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach {
         this.eventsFilterService.search();
 
 
-    }
-
-    ngAfterViewInit() {
-        this.filterCollapsable.hidden.subscribe((isHidden) => {
-            console.log('isHidden', isHidden);
-        });
-        this.filterCollapsable.shown.subscribe((isShown) => {
-            console.log('isShown', isShown);
-        });
     }
 
     onAttach(): void {

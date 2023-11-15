@@ -1,5 +1,5 @@
-<div class="filter-area d-none d-md-block">
-    <div #collapse="ngbCollapse" [(ngbCollapse)]="isFilterCollapsed"
+<div class="filter-area d-none d-md-block" [class.show]="!eventsFilterService.isFilterCollapsed">
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="eventsFilterService.isFilterCollapsed"
          [horizontal]="true" class="filter">
         <app-event-filter></app-event-filter>
     </div>

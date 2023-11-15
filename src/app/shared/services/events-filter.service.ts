@@ -13,6 +13,8 @@ export class EventsFilterService {
     public selectedView: 'cards' | 'list' = 'cards';
     public numberOfFilters = 0;
 
+    public isFilterCollapsed = false;
+
     private events: EventLookup[] = [];
 
     private selectedRegions = new BehaviorSubject<number[]>([]);
