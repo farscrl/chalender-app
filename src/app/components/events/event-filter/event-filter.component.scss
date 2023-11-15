@@ -59,6 +59,11 @@ h2 {
     margin-left: 0;
     cursor: pointer;
     padding: 2px 6px;
+
+    &:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
 }
 
 hr {
