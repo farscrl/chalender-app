@@ -6,8 +6,14 @@
 
 :root {
     --accent: #3CBFA4;
-    --danger: #D30000;
+    --accent-60: #8AD9C8;
+    --accent-30: #C4ECE4;
+    
+    --primary: #1C2B33;
     --primary-60: #778085;
+    --primary-30: #BBBFC2;
+
+    --danger: #D30000;
 }
 
 /* Importing Bootstrap SCSS file. */

@@ -30,8 +30,8 @@
 
         [ngbDatepickerDayView]:hover:not(.bg-primary),
         [ngbDatepickerDayView].active:not(.bg-primary) {
-            background-color: #f8f9fa;
-            outline: 1px solid var(--accent);
+            background-color: var(--accent-60);
+            outline: none;
             border-radius: 20px;
         }
     }
