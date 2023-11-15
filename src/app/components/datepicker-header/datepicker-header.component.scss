@@ -10,24 +10,39 @@ h2 {
     flex-grow: 1;
 }
 
-.today {
+.date-button {
     display: flex;
-    width: 25px;
     height: 20px;
-    padding: 1.637px 6.55px 3.275px 6.55px;
+    padding: 2px 6px 2px 6px;
     justify-content: center;
     align-items: center;
     border: 1px solid var(--accent);
-    background: var(--accent);
-    color: white;
+    color: var(--accent);
     font-size: 12px;
     line-height: 12px;
-}
-
-svg {
-    float: left;
-}
-
-.last, .next, .today {
     cursor: pointer;
+
+    &:hover {
+        background: var(--accent);
+        color: white;
+
+        svg {
+            stroke: white;
+        }
+    }
+
+    &.today {
+        width: 25px;
+        padding: 2px 6px 3px 6px;
+
+        &.is-today {
+            background: var(--accent);
+            color: white;
+        }
+    }
+
+    svg {
+        float: left;
+        stroke: var(--accent);
+    }
 }

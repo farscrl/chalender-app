@@ -29,7 +29,7 @@ export class EventsFilterService {
     private eventFilter = new EventFilter();
 
     constructor(private eventsService: EventsService, private calendar: NgbCalendar) {
-        //this.resetFilters();
+        this.resetFilters();
     }
 
     search() {

@@ -1,15 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { NgbDatepicker, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DatesUtil } from '../../shared/utils/dates.util';
 import * as dayjs from 'dayjs';
 import { Dayjs } from 'dayjs';
+import { Subscription } from 'rxjs';
+import { EventsFilterService } from '../../shared/services/events-filter.service';
 
 @Component({
     selector: 'app-datepicker-header',
     templateUrl: './datepicker-header.component.html',
     styleUrls: ['./datepicker-header.component.scss']
 })
-export class DatepickerHeaderComponent implements OnInit {
+export class DatepickerHeaderComponent implements OnInit, OnDestroy {
 
     @Input()
     datepicker!: NgbDatepicker;
@@ -18,7 +20,11 @@ export class DatepickerHeaderComponent implements OnInit {
 
     private currentMonth: Dayjs | undefined;
 
-    constructor(private dateUtil: DatesUtil) {
+    private selectedFilterDate: NgbDateStruct | undefined;
+
+    private selectedStartDateSubscription?: Subscription;
+
+    constructor(private dateUtil: DatesUtil, private eventsFilterService: EventsFilterService) {
     }
 
     ngOnInit() {
@@ -26,6 +32,16 @@ export class DatepickerHeaderComponent implements OnInit {
             this.currentMonth = dayjs().month(event.next.month - 1).year(event.next.year);
             this.date = this.dateUtil.getMonthYearString(event.next.month, event.next.year);
         });
+
+        this.selectedStartDateSubscription = this.eventsFilterService.getStartDateObservable().subscribe(startDate => {
+            this.selectedFilterDate = startDate;
+        });
+    }
+
+    ngOnDestroy() {
+        if (this.selectedStartDateSubscription) {
+            this.selectedStartDateSubscription.unsubscribe();
+        }
     }
 
     today() {
@@ -42,4 +58,9 @@ export class DatepickerHeaderComponent implements OnInit {
         this.datepicker.navigateTo({year: month!.year(), month: month!.month() + 1});
     }
 
+    get isToday() {
+        return this.selectedFilterDate?.year === dayjs().year()
+            && this.selectedFilterDate?.month === dayjs().month() + 1
+            && this.selectedFilterDate?.day === dayjs().date();
+    }
 }
