@@ -18,7 +18,7 @@
     <hr>
 
     <h2>{{ 'COMPONENTS.FILTER.START_DATE' | translate }}</h2>
-    <ngb-datepicker [(ngModel)]="selectedStartDate" (dateSelect)="dateSelected($event)"></ngb-datepicker>
+    <ngb-datepicker #datepicker [(ngModel)]="selectedStartDate" (dateSelect)="dateSelected($event)"></ngb-datepicker>
 
     <hr>
 

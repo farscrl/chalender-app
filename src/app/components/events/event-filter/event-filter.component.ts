@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { NgbCalendar, NgbDate, NgbDateStruct, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { NgbCalendar, NgbDate, NgbDatepicker, NgbDateStruct, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { NotLoggedInComponent } from '../../modals/not-logged-in/not-logged-in.component';
 import { Router } from '@angular/router';
 import { NewSubscriptionComponent } from '../../modals/new-subscription/new-subscription.component';
@@ -7,7 +7,6 @@ import { Genre, Region } from '../../../shared/data/static-data';
 import { StaticDataService } from '../../../shared/services/static-data.service';
 import { EventsFilterService } from '../../../shared/services/events-filter.service';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
-import { SubscriptionsService } from '../../../shared/services/subscriptions.service';
 import { Subscription } from '../../../shared/data/subscription';
 
 @Component({
@@ -28,6 +27,8 @@ export class EventFilterComponent implements OnInit, OnDestroy {
     @Output()
     hideFilterIfNeeded: EventEmitter<void> = new EventEmitter<void>();
 
+    @ViewChild('datepicker') datepicker!: NgbDatepicker;
+
     private selectedGenresSubscription: any;
     private selectedRegionsSubscription: any;
     private selectedStartDateSubscription: any;
@@ -37,7 +38,6 @@ export class EventFilterComponent implements OnInit, OnDestroy {
         private staticData: StaticDataService,
         public eventsFilterService: EventsFilterService,
         private authService: AuthenticationService,
-        private subscriptionsService: SubscriptionsService,
         private calendar: NgbCalendar,
         private modalService: NgbModal,
         private router: Router,
@@ -84,6 +84,10 @@ export class EventFilterComponent implements OnInit, OnDestroy {
     resetFilters() {
         this.eventsFilterService.resetFilters();
         this.hideFilterIfNeeded.emit();
+
+        if (this.datepicker) {
+            this.datepicker.navigateTo(this.calendar.getToday());
+        }
     }
 
     createSubscription() {
