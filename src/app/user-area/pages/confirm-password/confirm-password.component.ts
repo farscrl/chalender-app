@@ -52,7 +52,7 @@ export class ConfirmPasswordComponent {
         this.authService.resetRedefinePassword(this.token!, this.f.value.password).subscribe(() => {
             this.notificationsService.successMessage(
                 "Midà cun success test pled-clav",
-                "Ti pos ussa s'annunziar cun il nov pled-clav."
+                "Ti pos ussa s’annunziar cun il nov pled-clav."
             );
             this.router.navigateByUrl("/user/login");
         }, error => {

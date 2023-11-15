@@ -43,7 +43,7 @@ export class ConfirmEmailComponent implements OnInit {
             this.isCurrentlyValidating = false;
             this.notificationsService.successMessage(
                 "Confermà cun success tia adressa dad email",
-                "Ti pos ussa s'annunziar."
+                "Ti pos ussa s’annunziar."
             );
             this.router.navigateByUrl("/user/login");
         }, () => {

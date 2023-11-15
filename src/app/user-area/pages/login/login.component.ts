@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                 this.errorMessage = {
                     type: 'danger',
                     title: 'Errur',
-                    message: "Betg pussaivel da s'annunziar cun questas datas."
+                    message: "Betg pussaivel da s’annunziar cun questas datas."
                 };
             }
             console.error(error);

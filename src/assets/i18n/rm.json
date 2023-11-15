@@ -52,7 +52,7 @@
                 "PRIVACY": "protecziun da datas"
             },
             "PROFILE_MENU": {
-                "NEW_EVENT": "registrar in'occurrenza",
+                "NEW_EVENT": "registrar in’occurrenza",
                 "MY_EVENTS": "mias occurrenzas",
                 "MY_ABOS": "mes abunaments",
                 "PROFILE": "mes profil",
@@ -65,12 +65,12 @@
             },
             "SIGNUP": {
                 "LOGIN": "login",
-                "NEW_EVENT": "registrar in'occurrenza"
+                "NEW_EVENT": "registrar in’occurrenza"
             }
         },
         "MODALS": {
             "DELETE_EVENT": {
-                "TITLE": "Vuls ti propi stizzar definitivamain l'occurrenza «{{eventTitle}}»?",
+                "TITLE": "Vuls ti propi stizzar definitivamain l’occurrenza «{{eventTitle}}»?",
                 "DELETE": "Gea, stizzar",
                 "CANCEL": "Interrumper"
             },
@@ -79,18 +79,18 @@
                 "TITLE_REJECT": "Remartga cun refusar",
                 "TITLE_DELETE": "Remartga cun stizzar",
                 "TITLE_EDIT": "Remartga cun modifitgar",
-                "DESCRIPTION_ACCEPT": "Trametter ina remartga cun acceptar l'occurrenza «{{eventTitle}}»?",
-                "DESCRIPTION_REJECT": "Trametter ina remartga cun refusar l'occurrenza «{{eventTitle}}»?",
-                "DESCRIPTION_EDIT": "Trametter ina remartga cun modifitgar l'occurrenza «{{eventTitle}}»?",
+                "DESCRIPTION_ACCEPT": "Trametter ina remartga cun acceptar l’occurrenza «{{eventTitle}}»?",
+                "DESCRIPTION_REJECT": "Trametter ina remartga cun refusar l’occurrenza «{{eventTitle}}»?",
+                "DESCRIPTION_EDIT": "Trametter ina remartga cun modifitgar l’occurrenza «{{eventTitle}}»?",
                 "PERSONALIZED": "Remartga persunalisada",
                 "COMMENT": "Endatescha p.pl. ina remartga (u tscherneer in auter motiv sura).",
                 "CANCEL": "Interrumper",
                 "SAVE": "Memorisar"
             },
             "NOT_LOGGED_IN": {
-                "TITLE": "Ti n'ès actualmain betg annunzià sin la pagina.",
-                "DESCRIPTION": "Per pudair abunar occurrenzas, stos ti avair in conto e s'annunziar",
-                "LOGIN_BUTTON": "S'annunziar",
+                "TITLE": "Ti n’ès actualmain betg annunzià sin la pagina.",
+                "DESCRIPTION": "Per pudair abunar occurrenzas, stos ti avair in conto e s’annunziar",
+                "LOGIN_BUTTON": "S’annunziar",
                 "CANCEL_BUTTON": "Interrumper"
             },
             "NEW_SUBSCRIPTION": {
@@ -151,14 +151,14 @@
             "SUCCESS_TITLE": "Stizzà cun success il conto",
             "SUCCESS_DESCRIPTION": "Il conto è vegnì stizzà cun success.",
             "ERROR_PW_TITLE": "Pled-clav nunvalid",
-            "ERROR_PW_DESCRIPTION": "Il pled-clav endatà n'è betg correct",
+            "ERROR_PW_DESCRIPTION": "Il pled-clav endatà n’è betg correct",
             "ERROR_TITLE": "Errur nunenconuschenta",
             "ERROR_DESCRIPTION": "Ina errur nunenconuschenta è cumparida cun stizzar il conto. Emprova anc ina giada pli tard."
         },
         "EVENT": {
             "ADD_IMAGE_PREFIX": "agiuntar in maletg",
             "ADD_DOCUMENT_PREFIX": "agiuntar in document",
-            "ADD_IMAGE_OR_DOCUMENT_SUFFIX": "u l'inserir qua cun trair e deponer.",
+            "ADD_IMAGE_OR_DOCUMENT_SUFFIX": "u l’inserir qua cun trair e deponer.",
             "ADD_IMAGE_OR_DOCUMENT_INVALID_FORMAT_ERROR": "Format da datoteca nunvalid"
         },
         "SUBSCRIPTION": {
