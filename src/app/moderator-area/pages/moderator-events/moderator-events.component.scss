@@ -31,8 +31,9 @@
     }
 }
 
-span.button {
+div.button {
     margin-right: 12px;
+    display: inline-block;
 
     &.inactive {
         &:hover {

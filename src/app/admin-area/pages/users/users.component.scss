@@ -1,39 +1,40 @@
 .filter {
-  display: flex;
-  justify-content: right;
-
-  .filter-right {
     display: flex;
+    justify-content: right;
 
-    input[type="text"] {
-      margin-right: 12px;
-      max-width: 300px;
-    }
+    .filter-right {
+        display: flex;
 
-    button {
-      margin-right: 0;
+        input[type="text"] {
+            margin-right: 12px;
+            max-width: 300px;
+        }
+
+        button {
+            margin-right: 0;
+        }
     }
-  }
 }
 
-span.button {
-  margin-right: 12px;
+div.button {
+    margin-right: 12px;
+    display: inline-block;
 
-  &.inactive {
+    &.inactive {
+        &:hover {
+            cursor: default;
+        }
+
+        svg {
+            fill: gray;
+        }
+    }
+
     &:hover {
-      cursor: default;
+        cursor: pointer;
     }
 
     svg {
-      fill: gray;
+        fill: var(--accent);
     }
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  svg {
-    fill: var(--accent);
-  }
 }
