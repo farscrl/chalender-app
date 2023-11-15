@@ -43,8 +43,15 @@
             </div>
         </div>
 
-        <button type="button" class="clndr danger" (click)="delete()"
-                [disabled]="didSubmit">{{ 'FORMS.DELETE_USER.DELETE_BUTTON' | translate }}</button>
+        <div class="buttons">
+            <button type="button" class="clndr" (click)="cancel()" [disabled]="didSubmit">
+                Interrumper
+            </button>
+            
+            <button type="button" class="clndr danger" (click)="delete()"
+                    [disabled]="didSubmit">{{ 'FORMS.DELETE_USER.DELETE_BUTTON' | translate }}</button>
+        </div>
+
     </form>
 
 </section>

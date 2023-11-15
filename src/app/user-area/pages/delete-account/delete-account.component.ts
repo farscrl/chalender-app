@@ -61,13 +61,17 @@ export class DeleteAccountComponent {
                         message: this.translateService.instant('FORMS.DELETE_USER.ERROR_PW_DESCRIPTION'),
                     };
                 } else {
+                    console.error(error);
                     this.errorMessage = {
                         type: 'danger',
                         title: this.translateService.instant('FORMS.DELETE_USER.ERROR_TITLE'),
                         message: this.translateService.instant('FORMS.DELETE_USER.ERROR_DESCRIPTION'),
                     };
                 }
-                console.error(error);
             });
+    }
+
+    cancel() {
+        this.router.navigate(['/user/profile']);
     }
 }

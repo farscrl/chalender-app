@@ -141,8 +141,8 @@
         "DELETE_USER": {
             "TITLE": "Stizzar il conto",
             "EXPLICATION": "Donn che ti ans bandunas! Tge vuls ti far?",
-            "DELETE_EVENTS": "Stizzar mes profil, dentant mantegnair en il chalender mias occurrenzas endatadas",
-            "KEEP_EVENTS": "Stizzar mes profil ed era stizzar mias 4 occurrenzas endatadas",
+            "DELETE_EVENTS": "Stizzar mes profil ed era stizzar mias occurrenzas endatadas",
+            "KEEP_EVENTS": "Stizzar mes profil, dentant mantegnair en il chalender mias occurrenzas endatadas",
             "SELECT_DELETE_MODE": "Tscherna per plaschair tge che duai capitar cun tias occurrenzas.",
             "PASSWORD": "Pled-clav",
             "PASSWORD_MISSING": "Endatescha p.pl. tes pled-clav.",
