@@ -10,7 +10,7 @@
                           [showNavigationIndicators]="event.images.length > 1">
                 <ng-template ngbSlide *ngFor="let image of event.images">
                     <div class="picsum-img-wrapper">
-                        <img [src]="image.url" alt="{{ image.originalName }}"/>
+                        <img [src]="getImgUrl(image.url!)" alt="{{ image.originalName }}"/>
                     </div>
                 </ng-template>
             </ngb-carousel>

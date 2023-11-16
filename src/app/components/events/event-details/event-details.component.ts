@@ -15,6 +15,10 @@ export class EventDetailsComponent {
     constructor(private eventsService: EventsService) {
     }
 
+    getImgUrl(imageUrl: string) {
+        return imageUrl + '?width=1200&auto_optimize=medium';
+    }
+
     downloadIcs(uid: string) {
         this.eventsService.getEventIcs(this.event?.id!, uid).subscribe((data: string) => {
             const element = document.createElement('a')
