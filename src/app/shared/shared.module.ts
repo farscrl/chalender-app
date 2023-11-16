@@ -16,6 +16,7 @@ import { SubscriptionComponent } from './components/forms/subscription/subscript
 import { NewEventButtonComponent } from './components/new-event-button/new-event-button.component';
 import { RouterModule } from '@angular/router';
 import { LinkyPipe } from './pipes/linky.pipe';
+import { InfoButtonComponent } from './components/forms/info-button/info-button.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { LinkyPipe } from './pipes/linky.pipe';
         SubscriptionComponent,
         NewEventButtonComponent,
         LinkyPipe,
+        InfoButtonComponent,
     ],
     imports: [
         CommonModule,
@@ -61,6 +63,7 @@ import { LinkyPipe } from './pipes/linky.pipe';
 
         LinkyPipe,
         ShortDomainPipe,
+        InfoButtonComponent,
     ]
 })
 export class SharedModule {

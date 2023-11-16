@@ -13,7 +13,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="title" class="form-label">titel da l’occurrenza *</label>
+            <label for="title" class="form-label">titel da l’occurrenza * </label>
             <input formControlName="title" type="text" class="form-control" id="title"
                    [class.is-invalid]="isFieldInvalid('title')">
             <div class="invalid-feedback" *ngIf="isFieldInvalid('title')">
@@ -97,6 +97,11 @@
 
         <div class="mb-3">
             <label for="location" class="form-label">lieu da l’occurrenza *</label>
+            <app-info-button>
+                <b>Lieu da l’occurrenza (Veranstaltungsort/luogo dell'evento):</b>
+                Descripziun da la localitad, p. ex. «Teater Cuira» u «Halla polivalenta Sagogn»
+            </app-info-button>
+            
             <input type="email" class="form-control" id="location" formControlName="location"
                    [class.is-invalid]="isFieldInvalid('location')">
             <div class="invalid-feedback" *ngIf="isFieldInvalid('location')">
