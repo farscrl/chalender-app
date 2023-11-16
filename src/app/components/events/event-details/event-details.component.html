@@ -3,7 +3,7 @@
 
     <div class="content">
         <div class="description">
-            <p class="line-wrap">{{ event.description }}</p>
+            <div class="line-wrap" [innerHTML]="event.description | linky"></div>
 
             <ngb-carousel *ngIf="event.images"
                           [showNavigationArrows]="event.images.length > 1"
@@ -18,9 +18,7 @@
         <div class="event-details">
             <ng-container *ngIf="event.location">
                 <hr>
-                <div class="location highlight">
-                    {{ event.location }}
-                </div>
+                <div class="location highlight" [innerHTML]="event.location | linky"></div>
             </ng-container>
 
             <ng-container *ngIf="event.occurrences.length > 0">
@@ -102,16 +100,12 @@
 
             <div class="address" *ngIf="event.address">
                 <div class="highlight">{{ 'EVENT_DETAILS.ADDRESS' | translate }}</div>
-                <div class="line-wrap">
-                    {{event.address}}
-                </div>
+                <div class="line-wrap" [innerHTML]="event.address  | linky"></div>
             </div>
 
             <div class="pricing" *ngIf="event.pricing">
                 <div class="highlight">{{ 'EVENT_DETAILS.PRICE' | translate }}</div>
-                <div class="line-wrap">
-                    {{event.pricing}}
-                </div>
+                <div class="line-wrap" [innerHTML]="event.pricing  | linky"></div>
             </div>
 
             <div class="link" *ngIf="event.link">

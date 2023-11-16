@@ -34,6 +34,7 @@
         "@ngx-translate/core": "^15.0.0",
         "@ngx-translate/http-loader": "^8.0.0",
         "@popperjs/core": "^2.11.6",
+        "autolinker": "^4.0.0",
         "bootstrap": "^5.2.3",
         "dayjs": "^1.11.9",
         "diff-match-patch": "^1.0.5",

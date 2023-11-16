@@ -15,6 +15,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SubscriptionComponent } from './components/forms/subscription/subscription.component';
 import { NewEventButtonComponent } from './components/new-event-button/new-event-button.component';
 import { RouterModule } from '@angular/router';
+import { LinkyPipe } from './pipes/linky.pipe';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { RouterModule } from '@angular/router';
         FileListComponent,
         SubscriptionComponent,
         NewEventButtonComponent,
+        LinkyPipe,
     ],
     imports: [
         CommonModule,
@@ -46,15 +48,19 @@ import { RouterModule } from '@angular/router';
         ReactiveFormsModule,
         NgbModule,
         TranslateModule,
+
         PaginationComponent,
         UserComponent,
-        SortableDirective,
         StatusBadgeComponent,
-        ShortDomainPipe,
         FileUploadComponent,
         FileListComponent,
         SubscriptionComponent,
         NewEventButtonComponent,
+
+        SortableDirective,
+
+        LinkyPipe,
+        ShortDomainPipe,
     ]
 })
 export class SharedModule {
