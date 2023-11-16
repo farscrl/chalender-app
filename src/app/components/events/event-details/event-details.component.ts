@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { EventsService } from '../../../shared/services/events.service';
 import { EventDto } from '../../../shared/data/event';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
     selector: 'app-event-details',
@@ -12,11 +13,20 @@ export class EventDetailsComponent {
     @Input()
     event?: EventDto;
 
-    constructor(private eventsService: EventsService) {
+    constructor(private eventsService: EventsService, private detectorService: DeviceDetectorService) {
     }
 
     getImgUrl(imageUrl: string) {
         return imageUrl + '?width=1200&auto_optimize=medium';
+    }
+
+    getAddressString(input: string): string {
+        input = input.replace(/\n/g, ",");
+
+        if (this.detectorService.isDesktop()) {
+            return 'https://www.google.com/maps/search/?api=1&query=' + encodeURI(input);
+        }
+        return 'geo://?q=' + encodeURI(input);
     }
 
     downloadIcs(uid: string) {

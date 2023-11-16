@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TransferState } from '@angular/platform-browser';
 import { translateServerLoaderFactory } from './shared/utils/translate-server.loader';
+import { UniversalDeviceDetectorService } from './services/universal-device-detector.service';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @NgModule({
     imports: [
@@ -17,6 +19,12 @@ import { translateServerLoaderFactory } from './shared/utils/translate-server.lo
                 deps: [TransferState]
             }
         })
+    ],
+    providers: [
+        {
+            provide: DeviceDetectorService,
+            useClass: UniversalDeviceDetectorService
+        },
     ],
     bootstrap: [AppComponent],
 })
