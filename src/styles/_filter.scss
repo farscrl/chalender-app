@@ -35,6 +35,10 @@
             border-radius: 20px;
         }
 
+        .ngb-dp-today {
+            color: var(--accent);
+        }
+
         &.no-navigation {
             ngb-datepicker-navigation {
                 display: none;

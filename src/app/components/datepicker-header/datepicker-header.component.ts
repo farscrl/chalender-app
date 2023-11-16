@@ -45,6 +45,7 @@ export class DatepickerHeaderComponent implements OnInit, OnDestroy {
     }
 
     today() {
+        this.eventsFilterService.resetDateFilter();
         this.datepicker.navigateTo({year: dayjs().year(), month: dayjs().month() + 1});
     }
 

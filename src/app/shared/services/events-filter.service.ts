@@ -65,11 +65,15 @@ export class EventsFilterService {
     resetFilters() {
         this.selectedRegions.next([]);
         this.selectedGenres.next([]);
-        this.selectedStartDate.next(this.calendar.getToday());
+        this.resetDateFilter();
         this.searchTerm.next('');
 
         this.eventFilter = new EventFilter();
         this.search();
+    }
+
+    resetDateFilter() {
+        this.selectedStartDate.next(this.calendar.getToday());
     }
 
     toggleRegion(regionId: number) {
