@@ -17,6 +17,7 @@ import { DeactivateSubscriptionComponent } from './pages/deactivate-subscription
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { DeleteAccountComponent } from './pages/delete-account/delete-account.component';
+import { eventFormFilledGuard } from '../routing/form-filled.guard';
 
 
 const routes: Routes = [
@@ -28,7 +29,7 @@ const routes: Routes = [
     {path: 'confirm-email', component: ConfirmEmailComponent, canActivate: [notAuthGuard()]},
     {path: 'confirm-password', component: ConfirmPasswordComponent, canActivate: [notAuthGuard()]},
 
-    {path: 'event-form', component: NewEventComponent},
+    {path: 'event-form', component: NewEventComponent, canDeactivate: [eventFormFilledGuard()]},
     {path: 'events', component: MyEventsComponent, canActivate: [authGuard()]},
     {
         path: 'subscriptions', children: [

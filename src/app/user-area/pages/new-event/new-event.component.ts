@@ -36,6 +36,7 @@ export class NewEventComponent implements OnInit {
     f: FormGroup = new FormGroup<any>({});
 
     isLoggedIn = false;
+    isPreviewOpen = false;
 
     private eventToChangeId?: string;
     private eventToChange?: EventDto;
@@ -129,9 +130,13 @@ export class NewEventComponent implements OnInit {
     }
 
     preview() {
+        this.isPreviewOpen = true;
         const dto = this.transformToEventDto(true);
         const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
         modalRef.componentInstance.eventDto = dto;
+        modalRef.closed.subscribe(value => {
+            this.isPreviewOpen = false;
+        });
     }
 
     isFieldInvalid(fieldName: string) {
