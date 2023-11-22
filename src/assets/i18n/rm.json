@@ -159,7 +159,8 @@
             "ADD_IMAGE_PREFIX": "agiuntar in maletg",
             "ADD_DOCUMENT_PREFIX": "agiuntar in document",
             "ADD_IMAGE_OR_DOCUMENT_SUFFIX": "u l’inserir qua cun trair e deponer.",
-            "ADD_IMAGE_OR_DOCUMENT_INVALID_FORMAT_ERROR": "Format da datoteca nunvalid"
+            "ADD_IMAGE_OR_DOCUMENT_INVALID_FORMAT_ERROR": "Format da datoteca nunvalid.",
+            "ADD_IMAGE_OR_DOCUMENT_INVALID_FILE_SIZE": "La datoteca na dastga betg esser pli gronda che 20MB."
         },
         "SUBSCRIPTION": {
             "NAME": "Num",

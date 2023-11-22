@@ -32,6 +32,7 @@ export class FileUploadComponent {
     public dropZoneContentClassName = 'dropzone-content';
 
     public showFormatError = false;
+    public showFileSizeError = false;
 
     private uploadImagesQueue = new Subject<File>();
 
@@ -55,12 +56,20 @@ export class FileUploadComponent {
 
     public dropped(files: NgxFileDropEntry[]) {
         this.showFormatError = false;
+        this.showFileSizeError = false;
         this.dropZoneClassName = 'dropzone';
 
         for (const droppedFile of files) {
             if (droppedFile.fileEntry.isFile) {
                 const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
                 fileEntry.file((file: File) => {
+
+                    // 20971520 = 20MB
+                    if (file.size > 20971520) {
+                        this.showFileSizeError = true;
+                        console.error('File too big: ' + file.size);
+                        return;
+                    }
 
                     if (!this.allowedMimeTypes.includes(file.type)) {
                         this.showFormatError = true;
