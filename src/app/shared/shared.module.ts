@@ -17,6 +17,7 @@ import { NewEventButtonComponent } from './components/new-event-button/new-event
 import { RouterModule } from '@angular/router';
 import { LinkyPipe } from './pipes/linky.pipe';
 import { InfoButtonComponent } from './components/forms/info-button/info-button.component';
+import { NetiquetteComponent } from './components/netiquette/netiquette.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { InfoButtonComponent } from './components/forms/info-button/info-button.
         NewEventButtonComponent,
         LinkyPipe,
         InfoButtonComponent,
+        NetiquetteComponent,
     ],
     imports: [
         CommonModule,

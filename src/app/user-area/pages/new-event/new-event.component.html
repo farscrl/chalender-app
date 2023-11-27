@@ -101,7 +101,7 @@
                 <b>Lieu da l’occurrenza (Veranstaltungsort/luogo dell'evento):</b>
                 Descripziun da la localitad, p. ex. «Teater Cuira» u «Halla polivalenta Sagogn»
             </app-info-button>
-            
+
             <input type="email" class="form-control" id="location" formControlName="location"
                    [class.is-invalid]="isFieldInvalid('location')">
             <div class="invalid-feedback" *ngIf="isFieldInvalid('location')">
@@ -230,7 +230,9 @@
                 <input class="form-check-input" type="checkbox" value="acceptTerms" id="acceptTerms"
                        formControlName="acceptTerms" [class.is-invalid]="isFieldInvalid('acceptTerms')">
                 <label class="form-check-label" for="acceptTerms">
-                    Jau accept la <a href="#">netichetta</a> ed hai ils dretgs dals maletgs utilisads.
+                    Jau accept la
+                    <a (click)="openNetiquette()" href="javascript:void(0)">netichetta</a>
+                    ed hai ils dretgs dals maletgs utilisads.
                 </label>
                 <div class="invalid-feedback" *ngIf="isFieldInvalid('acceptTerms')">
                     Per inoltrar l'occurrenza stos ti acceptar las cundiziuns d'utilisaziun.

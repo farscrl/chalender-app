@@ -1,0 +1,14 @@
+:host {
+    padding: 2em;
+}
+
+.close-button {
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    width: 35px;
+    height: 35px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}

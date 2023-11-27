@@ -13,6 +13,7 @@ import { NotificationsService } from '../../../shared/services/notifications.ser
 import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { minCheckboxValidator } from '../../../shared/validators/mincheckbox.validator';
 import { debounceTime, fromEvent, take } from 'rxjs';
+import { NetiquetteComponent } from '../../../shared/components/netiquette/netiquette.component';
 
 const regexUrl = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
@@ -304,6 +305,10 @@ export class NewEventComponent implements OnInit {
         }
 
         return true;
+    }
+
+    openNetiquette() {
+        this.modalService.open(NetiquetteComponent, {size: 'xl'});
     }
 
     private transformToEventDto(isDraft: boolean): EventDto {
