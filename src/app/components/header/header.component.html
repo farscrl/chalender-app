@@ -1,82 +1,86 @@
-<div class="name">
-    <a [routerLink]="['/']">CHALENDER.CH</a>
-</div>
-
-<div class="short-menu">
-    <ul>
-        <li><a href="/">{{ 'COMPONENTS.HEADER.SUB_MENU.EVENTS' | translate }}</a></li>
-        <li><a href="#">{{ 'COMPONENTS.HEADER.SUB_MENU.NOTICE_BOARD' | translate }}</a></li>
-    </ul>
-</div>
-<div class="menu">
-    <div>
-        <button id="menu-button" [class.opened]="isMenuOpen" (click)="toggleMenu(menu)">
-            <svg width="60" height="60" viewBox="0 0 100 100">
-                <path class="line line1"
-                      d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"/>
-                <path class="line line2" d="M 20,50 H 80"/>
-                <path class="line line3"
-                      d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"/>
-            </svg>
-        </button>
+<div class="hdr" *ngIf="!isInIframe">
+    <div class="name">
+        <a [routerLink]="['/']">CHALENDER.CH</a>
     </div>
-</div>
 
-<ng-template #menu let-offcanvas>
+    <div class="short-menu">
+        <ul>
+            <li><a href="/">{{ 'COMPONENTS.HEADER.SUB_MENU.EVENTS' | translate }}</a></li>
+            <li><a href="#">{{ 'COMPONENTS.HEADER.SUB_MENU.NOTICE_BOARD' | translate }}</a></li>
+        </ul>
+    </div>
     <div class="menu">
-        <ul class="main-menu-top">
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/'">{{ 'COMPONENTS.HEADER.MAIN_MENU.EVENTS' | translate }}</a>
-            </li>
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/help'">{{ 'COMPONENTS.HEADER.MAIN_MENU.HELP' | translate }}</a></li>
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/contact'">{{ 'COMPONENTS.HEADER.MAIN_MENU.CONTACT' | translate }}</a></li>
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/organisation'">{{ 'COMPONENTS.HEADER.MAIN_MENU.ORGANISATION' | translate }}</a></li>
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/imprint'">{{ 'COMPONENTS.HEADER.MAIN_MENU.IMPRINT' | translate }}</a></li>
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/privacy'">{{ 'COMPONENTS.HEADER.MAIN_MENU.PRIVACY' | translate }}</a></li>
-        </ul>
-
-        <ul class="main-menu-bottom" *ngIf="authService.isLoggedIn()">
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/user/event-form'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.NEW_EVENT' | translate }}</a>
-            </li>
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/user/events'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_EVENTS' | translate }}</a>
-            </li>
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/user/subscriptions'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_ABOS' | translate }}</a>
-            </li>
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/user/profile'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.PROFILE' | translate }}</a>
-            </li>
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/user/logout'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.LOGOUT' | translate }}</a>
-            </li>
-            <li *ngIf="authService.isModerator() || authService.isAdmin()" class="section-title">
-                <hr>
-                {{ 'COMPONENTS.HEADER.ADMIN.ADMIN' | translate }}
-            </li>
-            <li *ngIf="authService.isModerator()">
-                <a (click)="toggleMenu(menu)"
-                   href="/moderator/events">{{ 'COMPONENTS.HEADER.ADMIN.EVENTS' | translate }}</a>
-            </li>
-            <li *ngIf="authService.isAdmin()">
-                <a (click)="toggleMenu(menu)"
-                   href="/administrator/users">{{ 'COMPONENTS.HEADER.ADMIN.USERS' | translate }}</a>
-            </li>
-        </ul>
-
-        <ul class="main-menu-bottom" *ngIf="!authService.isLoggedIn()">
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/user/login'">{{ 'COMPONENTS.HEADER.SIGNUP.LOGIN' | translate }}</a>
-            </li>
-            <li><a (click)="toggleMenu(menu)"
-                   [routerLink]="'/user/new-event'">{{ 'COMPONENTS.HEADER.SIGNUP.NEW_EVENT' | translate }}</a>
-            </li>
-        </ul>
+        <div>
+            <button id="menu-button" [class.opened]="isMenuOpen" (click)="toggleMenu(menu)">
+                <svg width="60" height="60" viewBox="0 0 100 100">
+                    <path class="line line1"
+                          d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"/>
+                    <path class="line line2" d="M 20,50 H 80"/>
+                    <path class="line line3"
+                          d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"/>
+                </svg>
+            </button>
+        </div>
     </div>
-</ng-template>
+
+    <ng-template #menu let-offcanvas>
+        <div class="menu">
+            <ul class="main-menu-top">
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/'">{{ 'COMPONENTS.HEADER.MAIN_MENU.EVENTS' | translate }}</a>
+                </li>
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/help'">{{ 'COMPONENTS.HEADER.MAIN_MENU.HELP' | translate }}</a></li>
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/contact'">{{ 'COMPONENTS.HEADER.MAIN_MENU.CONTACT' | translate }}</a></li>
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/organisation'">{{ 'COMPONENTS.HEADER.MAIN_MENU.ORGANISATION' | translate }}</a>
+                </li>
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/imprint'">{{ 'COMPONENTS.HEADER.MAIN_MENU.IMPRINT' | translate }}</a></li>
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/privacy'">{{ 'COMPONENTS.HEADER.MAIN_MENU.PRIVACY' | translate }}</a></li>
+            </ul>
+
+            <ul class="main-menu-bottom" *ngIf="authService.isLoggedIn()">
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/user/event-form'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.NEW_EVENT' | translate }}</a>
+                </li>
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/user/events'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_EVENTS' | translate }}</a>
+                </li>
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/user/subscriptions'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_ABOS' | translate }}</a>
+                </li>
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/user/profile'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.PROFILE' | translate }}</a>
+                </li>
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/user/logout'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.LOGOUT' | translate }}</a>
+                </li>
+                <li *ngIf="authService.isModerator() || authService.isAdmin()" class="section-title">
+                    <hr>
+                    {{ 'COMPONENTS.HEADER.ADMIN.ADMIN' | translate }}
+                </li>
+                <li *ngIf="authService.isModerator()">
+                    <a (click)="toggleMenu(menu)"
+                       href="/moderator/events">{{ 'COMPONENTS.HEADER.ADMIN.EVENTS' | translate }}</a>
+                </li>
+                <li *ngIf="authService.isAdmin()">
+                    <a (click)="toggleMenu(menu)"
+                       href="/administrator/users">{{ 'COMPONENTS.HEADER.ADMIN.USERS' | translate }}</a>
+                </li>
+            </ul>
+
+            <ul class="main-menu-bottom" *ngIf="!authService.isLoggedIn()">
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/user/login'">{{ 'COMPONENTS.HEADER.SIGNUP.LOGIN' | translate }}</a>
+                </li>
+                <li><a (click)="toggleMenu(menu)"
+                       [routerLink]="'/user/new-event'">{{ 'COMPONENTS.HEADER.SIGNUP.NEW_EVENT' | translate }}</a>
+                </li>
+            </ul>
+        </div>
+    </ng-template>
+
+</div>

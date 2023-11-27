@@ -2,13 +2,34 @@
 @import 'node_modules/bootstrap/scss/variables';
 @import 'node_modules/bootstrap/scss/mixins';
 
-:host {
+.poweredby {
+    padding-top: 20px;
+    border-top: 1px solid #BBBFC2;
+    color: var(--primary-60);
+
+    .txt {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        padding: 1rem;
+
+        @include media-breakpoint-up(md) {
+            padding: 2rem;
+        }
+
+        .bld {
+            font-family: "CadizBlack", sans-serif;
+            color: black;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.ftr {
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
     padding-bottom: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #BBBFC2;
     align-items: center;
     color: var(--primary-60);
     font-size: .8rem;

@@ -2,7 +2,7 @@
 @import 'node_modules/bootstrap/scss/variables';
 @import 'node_modules/bootstrap/scss/mixins';
 
-:host {
+.hdr {
     display: flex;
     flex-direction: row;
     align-items: center;

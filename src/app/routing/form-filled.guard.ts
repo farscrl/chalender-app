@@ -8,7 +8,6 @@ export function eventFormFilledGuard(): CanDeactivateFn<NewEventComponent> {
             return false;
         }
 
-        console.log('Preview is not open, allowing navigation');
         return true;
     }
 }
