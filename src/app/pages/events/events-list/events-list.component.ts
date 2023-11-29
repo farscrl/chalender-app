@@ -7,6 +7,7 @@ import { EventsFilterService } from '../../../shared/services/events-filter.serv
 import { NotificationsService } from '../../../shared/services/notifications.service';
 import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { first, Subscription } from 'rxjs';
+import { IframeService } from '../../../services/iframe.service';
 
 const LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION = 'events-scroll-position';
 
@@ -26,6 +27,7 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
         private notificationsService: NotificationsService,
         private router: Router,
         private route: ActivatedRoute,
+        public iframeService: IframeService,
     ) {
         router.events.subscribe(
             (event) => {

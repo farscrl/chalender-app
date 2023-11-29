@@ -1,6 +1,7 @@
 <div class="filter-menu">
     <button class="filter-button d-none d-md-block" (click)="openDesktopFilter()"
-            [class.active]="eventsFilterService.numberOfFilters > 0">
+            [class.active]="eventsFilterService.numberOfFilters > 0"
+            *ngIf="iframeService.isShowSearchValue()">
         <span class="txt" *ngIf="eventsFilterService.isFilterCollapsed">mussar il filter</span>
         <span class="txt" *ngIf="!eventsFilterService.isFilterCollapsed">zuppar il filter</span>
         <span>
@@ -18,7 +19,8 @@
     <app-view-selection></app-view-selection>
 
     <button class="filter-button d-md-none" (click)="openMobileFilter()"
-            [class.active]="eventsFilterService.numberOfFilters > 0">
+            [class.active]="eventsFilterService.numberOfFilters > 0"
+            *ngIf="iframeService.isShowSearchValue()">
         <span class="txt">mussar il filter</span>
         <span>
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18" fill="none">

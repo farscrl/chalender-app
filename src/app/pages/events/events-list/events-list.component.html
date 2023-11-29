@@ -1,4 +1,5 @@
-<div class="filter-area d-none d-md-block" [class.show]="!eventsFilterService.isFilterCollapsed">
+<div class="filter-area d-none d-md-block" [class.show]="!eventsFilterService.isFilterCollapsed"
+     *ngIf="iframeService.isShowSearchValue()">
     <div #collapse="ngbCollapse" [(ngbCollapse)]="eventsFilterService.isFilterCollapsed"
          [horizontal]="true" class="filter">
         <app-event-filter></app-event-filter>
