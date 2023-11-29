@@ -26,13 +26,13 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         this.route.queryParams
             .subscribe(params => {
-                    console.log(params);
-
-                    if (params['iframe'] === 'true') {
-                        this.iframeService.setIsIframe();
-                        this.document.body.classList.add('iframe');
-                    }
+                if (params['iframe'] === 'true') {
+                    this.iframeService.setIsIframe();
+                    this.document.body.classList.add('iframe');
                 }
-            );
+                if (params['showSearch'] === 'false') {
+                    this.iframeService.disableSearch();
+                }
+            });
     }
 }

@@ -20,11 +20,19 @@ export class IframeService {
         return this.isIframe.asObservable();
     }
 
+    isIframeValue(): boolean {
+        return this.isIframe.value;
+    }
+
     disableSearch() {
         this.showSearch.next(false);
     }
 
     getIsSearchDisabledObservable(): Observable<boolean> {
         return this.showSearch.asObservable();
+    }
+
+    isShowSearchValue(): boolean {
+        return this.showSearch.value;
     }
 }

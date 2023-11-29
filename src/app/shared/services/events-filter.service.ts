@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, debounceTime, Observable, Subject } from "rxjs";
 import { NgbCalendar, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
 import { Page } from '../data/page';
-import { EventFilter, EventLookup } from '../data/event';
+import { EventFilter, EventFilterUrlParams, EventLookup } from '../data/event';
 import { EventsService } from './events.service';
 import * as dayjs from 'dayjs';
+import { UrlUtil } from '../utils/url.util';
+import { IframeService } from '../../services/iframe.service';
 
 @Injectable({
     providedIn: 'root'
@@ -22,18 +24,29 @@ export class EventsFilterService {
     private selectedStartDate = new BehaviorSubject<NgbDateStruct>(this.calendar.getToday());
     private searchTerm = new BehaviorSubject<string>('');
     private searchResults = new BehaviorSubject<EventLookup[]>([]);
+    private urlParams = new BehaviorSubject<EventFilterUrlParams>(new EventFilterUrlParams());
 
     private pageSize = 10;
     private page = 0;
     hasMorePages = true;
     private eventFilter = new EventFilter();
+    private searchSubject = new Subject<void>();
 
-    constructor(private eventsService: EventsService, private calendar: NgbCalendar) {
+    constructor(
+        private eventsService: EventsService,
+        private calendar: NgbCalendar,
+        private urlUtil: UrlUtil,
+        private iframeService: IframeService,
+    ) {
         this.resetFilters();
+        this.searchSubject
+            .pipe(debounceTime(50))
+            .subscribe(() => this.debouncedSearch());
     }
 
     search() {
         this.recalculateNumberOfFilters();
+        this.updateUrlParams();
         this.page = 0;
         this.hasMorePages = true;
         this.executeSearch();
@@ -47,7 +60,10 @@ export class EventsFilterService {
     }
 
     private executeSearch() {
-        // TODO: debounce
+        this.searchSubject.next();
+    }
+
+    private debouncedSearch() {
         this.eventsService.getEvents(this.eventFilter, this.page, this.pageSize).subscribe((page: Page<EventLookup>) => {
             if (page.first) {
                 this.events = page.content;
@@ -134,6 +150,10 @@ export class EventsFilterService {
         return this.searchResults.asObservable();
     }
 
+    getEventFilterUrlParamsObservable(): Observable<EventFilterUrlParams> {
+        return this.urlParams.asObservable();
+    }
+
     private recalculateNumberOfFilters() {
         this.numberOfFilters = 0;
 
@@ -154,5 +174,10 @@ export class EventsFilterService {
         if (this.searchTerm.getValue().length > 0) {
             this.numberOfFilters++;
         }
+    }
+
+    private updateUrlParams() {
+        const params = this.urlUtil.calculateUrl(this.eventFilter);
+        this.urlParams.next(params);
     }
 }

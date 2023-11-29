@@ -104,6 +104,15 @@ export class EventFilter {
     searchTerm?: string;
 }
 
+export class EventFilterUrlParams {
+    regions?: string;
+    genres?: string;
+    startDate?: string;
+    searchTerm?: string;
+    iframe?: boolean;
+    showSearch?: boolean;
+}
+
 export class CategorizedEvents {
     date: string = '';
     formattedDate?: string = '';
