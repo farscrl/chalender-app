@@ -123,7 +123,14 @@
         <br><br>-->
 
 
-        <h2>data da l’occurrenza:</h2>
+        <h2>
+            data da l’occurrenza:
+            <app-info-button>
+                <b>Data e temp da l’occurrenza (Datum und Zeit der Veranstaltung / data e ora dell'evento):</b>
+                En cas ch’ina occurrenza n’ha betg lieu (per motivs da malsogna, pervia da l’aura etc.), per plaschair
+                marcar qua l’occurrenza sco «annullada», betg stizzar la data.
+            </app-info-button>
+        </h2>
         <div class="mb-3" formArrayName="occurrences">
             <div class="form-check occurrence-item"
                  *ngFor="let occurrence of eventOccurrencesFormArray.controls; let i = index"
@@ -202,14 +209,26 @@
 
         <div class="mb-3">
             <label for="pricing" class="form-label">infurmaziuns davart pretschs e prevendita</label>
+            <app-info-button>
+                <b>Pretschs e prevendita (Eintritt und Vorverkauf / entrata e prevendita):</b>
+                È l’entrada gratuita? Ston ins s’annunziar? Sche gea, nua? Datti ina reducziun per persunas giuvnas? A
+                partir da cura è la cassa averta?
+            </app-info-button>
             <textarea class="form-control" id="pricing" style="height: 100px" formControlName="pricing"></textarea>
         </div>
 
-        <h2>maletgs:</h2>
+        <h2>
+            maletgs:
+            <app-info-button>
+                <b>Maletgs (Bilder / immagine):</b>
+                Attenziun sch’il maletg cuntegna text! L’emprim maletg vegn duvrà per la survista. Il maletg vegn
+                retaglià uschia ch’el daventa quadratic. Ils urs che surpassan il quadrat vegnan tagliads davent.
+            </app-info-button>
+        </h2>
         <app-file-list [files]="images" [type]="'image'" [isUploading]="isUploadingImage"></app-file-list>
         <div class="form-text">
             formats acceptads: JPG, PNG<br>
-            grondezza maximala: 5 MB<br>
+            grondezza maximala: 20 MB<br>
         </div>
         <app-file-upload [allowedMimeTypes]="['image/jpeg', 'image/png']" [(isUploading)]="isUploadingImage"
                          (fileAdded)="images.push($event)" [type]="'image'"></app-file-upload>
@@ -219,7 +238,7 @@
         <app-file-list [files]="documents" [type]="'document'" [isUploading]="isUploadingDocument"></app-file-list>
         <div class="form-text">
             formats acceptads: PDF<br>
-            grondezza maximala: 5 MB<br>
+            grondezza maximala: 20 MB<br>
         </div>
         <app-file-upload [allowedMimeTypes]="['application/pdf']" [(isUploading)]="isUploadingDocument"
                          (fileAdded)="documents.push($event)" [type]="'document'"></app-file-upload>
@@ -245,6 +264,6 @@
         <button type="button" class="clndr accent" (click)="onSubmit(true)"
                 *ngIf="canSaveAsDraft()">Memorisar sco sboz
         </button>
-        <button type="button" class="clndr accent" (click)="onSubmit(false)">Memorisar per la moderaziun</button>
+        <button type="button" class="clndr accent" (click)="onSubmit(false)">Publitgar</button>
     </form>
 </section>
