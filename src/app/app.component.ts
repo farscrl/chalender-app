@@ -1,8 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
 import { ActivatedRoute } from '@angular/router';
 import { IframeService } from './services/iframe.service';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 @Component({
     selector: 'app-root',
@@ -14,7 +14,8 @@ export class AppComponent implements OnInit {
         private translate: TranslateService,
         private route: ActivatedRoute,
         private iframeService: IframeService,
-        @Inject(DOCUMENT) private document: Document
+        @Inject(DOCUMENT) private document: Document,
+        @Inject(PLATFORM_ID) private platformId: any,
     ) {
         // this language will be used as a fallback when a translation isn't found in the current language
         translate.setDefaultLang('rm');
@@ -29,10 +30,35 @@ export class AppComponent implements OnInit {
                 if (params['iframe'] === 'true') {
                     this.iframeService.setIsIframe();
                     this.document.body.classList.add('iframe');
+                    this.setupIframeSizeHandling();
                 }
                 if (params['showSearch'] === 'false') {
                     this.iframeService.disableSearch();
                 }
             });
+    }
+
+    private setupIframeSizeHandling() {
+        if (isPlatformBrowser(this.platformId)) {
+            const that = this;
+            const observer = new MutationObserver(function (mutationsList, observer) {
+                for (let mutation of mutationsList) {
+                    if (mutation.type === "childList") {
+                        that.resizeParentIframe();
+                        break;
+                    }
+                }
+            });
+            observer.observe(document.body, {childList: true, subtree: true});
+        }
+    }
+
+    private resizeParentIframe() {
+        const height = document.documentElement.scrollHeight;
+        const message = {
+            type: 'resizeIframe',
+            value: height
+        };
+        window.parent.postMessage(message, "*");
     }
 }
