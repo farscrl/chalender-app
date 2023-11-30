@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
                         this.iframeService.disableViewSelection();
                     }
                 }
-                
+
                 if (params['view'] === 'cards') {
                     this.eventsFilterService.setSelectedView('cards')
                 } else if (params['view'] === 'list') {
@@ -71,6 +71,7 @@ export class AppComponent implements OnInit {
             type: 'resizeIframe',
             value: height
         };
+        console.log(message)
         window.parent.postMessage(message, "*");
     }
 }
