@@ -90,6 +90,17 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
             top: scrollPosition,
             behavior: 'instant',
         });
+        this.eventFilterUrlParamSubscription = this.eventsFilterService.getEventFilterUrlParamsObservable().pipe(first()).subscribe((params) => {
+            console.log(params);
+            this.router.navigate(
+                [],
+                {
+                    relativeTo: this.route,
+                    queryParams: params,
+                    queryParamsHandling: '',
+                }
+            );
+        });
     }
 
     onDetach(): void {
