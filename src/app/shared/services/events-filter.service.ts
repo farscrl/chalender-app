@@ -154,6 +154,11 @@ export class EventsFilterService {
         return this.urlParams.asObservable();
     }
 
+    setSelectedView(view: 'cards' | 'list') {
+        this.selectedView = view;
+        this.updateUrlParams();
+    }
+
     private recalculateNumberOfFilters() {
         this.numberOfFilters = 0;
 
@@ -177,7 +182,7 @@ export class EventsFilterService {
     }
 
     private updateUrlParams() {
-        const params = this.urlUtil.calculateUrl(this.eventFilter);
+        const params = this.urlUtil.calculateUrl(this.eventFilter, this.selectedView);
         this.urlParams.next(params);
     }
 }

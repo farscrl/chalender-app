@@ -12,6 +12,6 @@ export class ViewSelectionComponent {
     }
 
     selectView(view: 'cards' | 'list') {
-        this.eventsFilterService.selectedView = view;
+        this.eventsFilterService.setSelectedView(view);
     }
 }

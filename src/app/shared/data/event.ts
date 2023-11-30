@@ -111,6 +111,8 @@ export class EventFilterUrlParams {
     searchTerm?: string;
     iframe?: boolean;
     showSearch?: boolean;
+    showViewSelection?: boolean;
+    view?: string;
 }
 
 export class CategorizedEvents {

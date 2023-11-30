@@ -10,7 +10,7 @@ export class UrlUtil {
     constructor(private iframeService: IframeService) {
     }
 
-    calculateUrl(eventFilter: EventFilter): EventFilterUrlParams {
+    calculateUrl(eventFilter: EventFilter, selectedView: 'cards' | 'list'): EventFilterUrlParams {
         const url = new EventFilterUrlParams();
 
         if (eventFilter.regions.length > 0) {
@@ -36,6 +36,12 @@ export class UrlUtil {
         if (!this.iframeService.isShowSearchValue()) {
             url.showSearch = false;
         }
+
+        if (!this.iframeService.isShowViewSelectionValue()) {
+            url.showViewSelection = false;
+        }
+
+        url.view = selectedView;
 
         return url;
     }

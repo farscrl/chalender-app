@@ -3,6 +3,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { ActivatedRoute } from '@angular/router';
 import { IframeService } from './services/iframe.service';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { EventsFilterService } from './shared/services/events-filter.service';
 
 @Component({
     selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit {
         private iframeService: IframeService,
         @Inject(DOCUMENT) private document: Document,
         @Inject(PLATFORM_ID) private platformId: any,
+        private eventsFilterService: EventsFilterService
     ) {
         // this language will be used as a fallback when a translation isn't found in the current language
         translate.setDefaultLang('rm');
@@ -31,9 +33,19 @@ export class AppComponent implements OnInit {
                     this.iframeService.setIsIframe();
                     this.document.body.classList.add('iframe');
                     this.setupIframeSizeHandling();
+
+                    if (params['showSearch'] === 'false') {
+                        this.iframeService.disableSearch();
+                    }
+                    if (params['showViewSelection'] === 'false') {
+                        this.iframeService.disableViewSelection();
+                    }
                 }
-                if (params['showSearch'] === 'false') {
-                    this.iframeService.disableSearch();
+                
+                if (params['view'] === 'cards') {
+                    this.eventsFilterService.setSelectedView('cards')
+                } else if (params['view'] === 'list') {
+                    this.eventsFilterService.setSelectedView('list')
                 }
             });
     }

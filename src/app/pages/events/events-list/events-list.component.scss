@@ -33,4 +33,8 @@
 .events {
     flex-grow: 1;
     border-left: 1px solid #BBBFC2;
+
+    &.no-filter {
+        border-left: none;
+    }
 }

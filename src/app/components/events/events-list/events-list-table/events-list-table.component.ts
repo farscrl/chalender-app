@@ -7,6 +7,7 @@ import { CategorizedEvents } from '../../../../shared/data/event';
 import { EventsFilterService } from '../../../../shared/services/events-filter.service';
 import { DatesUtil } from '../../../../shared/utils/dates.util';
 import { rmLocale } from '../../../../shared/utils/day-js-locale';
+import { IframeService } from '../../../../services/iframe.service';
 
 @Component({
     selector: 'app-events-list-table',
@@ -20,7 +21,12 @@ export class EventsListTableComponent {
     public categorizedEvents: CategorizedEvents[] = [];
     private datesSubscription?: Subscription;
 
-    constructor(private modalService: NgbModal, public eventsFilterService: EventsFilterService, private datesUtil: DatesUtil) {
+    constructor(
+        private modalService: NgbModal,
+        public eventsFilterService: EventsFilterService,
+        private datesUtil: DatesUtil,
+        public iframeService: IframeService
+    ) {
     }
 
     ngOnInit() {

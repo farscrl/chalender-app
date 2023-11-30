@@ -1,6 +1,7 @@
-<div class="filter-menu">
+<div class="filter-menu" *ngIf="iframeService.isShowSearchValue() || iframeService.isShowViewSelectionValue()">
     <button class="filter-button d-none d-md-block" (click)="openDesktopFilter()"
-            [class.active]="eventsFilterService.numberOfFilters > 0">
+            [class.active]="eventsFilterService.numberOfFilters > 0"
+            *ngIf="iframeService.isShowSearchValue()">
         <span class="txt">{{ 'EVENT_LIST.SHOW_FILTER' | translate }}</span>
         <span>
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18" fill="none">
@@ -14,10 +15,11 @@
         </span>
     </button>
 
-    <app-view-selection></app-view-selection>
+    <app-view-selection *ngIf="iframeService.isShowViewSelectionValue()"></app-view-selection>
 
     <button class="filter-button d-md-none" (click)="openMobileFilter()"
-            [class.active]="eventsFilterService.numberOfFilters > 0">
+            [class.active]="eventsFilterService.numberOfFilters > 0"
+            *ngIf="iframeService.isShowSearchValue()">
         <span class="txt">{{ 'EVENT_LIST.SHOW_FILTER' | translate }}</span>
         <span>
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18" fill="none">

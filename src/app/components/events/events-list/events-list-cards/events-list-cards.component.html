@@ -1,4 +1,4 @@
-<div class="filter-menu">
+<div class="filter-menu" *ngIf="iframeService.isShowSearchValue() || iframeService.isShowViewSelectionValue()">
     <button class="filter-button d-none d-md-block" (click)="openDesktopFilter()"
             [class.active]="eventsFilterService.numberOfFilters > 0"
             *ngIf="iframeService.isShowSearchValue()">
@@ -16,7 +16,7 @@
         </span>
     </button>
 
-    <app-view-selection></app-view-selection>
+    <app-view-selection *ngIf="iframeService.isShowViewSelectionValue()"></app-view-selection>
 
     <button class="filter-button d-md-none" (click)="openMobileFilter()"
             [class.active]="eventsFilterService.numberOfFilters > 0"
