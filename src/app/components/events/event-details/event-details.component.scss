@@ -50,6 +50,10 @@ hr {
         @include media-breakpoint-up(md) {
             margin-right: 20px;
         }
+
+        .carousel {
+            margin-top: 2rem;
+        }
     }
 
     .event-details {
