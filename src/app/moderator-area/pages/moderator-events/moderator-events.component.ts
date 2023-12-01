@@ -67,7 +67,7 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     showPreview(event: Event) {
-        const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
+        const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl', centered: true});
         this.eventService.getEvent(event.id!).subscribe(eventDto => {
             modalRef.componentInstance.eventDto = eventDto;
         });
@@ -78,7 +78,7 @@ export class ModeratorEventsComponent implements OnInit {
             return;
         }
 
-        const modalRef = this.modalService.open(EventDiffComponent, {size: 'xl'});
+        const modalRef = this.modalService.open(EventDiffComponent, {size: 'xl', centered: true});
         modalRef.componentInstance.oldEventVersion = event.currentlyPublished!;
         modalRef.componentInstance.newEventVersion = event.waitingForReview!;
     }
@@ -88,7 +88,7 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     accept(event: Event): void {
-        const modalRef = this.modalService.open(ReasonForChangeComponent, {size: 'lg'});
+        const modalRef = this.modalService.open(ReasonForChangeComponent, {size: 'lg', centered: true});
         modalRef.componentInstance.event = this.getEventVersion(event);
         modalRef.componentInstance.type = 'accept';
 
@@ -102,7 +102,7 @@ export class ModeratorEventsComponent implements OnInit {
 
     refuse(event: Event): void {
 
-        const modalRef = this.modalService.open(ReasonForChangeComponent, {size: 'lg'});
+        const modalRef = this.modalService.open(ReasonForChangeComponent, {size: 'lg', centered: true});
         modalRef.componentInstance.event = this.getEventVersion(event);
         modalRef.componentInstance.type = 'refuse';
 
@@ -124,7 +124,7 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     delete(event: Event) {
-        const modalRef = this.modalService.open(DeleteEventComponent, {size: 'lg'});
+        const modalRef = this.modalService.open(DeleteEventComponent, {size: 'lg', centered: true});
         modalRef.componentInstance.event = this.getEventVersion(event);
 
         modalRef.closed.subscribe(reason => {

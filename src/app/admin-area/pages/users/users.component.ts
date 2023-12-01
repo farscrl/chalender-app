@@ -35,7 +35,7 @@ export class UsersComponent implements OnInit {
     }
 
     edit(user: UserDto) {
-        const modalRef = this.modalService.open(ChangeUserComponent, {size: 'xl'});
+        const modalRef = this.modalService.open(ChangeUserComponent, {size: 'xl', centered: true});
         modalRef.componentInstance.userId = user.id;
         modalRef.closed.subscribe(() => {
             this.search();

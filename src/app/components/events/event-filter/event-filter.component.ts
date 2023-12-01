@@ -92,7 +92,7 @@ export class EventFilterComponent implements OnInit, OnDestroy {
 
     createSubscription() {
         if (!this.authService.isLoggedIn()) {
-            const modalRef = this.modalService.open(NotLoggedInComponent, {size: 'md'});
+            const modalRef = this.modalService.open(NotLoggedInComponent, {size: 'md', centered: true});
 
             modalRef.closed.subscribe(reason => {
                 if (reason === 'login') {
@@ -109,7 +109,7 @@ export class EventFilterComponent implements OnInit, OnDestroy {
         subscription.regions = this.regions.filter(region => this.selectedRegionIds.includes(region.id));
         subscription.searchTerm = this.searchTerm;
 
-        const modalRef = this.modalService.open(NewSubscriptionComponent, {size: 'lg'});
+        const modalRef = this.modalService.open(NewSubscriptionComponent, {size: 'lg', centered: true});
         modalRef.componentInstance.subscription = subscription;
     }
 

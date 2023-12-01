@@ -62,7 +62,7 @@ export class MyEventsComponent {
     }
 
     showPreview(event: Event) {
-        const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
+        const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl', centered: true});
         this.eventService.getEvent(event.id!).subscribe(eventDto => {
             modalRef.componentInstance.eventDto = eventDto;
         });

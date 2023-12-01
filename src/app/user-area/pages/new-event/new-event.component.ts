@@ -133,7 +133,7 @@ export class NewEventComponent implements OnInit {
     preview() {
         this.isPreviewOpen = true;
         const dto = this.transformToEventDto(true);
-        const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl'});
+        const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl', centered: true});
         modalRef.componentInstance.eventDto = dto;
         modalRef.closed.subscribe(value => {
             this.isPreviewOpen = false;
@@ -308,7 +308,7 @@ export class NewEventComponent implements OnInit {
     }
 
     openNetiquette() {
-        this.modalService.open(NetiquetteComponent, {size: 'xl'});
+        this.modalService.open(NetiquetteComponent, {size: 'xl', centered: true});
     }
 
     private transformToEventDto(isDraft: boolean): EventDto {
