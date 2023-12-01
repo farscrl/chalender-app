@@ -36,7 +36,7 @@
 </div>
 
 <ng-container *ngFor="let cat of categorizedEvents; let i = index">
-    <div class="day-title">
+    <div class="day-title" [class.first]="i === 0">
         <h2>{{cat.formattedDate}}</h2>
     </div>
     <ul>
