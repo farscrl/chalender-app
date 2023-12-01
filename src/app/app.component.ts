@@ -66,12 +66,13 @@ export class AppComponent implements OnInit {
     }
 
     private resizeParentIframe() {
-        const height = document.documentElement.scrollHeight;
+        const body = document.body;
+        const html = document.documentElement;
+        const height = Math.max(body.scrollHeight, body.offsetHeight, html.offsetHeight);
         const message = {
             type: 'resizeIframe',
             value: height
         };
-        console.log(message)
         window.parent.postMessage(message, "*");
     }
 }
