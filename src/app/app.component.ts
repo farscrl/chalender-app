@@ -68,7 +68,7 @@ export class AppComponent implements OnInit {
     private resizeParentIframe() {
         const body = document.body;
         const html = document.documentElement;
-        const height = Math.max(body.scrollHeight, body.offsetHeight, html.offsetHeight);
+        const height = Math.max(body.scrollHeight, body.offsetHeight, html.offsetHeight) + 20;
         const message = {
             type: 'resizeIframe',
             value: height
