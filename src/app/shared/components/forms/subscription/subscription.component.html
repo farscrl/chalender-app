@@ -6,6 +6,10 @@
     <div class="mb-3">
         <label for="name" class="form-label">
             {{ 'FORMS.SUBSCRIPTION.NAME' | translate }}
+            <app-info-button>
+                <b>{{ 'FORMS.SUBSCRIPTION.NAME_DESC_TITLE' | translate }}:</b>
+                {{ 'FORMS.SUBSCRIPTION.NAME_DESC_TEXT' | translate }}
+            </app-info-button>
         </label>
         <input formControlName="name" type="text" class="form-control" id="name"
                [class.is-invalid]="isFieldInvalid('name')">
@@ -16,7 +20,10 @@
 
     <div class="row" *ngIf="subscription?.id">
         <div class="col" formArrayName="genres">
-            {{ 'FORMS.SUBSCRIPTION.GENRES' | translate }} *<br>
+            {{ 'FORMS.SUBSCRIPTION.GENRES' | translate }} *
+            <app-info-button>
+                {{ 'FORMS.SUBSCRIPTION.GENRES_DESC_TEXT' | translate }}
+            </app-info-button>
             <div class="form-check" *ngFor="let genre of genres; let i = index"
                  [class.is-invalid]="isFieldInvalid('genres')">
                 <input class="form-check-input" type="checkbox" value="{{ genre }}" id="genre-{{genre.id}}"
@@ -30,7 +37,10 @@
             </div>
         </div>
         <div class="col" formArrayName="regions">
-            {{ 'FORMS.SUBSCRIPTION.REGIONS' | translate }} *<br>
+            {{ 'FORMS.SUBSCRIPTION.REGIONS' | translate }} *
+            <app-info-button>
+                {{ 'FORMS.SUBSCRIPTION.REGIONS_DESC_TEXT' | translate }}
+            </app-info-button>
             <div class="form-check" *ngFor="let region of regions; let i = index"
                  [class.is-invalid]="isFieldInvalid('regions')">
                 <input class="form-check-input" type="checkbox" value="{{ region }}" id="region-{{region.id}}"
@@ -45,7 +55,7 @@
         </div>
     </div>
 
-    <div class="mb-3" *ngIf="subscription?.id">
+    <div class="mb-3 mt-3" *ngIf="subscription?.id">
         <label for="searchTerm" class="form-label">
             {{ 'FORMS.SUBSCRIPTION.SEARCH_TERM' | translate }}
         </label>

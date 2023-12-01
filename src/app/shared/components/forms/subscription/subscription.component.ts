@@ -56,7 +56,7 @@ export class SubscriptionComponent {
         subscriptionToSave.genres = this.transformFormArrayToDto('genres', this.genres);
         subscriptionToSave.regions = this.transformFormArrayToDto('regions', this.regions);
 
-        if (this.subscription?.id) {
+        if (this.subscription?.id && this.subscription.id !== 'xxx') {
             this.subscriptionsService.updateSubscription(subscriptionToSave).subscribe(() => {
                 this.success.emit();
             });

@@ -53,8 +53,7 @@
                 [disabled]="eventsFilterService.numberOfFilters === 0">
             {{ 'COMPONENTS.FILTER.DELETE_FILTER' | translate }}
         </button>
-        <button type="button" class="clndr accent" (click)="createSubscription()"
-                [disabled]="eventsFilterService.numberOfFilters === 0">
+        <button type="button" class="clndr accent" (click)="createSubscription()">
             {{ 'COMPONENTS.FILTER.ABO_FILTER' | translate }}
         </button>
     </div>

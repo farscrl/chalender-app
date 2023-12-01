@@ -33,6 +33,10 @@ export class MySubscriptionsComponent {
         return subscription.regions.map(region => region.name).join(', ');
     }
 
+    createNew() {
+        this.router.navigateByUrl("/user/subscriptions/new");
+    }
+
     edit(subscription: Subscription) {
         this.router.navigateByUrl('/user/subscriptions/' + subscription.id);
     }

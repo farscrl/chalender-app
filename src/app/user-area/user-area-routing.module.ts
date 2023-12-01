@@ -18,6 +18,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { DeleteAccountComponent } from './pages/delete-account/delete-account.component';
 import { eventFormFilledGuard } from '../routing/form-filled.guard';
+import { NewSubscriptionComponent } from './pages/new-subscription/new-subscription.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
             {
                 path: '',
                 component: MySubscriptionsComponent, canActivate: [authGuard()]
+            },
+            {
+                path: 'new',
+                component: NewSubscriptionComponent, canActivate: [authGuard()]
             },
             {
                 path: ':id',

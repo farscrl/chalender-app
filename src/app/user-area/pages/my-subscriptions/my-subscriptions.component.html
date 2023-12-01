@@ -1,5 +1,11 @@
-<section class="content-wide">
+<section class="content-limited">
     <h1>Mes abunaments</h1>
+
+    <p *ngIf="!isLoading && subscriptions.length === 0">
+        Ti has registrà anc nagins abunaments.
+    </p>
+
+    <button class="clndr accent" (click)="createNew()" style="margin-bottom: 24px;">Agiuntar in nov abunament</button>
 
     <table class="table table-striped" *ngIf="!isLoading && subscriptions.length > 0">
         <thead class="table-light">
@@ -46,9 +52,5 @@
         </tr>
         </tbody>
     </table>
-
-    <p *ngIf="!isLoading && subscriptions.length === 0">
-        Ti has registrà anc nagins abunaments.
-    </p>
 
 </section>

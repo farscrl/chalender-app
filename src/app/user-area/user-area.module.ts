@@ -17,6 +17,7 @@ import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.compo
 import { ConfirmPasswordComponent } from './pages/confirm-password/confirm-password.component';
 import { UserAreaRoutingModule } from './user-area-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { NewSubscriptionComponent } from './pages/new-subscription/new-subscription.component';
 
 @NgModule({
     declarations: [
@@ -35,6 +36,7 @@ import { SharedModule } from '../shared/shared.module';
         RegisterComponent,
         ConfirmEmailComponent,
         ConfirmPasswordComponent,
+        NewSubscriptionComponent,
     ],
     imports: [
         CommonModule,

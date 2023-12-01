@@ -67,6 +67,16 @@ section.content-narrow {
     }
 }
 
+section.content-limited {
+    padding: 0 0.5rem;
+
+    @include media-breakpoint-up(lg) {
+        padding: unset;
+        max-width: 1200px;
+        margin: 2rem auto;
+    }
+}
+
 section.content-wide {
     margin: 2rem;
 }
@@ -91,6 +101,14 @@ a {
 
     &:hover {
         text-decoration: underline;
+    }
+}
+
+table {
+    thead {
+        tr {
+            font-family: "CadizBlack", sans-serif;
+        }
     }
 }
 
