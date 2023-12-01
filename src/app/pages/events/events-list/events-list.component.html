@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="events" [class.no-filter]="!iframeService.isShowSearchValue()">
+<div class="events" [class.no-filter]="!iframeService.isShowSearchValue() || eventsFilterService.isFilterCollapsed">
     <app-events-list-cards (toggleFilter)="toggleFilter()"
                            *ngIf="eventsFilterService.selectedView === 'cards'"></app-events-list-cards>
     <app-events-list-table (toggleFilter)="toggleFilter()"
