@@ -71,7 +71,6 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
             }
 
             this.eventFilterUrlParamSubscription = this.eventsFilterService.getEventFilterUrlParamsObservable().subscribe((params) => {
-                console.log(params);
                 this.router.navigate(
                     [],
                     {
