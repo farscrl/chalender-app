@@ -45,6 +45,15 @@ h2 {
 
 .search-term {
     width: 100%;
+    border-radius: var(--bs-border-radius);
+    border-color: #BBBFC2;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+
+    &:focus-visible {
+        outline-style: none;
+    }
 }
 
 .tags {
