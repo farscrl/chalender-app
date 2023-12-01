@@ -189,6 +189,7 @@
     "EVENT_LIST": {
         "LOAD_MORE": "mussar ulteriuras occurrenzas",
         "SHOW_FILTER": "mussar il filter",
+        "HIDE_FILTER": "zuppar il filter",
         "GRAPHIC_VIEW": "vista grafica",
         "LIST_VIEW": "vista tabellara"
     },

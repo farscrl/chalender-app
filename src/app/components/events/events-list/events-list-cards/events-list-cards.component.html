@@ -2,8 +2,10 @@
     <button class="filter-button d-none d-md-block" (click)="openDesktopFilter()"
             [class.active]="eventsFilterService.numberOfFilters > 0"
             *ngIf="iframeService.isShowSearchValue()">
-        <span class="txt" *ngIf="eventsFilterService.isFilterCollapsed">mussar il filter</span>
-        <span class="txt" *ngIf="!eventsFilterService.isFilterCollapsed">zuppar il filter</span>
+        <span class="txt"
+              *ngIf="eventsFilterService.isFilterCollapsed">{{ 'EVENT_LIST.SHOW_FILTER' | translate }}</span>
+        <span class="txt"
+              *ngIf="!eventsFilterService.isFilterCollapsed">{{ 'EVENT_LIST.HIDE_FILTER' | translate }}</span>
         <span>
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -21,7 +23,7 @@
     <button class="filter-button d-md-none" (click)="openMobileFilter()"
             [class.active]="eventsFilterService.numberOfFilters > 0"
             *ngIf="iframeService.isShowSearchValue()">
-        <span class="txt">mussar il filter</span>
+        <span class="txt">{{ 'EVENT_LIST.SHOW_FILTER' | translate }}</span>
         <span>
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd"

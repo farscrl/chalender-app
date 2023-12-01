@@ -7,6 +7,9 @@
     justify-content: space-between;
     padding: 1rem 0;
     border-bottom: 1px solid #BBBFC2;
+    @include media-breakpoint-up(lg) {
+        justify-content: flex-end;
+    }
 
     app-view-selection:only-child {
         margin-left: auto;
