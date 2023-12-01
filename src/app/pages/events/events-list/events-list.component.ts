@@ -58,7 +58,7 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
             if (!!params['genres']) {
                 const genres: number[] = params['genres'].split(",");
                 genres.forEach(genreId => {
-                    this.eventsFilterService.toggleRegion(+genreId);
+                    this.eventsFilterService.toggleGenre(+genreId);
                 });
             }
 
