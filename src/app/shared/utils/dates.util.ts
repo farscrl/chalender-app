@@ -43,6 +43,6 @@ export class DatesUtil {
 
     getDateTimeString(date: number): string {
         const djs = dayjs.unix(date);
-        return djs.format('DD-MM-YYYY hh:mm:ss');
+        return djs.format('DD-MM-YYYY H:mm:ss');
     }
 }
