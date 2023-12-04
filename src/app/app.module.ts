@@ -48,6 +48,7 @@ import { AuthenticationService } from './shared/services/authentication.service'
 import { translateBrowserLoaderFactory } from './shared/utils/translate-browser.loader';
 import { DatepickerTranslatorService } from './shared/services/datepicker-translator.service';
 import { DatepickerHeaderComponent } from './components/datepicker-header/datepicker-header.component';
+import { NoEventsComponent } from './components/events/no-events/no-events.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -105,6 +106,7 @@ export function inIframe() {
         NotLoggedInComponent,
         NewSubscriptionComponent,
         DatepickerHeaderComponent,
+        NoEventsComponent,
     ],
     imports: [
         BrowserModule,

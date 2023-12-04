@@ -17,6 +17,8 @@ export class EventsFilterService {
 
     public isFilterCollapsed = false;
 
+    public isSearching = false;
+
     private events: EventLookup[] = [];
 
     private selectedRegions = new BehaviorSubject<number[]>([]);
@@ -60,6 +62,7 @@ export class EventsFilterService {
     }
 
     private executeSearch() {
+        this.isSearching = true;
         this.searchSubject.next();
     }
 
@@ -75,6 +78,7 @@ export class EventsFilterService {
             }
 
             this.searchResults.next(this.events);
+            this.isSearching = false;
         });
     }
 

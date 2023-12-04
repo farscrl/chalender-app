@@ -1,0 +1,18 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+:host {
+    display: flex;
+    margin-top: 80px;
+    flex-direction: column;
+    align-items: center;
+
+    @include media-breakpoint-up(lg) {
+        margin-top: 150px;
+    }
+
+    button {
+        margin-top: 20px;
+    }
+}
