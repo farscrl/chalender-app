@@ -315,4 +315,10 @@ ngb-popover-window.popover {
 // modal
 .modal {
     --bs-modal-padding: 1.5rem;
+    --bs-modal-header-padding: 1rem 1.5rem;
+}
+
+// close-button (e.g. in modal)
+.btn-close {
+    --bs-btn-close-focus-shadow: none;
 }
