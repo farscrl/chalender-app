@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { EventsService } from '../../../shared/services/events.service';
 import { EventDto } from '../../../shared/data/event';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-event-details',
@@ -12,6 +13,8 @@ export class EventDetailsComponent {
 
     @Input()
     event?: EventDto;
+
+    @ViewChild('copiedLinkTooltip') copiedLinkTooltip?: NgbTooltip;
 
     constructor(private eventsService: EventsService, private detectorService: DeviceDetectorService) {
     }
@@ -49,26 +52,77 @@ export class EventDetailsComponent {
 
     shareOnFacebook() {
         const url = this.completeUrl(window.location.href);
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        const text = this.getEventDescriptionText(url);
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${encodeURIComponent(text)}`, '_blank');
     }
 
     shareOnTwitter() {
         const url = this.completeUrl(window.location.href);
-        window.open(`https://twitter.com/intent/tweet?url=${url}`, '_blank');
+        const text = this.getEventDescriptionText(url, false);
+        window.open(`https://twitter.com/intent/tweet?url=${url}&text=${encodeURIComponent(text)}`, '_blank');
     }
 
     shareOnWhatsapp() {
         const url = this.completeUrl(window.location.href);
-        window.open(`https://wa.me/?text=${url}`, '_blank');
+        const text = this.getEventDescriptionText(url);
+        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
     }
 
     shareViaEmail() {
         const url = this.completeUrl(window.location.href);
-        window.open(`mailto:?body=${url}`, '_blank');
+        const subject = `[chalender.ch] ${this.event!.title}`;
+        const body = this.getEventDescriptionText(url);
+        console.log(body)
+        window.open(`mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, "_blank");
     }
 
     copyLink() {
         const url = this.completeUrl(window.location.href);
         navigator.clipboard.writeText(url);
+        if (this.copiedLinkTooltip) {
+            this.copiedLinkTooltip.open();
+
+            setTimeout(() => {
+                this.copiedLinkTooltip?.close();
+            }, 3000);
+        }
+    }
+
+    private getEventDescriptionText(url: string, includeLink = true): string {
+        let returnValue = `${this.event!.title}
+${this.event!.location}
+${this.getOccurrencesText()}`;
+
+        if (includeLink) {
+            returnValue += `
+Detagls datti qua: ${url}`;
+        }
+
+        return returnValue;
+    }
+
+    private getOccurrencesText(): string {
+        let returnValue = "";
+        this.event?.occurrences.forEach(o => {
+            let date = "";
+            date += o.date + ", ";
+            if (o.isAllDay) {
+                date += "tuttadi";
+            } else {
+                date += o.start;
+                if (o.end) {
+                    date += " - " + o.end;
+                }
+            }
+
+            if (o.isCancelled) {
+                date += " (annullà)"
+            }
+
+            returnValue += date + "\n";
+        });
+
+        console.log(returnValue)
+        return returnValue;
     }
 }
