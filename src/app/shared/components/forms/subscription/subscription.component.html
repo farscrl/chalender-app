@@ -7,7 +7,6 @@
         <label for="name" class="form-label">
             {{ 'FORMS.SUBSCRIPTION.NAME' | translate }}
             <app-info-button>
-                <b>{{ 'FORMS.SUBSCRIPTION.NAME_DESC_TITLE' | translate }}:</b>
                 {{ 'FORMS.SUBSCRIPTION.NAME_DESC_TEXT' | translate }}
             </app-info-button>
         </label>
@@ -59,6 +58,9 @@
         <label for="searchTerm" class="form-label">
             {{ 'FORMS.SUBSCRIPTION.SEARCH_TERM' | translate }}
         </label>
+        <app-info-button>
+            {{ 'FORMS.SUBSCRIPTION.SEARCH_TERM_DESC_TEXT' | translate }}
+        </app-info-button>
         <input formControlName="searchTerm" type="text" class="form-control" id="searchTerm"
                [class.is-invalid]="isFieldInvalid('searchTerm')">
         <div class="invalid-feedback" *ngIf="isFieldInvalid('searchTerm')">

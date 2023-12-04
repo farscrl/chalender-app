@@ -174,6 +174,8 @@
             "REGIONS_DESC_TEXT": "Tscherna las regiuns che ti vuls vegnir infurmà. Tscherner nagut per vegnir infurmà davart tut las regiuns.",
             "REGIONS_ERROR": "Tscherna almain ina regiun.",
             "SEARCH_TERM": "Term da tschertga",
+            "SEARCH_TERM_DESC_TITLE": "Term da tschertga (Suchbegriff / termine di ricerca)",
+            "SEARCH_TERM_DESC_TEXT": "Sche quest champ n’è betg vid, vegnan mo tramessas occurrenzas che cuntegnan il text da quest champ.",
             "SEARCH_TERM_ERROR": "Endatescha p.pl. in term da tschertga.",
             "TYPE": "Con savens vuls ti retschaiver ils e-mails?",
             "TYPE_DESC_INSTANT": "Direct: Cun la publicaziun dad ina occurrenza vegn mintgamai tramess in e-mail",
