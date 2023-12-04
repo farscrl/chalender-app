@@ -26,6 +26,7 @@
                 *</label>
             <textarea formControlName="description" class="form-control" id="description" style="height: 150px"
                       [class.is-invalid]="isFieldInvalid('description')"></textarea>
+            <span id="description-size">{{ descriptionSize }}</span>
             <div class="invalid-feedback" *ngIf="isFieldInvalid('description')">
                 <ng-container *ngIf="isFieldError('description', 'required')">
                     Endatescha p.pl. ina descripziun.

@@ -311,6 +311,10 @@ export class NewEventComponent implements OnInit {
         this.modalService.open(NetiquetteComponent, {size: 'xl', centered: true});
     }
 
+    get descriptionSize(): string {
+        return this.f.get('description')?.value.length + ' / 750';
+    }
+
     private transformToEventDto(isDraft: boolean): EventDto {
         let newState: EventStatusTypes = 'DRAFT';
         if (!isDraft) {
