@@ -41,6 +41,23 @@
 
         .img-holder {
             transition: all .4s;
+            position: relative;
+
+            .cancelled {
+                background-color: #E42F2F;
+                color: white;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                padding: 0 4px;
+
+                @include media-breakpoint-up(md) {
+                    font-size: 1.5rem;
+                    top: 15px;
+                    right: 15px;
+                    padding: 0 8px;
+                }
+            }
         }
     }
 

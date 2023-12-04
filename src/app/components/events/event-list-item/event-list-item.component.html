@@ -2,6 +2,7 @@
     <div class="title">
         <span class="inline-time">{{ event.start ? event.start : 'tuttadi' }}</span>
         {{ event.title }}
+        <span class="cancelled" *ngIf="event.isCancelled">annullà</span>
     </div>
     <div class="location">
         {{ event.location }}
