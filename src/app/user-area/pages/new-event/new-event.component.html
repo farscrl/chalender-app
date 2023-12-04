@@ -227,10 +227,11 @@
         </h2>
         <app-file-list [files]="images" [type]="'image'" [isUploading]="isUploadingImage"></app-file-list>
         <div class="form-text">
-            formats acceptads: JPG, PNG<br>
+            formats acceptads: JPG, PNG, WebP<br>
             grondezza maximala: 20 MB<br>
         </div>
-        <app-file-upload [allowedMimeTypes]="['image/jpeg', 'image/png']" [(isUploading)]="isUploadingImage"
+        <app-file-upload [allowedMimeTypes]="['image/jpeg', 'image/png', 'image/webp']"
+                         [(isUploading)]="isUploadingImage"
                          (fileAdded)="images.push($event)" [type]="'image'"></app-file-upload>
         <br><br>
 
