@@ -13,6 +13,9 @@ export class Event {
     eventStatus?: EventStatusTypes = 'INVALID';
     ownerEmail?: string;
     contactEmail?: string;
+
+    createdDate?: number;
+    lastModifiedDate?: number;
 }
 
 export type EventStatusTypes = 'DRAFT' | 'IN_REVIEW' | 'PUBLISHED' | 'NEW_MODIFICATION' | 'REJECTED' | 'INVALID';

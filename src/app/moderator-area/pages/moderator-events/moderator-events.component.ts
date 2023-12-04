@@ -10,6 +10,7 @@ import { EventsService } from '../../../shared/services/events.service';
 import { ModerationEventsFilter } from '../../../shared/data/filter';
 import { Event, EventVersion } from '../../../shared/data/event';
 import { SortableDirective, SortEvent } from '../../../shared/directives/sortable.directive';
+import { DatesUtil } from '../../../shared/utils/dates.util';
 
 @Component({
     selector: 'app-moderator-events',
@@ -33,6 +34,7 @@ export class ModeratorEventsComponent implements OnInit {
         private modalService: NgbModal,
         private router: Router,
         private eventService: EventsService,
+        public datesUtil: DatesUtil,
     ) {
     }
 

@@ -40,4 +40,9 @@ export class DatesUtil {
         const date = dayjs().month(month - 1).year(year);
         return date.format('MMMM YYYY');
     }
+
+    getDateTimeString(date: number): string {
+        const djs = dayjs.unix(date);
+        return djs.format('DD-MM-YYYY hh:mm:ss');
+    }
 }

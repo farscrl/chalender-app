@@ -49,21 +49,23 @@
     <table class="table table-striped">
         <thead class="table-light">
         <tr>
-            <th scope="col" sortable="DATE" (sort)="onSort($event)">Datas</th>
+            <th scope="col" sortable="MODIFIED_DATE" (sort)="onSort($event)">Ultima midada</th>
             <th scope="col" sortable="USER" (sort)="onSort($event)">User</th>
+            <th scope="col" sortable="DATE" (sort)="onSort($event)">Datas</th>
             <th scope="col" sortable="TITLE" (sort)="onSort($event)">Titel</th>
             <th scope="col" sortable="STATE" (sort)="onSort($event)">Status</th>
-            <th scope="col">Acziuns</th>
+            <th scope="col" style="width: 220px">Acziuns</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let event of events; let i = index">
+            <td>{{ datesUtil.getDateTimeString(event.lastModifiedDate!) }}</td>
+            <td>{{event.ownerEmail}}</td>
             <td>
                 <div class="date"
                      *ngFor="let occurrence of getEventVersion(event)?.occurrences">{{occurrence.date}}</div>
             </td>
-            <td>{{event.ownerEmail}}</td>
-            <td scope="row">{{getEventVersion(event)?.title}}</td>
+            <td>{{getEventVersion(event)?.title}}</td>
             <td>
                 <app-status-badge [status]="event.eventStatus!"></app-status-badge>
             </td>
