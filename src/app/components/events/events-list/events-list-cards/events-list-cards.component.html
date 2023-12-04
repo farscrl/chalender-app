@@ -39,7 +39,8 @@
 
 <ng-container *ngFor="let cat of categorizedEvents; let i = index">
     <div class="day-title" [class.first]="i === 0">
-        <h2>{{cat.formattedDate}}</h2>
+        <!--<h2>{{cat.formattedDate}}</h2>-->
+        <h2>{{cat.formattedDateShort}} <span class="weekday">{{ cat.formattedWeekday }}</span></h2>
     </div>
     <ul>
         <li *ngFor="let event of cat.events; let i = index">
