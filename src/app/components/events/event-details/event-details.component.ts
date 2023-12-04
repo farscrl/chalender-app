@@ -52,7 +52,7 @@ export class EventDetailsComponent {
 
     shareOnFacebook() {
         const url = this.completeUrl(window.location.href);
-        const text = this.getEventDescriptionText(url);
+        const text = this.event!.title!;
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${encodeURIComponent(text)}`, '_blank');
     }
 
