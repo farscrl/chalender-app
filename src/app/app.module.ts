@@ -65,6 +65,14 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
     }
 }
 
+export function inIframe() {
+    try {
+        return window.self !== window.top;
+    } catch (e) {
+        return true;
+    }
+}
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -118,7 +126,7 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
             defaultLanguage: 'rm'
         }),
         ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: !isDevMode(),
+            enabled: !isDevMode() && !inIframe(),
             // Register the ServiceWorker as soon as the application is stable
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000'
