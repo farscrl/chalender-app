@@ -1,4 +1,5 @@
-import { Directive, ElementRef, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostBinding, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
     selector: '[scrollableTitle]',
@@ -6,24 +7,27 @@ import { Directive, ElementRef, HostBinding, OnDestroy, OnInit } from '@angular/
 export class ScrollableTitleDirective implements OnInit, OnDestroy {
     @HostBinding('class.isOnTop') shadow: boolean = false;
 
-    constructor(private el: ElementRef) {
+    constructor(
+        private el: ElementRef,
+        @Inject(PLATFORM_ID) private platformId: any,
+    ) {
     }
 
     ngOnInit() {
-        if (typeof window !== undefined) {
+        if (isPlatformBrowser(this.platformId)) {
             window.addEventListener('scroll', () => this._checkScroll());
         }
 
     }
 
     ngOnDestroy() {
-        if (typeof window !== undefined) {
+        if (isPlatformBrowser(this.platformId)) {
             window.removeEventListener('scroll', () => this._checkScroll());
         }
     }
 
     private _checkScroll() {
-        if (typeof window !== undefined) {
+        if (isPlatformBrowser(this.platformId)) {
             const {
                 top: t,
             } = this.el.nativeElement.getBoundingClientRect();
