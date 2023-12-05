@@ -14,6 +14,8 @@ import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { minCheckboxValidator } from '../../../shared/validators/mincheckbox.validator';
 import { debounceTime, fromEvent, take } from 'rxjs';
 import { NetiquetteComponent } from '../../../shared/components/netiquette/netiquette.component';
+import { dateValidator } from '../../../shared/validators/date.validator';
+import { DatesUtil } from '../../../shared/utils/dates.util';
 
 const regexUrl = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
@@ -54,6 +56,7 @@ export class NewEventComponent implements OnInit {
         private router: Router,
         private notificationsService: NotificationsService,
         private el: ElementRef,
+        private datesUtil: DatesUtil
     ) {
         const navigation = this.router.getCurrentNavigation();
         if (navigation && navigation.extras.state) {
@@ -170,6 +173,12 @@ export class NewEventComponent implements OnInit {
         return field.hasError(errorName);
     }
 
+    isOccurrenceFieldError(index: number, fieldName: string, errorName: string) {
+        const occurrence = this.eventOccurrencesFormArray.at(index);
+        const field = occurrence.get(fieldName)!;
+        return field.hasError(errorName);
+    }
+
     get genresFormArray(): FormArray {
         return this.f.get('genres') as FormArray;
     }
@@ -278,7 +287,7 @@ export class NewEventComponent implements OnInit {
         if (this.eventToChange) {
             this.eventToChange.occurrences.forEach((occurrence, idx) => {
                 const o = this.fb.group({
-                    date: [dayjs(occurrence.date, 'D-M-YYYY').format('YYYY-MM-DD'), Validators.required],
+                    date: [dayjs(occurrence.date, 'D-M-YYYY').format('YYYY-MM-DD'), [Validators.required, dateValidator(this.datesUtil)]],
                     start: [occurrence.start, Validators.required],
                     end: [occurrence.end],
                     isAllDay: [occurrence.isAllDay],
@@ -294,7 +303,7 @@ export class NewEventComponent implements OnInit {
 
     addNewOccurrence() {
         const o = this.fb.group({
-            date: ['', Validators.required],
+            date: ['', [Validators.required, dateValidator(this.datesUtil)]],
             start: ['', Validators.required],
             end: [''],
             isAllDay: [false],

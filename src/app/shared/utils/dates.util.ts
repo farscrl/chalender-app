@@ -45,4 +45,22 @@ export class DatesUtil {
         const djs = dayjs.unix(date);
         return djs.format('DD-MM-YYYY H:mm:ss');
     }
+
+    isValidEventDate(input: string): string | null {
+        const parts = input.split("-");
+        if (parts.length === 3 && (+parts[0] > 9999)) {
+            return 'too_far_future';
+        }
+
+        const dateObj = dayjs(input, "YYYY-MM-DD");
+        if (dateObj.isBefore(dayjs())) {
+            return 'past';
+        }
+
+        if (dateObj.isAfter(dayjs('2039-12-31'))) {
+            return 'too_far_future';
+        }
+
+        return null;
+    }
 }
