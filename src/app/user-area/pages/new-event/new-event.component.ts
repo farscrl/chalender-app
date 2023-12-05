@@ -39,6 +39,8 @@ export class NewEventComponent implements OnInit {
     isLoggedIn = false;
     isPreviewOpen = false;
 
+    isSaving = false;
+
     private eventToChangeId?: string;
     private eventToChange?: EventDto;
     private returnToModeratorView = false;
@@ -93,38 +95,52 @@ export class NewEventComponent implements OnInit {
             }
         }
 
+        this.isSaving = true;
         const event = this.transformToEventDto(isDraft);
 
         if (this.eventToChange) {
             event.id = this.eventToChange.id;
-            this.eventsService.updateEvent(event).subscribe(event => {
-                this.notificationsService.successMessage(
-                    'Creà l\'occurrenza',
-                    "Ti has memorisà cun success l'occurrenza «" + event.title + "»."
-                );
+            this.eventsService.updateEvent(event).subscribe({
+                next: (event: EventDto) => {
+                    this.notificationsService.successMessage(
+                        'Creà l\'occurrenza',
+                        "Ti has memorisà cun success l'occurrenza «" + event.title + "»."
+                    );
 
-                if (this.returnToModeratorView) {
-                    this.router.navigateByUrl('/moderator/events');
-                } else {
-                    this.router.navigateByUrl('/user/events');
-                }
-            });
-        } else {
-            this.eventsService.createEvent(event).subscribe(event => {
-
-                this.notificationsService.successMessage(
-                    'Creà l\'occurrenza',
-                    "Ti has memorisà cun success l'occurrenza «" + event.title + "»."
-                );
-
-                if (this.isLoggedIn) {
                     if (this.returnToModeratorView) {
                         this.router.navigateByUrl('/moderator/events');
                     } else {
                         this.router.navigateByUrl('/user/events');
                     }
-                } else {
-                    this.router.navigateByUrl('/');
+                    this.isSaving = false;
+                },
+                error: error => {
+                    this.isSaving = false;
+                    console.error(error)
+                }
+            });
+        } else {
+            this.eventsService.createEvent(event).subscribe({
+                next: event => {
+                    this.notificationsService.successMessage(
+                        'Creà l\'occurrenza',
+                        "Ti has memorisà cun success l'occurrenza «" + event.title + "»."
+                    );
+
+                    if (this.isLoggedIn) {
+                        if (this.returnToModeratorView) {
+                            this.router.navigateByUrl('/moderator/events');
+                        } else {
+                            this.router.navigateByUrl('/user/events');
+                        }
+                    } else {
+                        this.router.navigateByUrl('/');
+                    }
+                    this.isSaving = false;
+                },
+                error: err => {
+                    this.isSaving = false;
+                    console.error(err);
                 }
             });
         }

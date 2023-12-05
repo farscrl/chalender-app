@@ -264,8 +264,11 @@
 
         <button type="button" class="clndr accent" (click)="preview()">Prevista</button>
         <button type="button" class="clndr accent" (click)="onSubmit(true)"
-                *ngIf="canSaveAsDraft()">Memorisar sco sboz
+                *ngIf="canSaveAsDraft()" [disabled]="isSaving">
+            Memorisar sco sboz
         </button>
-        <button type="button" class="clndr accent" (click)="onSubmit(false)">Publitgar</button>
+        <button type="button" class="clndr accent" (click)="onSubmit(false)" [disabled]="isSaving">
+            Publitgar
+        </button>
     </form>
 </section>
