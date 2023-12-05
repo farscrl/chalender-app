@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { LinkyPipe } from './pipes/linky.pipe';
 import { InfoButtonComponent } from './components/forms/info-button/info-button.component';
 import { NetiquetteComponent } from './components/netiquette/netiquette.component';
+import { FabPositionDirective } from './directives/fab-position.directive';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { NetiquetteComponent } from './components/netiquette/netiquette.componen
         LinkyPipe,
         InfoButtonComponent,
         NetiquetteComponent,
+        FabPositionDirective,
     ],
     imports: [
         CommonModule,
@@ -62,6 +64,7 @@ import { NetiquetteComponent } from './components/netiquette/netiquette.componen
         NewEventButtonComponent,
 
         SortableDirective,
+        FabPositionDirective,
 
         LinkyPipe,
         ShortDomainPipe,

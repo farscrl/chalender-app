@@ -5,7 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
     selector: '[scrollableTitle]',
 })
 export class ScrollableTitleDirective implements OnInit, OnDestroy {
-    @HostBinding('class.isOnTop') shadow: boolean = false;
+    @HostBinding('class.isOnTop') addClass: boolean = false;
 
     constructor(
         private el: ElementRef,
@@ -35,7 +35,7 @@ export class ScrollableTitleDirective implements OnInit, OnDestroy {
                 scrollX,
             } = window
             const topPos = t + scrollX
-            this.shadow = topPos <= 75;
+            this.addClass = topPos <= 75;
         }
     }
 }
