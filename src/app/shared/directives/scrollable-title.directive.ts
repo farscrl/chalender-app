@@ -7,6 +7,7 @@ import { isPlatformBrowser } from '@angular/common';
 export class ScrollableTitleDirective implements OnInit, OnDestroy {
     @HostBinding('class.touchesTop') touchesTop: boolean = false;
     @HostBinding('class.isOnTop') isOnTop: boolean = false;
+    @HostBinding('class.startsHiding') startsHiding: boolean = false;
 
     constructor(
         private el: ElementRef,
@@ -37,7 +38,8 @@ export class ScrollableTitleDirective implements OnInit, OnDestroy {
             } = window
             const topPos = t + scrollX
             this.touchesTop = topPos <= 75;
-            this.isOnTop = topPos < 0;
+            this.isOnTop = topPos < 1;
+            this.startsHiding = topPos < 0;
         }
     }
 }
