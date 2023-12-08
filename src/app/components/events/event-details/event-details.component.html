@@ -66,11 +66,11 @@
 
             <ng-container *ngIf="event.genres.length > 0">
                 <hr>
-                <div class="d-flex genres">
+                <div class="genres">
                     <div class="highlight">{{ 'EVENT_DETAILS.GENRE' | translate }}</div>
                     <div class="tags">
                         <ng-container *ngFor="let genre of event.genres">
-                            <span class="tag-element active">{{ genre.name }}</span>
+                            <span class="tag">{{ genre.name }}</span>
                         </ng-container>
                     </div>
                 </div>
@@ -78,11 +78,11 @@
 
             <ng-container *ngIf="event.regions.length > 0">
                 <hr>
-                <div class="d-flex regions">
+                <div class="regions">
                     <div class="highlight">{{ 'EVENT_DETAILS.REGION' | translate }}</div>
                     <div class="tags">
                         <ng-container *ngFor="let region of event.regions">
-                            <span class="tag-element active">{{ region.name }}</span>
+                            <span class="tag">{{ region.name }}</span>
                         </ng-container>
                     </div>
                 </div>
