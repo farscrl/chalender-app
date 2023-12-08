@@ -38,15 +38,17 @@
 </div>
 
 <ng-container *ngFor="let cat of categorizedEvents; let i = index">
-    <div class="day-title" [class.first]="i === 0" scrollableTitle>
-        <!--<h2>{{cat.formattedDate}}</h2>-->
-        <h2>{{cat.formattedDateShort}} <span class="weekday">{{ cat.formattedWeekday }}</span></h2>
+    <div>
+        <div class="day-title" [class.first]="i === 0" scrollableTitle>
+            <!--<h2>{{cat.formattedDate}}</h2>-->
+            <h2>{{cat.formattedDateShort}} <span class="weekday">{{ cat.formattedWeekday }}</span></h2>
+        </div>
+        <ul>
+            <li *ngFor="let event of cat.events; let i = index">
+                <app-event-card [event]="event" [isFirst]="i === 0"></app-event-card>
+            </li>
+        </ul>
     </div>
-    <ul>
-        <li *ngFor="let event of cat.events; let i = index">
-            <app-event-card [event]="event" [isFirst]="i === 0"></app-event-card>
-        </li>
-    </ul>
 </ng-container>
 
 <ng-container *ngIf="categorizedEvents.length === 0 && !eventsFilterService.isSearching">
