@@ -30,6 +30,7 @@ export class ScrollableTitleDirective implements OnInit, OnDestroy {
 
     private _checkScroll() {
         if (isPlatformBrowser(this.platformId)) {
+            const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
             const {
                 top: t,
             } = this.el.nativeElement.getBoundingClientRect();
@@ -37,7 +38,12 @@ export class ScrollableTitleDirective implements OnInit, OnDestroy {
                 scrollX,
             } = window
             const topPos = t + scrollX
-            this.touchesTop = topPos <= 75;
+
+            if (width < 768) {
+                this.touchesTop = topPos <= 54;
+            } else {
+                this.touchesTop = topPos <= 75;
+            }
             this.isOnTop = topPos < 1;
             this.startsHiding = topPos < 0;
         }
