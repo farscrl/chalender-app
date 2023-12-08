@@ -82,6 +82,7 @@
         margin-left: 1rem;
         margin-right: 1rem;
         border-top: 1px solid #BBBFC2;
+        align-items: start;
 
         &:nth-of-type(2) {
             border-top: none;
@@ -91,6 +92,9 @@
 }
 
 .day-title-large {
+    position: sticky;
+    top: 0;
+
     h2 {
         font-size: 1.25rem;
         margin: 0;
