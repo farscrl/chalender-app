@@ -1,3 +1,7 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
 .container {
     padding: 2rem;
 }
@@ -13,4 +17,10 @@
     line-height: 1.4;
     margin-left: 44px;
     padding: 6px 12px 4px;
+}
+
+@include media-breakpoint-up(xl) {
+    section.content-narrow {
+        margin: -4rem auto;
+    }
 }
