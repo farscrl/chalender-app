@@ -56,12 +56,6 @@ export class EventDetailsComponent {
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${encodeURIComponent(text)}`, '_blank');
     }
 
-    shareOnTwitter() {
-        const url = this.completeUrl(window.location.href);
-        const text = this.getEventDescriptionText(url, false);
-        window.open(`https://twitter.com/intent/tweet?url=${url}&text=${encodeURIComponent(text)}`, '_blank');
-    }
-
     shareOnWhatsapp() {
         const url = this.completeUrl(window.location.href);
         const text = this.getEventDescriptionText(url);
