@@ -7,8 +7,10 @@
     justify-content: space-between;
     padding: 1rem 0;
     border-bottom: 1px solid #BBBFC2;
+
     @include media-breakpoint-up(lg) {
         justify-content: flex-end;
+        font-size: 1rem;
     }
 
     app-view-selection:only-child {
@@ -77,8 +79,8 @@
         margin-top: 2rem;
         display: grid;
         grid-template-columns: 100px 1fr;
-        margin-left: 2rem;
-        margin-right: 2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
         border-top: 1px solid #BBBFC2;
 
         &:nth-of-type(2) {
@@ -92,6 +94,7 @@
     h2 {
         font-size: 1.25rem;
         margin: 0;
+        margin-top: 0.3rem;
     }
 }
 
@@ -101,12 +104,13 @@ ul {
 
     @include media-breakpoint-up(md) {
         padding-right: 0;
+        padding-left: 2rem;
     }
 }
 
 li {
     border-top: 1px solid #DADADA;
-    padding: 2px 0;
+    padding: 7px 0;
 
     &:nth-of-type(1) {
         border-top: none;

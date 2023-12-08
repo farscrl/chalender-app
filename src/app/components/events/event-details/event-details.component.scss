@@ -68,6 +68,11 @@ hr {
 
         .location {
             font-size: 1.125rem;
+            line-height: 1.5rem;
+
+            @include media-breakpoint-up(lg) {
+                font-size: 1.25rem;
+            }
         }
 
         .date-icon {

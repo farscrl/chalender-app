@@ -16,6 +16,11 @@
     --danger: #D30000;
 }
 
+::selection {
+    color: var(--bs-body-bg);
+    background: var(--accent);
+}
+
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 @import 'node_modules/bootstrap/scss/functions';
@@ -45,12 +50,21 @@ body {
             min-height: unset;
         }
     }
+
+    @include media-breakpoint-up(lg) {
+        font-size: 1.1rem;
+    }
 }
 
 
 .container {
     max-width: 1280px;
     margin: 0 auto;
+    padding: 1rem;
+
+    @include media-breakpoint-up(sm) {
+        padding: 2rem;
+    }
 }
 
 #content {
@@ -64,7 +78,7 @@ section.content-narrow {
     @include media-breakpoint-up(lg) {
         padding: unset;
         max-width: 900px;
-        margin: 2rem auto;
+        margin: 0 auto 2rem;
     }
 }
 
@@ -84,8 +98,20 @@ section.content-wide {
 
 h1 {
     font-family: "CadizBlack", sans-serif;
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    line-height: 1.1;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+
+    @include media-breakpoint-up(md) {
+        font-size: 2.2rem;
+        padding-bottom: 2rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        font-size: 2.8rem;
+    }
 }
 
 h2 {
@@ -161,6 +187,25 @@ button.clndr {
             color: white;
         }
     }
+}
+
+.form-check-input:checked {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.form-check-input:focus {
+    border-color: var(--bs-border-color);
+    outline: 0;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: var(--bs-border-color);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem #3cbfa43d;
 }
 
 .tag-element {

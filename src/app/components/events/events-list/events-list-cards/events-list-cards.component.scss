@@ -29,6 +29,10 @@
         border-radius: 30px;
         background-color: white;
 
+        @include media-breakpoint-up(lg) {
+            font-size: 1rem;
+        }
+
         .txt {
             margin-right: 8px;
             color: black;
@@ -72,6 +76,7 @@
         .weekday {
             font-family: 'Cadiz', sans-serif;
             margin-left: 16px;
+            line-height: 1.3rem;
         }
     }
 

@@ -41,11 +41,13 @@
 
 .location {
     color: black;
+    padding-left: 15px;
 }
 
 .time {
     display: none;
     color: black;
+    padding-left: 15px;
 
     @include media-breakpoint-up(md) {
         display: block;
@@ -60,11 +62,13 @@
         align-items: flex-start;
         flex-wrap: wrap;
         white-space: nowrap;
+        padding-top: 5px;
+        padding-left: 15px;
 
         .tag {
             background-color: var(--accent);
             color: white;
-            padding: 2px 4px;
+            padding: 2px 7px;
             font-size: 0.85rem;
             margin-right: 6px;
             margin-bottom: 6px;

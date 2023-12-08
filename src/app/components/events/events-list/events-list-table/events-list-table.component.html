@@ -42,8 +42,8 @@
         <h2>{{cat.formattedDate}}</h2>
     </div>
     <div class="day-title-large d-none d-md-block">
-        <div class="weekday">{{cat.formattedWeekday}}</div>
         <h2>{{cat.formattedDateShort}}</h2>
+        <div class="weekday">{{cat.formattedWeekday}}</div>
     </div>
     <ul>
         <li *ngFor="let event of cat.events; let i = index">
