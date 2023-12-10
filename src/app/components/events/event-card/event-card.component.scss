@@ -128,6 +128,11 @@
                     display: flex;
                     flex-wrap: wrap;
                     white-space: nowrap;
+                    justify-content: flex-end;
+
+                    @include media-breakpoint-up(md) {
+                        justify-content: unset;
+                    }
 
                     .tag {
                         background-color: var(--accent);
