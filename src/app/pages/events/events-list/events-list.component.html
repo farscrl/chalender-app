@@ -1,8 +1,23 @@
 <div class="filter-area d-none d-md-block" [class.show]="!eventsFilterService.isFilterCollapsed"
-     *ngIf="iframeService.isShowSearchValue()">
+     *ngIf="iframeService.isShowSearchValue()" filterScrollPosition>
     <div #collapse="ngbCollapse" [(ngbCollapse)]="eventsFilterService.isFilterCollapsed"
          [horizontal]="true" class="filter">
-        <app-event-filter></app-event-filter>
+        <app-event-filter
+            [resetFilterCommand]="resetFiltersCommandSubject.asObservable()"
+            [createSubscriptionCommand]="createSubscriptionCommandSubject.asObservable()"
+        ></app-event-filter>
+
+        <div class="buttons">
+            <div class="button-row">
+                <button type="button" class="clndr accent" (click)="resetFilters()"
+                        [disabled]="eventsFilterService.numberOfFilters === 0">
+                    {{ 'COMPONENTS.FILTER.DELETE_FILTER' | translate }}
+                </button>
+                <button type="button" class="clndr accent" (click)="createSubscription()">
+                    {{ 'COMPONENTS.FILTER.ABO_FILTER' | translate }}
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 

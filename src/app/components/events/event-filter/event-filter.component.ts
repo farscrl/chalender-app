@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { NgbCalendar, NgbDate, NgbDatepicker, NgbDateStruct, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { NotLoggedInComponent } from '../../modals/not-logged-in/not-logged-in.component';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { StaticDataService } from '../../../shared/services/static-data.service'
 import { EventsFilterService } from '../../../shared/services/events-filter.service';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { Subscription } from '../../../shared/data/subscription';
+import { Observable, Subscription as RxSubscription } from 'rxjs';
 
 @Component({
     selector: 'app-event-filter',
@@ -24,15 +25,24 @@ export class EventFilterComponent implements OnInit, OnDestroy {
     selectedStartDate: NgbDateStruct;
     searchTerm: string = '';
 
+    @Input()
+    resetFilterCommand?: Observable<void>;
+
+    @Input()
+    createSubscriptionCommand?: Observable<void>;
+
     @Output()
     hideFilterIfNeeded: EventEmitter<void> = new EventEmitter<void>();
 
     @ViewChild('datepicker') datepicker!: NgbDatepicker;
 
-    private selectedGenresSubscription: any;
-    private selectedRegionsSubscription: any;
-    private selectedStartDateSubscription: any;
-    private searchTermSubscription: any;
+    private selectedGenresSubscription?: RxSubscription;
+    private selectedRegionsSubscription?: RxSubscription;
+    private selectedStartDateSubscription?: RxSubscription;
+    private searchTermSubscription?: RxSubscription;
+
+    private resetFilterCommandSubscription?: RxSubscription;
+    private createSubscriptionCommandSubscription?: RxSubscription;
 
     constructor(
         private staticData: StaticDataService,
@@ -48,6 +58,17 @@ export class EventFilterComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.loadStaticData();
         this.loadCurrentFilters();
+
+        if (this.resetFilterCommand) {
+            this.resetFilterCommandSubscription = this.resetFilterCommand.subscribe(() => {
+                this.resetFilters();
+            });
+        }
+        if (this.createSubscriptionCommand) {
+            this.createSubscriptionCommandSubscription = this.createSubscriptionCommand.subscribe(() => {
+                this.createSubscription();
+            });
+        }
     }
 
     ngOnDestroy(): void {
@@ -62,6 +83,12 @@ export class EventFilterComponent implements OnInit, OnDestroy {
         }
         if (this.searchTermSubscription) {
             this.searchTermSubscription.unsubscribe();
+        }
+        if (this.resetFilterCommandSubscription) {
+            this.resetFilterCommandSubscription.unsubscribe();
+        }
+        if (this.createSubscriptionCommandSubscription) {
+            this.createSubscriptionCommandSubscription.unsubscribe();
         }
     }
 

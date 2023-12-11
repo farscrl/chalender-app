@@ -26,7 +26,39 @@
     overflow-y: hidden;
 
     @include media-breakpoint-up(md) {
+        overflow-y: unset;
         max-height: unset;
+        min-height: calc(100vh - 85px - 97px - 32px);
+    }
+}
+
+.buttons {
+    margin: 1rem 2rem 0 2rem;
+    position: sticky;
+    bottom: 0;
+    height: 66px;
+
+    border-top: 1px solid #BBBFC2;
+    background-color: white;
+    padding-top: 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .button-row {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    button {
+        flex-grow: 1;
+        margin-right: 0;
+        height: 34px;
+        padding: 4px;
     }
 }
 

@@ -6,7 +6,7 @@ import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { EventsFilterService } from '../../../shared/services/events-filter.service';
 import { NotificationsService } from '../../../shared/services/notifications.service';
 import { rmLocale } from '../../../shared/utils/day-js-locale';
-import { first, Subscription } from 'rxjs';
+import { first, Subject, Subscription } from 'rxjs';
 import { IframeService } from '../../../services/iframe.service';
 
 const LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION = 'events-scroll-position';
@@ -19,6 +19,9 @@ const LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION = 'events-scroll-position';
 export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestroy {
 
     @ViewChild(NgbCollapse) filterCollapsable!: NgbCollapse;
+
+    resetFiltersCommandSubject: Subject<void> = new Subject<void>();
+    createSubscriptionCommandSubject: Subject<void> = new Subject<void>();
 
     private eventFilterUrlParamSubscription?: Subscription;
 
@@ -114,5 +117,13 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
 
     toggleFilter() {
         this.filterCollapsable.toggle();
+    }
+
+    resetFilters() {
+        this.resetFiltersCommandSubject.next();
+    }
+
+    createSubscription() {
+        this.createSubscriptionCommandSubject.next();
     }
 }

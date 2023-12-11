@@ -50,6 +50,7 @@ import { DatepickerTranslatorService } from './shared/services/datepicker-transl
 import { DatepickerHeaderComponent } from './components/datepicker-header/datepicker-header.component';
 import { NoEventsComponent } from './components/events/no-events/no-events.component';
 import { ScrollableTitleDirective } from './shared/directives/scrollable-title.directive';
+import { FilterScrollPositionDirective } from './shared/directives/filter-scroll-position.directive';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -109,6 +110,7 @@ export function inIframe() {
         DatepickerHeaderComponent,
         NoEventsComponent,
         ScrollableTitleDirective,
+        FilterScrollPositionDirective,
     ],
     imports: [
         BrowserModule,
