@@ -39,7 +39,7 @@
 
 <div class="day" *ngFor="let cat of categorizedEvents; let i = index">
     <div class="day-title d-md-none">
-        <h2>{{cat.formattedDate}}</h2>
+        <h2>{{cat.formattedDateShort}} <span class="weekday">{{cat.formattedWeekday}}</span></h2>
     </div>
     <div class="day-title-large d-none d-md-block">
         <h2>{{cat.formattedDateShort}}</h2>

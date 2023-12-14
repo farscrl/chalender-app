@@ -21,14 +21,9 @@ export class DatesUtil {
         });
         return sortedDates.map(date => {
             const dateObj = dayjs(date, "DD-MM-YYYY");
-            let formattedDate = dateObj.format('dddd[, ils ]D[ da ]MMMM YYYY');
-            if (dateObj.month() === 3 || dateObj.month() === 7) {
-                formattedDate = dateObj.format('dddd[, ils ]D[ d’]MMMM YYYY');
-            }
 
             return {
                 date: date,
-                formattedDate: formattedDate,
                 formattedDateShort: dateObj.format('DD-MM-YYYY'),
                 formattedWeekday: dateObj.format('dddd'),
                 events: events.filter(e => e.date === date),

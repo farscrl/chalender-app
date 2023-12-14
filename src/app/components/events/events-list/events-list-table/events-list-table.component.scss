@@ -68,6 +68,12 @@
     h2 {
         font-size: 1rem;
         margin: 1rem;
+
+        .weekday {
+            font-family: 'Cadiz', sans-serif;
+            margin-left: 16px;
+            line-height: 1.3rem;
+        }
     }
 
     @include media-breakpoint-up(md) {
