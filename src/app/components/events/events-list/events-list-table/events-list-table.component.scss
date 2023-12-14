@@ -9,8 +9,12 @@
     border-bottom: 1px solid #BBBFC2;
 
     @include media-breakpoint-up(lg) {
+        position: sticky;
+        top: 0;
+        z-index: 3;
         justify-content: flex-end;
         font-size: 1rem;
+        background-color: white;
     }
 
     app-view-selection:only-child {
