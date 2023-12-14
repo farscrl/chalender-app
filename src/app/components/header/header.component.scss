@@ -22,8 +22,9 @@
 }
 
 .name {
-    font-size: 19px;
+    font-size: 29px;
     margin-left: 1rem;
+
     @include media-breakpoint-up(md) {
         font-size: 38px;
         margin-left: 2rem;
