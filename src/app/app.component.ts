@@ -143,7 +143,6 @@ export class AppComponent implements OnInit {
     }
 
     private checkIfThirdTimeAppOpened(): boolean {
-        return true;
         let appOpenTimes = +(localStorage.getItem(LOCALSTORAGE_APP_OPEN_TIMES) || 0);
         appOpenTimes++;
         localStorage.setItem(LOCALSTORAGE_APP_OPEN_TIMES, appOpenTimes + '');
