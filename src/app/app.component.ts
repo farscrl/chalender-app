@@ -139,10 +139,11 @@ export class AppComponent implements OnInit {
                     that.promptEvent.prompt();
                 }
             });
-        }, 15000);
+        }, 10000);
     }
 
     private checkIfThirdTimeAppOpened(): boolean {
+        return true;
         let appOpenTimes = +(localStorage.getItem(LOCALSTORAGE_APP_OPEN_TIMES) || 0);
         appOpenTimes++;
         localStorage.setItem(LOCALSTORAGE_APP_OPEN_TIMES, appOpenTimes + '');
