@@ -3,6 +3,7 @@ import { EventsService } from '../../../shared/services/events.service';
 import { EventDto } from '../../../shared/data/event';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { PlatformService } from '../../../shared/services/platform.service';
 
 @Component({
     selector: 'app-event-details',
@@ -16,7 +17,11 @@ export class EventDetailsComponent {
 
     @ViewChild('copiedLinkTooltip') copiedLinkTooltip?: NgbTooltip;
 
-    constructor(private eventsService: EventsService, private detectorService: DeviceDetectorService) {
+    constructor(
+        private eventsService: EventsService,
+        private detectorService: DeviceDetectorService,
+        private platformService: PlatformService
+    ) {
     }
 
     getImgUrl(imageUrl: string) {
@@ -28,6 +33,10 @@ export class EventDetailsComponent {
 
         if (this.detectorService.isDesktop()) {
             return 'https://www.google.com/maps/search/?api=1&query=' + encodeURI(input);
+        }
+
+        if (this.platformService.isIos()) {
+            return 'maps://?q=' + encodeURI(input);
         }
         return 'geo://?q=' + encodeURI(input);
     }
