@@ -8,7 +8,7 @@
     padding: 1rem 0;
     border-bottom: 1px solid #BBBFC2;
 
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(md) {
         position: sticky;
         top: 0;
         z-index: 3;
@@ -97,7 +97,7 @@
 
 .day-title-large {
     position: sticky;
-    top: 0;
+    top: 85px;
 
     h2 {
         font-size: 1.25rem;
