@@ -56,7 +56,7 @@
 </ng-container>
 
 <div class="text-center pb-5" *ngIf="!eventsFilterService.isSearching">
-    <button class="clndr load-next-page" (click)="eventsFilterService.loadNextPage()"
+    <button class="clndr accent load-next-page" (click)="eventsFilterService.loadNextPage()"
             *ngIf="eventsFilterService.hasMorePages">
         {{ 'EVENT_LIST.LOAD_MORE' | translate }}
     </button>

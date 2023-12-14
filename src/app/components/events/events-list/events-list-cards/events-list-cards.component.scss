@@ -141,9 +141,7 @@ li app-event-card {
 .load-next-page {
     margin: 0;
     padding: 1rem 3rem;
-    border-radius: 5px;
-    border: 1px solid var(--accent);
-    color: var(--accent);
+    font-weight: normal;
 }
 
 @include media-breakpoint-up(lg) {
