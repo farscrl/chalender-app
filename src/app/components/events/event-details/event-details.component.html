@@ -5,7 +5,7 @@
         <div class="description">
             <div class="line-wrap" [innerHTML]="event.description | linky"></div>
 
-            <ngb-carousel *ngIf="event.images"
+            <ngb-carousel *ngIf="event.images" [interval]="0"
                           [showNavigationArrows]="event.images.length > 1"
                           [showNavigationIndicators]="event.images.length > 1">
                 <ng-template ngbSlide *ngFor="let image of event.images">
