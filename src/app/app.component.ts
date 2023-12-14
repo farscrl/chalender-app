@@ -126,13 +126,17 @@ export class AppComponent implements OnInit {
     }
 
     private openPwaWindow(type: 'instructions_ios' | 'instructions_android_firefox' | 'direct') {
-        const modalRef = this.modalService.open(PwaInstallInstructionsComponent, {size: 'xl', centered: true});
-        modalRef.componentInstance.type = type;
-        modalRef.closed.subscribe((value) => {
-            if (value === 'install') {
-                this.promptEvent.prompt();
-            }
-        });
+        const that = this;
+
+        window.setTimeout(function () {
+            const modalRef = that.modalService.open(PwaInstallInstructionsComponent, {size: 'xl', centered: true});
+            modalRef.componentInstance.type = type;
+            modalRef.closed.subscribe((value) => {
+                if (value === 'install') {
+                    that.promptEvent.prompt();
+                }
+            });
+        }, 15000);
     }
 
     private checkIfThirdTimeAppOpened(): boolean {
