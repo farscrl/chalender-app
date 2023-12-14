@@ -1,0 +1,70 @@
+:host {
+    padding: 2em;
+}
+
+.close-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.head {
+    display: flex;
+
+    .icon {
+
+    }
+
+    .slogan {
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .title {
+            font-family: "CadizBlack", sans-serif;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+        }
+
+        .description {
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+}
+
+.instructions {
+    margin: 0 2rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+
+    .step {
+        display: flex;
+        flex-direction: row;
+        margin-top: 12px;
+        align-items: center;
+
+        .icon {
+            margin-right: 12px;
+        }
+
+        .instruction {
+            font-size: 14px;
+        }
+    }
+
+    button {
+        margin-right: 0;
+    }
+}

@@ -4,6 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { IframeService } from './services/iframe.service';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { EventsFilterService } from './shared/services/events-filter.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Platform } from '@angular/cdk/platform';
+import { DeviceDetectorService } from 'ngx-device-detector';
+import {
+    PwaInstallInstructionsComponent
+} from './components/pwa-install-instructions/pwa-install-instructions.component';
+
+const LOCALSTORAGE_APP_OPEN_TIMES = 'chalender-app-open-times';
 
 @Component({
     selector: 'app-root',
@@ -11,13 +19,19 @@ import { EventsFilterService } from './shared/services/events-filter.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+    private promptEvent: any;
+
     constructor(
         private translate: TranslateService,
         private route: ActivatedRoute,
         private iframeService: IframeService,
         @Inject(DOCUMENT) private document: Document,
         @Inject(PLATFORM_ID) private platformId: any,
-        private eventsFilterService: EventsFilterService
+        private eventsFilterService: EventsFilterService,
+        private platform: Platform,
+        private detectorService: DeviceDetectorService,
+        private modalService: NgbModal,
     ) {
         // this language will be used as a fallback when a translation isn't found in the current language
         translate.setDefaultLang('rm');
@@ -48,6 +62,10 @@ export class AppComponent implements OnInit {
                     this.eventsFilterService.setSelectedView('list')
                 }
             });
+
+        if (isPlatformBrowser(this.platformId)) {
+            this.handlePwaNotificationStuff();
+        }
     }
 
     private setupIframeSizeHandling() {
@@ -74,5 +92,54 @@ export class AppComponent implements OnInit {
             value: height
         };
         window.parent.postMessage(message, "*");
+    }
+
+    private handlePwaNotificationStuff(): void {
+        // do not show the notification on desktop
+        if (this.detectorService.isDesktop()) {
+            return;
+        }
+
+        // only show notification the third time the app is opened
+        if (!this.checkIfThirdTimeAppOpened()) {
+            return;
+        }
+
+        if (this.platform.ANDROID) {
+            if (this.platform.FIREFOX) {
+                this.openPwaWindow('instructions_android_firefox');
+            } else {
+                window.addEventListener('beforeinstallprompt', (event: any) => {
+                    event.preventDefault();
+                    this.promptEvent = event;
+                    this.openPwaWindow('direct');
+                });
+            }
+        }
+
+        if (this.platform.IOS) {
+            const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator['standalone']);
+            if (!isInStandaloneMode) {
+                this.openPwaWindow('instructions_ios');
+            }
+        }
+    }
+
+    private openPwaWindow(type: 'instructions_ios' | 'instructions_android_firefox' | 'direct') {
+        const modalRef = this.modalService.open(PwaInstallInstructionsComponent, {size: 'xl', centered: true});
+        modalRef.componentInstance.type = type;
+        modalRef.closed.subscribe((value) => {
+            if (value === 'install') {
+                this.promptEvent.prompt();
+            }
+        });
+    }
+
+    private checkIfThirdTimeAppOpened(): boolean {
+        let appOpenTimes = +(localStorage.getItem(LOCALSTORAGE_APP_OPEN_TIMES) || 0);
+        appOpenTimes++;
+        localStorage.setItem(LOCALSTORAGE_APP_OPEN_TIMES, appOpenTimes + '');
+        return appOpenTimes == 3;
+
     }
 }

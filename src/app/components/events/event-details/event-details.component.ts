@@ -3,7 +3,7 @@ import { EventsService } from '../../../shared/services/events.service';
 import { EventDto } from '../../../shared/data/event';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
-import { PlatformService } from '../../../shared/services/platform.service';
+import { Platform } from '@angular/cdk/platform';
 
 @Component({
     selector: 'app-event-details',
@@ -20,7 +20,7 @@ export class EventDetailsComponent {
     constructor(
         private eventsService: EventsService,
         private detectorService: DeviceDetectorService,
-        private platformService: PlatformService
+        private platform: Platform,
     ) {
     }
 
@@ -35,7 +35,7 @@ export class EventDetailsComponent {
             return 'https://www.google.com/maps/search/?api=1&query=' + encodeURI(input);
         }
 
-        if (this.platformService.isIos()) {
+        if (this.platform.IOS) {
             return 'maps://?q=' + encodeURI(input);
         }
         return 'geo://?q=' + encodeURI(input);

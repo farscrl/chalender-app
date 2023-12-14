@@ -51,6 +51,7 @@ import { DatepickerHeaderComponent } from './components/datepicker-header/datepi
 import { NoEventsComponent } from './components/events/no-events/no-events.component';
 import { ScrollableTitleDirective } from './shared/directives/scrollable-title.directive';
 import { FilterScrollPositionDirective } from './shared/directives/filter-scroll-position.directive';
+import { PwaInstallInstructionsComponent } from './components/pwa-install-instructions/pwa-install-instructions.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -111,6 +112,7 @@ export function inIframe() {
         NoEventsComponent,
         ScrollableTitleDirective,
         FilterScrollPositionDirective,
+        PwaInstallInstructionsComponent,
     ],
     imports: [
         BrowserModule,
