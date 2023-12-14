@@ -107,7 +107,10 @@ export class AppComponent implements OnInit {
 
         if (this.platform.ANDROID) {
             if (this.platform.FIREFOX) {
-                this.openPwaWindow('instructions_android_firefox');
+                const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator['standalone']);
+                if (!isInStandaloneMode) {
+                    this.openPwaWindow('instructions_android_firefox');
+                }
             } else {
                 window.addEventListener('beforeinstallprompt', (event: any) => {
                     event.preventDefault();
