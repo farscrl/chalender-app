@@ -146,3 +146,8 @@ li app-event-card {
     color: var(--accent);
 }
 
+@include media-breakpoint-up(lg) {
+    app-no-events {
+        border-top: 1px solid #BBBFC2;
+    }
+}

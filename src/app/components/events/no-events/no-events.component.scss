@@ -4,12 +4,12 @@
 
 :host {
     display: flex;
-    margin-top: 80px;
+    padding-top: 80px;
     flex-direction: column;
     align-items: center;
 
     @include media-breakpoint-up(lg) {
-        margin-top: 150px;
+        padding-top: 150px;
     }
 
     button {
