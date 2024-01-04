@@ -10,7 +10,6 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { JWT_OPTIONS, JwtModule } from "@auth0/angular-jwt";
 import { environment } from "../environments/environment";
 import { HelpComponent } from './pages/static/help/help.component';
-import { ContactComponent } from './pages/static/contact/contact.component';
 import { ImprintComponent } from './pages/static/imprint/imprint.component';
 import { PrivacyComponent } from './pages/static/privacy/privacy.component';
 import { OrganisationComponent } from './pages/static/organisation/organisation.component';
@@ -51,7 +50,9 @@ import { DatepickerHeaderComponent } from './components/datepicker-header/datepi
 import { NoEventsComponent } from './components/events/no-events/no-events.component';
 import { ScrollableTitleDirective } from './shared/directives/scrollable-title.directive';
 import { FilterScrollPositionDirective } from './shared/directives/filter-scroll-position.directive';
-import { PwaInstallInstructionsComponent } from './components/pwa-install-instructions/pwa-install-instructions.component';
+import {
+    PwaInstallInstructionsComponent
+} from './components/pwa-install-instructions/pwa-install-instructions.component';
 import { TrackingRtrComponent } from './components/tracking-rtr/tracking-rtr.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
@@ -86,7 +87,6 @@ export function inIframe() {
         HeaderComponent,
         BackButtonComponent,
         HelpComponent,
-        ContactComponent,
         ImprintComponent,
         PrivacyComponent,
         OrganisationComponent,

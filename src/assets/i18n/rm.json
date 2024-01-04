@@ -46,9 +46,8 @@
             "MAIN_MENU": {
                 "EVENTS": "occurrenzas",
                 "HELP": "agid",
-                "CONTACT": "contact",
                 "ORGANISATION": "purtaders",
-                "IMPRINT": "impressum",
+                "IMPRINT": "contact ed impressum",
                 "PRIVACY": "protecziun da datas"
             },
             "PROFILE_MENU": {
