@@ -1,0 +1,13 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+.navi {
+    display: flex;
+}
+
+@include media-breakpoint-up(xl) {
+    section.content-narrow {
+        margin: -4rem auto 0 auto;
+    }
+}

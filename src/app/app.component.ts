@@ -10,6 +10,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import {
     PwaInstallInstructionsComponent
 } from './components/pwa-install-instructions/pwa-install-instructions.component';
+import { NavigationService } from './services/navigation.service';
 
 const LOCALSTORAGE_APP_OPEN_TIMES = 'chalender-app-open-times';
 
@@ -32,12 +33,16 @@ export class AppComponent implements OnInit {
         private platform: Platform,
         private detectorService: DeviceDetectorService,
         private modalService: NgbModal,
+        private navigationService: NavigationService,
     ) {
         // this language will be used as a fallback when a translation isn't found in the current language
         translate.setDefaultLang('rm');
 
         // the lang to use, if the lang isn't available, it will use the current loader to get them
         translate.use('rm');
+
+        // instantiate navigation service
+        navigationService.init();
     }
 
     ngOnInit() {

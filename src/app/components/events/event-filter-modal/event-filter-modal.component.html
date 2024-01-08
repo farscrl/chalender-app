@@ -1,1 +1,4 @@
-<app-event-filter (hideFilterIfNeeded)="activeModal.dismiss('filter applied')"></app-event-filter>
+<app-event-filter (hideFilterIfNeeded)="activeModal.dismiss('filter applied')"
+                  *ngIf="type === 'events'"></app-event-filter>
+<app-notices-filter (hideFilterIfNeeded)="activeModal.dismiss('filter applied')"
+                    *ngIf="type === 'notices'"></app-notices-filter>

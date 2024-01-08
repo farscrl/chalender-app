@@ -35,7 +35,7 @@
             </td>
             <th scope="row">{{getEventVersion(event)?.title}}</th>
             <td>
-                <app-status-badge [status]="event.eventStatus!"></app-status-badge>
+                <app-status-badge [status]="event.publicationStatus!"></app-status-badge>
             </td>
             <td>
                 <div class="button" placement="bottom" ngbTooltip="Prevista" (click)="showPreview(event)">

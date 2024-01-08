@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Meta } from '@angular/platform-browser';
 import { EventDto } from '../../../shared/data/event';
 import { EventsService } from '../../../shared/services/events.service';
+import { UrlUtil } from '../../../shared/utils/url.util';
 
 @Component({
     selector: 'app-events-details',
@@ -22,6 +23,7 @@ export class EventsDetailsComponent implements OnInit {
         private route: ActivatedRoute,
         private meta: Meta,
         private router: Router,
+        private urlUtil: UrlUtil,
     ) {
         this.route.params.subscribe(params => {
             this.eventId = params['id'];
@@ -45,17 +47,20 @@ export class EventsDetailsComponent implements OnInit {
     }
 
     private setMetaTags() {
-        this.meta.addTag({name: 'title', content: this.truncateString(this.event!.title!, 90)});
-        this.meta.updateTag({name: 'description', content: this.truncateString(this.event!.description!, 300)});
+        this.meta.addTag({name: 'title', content: this.urlUtil.truncateString(this.event!.title!, 90)});
+        this.meta.updateTag({name: 'description', content: this.urlUtil.truncateString(this.event!.description!, 300)});
 
-        const t = this.meta.addTag({name: 'og:title', content: this.truncateString(this.event!.title!, 90)});
+        const t = this.meta.addTag({name: 'og:title', content: this.urlUtil.truncateString(this.event!.title!, 90)});
         //console.log(t);
-        this.meta.addTag({name: 'og:description', content: this.truncateString(this.event!.description!, 300)});
+        this.meta.addTag({name: 'og:description', content: this.urlUtil.truncateString(this.event!.description!, 300)});
         this.meta.addTag({name: 'og:type', content: 'website'});
         this.meta.addTag({name: 'og:url', content: this.router.url});
         this.meta.addTag({name: 'twitter:card', content: 'summary_large_image'});
-        this.meta.addTag({name: 'twitter:title', content: this.truncateString(this.event!.title!, 70)});
-        this.meta.addTag({name: 'twitter:description', content: this.truncateString(this.event!.description!, 200)});
+        this.meta.addTag({name: 'twitter:title', content: this.urlUtil.truncateString(this.event!.title!, 70)});
+        this.meta.addTag({
+            name: 'twitter:description',
+            content: this.urlUtil.truncateString(this.event!.description!, 200)
+        });
 
         if (this.event!.images?.length > 0) {
             this.meta.addTag({
@@ -67,12 +72,5 @@ export class EventsDetailsComponent implements OnInit {
                 content: this.event!.images[0]!.url + '?width=1200&height=630&crop_gravity=center&auto_optimize=medium'
             });
         }
-    }
-
-    truncateString(str: string, length: number) {
-        if (str.length <= length) {
-            return str;
-        }
-        return str.slice(0, length - 1) + '…'; // Adjust for the length of the ellipsis
     }
 }

@@ -1,0 +1,21 @@
+<a *ngIf="notice" class="evt" [routerLink]="'/notices/' + notice.id" [class.first]="isFirst">
+    <div class="image">
+        <div class="img-holder">
+            <img src="{{ imgUrl }}" alt="{{ notice.title }}" *ngIf="notice.images.length > 0" style="width: 100%">
+        </div>
+    </div>
+    <div class="description">
+        <h3>{{ notice.title }}</h3>
+
+        <div class="details">
+            <div class="arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" viewBox="0 0 30 16" fill="none">
+                    <path d="M1 8L29 8" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                    <path d="M22 1L29 8L22 15" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+</a>

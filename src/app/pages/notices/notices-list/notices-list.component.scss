@@ -1,0 +1,75 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+:host {
+    display: flex;
+}
+
+.filter-area {
+    position: sticky;
+    top: 0;
+    align-self: flex-start; // needed for sticky to work
+    max-height: calc(100vh);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &.show {
+        min-width: 320px;
+    }
+}
+
+.filter {
+    width: 320px;
+    max-width: 320px;
+    max-height: 100vh;
+    overflow-y: hidden;
+
+    @include media-breakpoint-up(md) {
+        overflow-y: unset;
+        max-height: unset;
+        min-height: calc(100vh - 85px - 97px - 32px);
+    }
+}
+
+.buttons {
+    margin: 1rem 2rem 0 2rem;
+    position: sticky;
+    bottom: 0;
+    height: 66px;
+
+    border-top: 1px solid #BBBFC2;
+    background-color: white;
+    padding-top: 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .button-row {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    button {
+        flex-grow: 1;
+        margin-right: 0;
+        height: 34px;
+        padding: 4px;
+    }
+}
+
+.events {
+    flex-grow: 1;
+
+    @include media-breakpoint-up(md) {
+        border-left: 1px solid #BBBFC2;
+    }
+
+    &.no-filter {
+        border-left: none;
+    }
+}

@@ -1,0 +1,12 @@
+<div class="container" *ngIf="notice">
+    <div class="navi">
+        <app-back-button/>
+    </div>
+
+
+    <section class="content-narrow">
+        <app-notice-details [notice]="notice"></app-notice-details>
+    </section>
+</div>
+
+

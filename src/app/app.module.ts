@@ -54,6 +54,15 @@ import {
     PwaInstallInstructionsComponent
 } from './components/pwa-install-instructions/pwa-install-instructions.component';
 import { TrackingRtrComponent } from './components/tracking-rtr/tracking-rtr.component';
+import { NoticesListCardsComponent } from './components/notices/notices-list/notices-list-cards/notices-list-cards.component';
+import { NoticesListComponent } from './pages/notices/notices-list/notices-list.component';
+import { NoticesDetailsComponent } from './pages/notices/notices-details/notices-details.component';
+import { NoticesFilterComponent } from './components/notices/notices-filter/notices-filter.component';
+import { NoticeCardComponent } from './components/notices/notice-card/notice-card.component';
+import { NoticesListTableComponent } from './components/notices/notices-list/notices-list-table/notices-list-table.component';
+import { NoticeListItemComponent } from './components/notices/notice-list-item/notice-list-item.component';
+import { NoNoticesComponent } from './components/notices/no-notices/no-notices.component';
+import { NoticeDetailsComponent } from './components/notices/notice-details/notice-details.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -115,6 +124,15 @@ export function inIframe() {
         FilterScrollPositionDirective,
         PwaInstallInstructionsComponent,
         TrackingRtrComponent,
+        NoticesListCardsComponent,
+        NoticesListComponent,
+        NoticesDetailsComponent,
+        NoticesFilterComponent,
+        NoticeCardComponent,
+        NoticesListTableComponent,
+        NoticeListItemComponent,
+        NoNoticesComponent,
+        NoticeDetailsComponent,
     ],
     imports: [
         BrowserModule,

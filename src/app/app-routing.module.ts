@@ -8,6 +8,8 @@ import { HelpComponent } from "./pages/static/help/help.component";
 import { OrganisationComponent } from "./pages/static/organisation/organisation.component";
 import { ImprintComponent } from "./pages/static/imprint/imprint.component";
 import { PrivacyComponent } from "./pages/static/privacy/privacy.component";
+import { NoticesDetailsComponent } from './pages/notices/notices-details/notices-details.component';
+import { NoticesListComponent } from './pages/notices/notices-list/notices-list.component';
 
 const routes: Routes = [
     {
@@ -26,11 +28,25 @@ const routes: Routes = [
         path: 'admin',
         children: []
     },
-    {path: ':id', canMatch: [canMatchEventId], pathMatch: 'full', component: EventsDetailsComponent},
     {path: 'help', pathMatch: 'full', component: HelpComponent},
     {path: 'organisation', pathMatch: 'full', component: OrganisationComponent},
     {path: 'imprint', pathMatch: 'full', component: ImprintComponent},
+    {
+        path: 'notices',
+        children: [
+            {path: ':id', canMatch: [canMatchEventId], pathMatch: 'full', component: NoticesDetailsComponent},
+            {
+                path: '',
+                pathMatch: 'full',
+                component: NoticesListComponent,
+                data: {
+                    reuseRouteKey: 'notices-list'
+                }
+            },
+        ]
+    },
     {path: 'privacy', pathMatch: 'full', component: PrivacyComponent},
+    {path: ':id', canMatch: [canMatchEventId], pathMatch: 'full', component: EventsDetailsComponent},
     {
         path: '',
         pathMatch: 'full',

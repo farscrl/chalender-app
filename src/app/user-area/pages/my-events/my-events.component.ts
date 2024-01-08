@@ -36,7 +36,7 @@ export class MyEventsComponent {
     }
 
     getEventVersion(event: Event): EventVersion | undefined {
-        switch (event.eventStatus) {
+        switch (event.publicationStatus) {
             case 'DRAFT':
                 return event.draft;
             case 'IN_REVIEW':
@@ -53,7 +53,7 @@ export class MyEventsComponent {
     }
 
     hasChanges(event: Event) {
-        return event.eventStatus === 'NEW_MODIFICATION' || event.eventStatus === 'IN_REVIEW'
+        return event.publicationStatus === 'NEW_MODIFICATION' || event.publicationStatus === 'IN_REVIEW'
     }
 
     goToPage(page: number) {

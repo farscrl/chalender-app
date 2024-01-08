@@ -5,7 +5,7 @@ import { EventPreviewComponent } from "../../../components/event-preview/event-p
 import * as dayjs from 'dayjs';
 import { Router } from '@angular/router';
 import { EventLanguage, Genre, Region } from '../../../shared/data/static-data';
-import { Document, EventDto, EventStatusTypes, Image } from '../../../shared/data/event';
+import { Document, EventDto, Image, PublicationTypes } from '../../../shared/data/event';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { StaticDataService } from '../../../shared/services/static-data.service';
 import { EventsService } from '../../../shared/services/events.service';
@@ -341,7 +341,7 @@ export class NewEventComponent implements OnInit {
     }
 
     private transformToEventDto(isDraft: boolean): EventDto {
-        let newState: EventStatusTypes = 'DRAFT';
+        let newState: PublicationTypes = 'DRAFT';
         if (!isDraft) {
             newState = 'IN_REVIEW';
         }

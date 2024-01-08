@@ -10,7 +10,7 @@ export class Event {
 
     versions: EventVersion[] = [];
 
-    eventStatus?: EventStatusTypes = 'INVALID';
+    publicationStatus?: PublicationTypes = 'INVALID';
     ownerEmail?: string;
     contactEmail?: string;
 
@@ -18,7 +18,7 @@ export class Event {
     lastModifiedDate?: number;
 }
 
-export type EventStatusTypes = 'DRAFT' | 'IN_REVIEW' | 'PUBLISHED' | 'NEW_MODIFICATION' | 'REJECTED' | 'INVALID';
+export type PublicationTypes = 'DRAFT' | 'IN_REVIEW' | 'PUBLISHED' | 'NEW_MODIFICATION' | 'REJECTED' | 'INVALID';
 
 export class EventVersion {
     title?: string;
@@ -41,7 +41,7 @@ export class EventVersion {
 
 export class EventDto {
     id?: string;
-    status?: EventStatusTypes;
+    status?: PublicationTypes;
     contactEmail?: string;
 
     title?: string;

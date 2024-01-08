@@ -67,7 +67,7 @@
             </td>
             <td>{{getEventVersion(event)?.title}}</td>
             <td>
-                <app-status-badge [status]="event.eventStatus!"></app-status-badge>
+                <app-status-badge [status]="event.publicationStatus!"></app-status-badge>
             </td>
             <td>
                 <div class="button stroke" placement="bottom" ngbTooltip="Prevista" (click)="showPreview(event)">
@@ -81,7 +81,7 @@
                     </svg>
                 </div>
                 <div class="button stroke" placement="bottom" ngbTooltip="Mussar differenzas"
-                     (click)="event.eventStatus === 'NEW_MODIFICATION' ? showDiff(event) : false"
+                     (click)="event.publicationStatus === 'NEW_MODIFICATION' ? showDiff(event) : false"
                      [class.inactive]="!canShowDiff(event)">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.6562 2.7085L21.8989 6.95114L17.6562 11.1938" stroke-width="2"

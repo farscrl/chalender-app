@@ -1,0 +1,31 @@
+<div class="filter-area d-none d-md-block" [class.show]="!noticesFilterService.isFilterCollapsed"
+     *ngIf="iframeService.isShowSearchValue()" filterScrollPosition>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="noticesFilterService.isFilterCollapsed"
+         [horizontal]="true" class="filter">
+        <app-notices-filter
+            [resetFilterCommand]="resetFiltersCommandSubject.asObservable()"
+            [createSubscriptionCommand]="createSubscriptionCommandSubject.asObservable()"
+        ></app-notices-filter>
+
+        <div class="buttons">
+            <div class="button-row">
+                <button type="button" class="clndr accent" (click)="resetFilters()"
+                        [disabled]="noticesFilterService.numberOfFilters === 0">
+                    {{ 'COMPONENTS.FILTER.DELETE_FILTER' | translate }}
+                </button>
+                <button type="button" class="clndr accent" (click)="createSubscription()">
+                    {{ 'COMPONENTS.FILTER.ABO_FILTER' | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="events" [class.no-filter]="!iframeService.isShowSearchValue() || noticesFilterService.isFilterCollapsed">
+    <app-notices-list-cards (toggleFilter)="toggleFilter()"
+                            *ngIf="noticesFilterService.selectedView === 'cards'"></app-notices-list-cards>
+    <app-notices-list-table (toggleFilter)="toggleFilter()"
+                            *ngIf="noticesFilterService.selectedView === 'list'"></app-notices-list-table>
+</div>
+
+<app-new-event-button/>

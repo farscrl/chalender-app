@@ -45,6 +45,7 @@
             },
             "MAIN_MENU": {
                 "EVENTS": "occurrenzas",
+                "NOTICES": "tabla naira",
                 "HELP": "agid",
                 "ORGANISATION": "purtaders",
                 "IMPRINT": "contact ed impressum",
@@ -207,5 +208,9 @@
         "ORGANIZER": "organisatura",
         "CONTACT": "contact",
         "DOCUMENTS": "documents"
+    },
+    "NOTICE_DETAILS": {
+        "CONTACT_DATA": "datas da contact",
+        "PUBLICATION_DATE": "data da publitgaziun"
     }
 }

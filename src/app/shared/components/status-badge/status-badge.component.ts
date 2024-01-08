@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {EventStatusTypes} from "../../data/event";
+import { Component, Input } from '@angular/core';
+import { PublicationTypes } from "../../data/event";
 
 @Component({
     selector: 'app-status-badge',
@@ -9,5 +9,5 @@ import {EventStatusTypes} from "../../data/event";
 export class StatusBadgeComponent {
 
     @Input()
-    status: EventStatusTypes = 'INVALID';
+    status: PublicationTypes = 'INVALID';
 }

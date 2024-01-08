@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,6 +7,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     styleUrls: ['./event-filter-modal.component.scss']
 })
 export class EventFilterModalComponent {
+
+    @Input()
+    public type: 'events' | 'notices' = 'events';
+
     constructor(public activeModal: NgbActiveModal) {
     }
 }

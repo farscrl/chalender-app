@@ -1,0 +1,38 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+.evt {
+    &:hover {
+        text-decoration: none;
+    }
+
+    @include media-breakpoint-up(md) {
+        display: grid;
+        grid-template-columns: 5fr 4fr 1fr 2fr;
+    }
+}
+
+.title {
+    color: black;
+    font-family: 'CadizBlack', sans-serif;
+
+    @include media-breakpoint-up(md) {
+
+    }
+}
+
+.description {
+    display: none;
+    color: black;
+    padding-left: 15px;
+
+    @include media-breakpoint-up(md) {
+        display: block;
+    }
+}
+
+.date {
+    color: black;
+    padding-left: 15px;
+}

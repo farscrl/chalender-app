@@ -1,0 +1,11 @@
+<a *ngIf="notice" class="evt" [routerLink]="'/notices/' + notice.id" [class.first]="isFirst">
+    <div class="title">
+        {{ notice.title }}
+    </div>
+    <div class="description">
+        {{ urlUtil.truncateString(notice.description ?? '', 50) }}
+    </div>
+    <div class="date">
+        {{ notice.publicationDate }}
+    </div>
+</a>

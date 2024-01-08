@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { EventsFilterService } from '../../../shared/services/events-filter.service';
+import { NoticesFilterService } from '../../../shared/services/notices-filter.service';
 
 @Component({
     selector: 'app-view-selection',
@@ -8,10 +9,20 @@ import { EventsFilterService } from '../../../shared/services/events-filter.serv
 })
 export class ViewSelectionComponent {
 
-    constructor(public eventsFilterService: EventsFilterService) {
+    @Input()
+    public type: 'events' | 'notices' = 'events';
+
+    constructor(
+        public eventsFilterService: EventsFilterService,
+        public noticesFilterService: NoticesFilterService,
+    ) {
     }
 
     selectView(view: 'cards' | 'list') {
-        this.eventsFilterService.setSelectedView(view);
+        if (this.type === 'notices') {
+            this.noticesFilterService.setSelectedView(view);
+        } else {
+            this.eventsFilterService.setSelectedView(view);
+        }
     }
 }

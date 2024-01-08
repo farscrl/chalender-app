@@ -24,6 +24,11 @@ export class NavigationService {
         })
     }
 
+    init() {
+        // do nothing
+        // needed, to instantiate service
+    }
+
     back(): void {
         this.history.pop();
 

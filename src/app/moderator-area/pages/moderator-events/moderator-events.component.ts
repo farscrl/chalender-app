@@ -43,7 +43,7 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     getEventVersion(event: Event): EventVersion | undefined {
-        switch (event.eventStatus) {
+        switch (event.publicationStatus) {
             case 'DRAFT':
                 return event.draft;
             case 'IN_REVIEW':
@@ -60,7 +60,7 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     hasChanges(event: Event) {
-        return event.eventStatus === 'NEW_MODIFICATION' || event.eventStatus === 'IN_REVIEW'
+        return event.publicationStatus === 'NEW_MODIFICATION' || event.publicationStatus === 'IN_REVIEW'
     }
 
     goToPage(page: number) {
@@ -86,7 +86,7 @@ export class ModeratorEventsComponent implements OnInit {
     }
 
     canShowDiff(event: Event) {
-        return event.eventStatus === 'NEW_MODIFICATION';
+        return event.publicationStatus === 'NEW_MODIFICATION';
     }
 
     accept(event: Event): void {
