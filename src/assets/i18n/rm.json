@@ -212,5 +212,9 @@
     "NOTICE_DETAILS": {
         "CONTACT_DATA": "datas da contact",
         "PUBLICATION_DATE": "data da publitgaziun"
+    },
+    "ORGANISATION": {
+        "TITLE": "Purtaders",
+        "DESCRIPTION": "Questas organisaziuns portan il project."
     }
 }
