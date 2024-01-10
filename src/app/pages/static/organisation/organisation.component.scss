@@ -4,4 +4,10 @@
         margin-right: 4rem;
         margin-bottom: 4rem;
     }
+
+    &.max-width {
+        img {
+            max-width: 440px;
+        }
+    }
 }
