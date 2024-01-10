@@ -63,6 +63,7 @@ import { NoticesListTableComponent } from './components/notices/notices-list/not
 import { NoticeListItemComponent } from './components/notices/notice-list-item/notice-list-item.component';
 import { NoNoticesComponent } from './components/notices/no-notices/no-notices.component';
 import { NoticeDetailsComponent } from './components/notices/notice-details/notice-details.component';
+import { NoticePreviewComponent } from './components/notice-preview/notice-preview.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -133,6 +134,7 @@ export function inIframe() {
         NoticeListItemComponent,
         NoNoticesComponent,
         NoticeDetailsComponent,
+        NoticePreviewComponent,
     ],
     imports: [
         BrowserModule,

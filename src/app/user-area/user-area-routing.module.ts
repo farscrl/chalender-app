@@ -19,6 +19,7 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
 import { DeleteAccountComponent } from './pages/delete-account/delete-account.component';
 import { eventFormFilledGuard } from '../routing/form-filled.guard';
 import { NewSubscriptionComponent } from './pages/new-subscription/new-subscription.component';
+import { NewNoticeComponent } from './pages/new-notice/new-notice.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
     {path: 'confirm-password', component: ConfirmPasswordComponent, canActivate: [notAuthGuard()]},
 
     {path: 'event-form', component: NewEventComponent, canDeactivate: [eventFormFilledGuard()]},
+    {path: 'notice-form', component: NewNoticeComponent},
     {path: 'events', component: MyEventsComponent, canActivate: [authGuard()]},
     {
         path: 'subscriptions', children: [

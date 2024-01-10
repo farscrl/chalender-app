@@ -1,0 +1,105 @@
+<section class="content-narrow">
+    <h1>Registrar in’endataziun per la tavla naira</h1>
+
+    <form [formGroup]="f">
+        <div class="mb-3" *ngIf="f.controls['contactEmail'].enabled">
+            <label for="contactEmail" class="form-label">adressa dad e-mail (betg public, mo per diever
+                administrativ)</label>
+            <input formControlName="contactEmail" type="email" class="form-control" id="contactEmail"
+                   [class.is-invalid]="isFieldInvalid('contactEmail')">
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('contactEmail')">
+                Endatescha p.pl. ina adressa dad e-mail da contact.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">titel da l’endataziun * </label>
+            <input formControlName="title" type="text" class="form-control" id="title"
+                   [class.is-invalid]="isFieldInvalid('title')">
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('title')">
+                Endatescha p.pl. in titel.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">descripziun (lunghezza recumandada: max. 750 caracters)
+                *</label>
+            <textarea formControlName="description" class="form-control" id="description" style="height: 150px"
+                      [class.is-invalid]="isFieldInvalid('description')"></textarea>
+            <span id="description-size">{{ descriptionSize }}</span>
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('description')">
+                <ng-container *ngIf="isFieldError('description', 'required')">
+                    Endatescha p.pl. ina descripziun.
+                </ng-container>
+                <ng-container *ngIf="isFieldError('description', 'maxlength')">
+                    La descripziun na dastga betg esser pli lunga che 750 caracters.
+                </ng-container>
+            </div>
+            <div id="descriptionHelp" class="form-text">Hilfe bei der Übersetzung auf Rumantsch / Aiuto con la
+                traduzione in
+                romancio: <a href="https://www.textshuttle.com" target="_blank">www.textshuttle.com</a></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="contactData" class="form-label">datas da contact (public) *</label>
+            <textarea class="form-control" id="contactData" style="height: 100px" formControlName="contactData"
+                      [class.is-invalid]="isFieldInvalid('contactData')"></textarea>
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('contactData')">
+                Endatescha p.pl. datas da contact.
+            </div>
+        </div>
+
+        <h2>
+            maletgs:
+            <app-info-button>
+                <b>Maletgs (Bilder / immagine):</b>
+                Attenziun sch’il maletg cuntegna text! L’emprim maletg vegn duvrà per la survista. Il maletg vegn
+                retaglià uschia ch’el daventa quadratic. Ils urs che surpassan il quadrat vegnan tagliads davent.
+            </app-info-button>
+        </h2>
+        <app-file-list [files]="images" [type]="'image'" [isUploading]="isUploadingImage"></app-file-list>
+        <div class="form-text">
+            formats acceptads: JPG, PNG, WebP<br>
+            grondezza maximala: 20 MB<br>
+        </div>
+        <app-file-upload [allowedMimeTypes]="['image/jpeg', 'image/png', 'image/webp']"
+                         [(isUploading)]="isUploadingImage"
+                         (fileAdded)="images.push($event)" [type]="'image'"></app-file-upload>
+        <br><br>
+
+        <h2>documents:</h2>
+        <app-file-list [files]="documents" [type]="'document'" [isUploading]="isUploadingDocument"></app-file-list>
+        <div class="form-text">
+            formats acceptads: PDF<br>
+            grondezza maximala: 20 MB<br>
+        </div>
+        <app-file-upload [allowedMimeTypes]="['application/pdf']" [(isUploading)]="isUploadingDocument"
+                         (fileAdded)="documents.push($event)" [type]="'document'"></app-file-upload>
+        <br><br>
+
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="acceptTerms" id="acceptTerms"
+                       formControlName="acceptTerms" [class.is-invalid]="isFieldInvalid('acceptTerms')">
+                <label class="form-check-label" for="acceptTerms">
+                    Jau accept la
+                    <a (click)="openNetiquette()" href="javascript:void(0)">netichetta</a>
+                    ed hai ils dretgs dals maletgs utilisads.
+                </label>
+                <div class="invalid-feedback" *ngIf="isFieldInvalid('acceptTerms')">
+                    Per inoltrar l'occurrenza stos ti acceptar las cundiziuns d'utilisaziun.
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        <button type="button" class="clndr accent" (click)="preview()">Prevista</button>
+        <button type="button" class="clndr accent" (click)="onSubmit(true)"
+                *ngIf="canSaveAsDraft()" [disabled]="isSaving">
+            Memorisar sco sboz
+        </button>
+        <button type="button" class="clndr accent" (click)="onSubmit(false)" [disabled]="isSaving">
+            Publitgar
+        </button>
+    </form>
+</section>

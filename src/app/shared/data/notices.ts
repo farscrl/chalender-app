@@ -1,8 +1,11 @@
 import { Genre } from './static-data';
-import { Document, Image } from './event';
+import { Document, Image, PublicationTypes } from './event';
 
 export class NoticeBoardItemDto {
     id?: string;
+    status?: PublicationTypes;
+    contactEmail?: string;
+
     title?: string;
     genres: Genre[] = [];
     description?: string;
@@ -10,6 +13,7 @@ export class NoticeBoardItemDto {
     images: Image[] = [];
     documents: Document[] = [];
     publicationDate?: string;
+    acceptTerms?: boolean;
 }
 
 export class NoticeBoardFilter {

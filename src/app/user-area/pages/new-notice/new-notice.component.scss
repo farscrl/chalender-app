@@ -1,0 +1,40 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+h2 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 36px;
+}
+
+#description-size {
+    float: right;
+    margin-top: -30px;
+    margin-right: 10px;
+    font-size: .8rem;
+    color: #667080;
+}
+
+.occurrence-item {
+    border-left: 3px solid black;
+    margin-bottom: 16px;
+}
+
+.form-input-no-margin {
+    margin-left: 0;
+    margin-right: 8px;
+}
+
+.no-label {
+
+    @include media-breakpoint-up(md) {
+        margin-top: 36px;
+    }
+}
+
+.form-check .form-check-input.no-negative {
+    margin-left: 0;
+    margin-right: 8px;
+}
