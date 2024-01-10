@@ -28,6 +28,10 @@ const reasonsRefuse: Reason[] = [
         id: 'illegal',
         description: 'Cuntegn illegal.'
     },
+    {
+        id: 'tavlanaira',
+        description: 'I na sa tracta betg dad in’occurrenza (classica). Nus publitgain gugent il text sco annunzia en la rubrica «tavla naira». Per plaschair anc inoltrar ina giada per la tavla naira. Grazia fitg!'
+    },
 
     {id: 'other', description: 'Auter'},
 ];

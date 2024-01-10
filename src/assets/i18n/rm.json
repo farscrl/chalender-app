@@ -45,7 +45,7 @@
             },
             "MAIN_MENU": {
                 "EVENTS": "occurrenzas",
-                "NOTICES": "tabla naira",
+                "NOTICES": "tavla naira",
                 "HELP": "agid",
                 "ORGANISATION": "purtaders",
                 "IMPRINT": "contact ed impressum",
@@ -83,7 +83,7 @@
                 "DESCRIPTION_REJECT": "Trametter ina remartga cun refusar l’occurrenza «{{eventTitle}}»?",
                 "DESCRIPTION_EDIT": "Trametter ina remartga cun modifitgar l’occurrenza «{{eventTitle}}»?",
                 "PERSONALIZED": "Remartga persunalisada",
-                "COMMENT": "Endatescha p.pl. ina remartga (u tscherneer in auter motiv sura).",
+                "COMMENT": "Endatescha p.pl. ina remartga (u tscherner in auter motiv sura).",
                 "CANCEL": "Interrumper",
                 "SAVE": "Memorisar"
             },
@@ -208,6 +208,9 @@
         "ORGANIZER": "organisatura",
         "CONTACT": "contact",
         "DOCUMENTS": "documents"
+    },
+    "NOTICE_LIST": {
+        "LOAD_MORE": "mussar ulteriuras annunzias"
     },
     "NOTICE_DETAILS": {
         "CONTACT_DATA": "datas da contact",
