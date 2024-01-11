@@ -19,6 +19,7 @@ import { LinkyPipe } from './pipes/linky.pipe';
 import { InfoButtonComponent } from './components/forms/info-button/info-button.component';
 import { NetiquetteComponent } from './components/netiquette/netiquette.component';
 import { FabPositionDirective } from './directives/fab-position.directive';
+import { NewNoticeButtonComponent } from './components/new-notice-button/new-notice-button.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FabPositionDirective } from './directives/fab-position.directive';
         InfoButtonComponent,
         NetiquetteComponent,
         FabPositionDirective,
+        NewNoticeButtonComponent,
     ],
     imports: [
         CommonModule,
@@ -62,6 +64,7 @@ import { FabPositionDirective } from './directives/fab-position.directive';
         FileListComponent,
         SubscriptionComponent,
         NewEventButtonComponent,
+        NewNoticeButtonComponent,
 
         SortableDirective,
         FabPositionDirective,

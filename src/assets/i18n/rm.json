@@ -105,6 +105,9 @@
         "NEW_EVENT_BTN": {
             "NEW_EVENT": "registrar in’occurrenza"
         },
+        "NEW_NOTICE_BTN": {
+            "NEW_NOTICE": "registrar in’annunzia"
+        },
         "PAGINATION": {
             "PREV_DESC": "Siglir a la pagina precedenta",
             "NEXT_DESC": "Siglir a la proxima pagina"
