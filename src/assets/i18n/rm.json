@@ -44,11 +44,11 @@
                 "NOTICE_BOARD": "tavla naira"
             },
             "MAIN_MENU": {
-                "EVENTS": "occurrenzas",
+                "EVENTS": "chalender",
                 "NOTICES": "tavla naira",
                 "HELP": "agid",
                 "ORGANISATION": "purtaders",
-                "IMPRINT": "contact ed impressum",
+                "IMPRINT": "impressum",
                 "PRIVACY": "protecziun da datas"
             },
             "PROFILE_MENU": {
