@@ -47,9 +47,9 @@
     <app-no-notices></app-no-notices>
 </ng-container>
 
-<div class="text-center pb-5" *ngIf="!noticesFilterService.isSearching">
+<div class="text-center pb-5" *ngIf="noticesFilterService.hasMorePages">
     <button class="clndr accent load-next-page" (click)="noticesFilterService.loadNextPage()"
-            *ngIf="noticesFilterService.hasMorePages">
+            [disabled]="noticesFilterService.isSearching">
         {{ 'NOTICE_LIST.LOAD_MORE' | translate }}
     </button>
 </div>

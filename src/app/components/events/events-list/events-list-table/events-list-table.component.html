@@ -56,8 +56,8 @@
     <app-no-events></app-no-events>
 </ng-container>
 
-<div class="text-center pb-5" *ngIf="!eventsFilterService.isSearching">
+<div class="text-center pb-5" *ngIf="eventsFilterService.hasMorePages">
     <button class="clndr accent load-next-page" (click)="eventsFilterService.loadNextPage()"
-            *ngIf="eventsFilterService.hasMorePages">{{ 'EVENT_LIST.LOAD_MORE' | translate }}
+            [disabled]="eventsFilterService.isSearching">{{ 'EVENT_LIST.LOAD_MORE' | translate }}
     </button>
 </div>
