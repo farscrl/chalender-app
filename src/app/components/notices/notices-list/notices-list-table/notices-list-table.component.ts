@@ -18,7 +18,9 @@ export class NoticesListTableComponent {
     @Output() toggleFilter: EventEmitter<void> = new EventEmitter<void>();
 
     public notices: NoticeBoardItemDto[] = [];
+
     private datesSubscription?: Subscription;
+    private moreDatesSubscription?: Subscription;
 
     constructor(
         private modalService: NgbModal,
@@ -33,6 +35,10 @@ export class NoticesListTableComponent {
         dayjs.locale('rm', rmLocale);
 
         this.datesSubscription = this.noticesFilterService.getSearchResultsObservable().subscribe(notices => {
+            this.notices = []
+            this.notices = notices;
+        });
+        this.moreDatesSubscription = this.noticesFilterService.getSearchMoreResultsObservable().subscribe(notices => {
             this.notices = notices;
         });
     }
@@ -40,6 +46,9 @@ export class NoticesListTableComponent {
     ngOnDestroy(): void {
         if (this.datesSubscription) {
             this.datesSubscription.unsubscribe();
+        }
+        if (this.moreDatesSubscription) {
+            this.moreDatesSubscription.unsubscribe();
         }
     }
 

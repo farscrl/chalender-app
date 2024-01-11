@@ -6,27 +6,21 @@ import { CategorizedEvents, EventLookup } from '../data/event';
     providedIn: 'root'
 })
 export class DatesUtil {
-    groupEvents(events: EventLookup[]): CategorizedEvents[] {
-        const dates = [...new Set(events.map(event => event.date))];
-        const sortedDates = dates.sort((a, b) => {
-            const dateA = dayjs(a, "DD-MM-YYYY");
-            const dateB = dayjs(b, "DD-MM-YYYY");
-            if (dateA.isBefore(dateB)) {
-                return -1;
-            }
-            if (dateA.isAfter(dateB)) {
-                return 1;
-            }
-            return 0;
-        });
-        return sortedDates.map(date => {
-            const dateObj = dayjs(date, "DD-MM-YYYY");
+    addGroupEvents(groups: CategorizedEvents[], events: EventLookup[]) {
+        events.forEach(el => {
+            const group = groups.find(g => g.date === el.date);
 
-            return {
-                date: date,
-                formattedDateShort: dateObj.format('DD-MM-YYYY'),
-                formattedWeekday: dateObj.format('dddd'),
-                events: events.filter(e => e.date === date),
+            if (group) {
+                group.events.push(el);
+            } else {
+                const dateObj = dayjs(el.date, "DD-MM-YYYY");
+
+                groups.push({
+                    date: el.date,
+                    formattedDateShort: dateObj.format('DD-MM-YYYY'),
+                    formattedWeekday: dateObj.format('dddd'),
+                    events: [el],
+                })
             }
         });
     }

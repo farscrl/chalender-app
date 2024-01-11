@@ -19,11 +19,10 @@ export class NoticesFilterService {
 
     public isSearching = false;
 
-    private noticeBoardItems: NoticeBoardItemDto[] = [];
-
     private selectedGenres = new BehaviorSubject<number[]>([]);
     private searchTerm = new BehaviorSubject<string>('');
     private searchResults = new BehaviorSubject<NoticeBoardItemDto[]>([]);
+    private moreSearchResults = new BehaviorSubject<NoticeBoardItemDto[]>([]);
     private urlParams = new BehaviorSubject<EventFilterUrlParams>(new EventFilterUrlParams());
 
     private pageSize = 10;
@@ -67,15 +66,15 @@ export class NoticesFilterService {
     private debouncedSearch() {
         this.noticesService.getNotices(this.noticeBoardFilter, this.page, this.pageSize).subscribe((page: Page<NoticeBoardItemDto>) => {
             if (page.first) {
-                this.noticeBoardItems = page.content;
+                this.searchResults.next(page.content);
             } else {
-                this.noticeBoardItems = [...this.noticeBoardItems, ...page.content];
+                this.moreSearchResults.next(page.content);
             }
             if (page.last) {
                 this.hasMorePages = false;
             }
 
-            this.searchResults.next(this.noticeBoardItems);
+
             this.isSearching = false;
         });
     }
@@ -117,6 +116,10 @@ export class NoticesFilterService {
 
     getSearchResultsObservable(): Observable<NoticeBoardItemDto[]> {
         return this.searchResults.asObservable();
+    }
+
+    getSearchMoreResultsObservable(): Observable<NoticeBoardItemDto[]> {
+        return this.moreSearchResults.asObservable();
     }
 
     getNoticesFilterUrlParamsObservable(): Observable<EventFilterUrlParams> {

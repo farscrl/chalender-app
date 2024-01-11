@@ -20,6 +20,7 @@ export class EventsListTableComponent {
 
     public categorizedEvents: CategorizedEvents[] = [];
     private datesSubscription?: Subscription;
+    private moreDatesSubscription?: Subscription;
 
     constructor(
         private modalService: NgbModal,
@@ -34,14 +35,21 @@ export class EventsListTableComponent {
         dayjs.extend(customParseFormat);
         dayjs.locale('rm', rmLocale);
 
-        this.datesSubscription = this.eventsFilterService.getSearchResultsObservable().subscribe(dates => {
-            this.categorizedEvents = this.datesUtil.groupEvents(dates);
+        this.datesSubscription = this.eventsFilterService.getSearchResultsObservable().subscribe(events => {
+            this.categorizedEvents = [];
+            this.datesUtil.addGroupEvents(this.categorizedEvents, events);
+        });
+        this.moreDatesSubscription = this.eventsFilterService.getSearchMoreResultsObservable().subscribe(events => {
+            this.datesUtil.addGroupEvents(this.categorizedEvents, events);
         });
     }
 
     ngOnDestroy(): void {
         if (this.datesSubscription) {
             this.datesSubscription.unsubscribe();
+        }
+        if (this.moreDatesSubscription) {
+            this.moreDatesSubscription.unsubscribe();
         }
     }
 

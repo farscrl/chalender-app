@@ -19,6 +19,7 @@ export class NoticesListCardsComponent {
     notices: NoticeBoardItemDto[] = [];
 
     private datesSubscription?: Subscription;
+    private moreDatesSubscription?: Subscription;
 
     constructor(
         private modalService: NgbModal,
@@ -35,11 +36,17 @@ export class NoticesListCardsComponent {
         this.datesSubscription = this.noticesFilterService.getSearchResultsObservable().subscribe(notices => {
             this.notices = notices;
         });
+        this.moreDatesSubscription = this.noticesFilterService.getSearchMoreResultsObservable().subscribe(notices => {
+            this.notices.push(...notices);
+        });
     }
 
     ngOnDestroy(): void {
         if (this.datesSubscription) {
             this.datesSubscription.unsubscribe();
+        }
+        if (this.moreDatesSubscription) {
+            this.moreDatesSubscription.unsubscribe();
         }
     }
 

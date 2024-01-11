@@ -19,13 +19,12 @@ export class EventsFilterService {
 
     public isSearching = false;
 
-    private events: EventLookup[] = [];
-
     private selectedRegions = new BehaviorSubject<number[]>([]);
     private selectedGenres = new BehaviorSubject<number[]>([]);
     private selectedStartDate = new BehaviorSubject<NgbDateStruct>(this.calendar.getToday());
     private searchTerm = new BehaviorSubject<string>('');
-    private searchResults = new BehaviorSubject<EventLookup[]>([]);
+    private searchResults = new Subject<EventLookup[]>();
+    private moreSearchResults = new Subject<EventLookup[]>();
     private urlParams = new BehaviorSubject<EventFilterUrlParams>(new EventFilterUrlParams());
 
     private pageSize = 10;
@@ -69,15 +68,13 @@ export class EventsFilterService {
     private debouncedSearch() {
         this.eventsService.getEvents(this.eventFilter, this.page, this.pageSize).subscribe((page: Page<EventLookup>) => {
             if (page.first) {
-                this.events = page.content;
+                this.searchResults.next(page.content);
             } else {
-                this.events = [...this.events, ...page.content];
+                this.moreSearchResults.next(page.content);
             }
             if (page.last) {
                 this.hasMorePages = false;
             }
-
-            this.searchResults.next(this.events);
             this.isSearching = false;
         });
     }
@@ -152,6 +149,10 @@ export class EventsFilterService {
 
     getSearchResultsObservable(): Observable<EventLookup[]> {
         return this.searchResults.asObservable();
+    }
+
+    getSearchMoreResultsObservable(): Observable<EventLookup[]> {
+        return this.moreSearchResults.asObservable();
     }
 
     getEventFilterUrlParamsObservable(): Observable<EventFilterUrlParams> {
