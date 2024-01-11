@@ -5,8 +5,16 @@
 
     <div class="short-menu">
         <ul>
-            <li><a href="/">{{ 'COMPONENTS.HEADER.SUB_MENU.EVENTS' | translate }}</a></li>
-            <li><a href="#">{{ 'COMPONENTS.HEADER.SUB_MENU.NOTICE_BOARD' | translate }}</a></li>
+            <li>
+                <a [routerLink]="'/'" [class.active]="isLinkActive('/')">
+                    {{ 'COMPONENTS.HEADER.SUB_MENU.EVENTS' | translate }}
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="'/notices'" [class.active]="isLinkActive('/notices')">
+                    {{ 'COMPONENTS.HEADER.SUB_MENU.NOTICE_BOARD' | translate }}
+                </a>
+            </li>
         </ul>
     </div>
     <div class="menu">

@@ -3,6 +3,7 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from '../../shared/services/authentication.service';
 import { IframeService } from '../../services/iframe.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         private offcanvasService: NgbOffcanvas,
         public authService: AuthenticationService,
         private iframeService: IframeService,
+        private router: Router
     ) {
     }
 
@@ -48,5 +50,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
         } else {
             this.offcanvasService.dismiss();
         }
+    }
+
+    isLinkActive(url: string): boolean {
+        // hack needed, as native routerLinkActive 
+        const queryParamsIndex = this.router.url.indexOf('?');
+        let baseUrl = queryParamsIndex === -1 ? this.router.url : this.router.url.slice(0, queryParamsIndex);
+        if (baseUrl === url) {
+            return true;
+        }
+
+        const lastIndex = baseUrl.lastIndexOf('/');
+        const base = baseUrl.substring(0, lastIndex);
+        const ending = baseUrl.substring(lastIndex + 1);
+
+        // empty string is removed
+        if (url === "/" && base === "" && ending.length === 24) {
+            return true;
+        }
+
+        return (base === url && ending.length === 24);
     }
 }

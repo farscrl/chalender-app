@@ -35,6 +35,14 @@
     display: none;
     flex: none;
 
+    @include media-breakpoint-up(md) {
+        display: flex;
+    }
+
+    @include media-breakpoint-up(lg) {
+        font-size: 22px;
+    }
+
     ul {
         list-style: none;
         margin: 0;
@@ -44,6 +52,10 @@
 
         li {
             padding: 0.5rem;
+
+            a.active {
+                text-decoration: underline;
+            }
         }
     }
 }
