@@ -98,9 +98,9 @@ export class NewNoticeComponent {
                     );
 
                     if (this.returnToModeratorView) {
-                        this.router.navigateByUrl('/moderator/events');
+                        this.router.navigateByUrl('/moderator/notices');
                     } else {
-                        this.router.navigateByUrl('/user/events');
+                        this.router.navigateByUrl('/user/notices');
                     }
                     this.isSaving = false;
                 },
@@ -119,9 +119,9 @@ export class NewNoticeComponent {
 
                     if (this.isLoggedIn) {
                         if (this.returnToModeratorView) {
-                            this.router.navigateByUrl('/moderator/events');
+                            this.router.navigateByUrl('/moderator/notices');
                         } else {
-                            this.router.navigateByUrl('/user/events');
+                            this.router.navigateByUrl('/user/notices');
                         }
                     } else {
                         this.router.navigateByUrl('/');

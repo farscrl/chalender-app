@@ -50,6 +50,10 @@ export class NoticesService {
         return this.httpClient.post<NoticeBoardItemDto>(this.getUrl(notice.id), body);
     }
 
+    public deleteNotice(noticeId: string): Observable<void> {
+        return this.httpClient.delete<void>(this.getUrl(noticeId));
+    }
+
     getUrl(id?: string) {
         if (id) {
             return environment.apiBasePath.concat(this.basePath).concat('/' + id);

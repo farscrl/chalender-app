@@ -4,7 +4,8 @@ import { Event } from "../data/event";
 import { Observable } from "rxjs";
 import { Page } from "../data/page";
 import { environment } from '../../../environments/environment';
-import { ModerationEventsFilter } from '../data/filter';
+import { ModerationEventsFilter, ModerationNoticeBoardFilter } from '../data/filter';
+import { NoticeBoardItem } from '../data/notices';
 
 @Injectable({
     providedIn: 'root'
@@ -46,6 +47,36 @@ export class UserService {
 
     public getEvent(id: string): Observable<Event> {
         return this.httpClient.get<Event>(this.getUrl('events', id));
+    }
+
+    public getNotices(filter: ModerationNoticeBoardFilter, page = 0, pageSize = 20): Observable<Page<NoticeBoardItem>> {
+        let params: HttpParams = new HttpParams();
+        if (page != 0) {
+            params = params.set('page', page);
+        }
+        if (pageSize != 20) {
+            params = params.set('size', pageSize);
+        }
+
+        if (filter.searchTerm != null && filter.searchTerm.length > 0) {
+            params = params.set('searchTerm', filter.searchTerm);
+        }
+
+        if (filter.sortBy != null) {
+            params = params.set('sortBy', filter.sortBy);
+        }
+        if (filter.sortOrder != null) {
+            params = params.set('sortOrder', filter.sortOrder);
+        }
+
+        const httpOptions = {
+            params: params
+        };
+        return this.httpClient.get<Page<Event>>(this.getUrl('notices'), httpOptions);
+    }
+
+    public getNotice(id: string): Observable<NoticeBoardItem> {
+        return this.httpClient.get<NoticeBoardItem>(this.getUrl('notices', id));
     }
 
     getUrl(type: string, id?: string) {

@@ -14,3 +14,16 @@ export class ModerationEventsFilter {
     sortBy: SortColumn = 'DATE';
     sortOrder: SortDirection = 'ASC';
 }
+
+export class ModerationNoticeBoardFilter {
+    searchTerm?: string;
+    
+    includeStateInReview = true;
+    includeStateNewModification = true;
+    includeStatePublished = false;
+    includeStateRejected = false;
+    includeStateInvalid = true;
+
+    sortBy: SortColumn = 'DATE';
+    sortOrder: SortDirection = 'ASC';
+}
