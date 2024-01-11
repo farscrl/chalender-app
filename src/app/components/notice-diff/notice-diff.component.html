@@ -1,0 +1,70 @@
+<section class="content-wide">
+    <h1>{{ 'COMPONENTS.EVENT_DIFF.TITLE' | translate }}</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.TITLE' | translate }}</th>
+            <td>
+                <app-diff-field type="removed" [diff]="titleDiff"></app-diff-field>
+            </td>
+            <td>
+                <app-diff-field type="added" [diff]="titleDiff"></app-diff-field>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.DESCRIPTION' | translate }}</th>
+            <td>
+                <app-diff-field type="removed" [diff]="descriptionDiff"></app-diff-field>
+            </td>
+            <td>
+                <app-diff-field type="added" [diff]="descriptionDiff"></app-diff-field>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.CATEGORIES' | translate }}</th>
+            <td>
+                <app-diff-field type="removed" [diff]="genresDiff"></app-diff-field>
+            </td>
+            <td>
+                <app-diff-field type="added" [diff]="genresDiff"></app-diff-field>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.CONTACT' | translate }}</th>
+            <td>
+                <app-diff-field type="removed" [diff]="contactDataDiff"></app-diff-field>
+            </td>
+            <td>
+                <app-diff-field type="added" [diff]="contactDataDiff"></app-diff-field>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.IMAGES' | translate }}</th>
+            <td>
+                <img src="{{img.url + '?width=150&auto_optimize=medium' }}" alt="{{ img.originalName }}"
+                     *ngFor="let img of oldVersion.images">
+            </td>
+            <td>
+                <img src="{{img.url + '?width=150&auto_optimize=medium' }}" alt="{{ img.originalName }}"
+                     *ngFor="let img of newVersion.images">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.DOCUMENTS' | translate }}</th>
+            <td>
+                <a href="{{ doc.url }}" target="_blank" *ngFor="let doc of oldVersion.documents"
+                   style="display: block">
+                    {{ doc.originalName }}
+                </a>
+            </td>
+            <td>
+                <a href="{{ doc.url }}" target="_blank" *ngFor="let doc of newVersion.documents"
+                   style="display: block">
+                    {{ doc.originalName }}
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
