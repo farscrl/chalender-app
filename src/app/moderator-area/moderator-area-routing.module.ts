@@ -10,6 +10,11 @@ const routes: Routes = [
         component: ModeratorEventsComponent,
         canActivate: [authGuard()]
     }, // TODO: needs Moderation Role
+    {
+        path: 'notices',
+        component: ModeratorEventsComponent,
+        canActivate: [authGuard()]
+    }, // TODO: needs Moderation Role
 ];
 
 @NgModule({

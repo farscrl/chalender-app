@@ -19,6 +19,9 @@ import { UserAreaRoutingModule } from './user-area-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NewSubscriptionComponent } from './pages/new-subscription/new-subscription.component';
 import { NewNoticeComponent } from './pages/new-notice/new-notice.component';
+import { NoticesComponent } from './pages/notices/notices.component';
+import { MyNoticesComponent } from './pages/my-notices/my-notices.component';
+import { MySubscriptionsNoticesComponent } from './pages/my-subscriptions-notices/my-subscriptions-notices.component';
 
 @NgModule({
     declarations: [
@@ -39,6 +42,9 @@ import { NewNoticeComponent } from './pages/new-notice/new-notice.component';
         ConfirmPasswordComponent,
         NewSubscriptionComponent,
         NewNoticeComponent,
+        NoticesComponent,
+        MyNoticesComponent,
+        MySubscriptionsNoticesComponent,
     ],
     imports: [
         CommonModule,

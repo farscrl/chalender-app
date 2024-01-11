@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
     isLinkActive(url: string): boolean {
-        // hack needed, as native routerLinkActive 
+        // hack needed, as native routerLinkActive
         const queryParamsIndex = this.router.url.indexOf('?');
         let baseUrl = queryParamsIndex === -1 ? this.router.url : this.router.url.slice(0, queryParamsIndex);
         if (baseUrl === url) {

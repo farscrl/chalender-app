@@ -22,7 +22,6 @@
             inset: 100px;
             max-width: 1200px;
             margin: 0 auto;
-            padding-top: 80px;
             gap: 60px;
         }
 
@@ -34,7 +33,7 @@
             list-style: none;
             margin: 0;
             padding: 2rem;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             line-height: 2rem;
             flex-grow: 1;
 
@@ -45,10 +44,6 @@
 
             @include media-breakpoint-up(lg) {
                 padding: 3rem;
-            }
-
-            li {
-                padding-bottom: 0.5rem;
             }
         }
 
@@ -63,6 +58,10 @@
 
         .main-menu-top {
             font-family: CadizBlack, sans-serif;
+
+            li {
+                padding-bottom: 0.5rem;
+            }
         }
 
         .main-menu-bottom {

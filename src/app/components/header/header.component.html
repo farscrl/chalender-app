@@ -51,43 +51,76 @@
                        [routerLink]="'/privacy'">{{ 'COMPONENTS.HEADER.MAIN_MENU.PRIVACY' | translate }}</a></li>
             </ul>
 
-            <ul class="main-menu-bottom" *ngIf="authService.isLoggedIn()">
-                <li><a (click)="toggleMenu(menu)"
-                       [routerLink]="'/user/event-form'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.NEW_EVENT' | translate }}</a>
-                </li>
-                <li><a (click)="toggleMenu(menu)"
-                       [routerLink]="'/user/events'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_EVENTS' | translate }}</a>
-                </li>
-                <li><a (click)="toggleMenu(menu)"
-                       [routerLink]="'/user/subscriptions'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_ABOS' | translate }}</a>
-                </li>
-                <li><a (click)="toggleMenu(menu)"
-                       [routerLink]="'/user/profile'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.PROFILE' | translate }}</a>
-                </li>
-                <li><a (click)="toggleMenu(menu)"
-                       [routerLink]="'/user/logout'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.LOGOUT' | translate }}</a>
-                </li>
-                <li *ngIf="authService.isModerator() || authService.isAdmin()" class="section-title">
+            <ul class="main-menu-bottom">
+                <li class="section-title">
                     <hr>
-                    {{ 'COMPONENTS.HEADER.ADMIN.ADMIN' | translate }}
+                    {{ 'COMPONENTS.HEADER.SUB_MENU.EVENTS' | translate }}
                 </li>
-                <li *ngIf="authService.isModerator()">
-                    <a (click)="toggleMenu(menu)"
-                       href="/moderator/events">{{ 'COMPONENTS.HEADER.ADMIN.EVENTS' | translate }}</a>
+                <li *ngIf="authService.isLoggedIn()"><a (click)="toggleMenu(menu)"
+                                                        [routerLink]="'/user/event-form'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.NEW_EVENT' | translate }}</a>
                 </li>
-                <li *ngIf="authService.isAdmin()">
-                    <a (click)="toggleMenu(menu)"
-                       href="/administrator/users">{{ 'COMPONENTS.HEADER.ADMIN.USERS' | translate }}</a>
+                <li *ngIf="!authService.isLoggedIn()"><a (click)="toggleMenu(menu)"
+                                                         [routerLink]="'/user/new-event'">{{ 'COMPONENTS.HEADER.SIGNUP.NEW_EVENT' | translate }}</a>
                 </li>
-            </ul>
+                <li *ngIf="authService.isLoggedIn()"><a (click)="toggleMenu(menu)"
+                                                        [routerLink]="'/user/events'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_EVENTS' | translate }}</a>
+                </li>
+                <li *ngIf="authService.isLoggedIn()"><a (click)="toggleMenu(menu)"
+                                                        [routerLink]="'/user/subscriptions'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_ABOS' | translate }}</a>
+                </li>
+                <li class="section-title">
+                    <hr>
+                    {{ 'COMPONENTS.HEADER.SUB_MENU.NOTICE_BOARD' | translate }}
+                </li>
+                <li *ngIf="authService.isLoggedIn()"><a (click)="toggleMenu(menu)"
+                                                        [routerLink]="'/user/notice-form'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.NEW_NOTICE' | translate }}</a>
+                </li>
+                <li *ngIf="!authService.isLoggedIn()"><a (click)="toggleMenu(menu)"
+                                                         [routerLink]="'/user/new-notice'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.NEW_NOTICE' | translate }}</a>
+                </li>
+                <li *ngIf="authService.isLoggedIn()"><a (click)="toggleMenu(menu)"
+                                                        [routerLink]="'/user/notices'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_NOTICES' | translate }}</a>
+                </li>
+                <li *ngIf="authService.isLoggedIn()"><a (click)="toggleMenu(menu)"
+                                                        [routerLink]="'/user/subscriptions-notices'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_ABOS' | translate }}</a>
+                </li>
+                <li class="section-title">
+                    <hr>
+                    {{ 'COMPONENTS.HEADER.PROFILE_MENU.TITLE' | translate }}
+                </li>
+                <ng-container *ngIf="authService.isLoggedIn()">
+                    <li><a (click)="toggleMenu(menu)"
+                           [routerLink]="'/user/profile'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.PROFILE' | translate }}</a>
+                    </li>
+                    <li><a (click)="toggleMenu(menu)"
+                           [routerLink]="'/user/logout'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.LOGOUT' | translate }}</a>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="!authService.isLoggedIn()">
+                    <li><a (click)="toggleMenu(menu)"
+                           [routerLink]="'/user/login'">{{ 'COMPONENTS.HEADER.SIGNUP.LOGIN' | translate }}</a>
+                    </li>
+                </ng-container>
 
-            <ul class="main-menu-bottom" *ngIf="!authService.isLoggedIn()">
-                <li><a (click)="toggleMenu(menu)"
-                       [routerLink]="'/user/login'">{{ 'COMPONENTS.HEADER.SIGNUP.LOGIN' | translate }}</a>
-                </li>
-                <li><a (click)="toggleMenu(menu)"
-                       [routerLink]="'/user/new-event'">{{ 'COMPONENTS.HEADER.SIGNUP.NEW_EVENT' | translate }}</a>
-                </li>
+                <ng-container *ngIf="authService.isModerator() || authService.isAdmin()">
+                    <li class="section-title">
+                        <hr>
+                        {{ 'COMPONENTS.HEADER.ADMIN.ADMIN' | translate }}
+                    </li>
+                    <li *ngIf="authService.isModerator()">
+                        <a (click)="toggleMenu(menu)"
+                           href="/moderator/events">{{ 'COMPONENTS.HEADER.ADMIN.EVENTS' | translate }}</a>
+                    </li>
+                    <li *ngIf="authService.isModerator()">
+                        <a (click)="toggleMenu(menu)"
+                           href="/moderator/notices">{{ 'COMPONENTS.HEADER.ADMIN.NOTICES' | translate }}</a>
+                    </li>
+                    <li *ngIf="authService.isAdmin()">
+                        <a (click)="toggleMenu(menu)"
+                           href="/administrator/users">{{ 'COMPONENTS.HEADER.ADMIN.USERS' | translate }}</a>
+                    </li>
+                </ng-container>
+
             </ul>
         </div>
     </ng-template>

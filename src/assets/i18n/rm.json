@@ -52,8 +52,11 @@
                 "PRIVACY": "protecziun da datas"
             },
             "PROFILE_MENU": {
+                "TITLE": "conto",
                 "NEW_EVENT": "registrar in’occurrenza",
                 "MY_EVENTS": "mias occurrenzas",
+                "NEW_NOTICE": "registrar in’annunzia",
+                "MY_NOTICES": "mias annunzias",
                 "MY_ABOS": "mes abunaments",
                 "PROFILE": "mes profil",
                 "LOGOUT": "sortir"
@@ -61,6 +64,7 @@
             "ADMIN": {
                 "ADMIN": "administraziun",
                 "EVENTS": "occurrenzas",
+                "NOTICES": "annunzias",
                 "USERS": "utilisaders"
             },
             "SIGNUP": {
