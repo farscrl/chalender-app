@@ -66,11 +66,12 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
             }
 
             if (!!params['startDate']) {
-                // this.eventsFilterService.setStartDate()
+                const data = params['startDate'].split('-');
+                this.eventsFilterService.setStartDate({day: +data[0], month: +data[1], year: +data[2]});
             }
 
             if (!!params['searchTerm']) {
-                this.eventsFilterService.setSearchterm(params['searchTerm'])
+                this.eventsFilterService.setSearchterm(params['searchTerm']);
             }
 
             this.eventFilterUrlParamSubscription = this.eventsFilterService.getEventFilterUrlParamsObservable().subscribe((params) => {
