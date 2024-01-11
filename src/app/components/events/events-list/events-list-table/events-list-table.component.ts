@@ -42,6 +42,7 @@ export class EventsListTableComponent {
         this.moreDatesSubscription = this.eventsFilterService.getSearchMoreResultsObservable().subscribe(events => {
             this.datesUtil.addGroupEvents(this.categorizedEvents, events);
         });
+        this.eventsFilterService.search();
     }
 
     ngOnDestroy(): void {

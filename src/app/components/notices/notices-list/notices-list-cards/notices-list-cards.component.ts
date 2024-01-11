@@ -39,6 +39,7 @@ export class NoticesListCardsComponent {
         this.moreDatesSubscription = this.noticesFilterService.getSearchMoreResultsObservable().subscribe(notices => {
             this.notices.push(...notices);
         });
+        this.noticesFilterService.search();
     }
 
     ngOnDestroy(): void {

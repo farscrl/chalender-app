@@ -41,6 +41,7 @@ export class NoticesListTableComponent {
         this.moreDatesSubscription = this.noticesFilterService.getSearchMoreResultsObservable().subscribe(notices => {
             this.notices = notices;
         });
+        this.noticesFilterService.search();
     }
 
     ngOnDestroy(): void {
