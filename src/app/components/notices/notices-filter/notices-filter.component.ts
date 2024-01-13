@@ -7,9 +7,11 @@ import { StaticDataService } from '../../../shared/services/static-data.service'
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { Router } from '@angular/router';
 import { NotLoggedInComponent } from '../../modals/not-logged-in/not-logged-in.component';
-import { Subscription } from '../../../shared/data/subscription';
-import { NewSubscriptionComponent } from '../../modals/new-subscription/new-subscription.component';
+import { EventsSubscription } from '../../../shared/data/subscription';
 import { NoticesFilterService } from '../../../shared/services/notices-filter.service';
+import {
+    NewNoticesSubscriptionComponent
+} from '../../../user-area/pages/new-notices-subscription/new-notices-subscription.component';
 
 @Component({
     selector: 'app-notices-filter',
@@ -124,12 +126,12 @@ export class NoticesFilterComponent {
             return;
         }
 
-        const subscription = new Subscription();
+        const subscription = new EventsSubscription();
         subscription.genres = this.genres.filter(genre => this.selectedGenreIds.includes(genre.id));
         subscription.regions = this.regions.filter(region => this.selectedRegionIds.includes(region.id));
         subscription.searchTerm = this.searchTerm;
 
-        const modalRef = this.modalService.open(NewSubscriptionComponent, {size: 'lg', centered: true});
+        const modalRef = this.modalService.open(NewNoticesSubscriptionComponent, {size: 'lg', centered: true});
         modalRef.componentInstance.subscription = subscription;
     }
 

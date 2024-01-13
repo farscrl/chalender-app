@@ -2,13 +2,15 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } 
 import { NgbCalendar, NgbDate, NgbDatepicker, NgbDateStruct, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { NotLoggedInComponent } from '../../modals/not-logged-in/not-logged-in.component';
 import { Router } from '@angular/router';
-import { NewSubscriptionComponent } from '../../modals/new-subscription/new-subscription.component';
 import { Genre, Region } from '../../../shared/data/static-data';
 import { StaticDataService } from '../../../shared/services/static-data.service';
 import { EventsFilterService } from '../../../shared/services/events-filter.service';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
-import { Subscription } from '../../../shared/data/subscription';
+import { EventsSubscription } from '../../../shared/data/subscription';
 import { Observable, Subscription as RxSubscription } from 'rxjs';
+import {
+    NewEventsSubscriptionComponent
+} from '../../../user-area/pages/new-events-subscription/new-events-subscription.component';
 
 @Component({
     selector: 'app-event-filter',
@@ -131,12 +133,12 @@ export class EventFilterComponent implements OnInit, OnDestroy {
             return;
         }
 
-        const subscription = new Subscription();
+        const subscription = new EventsSubscription();
         subscription.genres = this.genres.filter(genre => this.selectedGenreIds.includes(genre.id));
         subscription.regions = this.regions.filter(region => this.selectedRegionIds.includes(region.id));
         subscription.searchTerm = this.searchTerm;
 
-        const modalRef = this.modalService.open(NewSubscriptionComponent, {size: 'lg', centered: true});
+        const modalRef = this.modalService.open(NewEventsSubscriptionComponent, {size: 'lg', centered: true});
         modalRef.componentInstance.subscription = subscription;
     }
 

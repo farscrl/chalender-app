@@ -40,7 +40,6 @@ import { EventListItemComponent } from './components/events/event-list-item/even
 import { EventDetailsComponent } from './components/events/event-details/event-details.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NotLoggedInComponent } from './components/modals/not-logged-in/not-logged-in.component';
-import { NewSubscriptionComponent } from './components/modals/new-subscription/new-subscription.component';
 
 import { SharedModule } from './shared/shared.module';
 import { AuthenticationService } from './shared/services/authentication.service';
@@ -54,12 +53,16 @@ import {
     PwaInstallInstructionsComponent
 } from './components/pwa-install-instructions/pwa-install-instructions.component';
 import { TrackingRtrComponent } from './components/tracking-rtr/tracking-rtr.component';
-import { NoticesListCardsComponent } from './components/notices/notices-list/notices-list-cards/notices-list-cards.component';
+import {
+    NoticesListCardsComponent
+} from './components/notices/notices-list/notices-list-cards/notices-list-cards.component';
 import { NoticesListComponent } from './pages/notices/notices-list/notices-list.component';
 import { NoticesDetailsComponent } from './pages/notices/notices-details/notices-details.component';
 import { NoticesFilterComponent } from './components/notices/notices-filter/notices-filter.component';
 import { NoticeCardComponent } from './components/notices/notice-card/notice-card.component';
-import { NoticesListTableComponent } from './components/notices/notices-list/notices-list-table/notices-list-table.component';
+import {
+    NoticesListTableComponent
+} from './components/notices/notices-list/notices-list-table/notices-list-table.component';
 import { NoticeListItemComponent } from './components/notices/notice-list-item/notice-list-item.component';
 import { NoNoticesComponent } from './components/notices/no-notices/no-notices.component';
 import { NoticeDetailsComponent } from './components/notices/notice-details/notice-details.component';
@@ -119,7 +122,6 @@ export function inIframe() {
         EventListItemComponent,
         EventDetailsComponent,
         NotLoggedInComponent,
-        NewSubscriptionComponent,
         DatepickerHeaderComponent,
         NoEventsComponent,
         ScrollableTitleDirective,

@@ -1,0 +1,6 @@
+<section class="content-narrow">
+    <h1>Midar l’abunament</h1>
+
+    <app-events-subscription [subscription]="subscription" (success)="success()" (cancel)="cancel()"
+                             *ngIf="subscription"></app-events-subscription>
+</section>

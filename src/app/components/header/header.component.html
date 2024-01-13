@@ -64,7 +64,7 @@
                                                         [routerLink]="'/user/events'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_EVENTS' | translate }}</a>
                 </li>
                 <li *ngIf="authService.isLoggedIn()"><a (click)="toggleMenu(menu)"
-                                                        [routerLink]="'/user/subscriptions'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_ABOS' | translate }}</a>
+                                                        [routerLink]="'/user/subscriptions/events'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_ABOS' | translate }}</a>
                 </li>
                 <li class="section-title">
                     <hr>
@@ -80,7 +80,7 @@
                                                         [routerLink]="'/user/notices'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_NOTICES' | translate }}</a>
                 </li>
                 <li *ngIf="authService.isLoggedIn()"><a (click)="toggleMenu(menu)"
-                                                        [routerLink]="'/user/subscriptions-notices'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_ABOS' | translate }}</a>
+                                                        [routerLink]="'/user/subscriptions/notices'">{{ 'COMPONENTS.HEADER.PROFILE_MENU.MY_ABOS' | translate }}</a>
                 </li>
                 <li class="section-title">
                     <hr>

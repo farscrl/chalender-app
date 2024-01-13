@@ -5,5 +5,6 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body" *ngIf="subscription">
-    <app-subscription [subscription]="subscription" (success)="success()" (cancel)="cancel()"></app-subscription>
+    <app-events-subscription [subscription]="subscription" (success)="success()"
+                             (cancel)="cancel()"></app-events-subscription>
 </div>

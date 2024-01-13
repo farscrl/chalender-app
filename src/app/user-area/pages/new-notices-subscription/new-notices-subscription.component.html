@@ -1,0 +1,6 @@
+<section class="content-narrow">
+    <h1>{{ 'COMPONENTS.MODALS.NEW_SUBSCRIPTION.TITLE' | translate }}</h1>
+
+    <app-notices-subscription [subscription]="subscription" (success)="success()"
+                              (cancel)="cancel()"></app-notices-subscription>
+</section>

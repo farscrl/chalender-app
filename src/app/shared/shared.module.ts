@@ -12,7 +12,6 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { FileListComponent } from './components/file-list/file-list.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { SubscriptionComponent } from './components/forms/subscription/subscription.component';
 import { NewEventButtonComponent } from './components/new-event-button/new-event-button.component';
 import { RouterModule } from '@angular/router';
 import { LinkyPipe } from './pipes/linky.pipe';
@@ -20,6 +19,8 @@ import { InfoButtonComponent } from './components/forms/info-button/info-button.
 import { NetiquetteComponent } from './components/netiquette/netiquette.component';
 import { FabPositionDirective } from './directives/fab-position.directive';
 import { NewNoticeButtonComponent } from './components/new-notice-button/new-notice-button.component';
+import { EventsSubscriptionComponent } from './components/forms/events-subscription/events-subscription.component';
+import { NoticesSubscriptionComponent } from './components/forms/notices-subscription/notices-subscription.component';
 
 
 @NgModule({
@@ -31,13 +32,14 @@ import { NewNoticeButtonComponent } from './components/new-notice-button/new-not
         ShortDomainPipe,
         FileUploadComponent,
         FileListComponent,
-        SubscriptionComponent,
         NewEventButtonComponent,
         LinkyPipe,
         InfoButtonComponent,
         NetiquetteComponent,
         FabPositionDirective,
         NewNoticeButtonComponent,
+        EventsSubscriptionComponent,
+        NoticesSubscriptionComponent,
     ],
     imports: [
         CommonModule,
@@ -62,9 +64,10 @@ import { NewNoticeButtonComponent } from './components/new-notice-button/new-not
         StatusBadgeComponent,
         FileUploadComponent,
         FileListComponent,
-        SubscriptionComponent,
         NewEventButtonComponent,
         NewNoticeButtonComponent,
+        EventsSubscriptionComponent,
+        NoticesSubscriptionComponent,
 
         SortableDirective,
         FabPositionDirective,

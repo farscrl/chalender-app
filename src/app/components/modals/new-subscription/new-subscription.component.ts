@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-import { Subscription } from '../../../shared/data/subscription';
+import { EventsSubscription } from '../../../shared/data/subscription';
 
 @Component({
     selector: 'app-new-subscription',
@@ -9,7 +9,7 @@ import { Subscription } from '../../../shared/data/subscription';
     styleUrls: ['./new-subscription.component.scss']
 })
 export class NewSubscriptionComponent implements OnInit {
-    @Input() subscription: Subscription | undefined;
+    @Input() subscription: EventsSubscription | undefined;
 
     constructor(public activeModal: NgbActiveModal, private router: Router) {
     }
