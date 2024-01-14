@@ -1,14 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { EventsSubscription } from '../../../shared/data/subscription';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-import { EventsSubscription } from '../../../shared/data/subscription';
 
 @Component({
-    selector: 'app-new-subscription',
-    templateUrl: './new-subscription.component.html',
-    styleUrls: ['./new-subscription.component.scss']
+    selector: 'app-new-events-subscription',
+    templateUrl: './new-events-subscription.component.html',
+    styleUrls: ['./new-events-subscription.component.scss']
 })
-export class NewSubscriptionComponent implements OnInit {
+export class NewEventsSubscriptionComponent {
     @Input() subscription: EventsSubscription | undefined;
 
     constructor(public activeModal: NgbActiveModal, private router: Router) {
@@ -19,7 +19,7 @@ export class NewSubscriptionComponent implements OnInit {
 
     success() {
         this.activeModal.close();
-        this.router.navigateByUrl("/user/subscriptions");
+        this.router.navigateByUrl("/user/subscriptions/events");
     }
 
     cancel() {

@@ -1,0 +1,10 @@
+<div class="modal-header" *ngIf="subscription">
+    <h4 class="modal-title">
+        {{ 'COMPONENTS.MODALS.NEW_SUBSCRIPTION.TITLE' | translate }}
+    </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body" *ngIf="subscription">
+    <app-notices-subscription [subscription]="subscription" (success)="success()"
+                              (cancel)="cancel()"></app-notices-subscription>
+</div>

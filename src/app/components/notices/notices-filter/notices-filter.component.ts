@@ -11,7 +11,7 @@ import { EventsSubscription } from '../../../shared/data/subscription';
 import { NoticesFilterService } from '../../../shared/services/notices-filter.service';
 import {
     NewNoticesSubscriptionComponent
-} from '../../../user-area/pages/new-notices-subscription/new-notices-subscription.component';
+} from '../../modals/new-notices-subscription/new-notices-subscription.component';
 
 @Component({
     selector: 'app-notices-filter',

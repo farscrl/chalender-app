@@ -8,9 +8,8 @@ import { EventsFilterService } from '../../../shared/services/events-filter.serv
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { EventsSubscription } from '../../../shared/data/subscription';
 import { Observable, Subscription as RxSubscription } from 'rxjs';
-import {
-    NewEventsSubscriptionComponent
-} from '../../../user-area/pages/new-events-subscription/new-events-subscription.component';
+import { NewEventsSubscriptionComponent } from '../../modals/new-events-subscription/new-events-subscription.component';
+
 
 @Component({
     selector: 'app-event-filter',
