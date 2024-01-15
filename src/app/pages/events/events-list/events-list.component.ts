@@ -88,11 +88,17 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
     }
 
     onAttach(): void {
-        const scrollPosition = +(localStorage.getItem(LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION) || 0);
-        window.scrollTo({
-            top: scrollPosition,
-            behavior: 'instant',
-        });
+        try {
+            if (window.localStorage) {
+                const scrollPosition = +(localStorage.getItem(LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION) || 0);
+                window.scrollTo({
+                    top: scrollPosition,
+                    behavior: 'instant',
+                });
+            }
+        } catch (e) {
+        }
+
         this.eventFilterUrlParamSubscription = this.eventsFilterService.getEventFilterUrlParamsObservable().pipe(first()).subscribe((params) => {
             console.log(params);
             this.router.navigate(
@@ -107,7 +113,12 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
     }
 
     onDetach(): void {
-        localStorage.setItem(LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION, window.scrollY.toString());
+        try {
+            if (window.localStorage) {
+                localStorage.setItem(LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION, window.scrollY.toString());
+            }
+        } catch (e) {
+        }
     }
 
     ngOnDestroy() {

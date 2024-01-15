@@ -74,11 +74,17 @@ export class NoticesListComponent {
     }
 
     onAttach(): void {
-        const scrollPosition = +(localStorage.getItem(LOCALSTORAGE_NOTICES_LIST_SCROLL_POSITION) || 0);
-        window.scrollTo({
-            top: scrollPosition,
-            behavior: 'instant',
-        });
+        try {
+            if (window.localStorage) {
+                const scrollPosition = +(localStorage.getItem(LOCALSTORAGE_NOTICES_LIST_SCROLL_POSITION) || 0);
+                window.scrollTo({
+                    top: scrollPosition,
+                    behavior: 'instant',
+                });
+            }
+        } catch (e) {
+        }
+
         this.noticesFilterUrlParamSubscription = this.noticesFilterService.getNoticesFilterUrlParamsObservable().pipe(first()).subscribe((params) => {
             /*this.router.navigate(
                 [],
@@ -92,7 +98,12 @@ export class NoticesListComponent {
     }
 
     onDetach(): void {
-        localStorage.setItem(LOCALSTORAGE_NOTICES_LIST_SCROLL_POSITION, window.scrollY.toString());
+        try {
+            if (window.localStorage) {
+                localStorage.setItem(LOCALSTORAGE_NOTICES_LIST_SCROLL_POSITION, window.scrollY.toString());
+            }
+        } catch (e) {
+        }
     }
 
     ngOnDestroy() {
