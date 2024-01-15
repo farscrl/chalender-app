@@ -1,0 +1,70 @@
+<p>Qua pos ti configurar, co che chalender.ch duai vengir integrà en tia pagina. </p>
+
+<h3>Vista</h3>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="showSearch" [checked]="showSearch"
+           [(ngModel)]="showSearch" (ngModelChange)="calculateUrl()">
+    <label class="form-check-label" for="showSearch">
+        Mussar la trav da tschertgar
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="showViewSelection" [checked]="showViewSelection"
+           [(ngModel)]="showViewSelection" (ngModelChange)="calculateUrl()">
+    <label class="form-check-label" for="showViewSelection">
+        Mussar la selecziun da la vista
+    </label>
+</div>
+
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="selectedView" id="selectedViewCard" value="cards"
+           [(ngModel)]="selectedView" (ngModelChange)="calculateUrl()" [checked]="(selectedView === 'cards')">
+    <label class="form-check-label" for="selectedViewCard">
+        Vista da cartas
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="selectedView" id="selectedViewList" value="list"
+           [(ngModel)]="selectedView" (ngModelChange)="calculateUrl()" [checked]="(selectedView === 'list')">
+    <label class="form-check-label" for="selectedViewList">
+        Vista da glista
+    </label>
+</div>
+
+<h3>Filter predefinì</h3>
+
+<div class="row">
+    <div class="col">
+        categoria<br>
+        <div class="form-check" *ngFor="let genre of genres; let i = index">
+            <input class="form-check-input" type="checkbox" value="" id="genre_{{i}}"
+                   [checked]="isGenreSelected(genre.id)" (change)="toggleGenre(genre.id)"
+            >
+            <label class="form-check-label" for="genre_{{i}}">
+                {{genre.name}}
+            </label>
+        </div>
+    </div>
+
+    <div class="col">
+        regiun<br>
+        <div class="form-check" *ngFor="let region of regions; let i = index">
+            <input class="form-check-input" type="checkbox" value="" id="region_{{i}}"
+                   [checked]="isRegionSelected(region.id)" (change)="toggleRegion(region.id)"
+            >
+            <label class="form-check-label" for="region_{{i}}">
+                {{region.name}}
+            </label>
+        </div>
+    </div>
+</div>
+
+<div>
+    <label for="searchTerm" class="form-label">Term da tschertgar</label>
+    <input type="text" class="form-control" id="searchTerm" [(ngModel)]="searchTerm" (ngModelChange)="calculateUrl()">
+</div>
+
+<h3>Code per integrar</h3>
+<textarea>{{ code }}</textarea>
+
+<iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(url)"></iframe>

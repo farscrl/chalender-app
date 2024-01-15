@@ -1,6 +1,7 @@
 export interface Environment {
-  production: boolean;
-  name: string;
-  apiBasePath: string;
-  host: string;
+    production: boolean;
+    name: string;
+    apiBasePath: string;
+    host: string;
+    appUrl: string;
 }

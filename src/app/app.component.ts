@@ -93,7 +93,7 @@ export class AppComponent implements OnInit {
         const html = document.documentElement;
         const height = Math.max(body.scrollHeight, body.offsetHeight, html.offsetHeight) + 20;
         const message = {
-            type: 'resizeIframe',
+            type: 'resizeChalenderIframe',
             value: height
         };
         window.parent.postMessage(message, "*");

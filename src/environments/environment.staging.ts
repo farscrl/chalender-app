@@ -4,5 +4,6 @@ export const environment: Environment = {
     production: false,
     name: 'staging',
     apiBasePath: 'https://api-staging.chalender.ch/api/',
-    host: 'api-staging.chalender.ch'
+    host: 'api-staging.chalender.ch',
+    appUrl: 'https://staging.chalender.ch/'
 }

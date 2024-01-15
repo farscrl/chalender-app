@@ -21,6 +21,8 @@ import { FabPositionDirective } from './directives/fab-position.directive';
 import { NewNoticeButtonComponent } from './components/new-notice-button/new-notice-button.component';
 import { EventsSubscriptionComponent } from './components/forms/events-subscription/events-subscription.component';
 import { NoticesSubscriptionComponent } from './components/forms/notices-subscription/notices-subscription.component';
+import { IframeCodeGeneratorComponent } from './components/forms/iframe-code-generator/iframe-code-generator.component';
+import { ContactFormComponent } from './components/forms/contact-form/contact-form.component';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import { NoticesSubscriptionComponent } from './components/forms/notices-subscri
         NewNoticeButtonComponent,
         EventsSubscriptionComponent,
         NoticesSubscriptionComponent,
+        IframeCodeGeneratorComponent,
+        ContactFormComponent,
     ],
     imports: [
         CommonModule,
@@ -75,6 +79,7 @@ import { NoticesSubscriptionComponent } from './components/forms/notices-subscri
         LinkyPipe,
         ShortDomainPipe,
         InfoButtonComponent,
+        IframeCodeGeneratorComponent,
     ]
 })
 export class SharedModule {
