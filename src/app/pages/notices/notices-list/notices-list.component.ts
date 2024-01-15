@@ -7,8 +7,7 @@ import { IframeService } from '../../../services/iframe.service';
 import * as dayjs from 'dayjs';
 import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { NoticesFilterService } from '../../../shared/services/notices-filter.service';
-
-const LOCALSTORAGE_NOTICES_LIST_SCROLL_POSITION = 'notices-scroll-position';
+import { ScrollPositionService } from '../../../services/scroll-position.service';
 
 @Component({
     selector: 'app-notices-list',
@@ -29,6 +28,7 @@ export class NoticesListComponent {
         private router: Router,
         private route: ActivatedRoute,
         public iframeService: IframeService,
+        private scrollPositionService: ScrollPositionService,
     ) {
         router.events.subscribe(
             (event) => {
@@ -74,16 +74,11 @@ export class NoticesListComponent {
     }
 
     onAttach(): void {
-        try {
-            if (window.localStorage) {
-                const scrollPosition = +(localStorage.getItem(LOCALSTORAGE_NOTICES_LIST_SCROLL_POSITION) || 0);
-                window.scrollTo({
-                    top: scrollPosition,
-                    behavior: 'instant',
-                });
-            }
-        } catch (e) {
-        }
+        const scrollPosition = this.scrollPositionService.getNoticeBoardScrollPosition();
+        window.scrollTo({
+            top: scrollPosition,
+            behavior: 'instant',
+        });
 
         this.noticesFilterUrlParamSubscription = this.noticesFilterService.getNoticesFilterUrlParamsObservable().pipe(first()).subscribe((params) => {
             /*this.router.navigate(
@@ -98,12 +93,7 @@ export class NoticesListComponent {
     }
 
     onDetach(): void {
-        try {
-            if (window.localStorage) {
-                localStorage.setItem(LOCALSTORAGE_NOTICES_LIST_SCROLL_POSITION, window.scrollY.toString());
-            }
-        } catch (e) {
-        }
+        this.scrollPositionService.setNoticeBoardScrollPosition(window.scrollY);
     }
 
     ngOnDestroy() {

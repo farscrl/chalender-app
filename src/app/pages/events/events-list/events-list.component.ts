@@ -8,8 +8,7 @@ import { NotificationsService } from '../../../shared/services/notifications.ser
 import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { first, Subject, Subscription } from 'rxjs';
 import { IframeService } from '../../../services/iframe.service';
-
-const LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION = 'events-scroll-position';
+import { ScrollPositionService } from '../../../services/scroll-position.service';
 
 @Component({
     selector: 'app-events-list',
@@ -31,6 +30,7 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
         private router: Router,
         private route: ActivatedRoute,
         public iframeService: IframeService,
+        private scrollPositionService: ScrollPositionService,
     ) {
         router.events.subscribe(
             (event) => {
@@ -88,16 +88,11 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
     }
 
     onAttach(): void {
-        try {
-            if (window.localStorage) {
-                const scrollPosition = +(localStorage.getItem(LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION) || 0);
-                window.scrollTo({
-                    top: scrollPosition,
-                    behavior: 'instant',
-                });
-            }
-        } catch (e) {
-        }
+        const scrollPosition = this.scrollPositionService.getEventsScrollPosition();
+        window.scrollTo({
+            top: scrollPosition,
+            behavior: 'instant',
+        });
 
         this.eventFilterUrlParamSubscription = this.eventsFilterService.getEventFilterUrlParamsObservable().pipe(first()).subscribe((params) => {
             console.log(params);
@@ -113,12 +108,7 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
     }
 
     onDetach(): void {
-        try {
-            if (window.localStorage) {
-                localStorage.setItem(LOCALSTORAGE_EVENTS_LIST_SCROLL_POSITION, window.scrollY.toString());
-            }
-        } catch (e) {
-        }
+        this.scrollPositionService.setEventsScrollPosition(window.scrollY);
     }
 
     ngOnDestroy() {
