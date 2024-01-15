@@ -80,6 +80,7 @@ import { ContactFormComponent } from './components/forms/contact-form/contact-fo
         ShortDomainPipe,
         InfoButtonComponent,
         IframeCodeGeneratorComponent,
+        ContactFormComponent,
     ]
 })
 export class SharedModule {
