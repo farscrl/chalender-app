@@ -40,7 +40,7 @@ export class IframeCodeGeneratorComponent implements OnInit {
 
         const params: string[] = [];
         params.push('iframe=true');
-        params.push('selectedView=' + this.selectedView);
+        params.push('view=' + this.selectedView);
         if (this.selectedRegions.length > 0) {
             params.push('regions=' + this.selectedRegions.join(','));
         }
