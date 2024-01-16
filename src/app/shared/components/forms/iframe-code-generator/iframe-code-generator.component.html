@@ -65,6 +65,6 @@
 </div>
 
 <h3>Code per integrar</h3>
-<textarea spellcheck="false">{{ code }}</textarea>
+<textarea spellcheck="false" onclick="this.select()">{{ code }}</textarea>
 
 <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(url)"></iframe>
