@@ -96,6 +96,14 @@ section.content-wide {
     margin: 2rem;
 }
 
+#content > app-messages > section > ngb-alert {
+    margin-top: 1rem;
+
+    @include media-breakpoint-up(lg) {
+        margin-top: 2rem;
+    }
+}
+
 h1 {
     font-family: "CadizBlack", sans-serif;
     font-size: 1.8rem;
