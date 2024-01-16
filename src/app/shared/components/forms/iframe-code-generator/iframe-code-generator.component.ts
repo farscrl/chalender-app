@@ -45,7 +45,7 @@ export class IframeCodeGeneratorComponent implements OnInit {
             params.push('regions=' + this.selectedRegions.join(','));
         }
         if (this.selectedGenres.length > 0) {
-            params.push('regions=' + this.selectedRegions.join(','));
+            params.push('genres=' + this.selectedRegions.join(','));
         }
         if (this.searchTerm != '') {
             params.push('searchTerm=' + encodeURI(this.searchTerm));
@@ -59,7 +59,6 @@ export class IframeCodeGeneratorComponent implements OnInit {
         }
 
         this.url = url + '?' + params.join('&');
-
         this.code = `<iframe id="chalender-iframe" src="${this.url}"></iframe>
 <script>
     function handleIframeMessage(event) {
