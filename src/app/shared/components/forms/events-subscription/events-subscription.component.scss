@@ -6,6 +6,11 @@ h2, label.title {
     margin-top: 36px;
 }
 
+fieldset > div {
+    display: flex;
+    align-items: baseline;
+}
+
 input[type="radio"] {
     margin-right: 8px;
 }
