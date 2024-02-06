@@ -5,7 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
     selector: '[filterScrollPosition]',
 })
 export class FilterScrollPositionDirective implements OnInit, OnDestroy {
-    @HostBinding('style.height') heightStyle?: string;
+    @HostBinding('style.maxHeight') heightStyle?: string;
 
     constructor(
         private el: ElementRef,
