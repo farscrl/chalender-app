@@ -59,15 +59,10 @@ export class IframeCodeGeneratorComponent implements OnInit {
         }
 
         this.url = url + '?' + params.join('&');
-        this.code = `<iframe id="chalender-iframe" src="${this.url}"></iframe>
+        this.code = `<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.9/iframeResizer.min.js"></script>
+<iframe id="chalender-iframe" src="${this.url}"></iframe>
 <script>
-    function handleIframeMessage(event) {
-        if (event.data && event.data['type'] === 'resizeChalenderIframe') {
-            const iframe = document.getElementById("chalender-iframe");
-            iframe.style.height = event.data['value'] + 'px';
-        }
-    }
-    window.addEventListener("message", handleIframeMessage, false);
+    iFrameResize({ log: false }, '#chalender-iframe')
 </script>`
     }
 
