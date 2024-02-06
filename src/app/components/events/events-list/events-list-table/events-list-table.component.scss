@@ -48,6 +48,11 @@
             margin-right: 0;
             margin-left: 2rem;
         }
+
+        @include media-breakpoint-up(lg) {
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
     }
 }
 
