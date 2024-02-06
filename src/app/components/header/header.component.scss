@@ -53,8 +53,12 @@
         li {
             padding: 0.5rem;
 
+            @include media-breakpoint-up(lg) {
+                padding: 1rem;
+            }
+
             a.active {
-                text-decoration: underline;
+                border-bottom: 2px solid black;
             }
         }
     }
