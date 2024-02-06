@@ -51,7 +51,6 @@ export class AppComponent implements OnInit {
                 if (params['iframe'] === 'true') {
                     this.iframeService.setIsIframe();
                     this.document.body.classList.add('iframe');
-                    this.setupIframeSizeHandling();
 
                     if (params['showSearch'] === 'false') {
                         this.iframeService.disableSearch();
@@ -73,31 +72,6 @@ export class AppComponent implements OnInit {
         }
     }
 
-    private setupIframeSizeHandling() {
-        if (isPlatformBrowser(this.platformId)) {
-            const that = this;
-            const observer = new MutationObserver(function (mutationsList, observer) {
-                for (let mutation of mutationsList) {
-                    if (mutation.type === "childList") {
-                        that.resizeParentIframe();
-                        break;
-                    }
-                }
-            });
-            observer.observe(document.body, {childList: true, subtree: true});
-        }
-    }
-
-    private resizeParentIframe() {
-        const body = document.body;
-        const html = document.documentElement;
-        const height = Math.max(body.scrollHeight, body.offsetHeight, html.offsetHeight) + 20;
-        const message = {
-            type: 'resizeChalenderIframe',
-            value: height
-        };
-        window.parent.postMessage(message, "*");
-    }
 
     private handlePwaNotificationStuff(): void {
         // do not show the notification on desktop
