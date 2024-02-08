@@ -1,4 +1,4 @@
-<ng-container *ngIf="!isInIframe">
+<ng-container *ngIf="!isInIframe || enforceAddButton;">
     <div class="fab" #fab fabPosition>
         <div class="fab-inner">
             <div class="fab-menu" [routerLink]="'/user/new-event'">

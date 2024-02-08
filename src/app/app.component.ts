@@ -58,6 +58,9 @@ export class AppComponent implements OnInit {
                     if (params['showViewSelection'] === 'false') {
                         this.iframeService.disableViewSelection();
                     }
+                    if (params['showAddButton'] === 'true') {
+                        this.iframeService.enableAddButton();
+                    }
                 }
 
                 if (params['view'] === 'cards') {

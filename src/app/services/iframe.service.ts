@@ -9,6 +9,7 @@ export class IframeService {
     private isIframe = new BehaviorSubject<boolean>(false);
     private showSearch = new BehaviorSubject<boolean>(true);
     private showViewSelection = new BehaviorSubject<boolean>(true);
+    private showAddButton = new BehaviorSubject<boolean>(false);
 
     constructor() {
     }
@@ -47,5 +48,17 @@ export class IframeService {
 
     isShowViewSelectionValue(): boolean {
         return this.showViewSelection.value;
+    }
+
+    enableAddButton() {
+        this.showAddButton.next(true);
+    }
+
+    getShowAddButtonObservable(): Observable<boolean> {
+        return this.showAddButton.asObservable();
+    }
+
+    isShowAddButtonValue(): boolean {
+        return this.showAddButton.value;
     }
 }
