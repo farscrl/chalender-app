@@ -1,7 +1,7 @@
 <div class="view-selection">
     <div class="style-button cards" (click)="selectView('cards')" placement="bottom-right"
          [ngbTooltip]="'EVENT_LIST.GRAPHIC_VIEW' | translate"
-         [class.active]="eventsFilterService.selectedView === 'cards'">
+         [class.active]="type === 'notices' ? noticesFilterService.selectedView === 'cards' : eventsFilterService.selectedView === 'cards'">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <rect x="13" y="3" width="8" height="8" rx="1"/>
             <rect x="3" y="3" width="8" height="8" rx="1"/>
@@ -11,7 +11,7 @@
     </div>
     <div class="style-button list" (click)="selectView('list')" placement="bottom-right"
          [ngbTooltip]="'EVENT_LIST.LIST_VIEW' | translate"
-         [class.active]="eventsFilterService.selectedView === 'list'">
+         [class.active]="type === 'notices' ? noticesFilterService.selectedView === 'list' : eventsFilterService.selectedView === 'list'">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <rect width="13" height="4" rx="1" transform="matrix(-1 0 0 1 22 3)"/>
             <rect width="13" height="4" rx="1" transform="matrix(-1 0 0 1 22 10)"/>
