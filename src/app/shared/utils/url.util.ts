@@ -36,6 +36,10 @@ export class UrlUtil {
             url.iframe = true;
         }
 
+        if (this.iframeService.isShowAddButtonValue()) {
+            url.showAddButton = true;
+        }
+
         if (!this.iframeService.isShowSearchValue()) {
             url.showSearch = false;
         }
