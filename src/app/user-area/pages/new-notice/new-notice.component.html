@@ -22,7 +22,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="description" class="form-label">descripziun (lunghezza recumandada: max. 750 caracters)
+            <label for="description" class="form-label">descripziun (lunghezza recumandada: max. 1500 caracters)
                 *</label>
             <textarea formControlName="description" class="form-control" id="description" style="height: 150px"
                       [class.is-invalid]="isFieldInvalid('description')"></textarea>
@@ -32,7 +32,7 @@
                     Endatescha p.pl. ina descripziun.
                 </ng-container>
                 <ng-container *ngIf="isFieldError('description', 'maxlength')">
-                    La descripziun na dastga betg esser pli lunga che 750 caracters.
+                    La descripziun na dastga betg esser pli lunga che 1500 caracters.
                 </ng-container>
             </div>
             <div id="descriptionHelp" class="form-text">Hilfe bei der Übersetzung auf Rumantsch / Aiuto con la

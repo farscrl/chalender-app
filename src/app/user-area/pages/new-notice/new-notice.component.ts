@@ -171,7 +171,7 @@ export class NewNoticeComponent {
         this.f = this.fb.group({
             contactEmail: [this.noticeToChange ? this.noticeToChange.contactEmail : '', [Validators.required, Validators.email]],
             title: [this.noticeToChange ? this.noticeToChange.title : '', Validators.required],
-            description: [this.noticeToChange ? this.noticeToChange.description : '', [Validators.required, Validators.maxLength(750)]],
+            description: [this.noticeToChange ? this.noticeToChange.description : '', [Validators.required, Validators.maxLength(1500)]],
             contactData: [this.noticeToChange ? this.noticeToChange.contactData : '', Validators.required],
             acceptTerms: [this.noticeToChange ? this.noticeToChange.acceptTerms : false, Validators.requiredTrue],
         });
@@ -200,7 +200,7 @@ export class NewNoticeComponent {
     }
 
     get descriptionSize(): string {
-        return this.f.get('description')?.value.length + ' / 750';
+        return this.f.get('description')?.value.length + ' / 1500';
     }
 
     private transformToNoticeBoardItemDto(isDraft: boolean): NoticeBoardItemDto {

@@ -242,7 +242,7 @@ export class NewEventComponent implements OnInit {
         this.f = this.fb.group({
             contactEmail: [this.eventToChange ? this.eventToChange.contactEmail : '', [Validators.required, Validators.email]],
             title: [this.eventToChange ? this.eventToChange.title : '', Validators.required],
-            description: [this.eventToChange ? this.eventToChange.description : '', [Validators.required, Validators.maxLength(750)]],
+            description: [this.eventToChange ? this.eventToChange.description : '', [Validators.required, Validators.maxLength(1000)]],
             genres: new FormArray([], minCheckboxValidator(1)),
             regions: new FormArray([], minCheckboxValidator(1)),
             eventLanguages: new FormArray([], minCheckboxValidator(1)),
@@ -337,7 +337,7 @@ export class NewEventComponent implements OnInit {
     }
 
     get descriptionSize(): string {
-        return this.f.get('description')?.value.length + ' / 750';
+        return this.f.get('description')?.value.length + ' / 1000';
     }
 
     private transformToEventDto(isDraft: boolean): EventDto {
