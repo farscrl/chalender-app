@@ -159,9 +159,11 @@ button.clndr {
     transition: all 0.2s ease-in-out;
     margin-right: 2rem;
 
-    &:hover {
-        border: 1px solid var(--accent);
-        color: var(--accent);
+    @media (hover: hover) {
+        &:hover {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
     }
 
     &:disabled, &.accent:disabled {
@@ -169,10 +171,12 @@ button.clndr {
         color: gray;
         background-color: white;
 
-        &:hover {
-            border: 1px solid grey;
-            color: gray;
-            background-color: white;
+        @media (hover: hover) {
+            &:hover {
+                border: 1px solid grey;
+                color: gray;
+                background-color: white;
+            }
         }
     }
 
