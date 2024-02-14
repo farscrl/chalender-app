@@ -25,7 +25,7 @@
 
 <ng-container *ngFor="let cat of categorizedEvents; let i = index">
     <div>
-        <div class="day-title" [class.first]="i === 0" scrollableTitle>
+        <div class="day-title" [class.first]="i === 0" [class.iframe]="iframeService.isIframeValue()" scrollableTitle>
             <!--<h2>{{cat.formattedDate}}</h2>-->
             <h2>{{cat.formattedDateShort}} <span class="weekday">{{ cat.formattedWeekday }}</span></h2>
         </div>

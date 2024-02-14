@@ -73,7 +73,11 @@
 
     @include media-breakpoint-up(lg) {
         &.first {
-            // border-top: 1px solid #BBBFC2;
+            border-top: 1px solid #BBBFC2;
+
+            &.iframe {
+                border-top: none;
+            }
         }
     }
 
