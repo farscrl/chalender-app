@@ -93,6 +93,21 @@
         </div>
         <br><br>
 
+        <h2>
+            publicaziun:
+            <app-info-button>
+                <b>Prevista (Vorschau/anteprima):</b> La prevista mussa co l’occurrenza vegn mussada al public.<br><br>
+
+                <b>Sboz (Entwurf/sbozzo):</b> Cun agid dad in sboz pos ti cuntinuar pli tard, senza publitgar ussa. Ti
+                chattas il sboz lura en «Mias occurrenzas».<br><br>
+
+                <b>Publitgar (veröffentlichen/pubblicare):</b> «Publitgar» publitgescha tia occurrenza
+                suenter ina controlla da la redacziun.
+            </app-info-button>
+        </h2>
+
+        <br>
+
         <button type="button" class="clndr accent" (click)="preview()">Prevista</button>
         <button type="button" class="clndr accent" (click)="onSubmit(true)"
                 *ngIf="canSaveAsDraft()" [disabled]="isSaving">
@@ -101,5 +116,7 @@
         <button type="button" class="clndr accent" (click)="onSubmit(false)" [disabled]="isSaving">
             Publitgar
         </button>
+
+        <br><br><br><br>
     </form>
 </section>
