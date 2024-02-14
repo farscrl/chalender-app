@@ -60,7 +60,7 @@ export class IframeCodeGeneratorComponent implements OnInit {
 
         this.url = url + '?' + params.join('&');
         this.code = `<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.9/iframeResizer.min.js"></script>
-<iframe id="chalender-iframe" src="${this.url}"></iframe>
+<iframe id="chalender-iframe" src="${this.url}" style="border: 1px solid #BBBFC2;"></iframe>
 <script>
     iFrameResize({ log: false }, '#chalender-iframe')
 </script>`
