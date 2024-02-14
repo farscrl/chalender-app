@@ -89,6 +89,10 @@
     hr {
         border-top: 1px solid white;
         opacity: 1;
-        margin-bottom: 0;
+        margin: 0;
     }
+}
+
+li + .section-title {
+    margin-top: 1rem;
 }
