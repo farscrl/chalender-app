@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavigationService } from '../../services/navigation.service';
 
 @Component({
@@ -8,10 +8,12 @@ import { NavigationService } from '../../services/navigation.service';
 })
 export class BackButtonComponent {
 
+    @Input() backTo = '/';
+
     constructor(private navigationService: NavigationService) {
     }
 
     goBack() {
-        this.navigationService.back();
+        this.navigationService.back(this.backTo);
     }
 }

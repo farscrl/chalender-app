@@ -29,7 +29,7 @@ export class NavigationService {
         // needed, to instantiate service
     }
 
-    back(): void {
+    back(backTo = '/'): void {
         this.history.pop();
 
         if (this.history.length > 0) {
@@ -37,7 +37,7 @@ export class NavigationService {
             this.location.back();
         } else {
             console.log('navigating to /')
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl(backTo);
         }
     }
 }
