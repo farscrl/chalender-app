@@ -25,5 +25,5 @@ export class ModerationNoticeBoardFilter {
     includeStateInvalid = true;
 
     sortBy: SortColumn = 'DATE';
-    sortOrder: SortDirection = 'ASC';
+    sortOrder: SortDirection = 'DESC';
 }
