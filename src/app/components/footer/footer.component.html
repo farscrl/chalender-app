@@ -1,13 +1,10 @@
-<div class="poweredby">
-    <div class="txt" *ngIf="isInIframe">
-        <a class="bld" target="_blank" href="https://www.chalender.ch">chalender.ch</a>.
-    </div>
-</div>
-
-<div class="ftr" *ngIf="!isInIframe">
-    <div class="links">
+<div class="ftr" [class.iframe]="isInIframe">
+    <div class="links" *ngIf="!isInIframe">
         <a [routerLink]="'/imprint'">{{ 'COMPONENTS.FOOTER.IMPRINT' | translate }}</a>
         <a [routerLink]="'/privacy'">{{ 'COMPONENTS.FOOTER.DATA_PRIVACY' | translate }}</a>
+    </div>
+    <div class="txt" *ngIf="isInIframe">
+        <a class="bld" target="_blank" href="https://www.chalender.ch">chalender.ch</a>.
     </div>
 
     <div class="logo-box">
