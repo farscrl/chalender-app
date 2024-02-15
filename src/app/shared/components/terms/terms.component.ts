@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-    selector: 'app-netiquette',
-    templateUrl: './netiquette.component.html',
-    styleUrls: ['./netiquette.component.scss']
+    selector: 'app-terms',
+    templateUrl: './terms.component.html',
+    styleUrls: ['./terms.component.scss']
 })
-export class NetiquetteComponent {
+export class TermsComponent {
     constructor(private modal: NgbActiveModal) {
     }
 

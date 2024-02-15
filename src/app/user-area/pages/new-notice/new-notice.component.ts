@@ -8,7 +8,7 @@ import { NotificationsService } from '../../../shared/services/notifications.ser
 import { DatesUtil } from '../../../shared/utils/dates.util';
 import * as dayjs from 'dayjs';
 import { rmLocale } from '../../../shared/utils/day-js-locale';
-import { NetiquetteComponent } from '../../../shared/components/netiquette/netiquette.component';
+import { TermsComponent } from '../../../shared/components/terms/terms.component';
 import { debounceTime, fromEvent, take } from 'rxjs';
 import { NoticeBoardItemDto } from '../../../shared/data/notices';
 import { NoticesService } from '../../../shared/services/notices.service';
@@ -195,8 +195,8 @@ export class NewNoticeComponent {
         return true;
     }
 
-    openNetiquette() {
-        this.modalService.open(NetiquetteComponent, {size: 'xl', centered: true});
+    openTerms() {
+        this.modalService.open(TermsComponent, {size: 'xl', centered: true});
     }
 
     get descriptionSize(): string {
