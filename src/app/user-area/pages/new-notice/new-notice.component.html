@@ -107,16 +107,15 @@
         </h2>
 
         <br>
-
-        <button type="button" class="clndr accent" (click)="preview()">Prevista</button>
-        <button type="button" class="clndr accent" (click)="onSubmit(true)"
-                *ngIf="canSaveAsDraft()" [disabled]="isSaving">
-            Memorisar sco sboz
-        </button>
-        <button type="button" class="clndr accent" (click)="onSubmit(false)" [disabled]="isSaving">
-            Publitgar
-        </button>
-
-        <br><br><br><br>
+        <div class="buttons">
+            <button type="button" class="clndr accent" (click)="preview()">Prevista</button>
+            <button type="button" class="clndr accent" (click)="onSubmit(true)"
+                    *ngIf="canSaveAsDraft()" [disabled]="isSaving">
+                Memorisar sco sboz
+            </button>
+            <button type="button" class="clndr accent" (click)="onSubmit(false)" [disabled]="isSaving">
+                Publitgar
+            </button>
+        </div>
     </form>
 </section>
