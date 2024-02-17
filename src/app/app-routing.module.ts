@@ -10,6 +10,7 @@ import { ImprintComponent } from "./pages/static/imprint/imprint.component";
 import { PrivacyComponent } from "./pages/static/privacy/privacy.component";
 import { NoticesDetailsComponent } from './pages/notices/notices-details/notices-details.component';
 import { NoticesListComponent } from './pages/notices/notices-list/notices-list.component';
+import { HelpIframeComponent } from './pages/static/help-iframe/help-iframe.component';
 
 const routes: Routes = [
     {
@@ -28,7 +29,13 @@ const routes: Routes = [
         path: 'admin',
         children: []
     },
-    {path: 'help', pathMatch: 'full', component: HelpComponent},
+    {
+        path: 'help',
+        children: [
+            {path: '', pathMatch: 'full', component: HelpComponent},
+            {path: 'iframe', pathMatch: 'full', component: HelpIframeComponent}
+        ]
+    },
     {path: 'organisation', pathMatch: 'full', component: OrganisationComponent},
     {path: 'imprint', pathMatch: 'full', component: ImprintComponent},
     {

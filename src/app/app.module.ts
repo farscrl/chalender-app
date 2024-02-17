@@ -70,6 +70,7 @@ import { NoticePreviewComponent } from './components/notice-preview/notice-previ
 import { NoticeDiffComponent } from './components/notice-diff/notice-diff.component';
 import { NewEventsSubscriptionComponent } from './components/modals/new-events-subscription/new-events-subscription.component';
 import { NewNoticesSubscriptionComponent } from './components/modals/new-notices-subscription/new-notices-subscription.component';
+import { HelpIframeComponent } from './pages/static/help-iframe/help-iframe.component';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -143,6 +144,7 @@ export function inIframe() {
         NoticeDiffComponent,
         NewEventsSubscriptionComponent,
         NewNoticesSubscriptionComponent,
+        HelpIframeComponent,
     ],
     imports: [
         BrowserModule,
