@@ -41,8 +41,9 @@
             </svg>
         </div>
         <div class="slogan">
-            <div class="title">chalender.ch</div>
-            <div class="description">memorisar sco app <br>sin il telefonin</div>
+            <div class="title">{{ 'COMPONENTS.MODALS.PWA.TITLE' | translate }}</div>
+            <div class="description">{{ 'COMPONENTS.MODALS.PWA.DESC_A' | translate }}
+                <br>{{ 'COMPONENTS.MODALS.PWA.DESC_B' | translate }}</div>
         </div>
     </div>
 
@@ -56,7 +57,7 @@
                 </svg>
             </div>
             <div class="instruction">
-                Tutga en il navigatur l’icona «parter»
+                {{ 'COMPONENTS.MODALS.PWA.IOS.SHARE' | translate }}
             </div>
         </div>
         <div class="step">
@@ -68,7 +69,8 @@
                 </svg>
             </div>
             <div class="instruction">
-                Tscherna en il menu <br>«Zum Home-Bildschirm»
+                {{ 'COMPONENTS.MODALS.PWA.IOS.INST_A' | translate }}
+                <br>{{ 'COMPONENTS.MODALS.PWA.IOS.INST_B' | translate }}
             </div>
         </div>
     </div>
@@ -91,7 +93,7 @@
                 </svg>
             </div>
             <div class="instruction">
-                Avra il menu
+                {{ 'COMPONENTS.MODALS.PWA.ANDROID.MENU' | translate }}
             </div>
         </div>
         <div class="step">
@@ -113,12 +115,14 @@
                 </svg>
             </div>
             <div class="instruction">
-                Tscherna «Installar»
+                {{ 'COMPONENTS.MODALS.PWA.ANDROID.INSTALL' | translate }}
             </div>
         </div>
     </div>
 
     <div class="instructions" *ngIf="type === 'direct'">
-        <button class="clndr accent" (click)="install()">Installar</button>
+        <button class="clndr accent" (click)="install()">
+            {{ 'COMPONENTS.MODALS.PWA.ANDROID.BUTTON' | translate }}
+        </button>
     </div>
 </div>

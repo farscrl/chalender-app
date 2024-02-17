@@ -100,6 +100,25 @@
             "NEW_SUBSCRIPTION": {
                 "TITLE": "Crear in nov abunament",
                 "DESCRIPTION": "Ti pos abunar occurrenzas tenor ils criteris tschernids."
+            },
+            "PREVIEW": {
+                "OVERVIEW": "Prevista survista",
+                "DETAIL": "Prevista pagina da detagl"
+            },
+            "PWA": {
+                "TITLE": "chalender.ch",
+                "DESC_A": "memorisar sco app ",
+                "DESC_B": "sin il telefonin",
+                "IOS": {
+                    "SHARE": "Tutga en il navigatur l’icona «parter»",
+                    "INST_A": "Tscherna en il menu ",
+                    "INST_B": "«Zum Home-Bildschirm»"
+                },
+                "ANDROID": {
+                    "MENU": "Avra il menu",
+                    "INSTALL": "Tscherna «Installar»",
+                    "BUTTON": "Installar"
+                }
             }
         },
         "NEW_EVENT_BTN": {
@@ -201,11 +220,16 @@
         "SHOW_FILTER": "mussar il filter",
         "HIDE_FILTER": "zuppentar il filter",
         "GRAPHIC_VIEW": "vista grafica",
-        "LIST_VIEW": "vista tabellara"
+        "LIST_VIEW": "vista tabellara",
+        "NO_EVENTS": {
+            "DESCRIPTION": "Nagins resultats per questa tschertga.",
+            "BUTTON": "stizzar il filter"
+        }
     },
     "EVENT_DETAILS": {
         "ALLDAY": "tuttadi",
         "CANCELLED": "annullà",
+        "CANCELLED_LNG": "occurrenza annullada!",
         "GENRE": "categoria",
         "REGION": "regiun",
         "LANGUAGE": "lingua",
@@ -217,7 +241,11 @@
         "DOCUMENTS": "documents"
     },
     "NOTICE_LIST": {
-        "LOAD_MORE": "mussar ulteriuras annunzias"
+        "LOAD_MORE": "mussar ulteriuras annunzias",
+        "NO_NOTICES": {
+            "DESCRIPTION": "Nagins resultats per questa tschertga.",
+            "BUTTON": "stizzar il filter"
+        }
     },
     "NOTICE_DETAILS": {
         "CONTACT_DATA": "datas da contact",
@@ -226,5 +254,17 @@
     "ORGANISATION": {
         "TITLE": "Purtaders",
         "DESCRIPTION": "Questas organisaziuns portan il project."
+    },
+    "USERS": {
+        "TITLE": "Utilisaders",
+        "SEARCH": "Tschertgar",
+        "TABLE": {
+            "EMAIL": "E-mail",
+            "NAME": "Num",
+            "ORGANISATION": "Organisaziun",
+            "ROLES": "Rollas",
+            "ACTIVE": "Activ",
+            "ACTIONS": "Acziuns"
+        }
     }
 }

@@ -11,7 +11,7 @@
     <div>
         <div class="event-teaser-desktop">
             <div class="inline-description">
-                Prevista survista
+                {{ 'COMPONENTS.MODALS.PREVIEW.OVERVIEW' | translate }}
             </div>
             <app-event-card [event]="eventLookup"></app-event-card>
         </div>
@@ -22,7 +22,7 @@
 
 <div class="event-details" *ngIf="eventDto">
     <div class="inline-description">
-        Prevista pagina da detagl
+        {{ 'COMPONENTS.MODALS.PREVIEW.DETAIL' | translate }}
     </div>
     <app-event-details [event]="eventDto"></app-event-details>
 </div>

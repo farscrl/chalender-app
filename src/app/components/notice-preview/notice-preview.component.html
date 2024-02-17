@@ -11,7 +11,7 @@
     <div>
         <div class="event-teaser-desktop">
             <div class="inline-description">
-                Prevista survista
+                {{ 'COMPONENTS.MODALS.PREVIEW.OVERVIEW' | translate }}
             </div>
             <app-notice-card [notice]="noticeDto"></app-notice-card>
         </div>
@@ -22,7 +22,7 @@
 
 <div class="event-details" *ngIf="noticeDto">
     <div class="inline-description">
-        Prevista pagina da detagl
+        {{ 'COMPONENTS.MODALS.PREVIEW.DETAIL' | translate }}
     </div>
     <app-notice-details [notice]="noticeDto"></app-notice-details>
 </div>

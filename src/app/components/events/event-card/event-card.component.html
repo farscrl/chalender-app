@@ -1,7 +1,7 @@
 <a *ngIf="event" class="evt" [routerLink]="'/' + event.eventId" [class.first]="isFirst">
     <div class="image">
         <div class="img-holder">
-            <div class="cancelled" *ngIf="event.isCancelled">annullà</div>
+            <div class="cancelled" *ngIf="event.isCancelled">{{ 'EVENT_DETAILS.CANCELLED' | translate }}</div>
             <img src="{{ imgUrl }}" alt="{{ event.title }}" *ngIf="event.imageUrl" style="width: 100%">
         </div>
     </div>

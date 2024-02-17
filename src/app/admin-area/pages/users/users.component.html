@@ -1,21 +1,21 @@
 <section class="content-wide">
-    <h1>Utilisaders</h1>
+    <h1>{{ 'USERS.TITLE' | translate }}</h1>
 
     <div class="filter">
         <form (ngSubmit)="updateSearchTerm(searchTerm.value)" class="filter-right">
             <input type="text" class="form-control" #searchTerm>
-            <button class="clndr accent" type="submit">Tschertgar</button>
+            <button class="clndr accent" type="submit">{{ 'USERS.SEARCH' | translate }}</button>
         </form>
     </div>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">Email</th>
-            <th scope="col">Num</th>
-            <th scope="col">Organisaziun</th>
-            <th scope="col">Rollas</th>
-            <th scope="col">Activ</th>
-            <th scope="col">Acziuns</th>
+            <th scope="col">{{ 'USERS.TABLE.EMAIL' | translate }}</th>
+            <th scope="col">{{ 'USERS.TABLE.NAME' | translate }}</th>
+            <th scope="col">{{ 'USERS.TABLE.ORGANISATION' | translate }}</th>
+            <th scope="col">{{ 'USERS.TABLE.ROLES' | translate }}</th>
+            <th scope="col">{{ 'USERS.TABLE.ACTIVE' | translate }}</th>
+            <th scope="col">{{ 'USERS.TABLE.ACTIONS' | translate }}</th>
         </tr>
         </thead>
         <tbody>
