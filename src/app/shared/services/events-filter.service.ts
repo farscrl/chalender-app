@@ -27,7 +27,7 @@ export class EventsFilterService {
     private moreSearchResults = new Subject<EventLookup[]>();
     private urlParams = new BehaviorSubject<EventFilterUrlParams>(new EventFilterUrlParams());
 
-    private pageSize = 10;
+    private pageSize = 30;
     private page = 0;
     hasMorePages = true;
     private eventFilter = new EventFilter();

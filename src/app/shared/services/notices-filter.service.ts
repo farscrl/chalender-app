@@ -25,7 +25,7 @@ export class NoticesFilterService {
     private moreSearchResults = new BehaviorSubject<NoticeBoardItemDto[]>([]);
     private urlParams = new BehaviorSubject<EventFilterUrlParams>(new EventFilterUrlParams());
 
-    private pageSize = 10;
+    private pageSize = 30;
     private page = 0;
     hasMorePages = true;
     private noticeBoardFilter = new NoticeBoardFilter();
