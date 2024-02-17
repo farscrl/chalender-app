@@ -157,6 +157,9 @@ export class NewEventComponent implements OnInit {
         modalRef.closed.subscribe(value => {
             this.isPreviewOpen = false;
         });
+        modalRef.dismissed.subscribe(value => {
+            this.isPreviewOpen = false;
+        });
     }
 
     isFieldInvalid(fieldName: string) {
