@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Document, Image } from '../../data/event';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ImagesService } from '../../services/images.service';
+import { DocumentsService } from '../../services/documents.service';
 
 @Component({
     selector: 'app-file-list',
@@ -17,7 +18,10 @@ export class FileListComponent {
     @Input()
     type: 'image' | 'document' = 'image';
 
-    constructor(private imagesService: ImagesService) {
+    constructor(
+        private imagesService: ImagesService,
+        private documentsService: DocumentsService,
+    ) {
     }
 
     reorderImages(event: CdkDragDrop<Document[] | Image[]>) {
@@ -25,9 +29,17 @@ export class FileListComponent {
     }
 
     deleteFile(file: Document | Image) {
-        this.imagesService.unlinkImage(file.id!).subscribe(img => {
-            const idx = this.files.findIndex((obj) => obj.id === file.id);
-            this.files.splice(idx, 1);
-        });
+        if (this.type === 'image') {
+            this.imagesService.unlinkImage(file.id!).subscribe(img => {
+                const idx = this.files.findIndex((obj) => obj.id === file.id);
+                this.files.splice(idx, 1);
+            });
+        } else {
+            this.documentsService.unlinkImage(file.id!).subscribe(img => {
+                const idx = this.files.findIndex((obj) => obj.id === file.id);
+                this.files.splice(idx, 1);
+            });
+        }
+
     }
 }
