@@ -3,7 +3,7 @@ import { Environment } from "./ienvironment";
 export const environment: Environment = {
     production: true,
     name: 'prod',
-    apiBasePath: 'http://localhost:8082/api/',
-    host: 'localhost:8082',
+    apiBasePath: 'https://api.chalender.ch/api/',
+    host: 'api.chalender.ch',
     appUrl: 'https://www.chalender.ch/'
 }
