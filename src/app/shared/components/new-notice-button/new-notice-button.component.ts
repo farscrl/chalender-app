@@ -12,8 +12,10 @@ export class NewNoticeButtonComponent {
     @ViewChild('button') button?: ElementRef;
 
     public isInIframe = false;
+    public enforceAddButton = false;
 
     private isIframeSubscription?: Subscription;
+    private showAddButtonSubscription?: Subscription;
 
     constructor(
         private iframeService: IframeService,
@@ -24,11 +26,17 @@ export class NewNoticeButtonComponent {
         this.isIframeSubscription = this.iframeService.getIsIframeObservable().subscribe((value) => {
             this.isInIframe = value;
         });
+        this.showAddButtonSubscription = this.iframeService.getShowAddButtonObservable().subscribe((value) => {
+            this.enforceAddButton = value;
+        });
     }
 
     ngOnDestroy() {
         if (this.isIframeSubscription) {
             this.isIframeSubscription.unsubscribe();
+        }
+        if (this.showAddButtonSubscription) {
+            this.showAddButtonSubscription.unsubscribe();
         }
     }
 

@@ -1,5 +1,5 @@
-<ng-container *ngIf="!isInIframe">
-    <div class="fab" #fab fabPosition>
+<ng-container *ngIf="!isInIframe || enforceAddButton">
+    <div class="fab" #fab [fabPosition]="!isInIframe" [class.on-top]="isInIframe">
         <div class="fab-inner">
             <div class="fab-menu" [routerLink]="'/user/new-notice'">
                 {{ 'COMPONENTS.NEW_NOTICE_BTN.NEW_NOTICE' | translate }}

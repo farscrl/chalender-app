@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostBinding, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
@@ -6,6 +6,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class FabPositionDirective implements OnInit, OnDestroy {
     @HostBinding('style.bottom') setBottom?: string;
+    @Input() fabPosition = true;
 
     constructor(
         private el: ElementRef,
@@ -14,6 +15,9 @@ export class FabPositionDirective implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        if (!this.fabPosition) {
+            return;
+        }
         if (isPlatformBrowser(this.platformId)) {
             const that = this;
             window.addEventListener('scroll', () => this._checkScroll());
@@ -32,6 +36,9 @@ export class FabPositionDirective implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        if (!this.fabPosition) {
+            return;
+        }
         if (isPlatformBrowser(this.platformId)) {
             window.removeEventListener('scroll', () => this._checkScroll());
         }
