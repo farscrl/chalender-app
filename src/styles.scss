@@ -130,8 +130,10 @@ a {
     color: var(--accent);
     text-decoration: none;
 
-    &:hover {
-        text-decoration: underline;
+    @media (hover: hover) {
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 
@@ -180,9 +182,11 @@ button.clndr {
         border: 1px solid var(--accent);
         color: var(--accent);
 
-        &:hover {
-            background-color: var(--accent);
-            color: white;
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--accent);
+                color: white;
+            }
         }
     }
 
@@ -190,9 +194,11 @@ button.clndr {
         border: 1px solid var(--danger);
         color: var(--danger);
 
-        &:hover {
-            background-color: var(--danger);
-            color: white;
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--danger);
+                color: white;
+            }
         }
     }
 }
