@@ -39,7 +39,7 @@
     }
 
     .button {
-        background-color: var(--accent);
+        background-color: #8AD9C8;
         color: white;
         text-decoration: none;
         border-radius: 60px;
@@ -63,6 +63,10 @@
     }
 
     .icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        background-color: var(--accent);
         font-size: 32px;
         padding: 0 21px;
         display: flex;
@@ -73,6 +77,7 @@
     .text {
         white-space: nowrap;
         padding-left: 24px;
+        padding-right: 16px;
     }
 }
 
