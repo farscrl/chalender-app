@@ -151,6 +151,16 @@ li app-event-card {
 
 @include media-breakpoint-up(lg) {
     app-no-events {
-        border-top: 1px solid #BBBFC2;
+        padding-bottom: 400px;
+    }
+}
+
+.no-events-hack {
+    .day-title {
+        border-bottom: 0;
+
+        @include media-breakpoint-up(lg) {
+            border-bottom: 1px solid #BBBFC2;
+        }
     }
 }

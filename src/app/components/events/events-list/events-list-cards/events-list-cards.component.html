@@ -38,7 +38,10 @@
 </ng-container>
 
 <ng-container *ngIf="categorizedEvents.length === 0 && !eventsFilterService.isSearching">
-    <app-no-events></app-no-events>
+    <div class="no-events-hack">
+        <div class="day-title first"></div>
+        <app-no-events></app-no-events>
+    </div>
 </ng-container>
 
 <div class="text-center pb-5" *ngIf="eventsFilterService.hasMorePages">
