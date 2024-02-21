@@ -14,7 +14,7 @@ export class EventsComponent implements OnInit {
 
     ngOnInit() {
         if (this.authService.isLoggedIn()) {
-            this.createEvent();
+            this.createEvent(true);
         }
     }
 
@@ -22,7 +22,7 @@ export class EventsComponent implements OnInit {
         this.router.navigate(['/user/login'], {queryParams: {redirectTo: '/user/event-form'}});
     }
 
-    createEvent(): void {
-        this.router.navigate(['/user/event-form']);
+    createEvent(replaceUrl: boolean = false): void {
+        this.router.navigate(['/user/event-form'], {replaceUrl: replaceUrl});
     }
 }

@@ -14,7 +14,7 @@ export class NoticesComponent {
 
     ngOnInit() {
         if (this.authService.isLoggedIn()) {
-            this.createNotice();
+            this.createNotice(true);
         }
     }
 
@@ -22,7 +22,7 @@ export class NoticesComponent {
         this.router.navigate(['/user/login'], {queryParams: {redirectTo: '/user/notice-form'}});
     }
 
-    createNotice(): void {
-        this.router.navigate(['/user/notice-form']);
+    createNotice(replaceUrl: boolean = false): void {
+        this.router.navigate(['/user/notice-form'], {replaceUrl: replaceUrl});
     }
 }
