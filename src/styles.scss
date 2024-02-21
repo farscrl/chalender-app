@@ -69,10 +69,13 @@ body {
 
 section.content-narrow {
     margin: 0 auto;
-    padding: 1rem;
+    padding: 2rem;
+
+    @include media-breakpoint-up(sm) {
+        padding: 3rem;
+    }
 
     @include media-breakpoint-up(lg) {
-        padding: 2rem;
         max-width: 900px;
         margin: 0 auto 2rem;
     }
