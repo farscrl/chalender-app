@@ -1,15 +1,48 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
 .logos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include media-breakpoint-up(sm) {
+        flex-direction: row;
+    }
+
     img {
-        max-height: 146px;
+        max-height: 90px;
+        margin-right: 2rem;
+        margin-bottom: 2rem;
+
+        @include media-breakpoint-up(sm) {
+            max-height: 90px;
+            margin-right: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        @include media-breakpoint-up(md) {
+            max-height: 120px;
+            margin-right: 4rem;
+            margin-bottom: 4rem;
+        }
+    }
+}
+
+.logos-support {
+    img {
         margin-right: 4rem;
         margin-bottom: 4rem;
 
         &.ufc {
-            max-width: 440px;
+            max-width: min(440px, 100% - 2rem);
         }
 
         &.lr {
-            max-width: 220px;
+            max-width: min(220px, 100% - 2rem);
         }
     }
+
 }
