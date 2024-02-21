@@ -1,7 +1,6 @@
-<div class="filter-area d-none d-md-block" [class.show]="!eventsFilterService.isFilterCollapsed"
+<div class="filter-area d-none d-md-block" [@slideInOut]="eventsFilterService.isFilterCollapsed ? 'out' : 'in'"
      *ngIf="iframeService.isShowSearchValue()" filterScrollPosition>
-    <div #collapse="ngbCollapse" [(ngbCollapse)]="eventsFilterService.isFilterCollapsed"
-         [horizontal]="true" class="filter">
+    <div class="filter">
         <app-event-filter
             [resetFilterCommand]="resetFiltersCommandSubject.asObservable()"
             [createSubscriptionCommand]="createSubscriptionCommandSubject.asObservable()"

@@ -68,9 +68,14 @@ import { NoNoticesComponent } from './components/notices/no-notices/no-notices.c
 import { NoticeDetailsComponent } from './components/notices/notice-details/notice-details.component';
 import { NoticePreviewComponent } from './components/notice-preview/notice-preview.component';
 import { NoticeDiffComponent } from './components/notice-diff/notice-diff.component';
-import { NewEventsSubscriptionComponent } from './components/modals/new-events-subscription/new-events-subscription.component';
-import { NewNoticesSubscriptionComponent } from './components/modals/new-notices-subscription/new-notices-subscription.component';
+import {
+    NewEventsSubscriptionComponent
+} from './components/modals/new-events-subscription/new-events-subscription.component';
+import {
+    NewNoticesSubscriptionComponent
+} from './components/modals/new-notices-subscription/new-notices-subscription.component';
 import { HelpIframeComponent } from './pages/static/help-iframe/help-iframe.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -148,6 +153,7 @@ export function inIframe() {
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
         HttpClientModule,
         JwtModule.forRoot({
