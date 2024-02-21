@@ -13,4 +13,15 @@
         </div>
     </div>
 
+    <div class="desktop-button" [fabPosition]="!isInIframe" [class.on-top]="isInIframe">
+        <a [routerLink]="'/user/new-event'" class="button">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none">
+                    <path d="M16 6.48756V9.47263H9.52099V16H6.43951V9.47263H0V6.48756H6.43951V0H9.52099V6.48756H16Z"
+                          fill="white"/>
+                </svg>
+            </span>
+            <span class="text">{{ 'COMPONENTS.NEW_EVENT_BTN.NEW_EVENT' | translate }}</span>
+        </a>
+    </div>
 </ng-container>
