@@ -63,9 +63,11 @@
 
     @include media-breakpoint-up(md) {
         border-left: 1px solid #BBBFC2;
+        transition-duration: 400ms;
     }
 
     &.no-filter {
-        border-left: none;
+        border-left-color: #ffffff;
+        transition-timing-function: cubic-bezier(.87, .09, 1, - 0.35);
     }
 }
