@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Meta } from '@angular/platform-browser';
 import { EventDto } from '../../../shared/data/event';
 import { EventsService } from '../../../shared/services/events.service';
 import { UrlUtil } from '../../../shared/utils/url.util';
+import { DOCUMENT } from '@angular/common';
+import * as dayjs from 'dayjs';
 
 @Component({
     selector: 'app-events-details',
@@ -24,6 +26,8 @@ export class EventsDetailsComponent implements OnInit {
         private meta: Meta,
         private router: Router,
         private urlUtil: UrlUtil,
+        private renderer2: Renderer2,
+        @Inject(DOCUMENT) private _document: Document,
     ) {
         this.route.params.subscribe(params => {
             this.eventId = params['id'];
@@ -72,5 +76,71 @@ export class EventsDetailsComponent implements OnInit {
                 content: this.event!.images[0]!.url + '?width=1200&height=630&crop_gravity=center&auto_optimize=medium'
             });
         }
+
+        this.addStructuredData();
+    }
+
+    private addStructuredData() {
+        const onlineOffline = this.event?.onlineOnly ? 'https://schema.org/OnlineEventAttendanceMode' : 'https://schema.org/OfflineEventAttendanceMode';
+        const cancelled = this.allOccurrencesCancelled ? 'https://schema.org/EventCancelled' : 'https://schema.org/EventScheduled';
+        const images = this.event?.images.map(i => this.escapeJsonString(i.url));
+
+        const firstOccurrence = this.event?.occurrences[0]!;
+
+        const date = dayjs(firstOccurrence.date, 'DD-MM-YYYY');
+        let startString = '';
+        if (firstOccurrence.isAllDay) {
+            startString = date.format('YYYY-MM-DD');
+        } else {
+            const startTime = dayjs(firstOccurrence.date + ' ' + firstOccurrence.start, 'DD-MM-YYYY HH:mm');
+            startString = startTime.format('YYYY-MM-DDTHH:mm');
+        }
+        let endString = '';
+        if (firstOccurrence.end) {
+            endString = dayjs(firstOccurrence.date + ' ' + firstOccurrence.end, 'DD-MM-YYYY HH:mm').format('YYYY-MM-DDTHH:mm');
+        }
+
+        let script = this.renderer2.createElement('script');
+        script.type = `application/ld+json`;
+        script.text = `
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "${this.escapeJsonString(this.event?.title)}",
+      "startDate": "${startString}",
+      "endDate": "${endString}",
+      "eventAttendanceMode": "${onlineOffline}",
+      "eventStatus": "${cancelled}",
+      "location": {
+        "@type": "Place",
+        "name": "${this.escapeJsonString(this.event?.location)}",
+        "address": {
+          "@type": "PostalAddress",
+          "name": "${this.escapeJsonString(this.event?.address)}"
+        }
+      },
+      "image": ${JSON.stringify(images)},
+      "description": "${this.escapeJsonString(this.event?.description)}",
+      "organizer": {
+        "@type": "Organization",
+        "name": "${this.escapeJsonString(this.event?.organiser)}",
+        "url": "${this.escapeJsonString(this.event?.link)}"
+      }
+    }
+        `;
+
+        this.renderer2.appendChild(this._document.head, script);
+    }
+
+    private escapeJsonString(value?: string): string {
+        if (!value) {
+            return "";
+        }
+        return value
+            .replace(/\\/g, '\\\\') // Escape backslashes
+            .replace(/"/g, '\\"') // Escape double quotes
+            .replace(/\n/g, ', ') // Escape newlines
+            .replace(/\r/g, '') // Escape carriage returns
+            .replace(/\t/g, ''); // Escape tabs
     }
 }
