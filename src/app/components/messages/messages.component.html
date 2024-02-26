@@ -1,4 +1,4 @@
-<section class="content-narrow" *ngIf="notificationsService.messages.length > 0">
+<section *ngIf="notificationsService.messages.length > 0">
     <ngb-alert [type]="message.type" (closed)="notificationsService.dismissMessage(message)"
                *ngFor="let message of notificationsService.messages"><b>{{ message.title }}.</b> {{ message.message }}
     </ngb-alert>

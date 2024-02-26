@@ -1,0 +1,14 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+section {
+    padding: 0 0.5rem;
+    margin: 0 0 1rem 0;
+
+    @include media-breakpoint-up(lg) {
+        padding: unset;
+        max-width: 900px;
+        margin: 0 auto 2rem;
+    }
+}
