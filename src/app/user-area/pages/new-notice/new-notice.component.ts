@@ -113,8 +113,8 @@ export class NewNoticeComponent {
             this.noticesService.createNotice(notice).subscribe({
                 next: (notice: NoticeBoardItemDto) => {
                     this.notificationsService.successMessage(
-                        'Creà l\'endataziun',
-                        "Ti has memorisà cun success l'endataziun «" + notice.title + "»."
+                        'Creà l’annunzia',
+                        "Ti has memorisà cun success l’annunzia «" + notice.title + "»."
                     );
 
                     if (this.isLoggedIn) {
