@@ -17,7 +17,7 @@ import { TermsComponent } from '../../../shared/components/terms/terms.component
 import { dateValidator } from '../../../shared/validators/date.validator';
 import { DatesUtil } from '../../../shared/utils/dates.util';
 
-const regexUrl = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+const regexUrl = '^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$';
 
 @Component({
     selector: 'app-new-event',
