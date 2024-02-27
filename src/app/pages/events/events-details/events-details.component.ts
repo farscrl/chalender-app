@@ -1,10 +1,10 @@
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Meta } from '@angular/platform-browser';
 import { EventDto } from '../../../shared/data/event';
 import { EventsService } from '../../../shared/services/events.service';
 import { UrlUtil } from '../../../shared/utils/url.util';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformServer } from '@angular/common';
 import * as dayjs from 'dayjs';
 
 @Component({
@@ -28,6 +28,7 @@ export class EventsDetailsComponent implements OnInit {
         private urlUtil: UrlUtil,
         private renderer2: Renderer2,
         @Inject(DOCUMENT) private _document: Document,
+        @Inject(PLATFORM_ID) private platformId: any,
     ) {
         this.route.params.subscribe(params => {
             this.eventId = params['id'];
@@ -44,7 +45,9 @@ export class EventsDetailsComponent implements OnInit {
 
             this.allOccurrencesCancelled = event.occurrences.filter(o => o.isCancelled).length === event.occurrences.length;
             if (this.event) {
-                this.setMetaTags();
+                if (isPlatformServer(this.platformId)) {
+                    this.setMetaTags();
+                }
             }
         });
 
