@@ -37,8 +37,15 @@ export class NoticesDetailsComponent {
             if (this.notice) {
                 this.setMetaTags();
             }
+        }, (error) => {
+            if (error.status === 404) {
+                console.warn('not found the notice with ID: ' + this.noticeId);
+                this.router.navigate(['/not-found'], {
+                    queryParams: {type: 'notice'},
+                    skipLocationChange: true,
+                });
+            }
         });
-
     }
 
     private setMetaTags() {
@@ -74,6 +81,4 @@ export class NoticesDetailsComponent {
             });
         }
     }
-
-
 }

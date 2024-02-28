@@ -266,5 +266,22 @@
             "ACTIVE": "Activ",
             "ACTIONS": "Acziuns"
         }
+    },
+    "NOT_FOUND": {
+        "EVENT": {
+            "TITLE": "Betg chattà quest’occurrenza",
+            "DESCRIPTION": "L’occurrenza è eventualmain vegnida stizzada u il link n’è betg valaivel.",
+            "BUTTON": "Visitar la survista d’occurrenzas"
+        },
+        "NOTICE": {
+            "TITLE": "Betg chattà quest’annunzia",
+            "DESCRIPTION": "L’annunzia è eventualmain vegnida stizzada u il link n’è betg valaivel.",
+            "BUTTON": "Visitar la survista d’annunzias"
+        },
+        "PAGE": {
+            "TITLE": "Betg chattà questa pagina",
+            "DESCRIPTION": "",
+            "BUTTON": "Visitar la pagina da partenza"
+        }
     }
 }

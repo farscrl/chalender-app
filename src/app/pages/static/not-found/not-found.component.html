@@ -1,3 +1,23 @@
-<section class="content-narrow">
-    <h1>Betg chattà questa pagina</h1>
+<section class="content-narrow" *ngIf="type === 'event'">
+    <h1>{{ 'NOT_FOUND.EVENT.TITLE' | translate }}</h1>
+    <p>{{ 'NOT_FOUND.EVENT.DESCRIPTION' | translate }}</p>
+    <button class="clndr accent" (click)="redirect()">
+        {{ 'NOT_FOUND.EVENT.BUTTON' | translate }}
+    </button>
+</section>
+
+<section class="content-narrow" *ngIf="type === 'notice'">
+    <h1>{{ 'NOT_FOUND.NOTICE.TITLE' | translate }}</h1>
+    <p>{{ 'NOT_FOUND.NOTICE.DESCRIPTION' | translate }}</p>
+    <button class="clndr accent" (click)="redirect()">
+        {{ 'NOT_FOUND.NOTICE.BUTTON' | translate }}
+    </button>
+</section>
+
+<section class="content-narrow" *ngIf="type === 'default'">
+    <h1>{{ 'NOT_FOUND.PAGE.TITLE' | translate }}</h1>
+    <p>{{ 'NOT_FOUND.PAGE.DESCRIPTION' | translate }}</p>
+    <button class="clndr accent" (click)="redirect()">
+        {{ 'NOT_FOUND.PAGE.BUTTON' | translate }}
+    </button>
 </section>

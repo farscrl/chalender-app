@@ -49,6 +49,14 @@ export class EventsDetailsComponent implements OnInit {
                     this.setMetaTags();
                 }
             }
+        }, (error) => {
+            if (error.status === 404) {
+                console.warn('not found the event with ID: ' + this.eventId);
+                this.router.navigate(['/not-found'], {
+                    queryParams: {type: 'event'},
+                    skipLocationChange: true,
+                });
+            }
         });
 
     }
