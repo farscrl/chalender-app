@@ -81,6 +81,16 @@
                                     "with": "src/environments/environment.staging.ts"
                                 }
                             ],
+                            "assets": [
+                                "src/favicon.ico",
+                                "src/assets",
+                                {
+                                    "glob": "robots.txt",
+                                    "input": "src/staging-files/",
+                                    "output": "./"
+                                },
+                                "src/manifest.webmanifest"
+                            ],
                             "outputHashing": "all"
                         },
                         "dev": {
