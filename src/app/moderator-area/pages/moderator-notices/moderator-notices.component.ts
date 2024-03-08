@@ -40,6 +40,9 @@ export class ModeratorNoticesComponent {
     }
 
     ngOnInit(): void {
+        this.filter.sortBy = 'MODIFIED_DATE';
+        this.filter.sortOrder = 'DESC';
+        
         this.search();
     }
 
