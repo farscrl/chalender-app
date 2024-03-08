@@ -43,6 +43,10 @@
         &.lr {
             max-width: min(220px, 100% - 2rem);
         }
+
+        &.giuru {
+            max-width: min(160px, 100% - 2rem);
+        }
     }
 
 }
