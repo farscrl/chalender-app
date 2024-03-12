@@ -139,9 +139,7 @@
 
             <div class="organiser" *ngIf="event.contact">
                 <div class="highlight">{{ 'EVENT_DETAILS.CONTACT' | translate }}</div>
-                <div class="line-wrap">
-                    {{event.contact}}
-                </div>
+                <div class="line-wrap" [innerHTML]="event.contact  | linky"></div>
             </div>
 
             <div class="documents" *ngIf="event.documents.length > 0">
