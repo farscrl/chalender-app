@@ -21,6 +21,11 @@
                 <div class="location highlight" [innerHTML]="event.location | linky"></div>
             </ng-container>
 
+            <ng-container *ngIf="!event.location && event.onlineOnly">
+                <hr>
+                <div class="location highlight">online</div>
+            </ng-container>
+
             <ng-container *ngIf="event.occurrences.length > 0">
                 <hr>
                 <div>

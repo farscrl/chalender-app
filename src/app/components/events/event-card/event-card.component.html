@@ -8,7 +8,9 @@
     <div class="description">
         <h3>{{ event.title }}</h3>
 
-        <p class="location">{{ event.location }}</p>
+        <p class="location">{{ event.location }}
+            <ng-container *ngIf="!event.location && event.onlineOnly">online</ng-container>
+        </p>
         <div class="details">
             <div class="infos">
                 <span class="time">{{ event.start ? event.start : 'tuttadi' }}</span>

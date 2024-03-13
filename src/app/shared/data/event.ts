@@ -89,6 +89,7 @@ export class EventLookup {
     isAllDay?: boolean;
     isCancelled?: boolean;
     imageUrl?: string;
+    onlineOnly?: boolean;
 }
 
 export class EventOccurrences {

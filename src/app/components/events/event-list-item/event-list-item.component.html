@@ -5,6 +5,7 @@
     </div>
     <div class="location">
         {{ event.location }}
+        <ng-container *ngIf="!event.location && event.onlineOnly">online</ng-container>
     </div>
     <div class="time">{{ event.start ? event.start : 'tuttadi' }}</div>
     <div class="infos">
