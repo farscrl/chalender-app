@@ -108,13 +108,13 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "prod": {
-                            "browserTarget": "chalender-frontend:build:prod"
+                            "buildTarget": "chalender-frontend:build:prod"
                         },
                         "staging": {
-                            "browserTarget": "chalender-frontend:build:staging"
+                            "buildTarget": "chalender-frontend:build:staging"
                         },
                         "dev": {
-                            "browserTarget": "chalender-frontend:build:dev"
+                            "buildTarget": "chalender-frontend:build:dev"
                         }
                     },
                     "defaultConfiguration": "dev"
@@ -122,7 +122,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "chalender-frontend:build"
+                        "buildTarget": "chalender-frontend:build"
                     }
                 },
                 "test": {
@@ -193,7 +193,7 @@
                     "defaultConfiguration": "prod"
                 },
                 "serve-ssr": {
-                    "builder": "@nguniversal/builders:ssr-dev-server",
+                    "builder": "@angular-devkit/build-angular:ssr-dev-server",
                     "configurations": {
                         "dev": {
                             "browserTarget": "chalender-frontend:build:dev",
@@ -211,7 +211,7 @@
                     "defaultConfiguration": "prod"
                 },
                 "prerender": {
-                    "builder": "@nguniversal/builders:prerender",
+                    "builder": "@angular-devkit/build-angular:prerender",
                     "options": {
                         "routes": [
                             "/"

@@ -1,5 +1,5 @@
 import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { REQUEST } from '../../express.tokens';
 import { Request } from 'express';
 import { isPlatformServer } from '@angular/common';
 import { DeviceDetectorService } from 'ngx-device-detector';
