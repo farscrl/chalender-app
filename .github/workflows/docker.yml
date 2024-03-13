@@ -1,4 +1,4 @@
-name: Docker Build main
+name: Docker Build versioned package (from main)
 
 on: [ workflow_dispatch ]
 
