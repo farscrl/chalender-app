@@ -24,7 +24,7 @@
         <div class="mb-3">
             <label for="description" class="form-label">descripziun (lunghezza recumandada: max. 1500 caracters)
                 *</label>
-            <textarea formControlName="description" class="form-control" id="description" style="height: 150px"
+            <textarea formControlName="description" class="form-control" id="description" style="height: 300px"
                       [class.is-invalid]="isFieldInvalid('description')"></textarea>
             <span id="description-size">{{ descriptionSize }}</span>
             <div class="invalid-feedback" *ngIf="isFieldInvalid('description')">
