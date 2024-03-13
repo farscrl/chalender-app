@@ -42,11 +42,11 @@ export class ModeratorNoticesComponent {
     ngOnInit(): void {
         this.filter.sortBy = 'MODIFIED_DATE';
         this.filter.sortOrder = 'DESC';
-        
+
         this.search();
     }
 
-    getEventVersion(notice: NoticeBoardItem): NoticeBoardItemVersion | undefined {
+    getNoticeVersion(notice: NoticeBoardItem): NoticeBoardItemVersion | undefined {
         switch (notice.publicationStatus) {
             case 'DRAFT':
                 return notice.draft;
@@ -95,7 +95,7 @@ export class ModeratorNoticesComponent {
 
     accept(notice: NoticeBoardItem): void {
         const modalRef = this.modalService.open(ReasonForChangeComponent, {size: 'lg', centered: true});
-        modalRef.componentInstance.event = this.getEventVersion(notice);
+        modalRef.componentInstance.event = this.getNoticeVersion(notice);
         modalRef.componentInstance.type = 'accept';
 
         modalRef.closed.subscribe(reason => {
@@ -108,7 +108,7 @@ export class ModeratorNoticesComponent {
 
     refuse(notice: NoticeBoardItem): void {
         const modalRef = this.modalService.open(ReasonForChangeComponent, {size: 'lg', centered: true});
-        modalRef.componentInstance.event = this.getEventVersion(notice);
+        modalRef.componentInstance.event = this.getNoticeVersion(notice);
         modalRef.componentInstance.type = 'refuse';
 
         modalRef.closed.subscribe(reason => {
@@ -130,7 +130,8 @@ export class ModeratorNoticesComponent {
 
     delete(notice: NoticeBoardItem) {
         const modalRef = this.modalService.open(DeleteEventComponent, {size: 'lg', centered: true});
-        modalRef.componentInstance.event = this.getEventVersion(notice);
+        modalRef.componentInstance.event = this.getNoticeVersion(notice);
+        modalRef.componentInstance.type = 'notice';
 
         modalRef.closed.subscribe(reason => {
             if (reason === 'delete') {

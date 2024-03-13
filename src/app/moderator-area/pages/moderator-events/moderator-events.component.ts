@@ -41,7 +41,7 @@ export class ModeratorEventsComponent implements OnInit {
     ngOnInit(): void {
         this.filter.sortBy = 'MODIFIED_DATE';
         this.filter.sortOrder = 'DESC';
-        
+
         this.search();
     }
 
@@ -131,6 +131,7 @@ export class ModeratorEventsComponent implements OnInit {
     delete(event: Event) {
         const modalRef = this.modalService.open(DeleteEventComponent, {size: 'lg', centered: true});
         modalRef.componentInstance.event = this.getEventVersion(event);
+        modalRef.componentInstance.type = 'event';
 
         modalRef.closed.subscribe(reason => {
             if (reason === 'delete') {

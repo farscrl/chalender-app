@@ -78,6 +78,9 @@
                 "DELETE": "Gea, stizzar",
                 "CANCEL": "Interrumper"
             },
+            "DELETE_NOTICE": {
+                "TITLE": "Vuls ti propi stizzar definitivamain l’annunzia «{{noticeTitle}}»?"
+            },
             "FEEDBACK": {
                 "TITLE_ACCEPT": "Remartga cun acceptar",
                 "TITLE_REJECT": "Remartga cun refusar",

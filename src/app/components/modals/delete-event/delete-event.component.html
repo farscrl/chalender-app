@@ -1,5 +1,6 @@
 <div class="modal-body">
-    <p>{{ 'COMPONENTS.MODALS.DELETE_EVENT.TITLE' | translate:{eventTitle: event?.title ? event?.title : 'nunenconuschent'} }}</p>
+    <p *ngIf="type === 'event'">{{ 'COMPONENTS.MODALS.DELETE_EVENT.TITLE' | translate:{eventTitle: event?.title ? event?.title : 'nunenconuschent'} }}</p>
+    <p *ngIf="type === 'notice'">{{ 'COMPONENTS.MODALS.DELETE_NOTICE.TITLE' | translate:{noticeTitle: event?.title ? event?.title : 'nunenconuschent'} }}</p>
 
     <button type="button" class="clndr" (click)="activeModal.dismiss('Save click')">
         {{ 'COMPONENTS.MODALS.DELETE_EVENT.CANCEL' | translate }}
