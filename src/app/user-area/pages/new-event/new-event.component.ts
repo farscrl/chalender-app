@@ -105,10 +105,17 @@ export class NewEventComponent implements OnInit {
             event.id = this.eventToChange.id;
             this.eventsService.updateEvent(event).subscribe({
                 next: (event: EventDto) => {
-                    this.notificationsService.successMessage(
-                        'Creà l\'occurrenza',
-                        "Ti has memorisà cun success l'occurrenza «" + event.title + "»."
-                    );
+                    if (isDraft) {
+                        this.notificationsService.successMessage(
+                            'Actualisà il sboz',
+                            "Ti has memorisà cun success in sboz per l’occurrenza «" + event.title + "»."
+                        );
+                    } else {
+                        this.notificationsService.successMessage(
+                            'Grazia fitg',
+                            "La redacziun controllescha ussa l’occurrenza «" + event.title + "». Quai po cuzzar in amen."
+                        );
+                    }
 
                     if (this.returnToModeratorView) {
                         this.router.navigateByUrl('/moderator/events');
@@ -125,10 +132,17 @@ export class NewEventComponent implements OnInit {
         } else {
             this.eventsService.createEvent(event).subscribe({
                 next: event => {
-                    this.notificationsService.successMessage(
-                        'Creà l\'occurrenza',
-                        "Ti has memorisà cun success l'occurrenza «" + event.title + "»."
-                    );
+                    if (isDraft) {
+                        this.notificationsService.successMessage(
+                            'Creà il sboz',
+                            "Ti has memorisà cun success in sboz per l’occurrenza «" + event.title + "»."
+                        );
+                    } else {
+                        this.notificationsService.successMessage(
+                            'Grazia fitg',
+                            "La redacziun controllescha ussa l’occurrenza «" + event.title + "». Quai po cuzzar in amen."
+                        );
+                    }
 
                     if (this.isLoggedIn) {
                         if (this.returnToModeratorView) {

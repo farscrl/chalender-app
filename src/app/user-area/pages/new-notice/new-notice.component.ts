@@ -92,10 +92,17 @@ export class NewNoticeComponent {
             notice.id = this.noticeToChange.id;
             this.noticesService.updateNotice(notice).subscribe({
                 next: (notice: NoticeBoardItemDto) => {
-                    this.notificationsService.successMessage(
-                        'Creà l’annunzia',
-                        "Ti has memorisà cun success l’annunzia «" + notice.title + "»."
-                    );
+                    if (isDraft) {
+                        this.notificationsService.successMessage(
+                            'Actualisà il sboz',
+                            "Ti has memorisà cun success in sboz per l’annunzia «" + notice.title + "»."
+                        );
+                    } else {
+                        this.notificationsService.successMessage(
+                            'Grazia fitg',
+                            "La redacziun controllescha ussa l’annunzia «" + notice.title + "». Quai po cuzzar in amen."
+                        );
+                    }
 
                     if (this.returnToModeratorView) {
                         this.router.navigateByUrl('/moderator/notices');
@@ -112,10 +119,17 @@ export class NewNoticeComponent {
         } else {
             this.noticesService.createNotice(notice).subscribe({
                 next: (notice: NoticeBoardItemDto) => {
-                    this.notificationsService.successMessage(
-                        'Creà l’annunzia',
-                        "Ti has memorisà cun success l’annunzia «" + notice.title + "»."
-                    );
+                    if (isDraft) {
+                        this.notificationsService.successMessage(
+                            'Creà il sboz',
+                            "Ti has memorisà cun success in sboz per l’annunzia «" + notice.title + "»."
+                        );
+                    } else {
+                        this.notificationsService.successMessage(
+                            'Grazia fitg',
+                            "La redacziun controllescha ussa l’annunzia «" + notice.title + "». Quai po cuzzar in amen."
+                        );
+                    }
 
                     if (this.isLoggedIn) {
                         if (this.returnToModeratorView) {
