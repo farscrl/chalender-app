@@ -1,6 +1,12 @@
 name: Docker Build main
 
-on: [ workflow_dispatch ]
+on:
+    push:
+        branches: [ main ]
+    pull_request:
+        branches: [ main ]
+
+    workflow_dispatch:
 
 jobs:
     build_staging:
@@ -19,7 +25,7 @@ jobs:
                     docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
             -   name: docker build
                 run: |
-                    docker build --build-arg ANGULAR_ENV=staging -t farscrl/chalender-frontend:latest-staging -t farscrl/chalender-frontend:${{ steps.package-version.outputs.current-version}}-staging .
+                    docker build --build-arg ANGULAR_ENV=staging -t farscrl/chalender-frontend:latest-staging .
             -   name: docker push
                 run: |
                     docker push farscrl/chalender-frontend --all-tags
@@ -40,7 +46,7 @@ jobs:
                     docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
             -   name: docker build
                 run: |
-                    docker build --build-arg ANGULAR_ENV=prod -t farscrl/chalender-frontend:latest-prod -t farscrl/chalender-frontend:${{ steps.package-version.outputs.current-version}}-prod .
+                    docker build --build-arg ANGULAR_ENV=prod -t farscrl/chalender-frontend:latest-prod .
             -   name: docker push
                 run: |
                     docker push farscrl/chalender-frontend --all-tags
