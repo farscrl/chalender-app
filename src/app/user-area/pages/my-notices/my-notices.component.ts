@@ -7,6 +7,7 @@ import { NoticeBoardItem, NoticeBoardItemVersion } from '../../../shared/data/no
 import { NoticePreviewComponent } from '../../../components/notice-preview/notice-preview.component';
 import { ModerationNoticeBoardFilter } from '../../../shared/data/filter';
 import * as dayjs from 'dayjs';
+import { DeleteEventComponent } from '../../../components/modals/delete-event/delete-event.component';
 
 @Component({
     selector: 'app-my-notices',
@@ -76,9 +77,16 @@ export class MyNoticesComponent {
     }
 
     delete(notice: NoticeBoardItem) {
-        console.log("delete", notice);
-        this.noticesService.deleteNotice(notice.id!).subscribe(d => {
-            this.search();
+        const modalRef = this.modalService.open(DeleteEventComponent, {size: 'lg', centered: true});
+        modalRef.componentInstance.event = this.getNoticeVersion(notice);
+        modalRef.componentInstance.type = 'notice';
+
+        modalRef.closed.subscribe(reason => {
+            if (reason === 'delete') {
+                this.noticesService.deleteNotice(notice.id!).subscribe(d => {
+                    this.search();
+                });
+            }
         });
     }
 
@@ -99,5 +107,22 @@ export class MyNoticesComponent {
 
     getDate(instant: number) {
         return dayjs(instant).format('DD-MM-YYYY')
+    }
+
+    private getNoticeVersion(notice: NoticeBoardItem): NoticeBoardItemVersion | undefined {
+        switch (notice.publicationStatus) {
+            case 'DRAFT':
+                return notice.draft;
+            case 'IN_REVIEW':
+                return notice.waitingForReview;
+            case 'PUBLISHED':
+                return notice.currentlyPublished;
+            case 'NEW_MODIFICATION':
+                return notice.waitingForReview;
+            case "REJECTED":
+                return notice.rejected;
+            default:
+                return undefined;
+        }
     }
 }
