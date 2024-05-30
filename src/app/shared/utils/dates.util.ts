@@ -42,7 +42,9 @@ export class DatesUtil {
         }
 
         const dateObj = dayjs(input, "YYYY-MM-DD");
-        if (dateObj.isBefore(dayjs())) {
+        const now = dayjs();
+        const lastMidnight = now.startOf('day');
+        if (dateObj.isBefore(lastMidnight)) {
             return 'past';
         }
 
