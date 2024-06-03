@@ -3,41 +3,42 @@
 
     <form [formGroup]="f">
         <div class="mb-3" *ngIf="f.controls['contactEmail'].enabled">
-            <label for="contactEmail" class="form-label">adressa dad e-mail (betg public, mo per diever
-                administrativ)</label>
+            <label for="contactEmail" class="form-label">{{ 'FORMS.EVENT.CONTACT_EMAIL' | translate }}</label>
             <input formControlName="contactEmail" type="email" class="form-control" id="contactEmail"
-                   [class.is-invalid]="isFieldInvalid('contactEmail')">
+                   [class.is-invalid]="isFieldInvalid('contactEmail')"
+                   placeholder="{{ 'FORMS.EVENT.CONTACT_EMAIL_PLACEHOLDER' | translate }}">
             <div class="invalid-feedback" *ngIf="isFieldInvalid('contactEmail')">
-                Endatescha p.pl. ina adressa dad e-mail da contact.
+                {{ 'FORMS.EVENT.CONTACT_EMAIL_ERROR' | translate }}
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="title" class="form-label">titel da l’occurrenza * </label>
+            <label for="title" class="form-label">{{ 'FORMS.EVENT.TITLE' | translate }} * </label>
             <input formControlName="title" type="text" class="form-control" id="title"
-                   [class.is-invalid]="isFieldInvalid('title')">
+                   [class.is-invalid]="isFieldInvalid('title')"
+                   placeholder="{{ 'FORMS.EVENT.TITLE_PLACEHOLDER' | translate }}">
             <div class="invalid-feedback" *ngIf="isFieldInvalid('title')">
-                Endatescha p.pl. in titel.
+                {{ 'FORMS.EVENT.TITLE_ERROR' | translate }}
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="description" class="form-label">descripziun (lunghezza recumandada: max. 1000 caracters)
-                *</label>
+            <label for="description" class="form-label">{{ 'FORMS.EVENT.DESCRIPTION' | translate }} *</label>
             <textarea formControlName="description" class="form-control" id="description" style="height: 300px"
                       [class.is-invalid]="isFieldInvalid('description')"></textarea>
             <span id="description-size">{{ descriptionSize }}</span>
             <div class="invalid-feedback" *ngIf="isFieldInvalid('description')">
                 <ng-container *ngIf="isFieldError('description', 'required')">
-                    Endatescha p.pl. ina descripziun.
+                    {{ 'FORMS.EVENT.DESCRIPTION_REQUIRED' | translate }}
                 </ng-container>
                 <ng-container *ngIf="isFieldError('description', 'maxlength')">
-                    La descripziun na dastga betg esser pli lunga che 1000 caracters.
+                    {{ 'FORMS.EVENT.DESCRIPTION_TOO_LONG' | translate }}
                 </ng-container>
             </div>
-            <div id="descriptionHelp" class="form-text">Hilfe bei der Übersetzung auf Rumantsch / Aiuto con la
-                traduzione in
-                romancio: <a href="https://www.textshuttle.com" target="_blank">www.textshuttle.com</a></div>
+            <div id="descriptionHelp" class="form-text">
+                Hilfe bei der Übersetzung auf Rumantsch / Aiuto con la traduzione in romancio:
+                <a href="https://www.textshuttle.com" target="_blank">www.textshuttle.com</a>
+            </div>
         </div>
 
         <div class="row">
@@ -97,36 +98,34 @@
         </div>
 
         <div class="mb-3">
-            <label for="location" class="form-label">lieu da l’occurrenza *</label>
+            <label for="location" class="form-label">{{ 'FORMS.EVENT.LOCATION' | translate }} *</label>
             <app-info-button>
                 <b>Lieu da l’occurrenza (Veranstaltungsort/luogo dell'evento):</b>
                 Num da la localitad, p. ex. «Teater Cuira» u «Halla polivalenta Sagogn»
             </app-info-button>
 
             <input type="email" class="form-control" id="location" formControlName="location"
-                   [class.is-invalid]="isFieldInvalid('location')">
+                   [class.is-invalid]="isFieldInvalid('location')"
+                   placeholder="{{ 'FORMS.EVENT.LOCATION_PLACEHOLDER' | translate }}">
             <div class="invalid-feedback" *ngIf="isFieldInvalid('location')">
-                Endatescha p.pl. in lieu.
+                {{ 'FORMS.EVENT.LOCATION_ERROR' | translate }}
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="address" class="form-label">adressa (via e lieu) *</label>
+            <label for="address" class="form-label">{{ 'FORMS.EVENT.ADDRESS' | translate }} *</label>
             <app-info-button>
                 <b>Via e lieu (Strasse und Ort/indirizzo e località):</b>
                 Inditgar ina adressa unica cun lieu. P.ex. «Via principala 1, Laax» betg mo «Via principala 1».
             </app-info-button>
             <textarea class="form-control" id="address" style="height: 100px" formControlName="address"
-                      [class.is-invalid]="isFieldInvalid('address')"></textarea>
+                      [class.is-invalid]="isFieldInvalid('address')"
+                      placeholder="{{ 'FORMS.EVENT.ADDRESS_PLACEHOLDER' | translate }}"></textarea>
             <div class="invalid-feedback" *ngIf="isFieldInvalid('address')">
-                Endatescha p.pl. ina adressa.
+
+                {{ 'FORMS.EVENT.ADDRESS_ERROR' | translate }}
             </div>
         </div>
-
-        <!--charta<br>
-        <button type="button" class="clndr">localisaziun sin Googlemaps</button>
-        <br><br>-->
-
 
         <h2>
             datas da l’occurrenza:
@@ -200,34 +199,37 @@
         <h2>ulteriuras infurmaziuns:</h2>
 
         <div class="mb-3">
-            <label for="organiser" class="form-label">organisatura</label>
+            <label for="organiser" class="form-label">{{ 'FORMS.EVENT.ORGANIZER' | translate }}</label>
             <input type="text" class="form-control" id="organiser" formControlName="organiser"
-                   [class.is-invalid]="isFieldInvalid('organiser')">
+                   [class.is-invalid]="isFieldInvalid('organiser')"
+                   placeholder="{{ 'FORMS.EVENT.ORGANIZER_PLACEHOLDER' | translate }}">
             <div class="invalid-feedback" *ngIf="isFieldInvalid('organiser')">
-                Endatescha p.pl. ina organisatura.
+                {{ 'FORMS.EVENT.ORGANIZER_ERROR' | translate }}
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="contact" class="form-label">contact (e-mail e/u telefon)</label>
-            <textarea class="form-control" id="contact" style="height: 100px" formControlName="contact"></textarea>
+            <label for="contact" class="form-label">{{ 'FORMS.EVENT.CONTACT' | translate }}</label>
+            <textarea class="form-control" id="contact" style="height: 100px" formControlName="contact"
+                      placeholder="{{ 'FORMS.EVENT.CONTACT_PLACEHOLDER' | translate }}"></textarea>
         </div>
 
         <div class="mb-3">
-            <label for="link" class="form-label">URL (adressa directa a l'occurrenza cun infurmaziuns, bigliets
-                etc.)</label>
+            <label for="link" class="form-label">{{ 'FORMS.EVENT.URL' | translate }}</label>
             <input type="text" class="form-control" id="link" formControlName="link"
-                   [class.is-invalid]="isFieldInvalid('link')">
+                   [class.is-invalid]="isFieldInvalid('link')"
+                   placeholder="{{ 'FORMS.EVENT.URL_PLACEHOLDER' | translate }}">
         </div>
 
         <div class="mb-3">
-            <label for="pricing" class="form-label">infurmaziuns davart pretschs e prevendita</label>
+            <label for="pricing" class="form-label">{{ 'FORMS.EVENT.PRICING' | translate }}</label>
             <app-info-button>
                 <b>Pretschs e prevendita (Eintritt und Vorverkauf / entrata e prevendita):</b>
                 È l’entrada gratuita? Ston ins s’annunziar? Sche gea, nua? Datti ina reducziun per persunas giuvnas? A
                 partir da cura è la cassa averta?
             </app-info-button>
-            <textarea class="form-control" id="pricing" style="height: 100px" formControlName="pricing"></textarea>
+            <textarea class="form-control" id="pricing" style="height: 100px" formControlName="pricing"
+                      placeholder="{{ 'FORMS.EVENT.PRICING_PLACEHOLDER' | translate }}"></textarea>
         </div>
 
         <h2>
