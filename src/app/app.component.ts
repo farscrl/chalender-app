@@ -61,6 +61,9 @@ export class AppComponent implements OnInit {
                     if (params['showAddButton'] === 'true') {
                         this.iframeService.enableAddButton();
                     }
+                    if (params['showTopNavigation'] === 'true') {
+                        this.iframeService.enableTopNavigation();
+                    }
                 }
 
                 if (params['view'] === 'cards') {

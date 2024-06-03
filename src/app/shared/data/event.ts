@@ -115,6 +115,7 @@ export class EventFilterUrlParams {
     searchTerm?: string;
     iframe?: boolean;
     showAddButton?: boolean;
+    showTopNavigation?: boolean;
     showSearch?: boolean;
     showViewSelection?: boolean;
     view?: string;

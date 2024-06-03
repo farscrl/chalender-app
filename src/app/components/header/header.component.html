@@ -124,3 +124,20 @@
     </ng-template>
 
 </div>
+
+<div class="hdr top-navigation" *ngIf="isInIframe && isTopNavigationVisible">
+    <div class="short-menu">
+        <ul>
+            <li>
+                <a [routerLink]="'/'" [class.active]="isLinkActive('/')">
+                    {{ 'COMPONENTS.HEADER.SUB_MENU.EVENTS' | translate }}
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="'/notices'" [class.active]="isLinkActive('/notices')">
+                    {{ 'COMPONENTS.HEADER.SUB_MENU.NOTICE_BOARD' | translate }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

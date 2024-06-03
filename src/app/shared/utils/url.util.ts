@@ -40,6 +40,10 @@ export class UrlUtil {
             url.showAddButton = true;
         }
 
+        if (this.iframeService.isShowTopNavigationValue()) {
+            url.showTopNavigation = true;
+        }
+
         if (!this.iframeService.isShowSearchValue()) {
             url.showSearch = false;
         }

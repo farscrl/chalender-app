@@ -13,8 +13,10 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit, OnDestroy {
     public isMenuOpen = false;
     public isInIframe = false;
+    public isTopNavigationVisible = false;
 
     private isIframeSubscription?: Subscription;
+    private isShowTopNavigationSubscription?: Subscription;
 
     constructor(
         private offcanvasService: NgbOffcanvas,
@@ -28,11 +30,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.isIframeSubscription = this.iframeService.getIsIframeObservable().subscribe((value) => {
             this.isInIframe = value;
         });
+        this.isShowTopNavigationSubscription = this.iframeService.getShowTopNavigationObservable().subscribe((value) => {
+            this.isTopNavigationVisible = value;
+        });
     }
 
     ngOnDestroy() {
         if (this.isIframeSubscription) {
             this.isIframeSubscription.unsubscribe();
+        }
+        if (this.isShowTopNavigationSubscription) {
+            this.isShowTopNavigationSubscription.unsubscribe();
         }
     }
 

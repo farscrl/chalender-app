@@ -10,6 +10,7 @@ export class IframeService {
     private showSearch = new BehaviorSubject<boolean>(true);
     private showViewSelection = new BehaviorSubject<boolean>(true);
     private showAddButton = new BehaviorSubject<boolean>(false);
+    private showTopNavigation = new BehaviorSubject<boolean>(false);
 
     constructor() {
     }
@@ -60,5 +61,17 @@ export class IframeService {
 
     isShowAddButtonValue(): boolean {
         return this.showAddButton.value;
+    }
+
+    enableTopNavigation() {
+        this.showTopNavigation.next(true);
+    }
+
+    getShowTopNavigationObservable(): Observable<boolean> {
+        return this.showTopNavigation.asObservable();
+    }
+
+    isShowTopNavigationValue(): boolean {
+        return this.showTopNavigation.value;
     }
 }
