@@ -309,6 +309,7 @@ export class NewEventComponent implements OnInit {
                     end: [occurrence.end],
                     isAllDay: [occurrence.isAllDay],
                     isCancelled: [occurrence.isCancelled],
+                    occurrenceUid: [occurrence.occurrenceUid],
                 });
                 this.eventOccurrencesFormArray.push(o);
                 this.setAllDayFields(idx);
@@ -404,6 +405,7 @@ export class NewEventComponent implements OnInit {
                 end: occurrence.end,
                 isAllDay: occurrence.isAllDay,
                 isCancelled: occurrence.isCancelled,
+                occurrenceUid: occurrence.occurrenceUid,
             });
         });
         return dto;
