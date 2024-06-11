@@ -225,6 +225,10 @@ button.clndr {
     box-shadow: none;
 }
 
+input::placeholder, textarea::placeholder {
+    color: #929aa8 !important;
+}
+
 .form-control:focus {
     color: var(--bs-body-color);
     background-color: var(--bs-body-bg);
