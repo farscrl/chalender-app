@@ -3,7 +3,7 @@ import { first, Subject, Subscription } from 'rxjs';
 import { NotificationsService } from '../../../shared/services/notifications.service';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { IframeService } from '../../../services/iframe.service';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { NoticesFilterService } from '../../../shared/services/notices-filter.service';
 import { ScrollPositionService } from '../../../services/scroll-position.service';

@@ -6,13 +6,13 @@ import { NoticesService } from '../../../shared/services/notices.service';
 import { NoticeBoardItem, NoticeBoardItemVersion } from '../../../shared/data/notices';
 import { NoticePreviewComponent } from '../../../components/notice-preview/notice-preview.component';
 import { ModerationNoticeBoardFilter } from '../../../shared/data/filter';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { DeleteEventComponent } from '../../../components/modals/delete-event/delete-event.component';
 
 @Component({
     selector: 'app-my-notices',
     templateUrl: './my-notices.component.html',
-    styleUrls: ['./my-notices.component.scss']
+    styleUrls: ['./my-notices.component.scss'],
 })
 export class MyNoticesComponent {
     notices: NoticeBoardItem[] = [];
@@ -47,7 +47,7 @@ export class MyNoticesComponent {
                 return notice.currentlyPublished;
             case 'NEW_MODIFICATION':
                 return notice.waitingForReview;
-            case "REJECTED":
+            case 'REJECTED':
                 return notice.rejected;
             default:
                 return undefined;
@@ -55,7 +55,7 @@ export class MyNoticesComponent {
     }
 
     hasChanges(notice: NoticeBoardItem) {
-        return notice.publicationStatus === 'NEW_MODIFICATION' || notice.publicationStatus === 'IN_REVIEW'
+        return notice.publicationStatus === 'NEW_MODIFICATION' || notice.publicationStatus === 'IN_REVIEW';
     }
 
     goToPage(page: number) {
@@ -64,7 +64,7 @@ export class MyNoticesComponent {
     }
 
     showPreview(notice: NoticeBoardItem) {
-        const modalRef = this.modalService.open(NoticePreviewComponent, {size: 'xl', centered: true});
+        const modalRef = this.modalService.open(NoticePreviewComponent, { size: 'xl', centered: true });
         this.noticesService.getNotice(notice.id!).subscribe(notice => {
             modalRef.componentInstance.noticeDto = notice;
         });
@@ -72,12 +72,12 @@ export class MyNoticesComponent {
 
     edit(notice: NoticeBoardItem) {
         this.router.navigateByUrl('/user/notice-form', {
-            state: {notice},
+            state: { notice },
         });
     }
 
     delete(notice: NoticeBoardItem) {
-        const modalRef = this.modalService.open(DeleteEventComponent, {size: 'lg', centered: true});
+        const modalRef = this.modalService.open(DeleteEventComponent, { size: 'lg', centered: true });
         modalRef.componentInstance.event = this.getNoticeVersion(notice);
         modalRef.componentInstance.type = 'notice';
 
@@ -106,7 +106,7 @@ export class MyNoticesComponent {
     }
 
     getDate(instant: number) {
-        return dayjs(instant).format('DD-MM-YYYY')
+        return dayjs(instant).format('DD-MM-YYYY');
     }
 
     private getNoticeVersion(notice: NoticeBoardItem): NoticeBoardItemVersion | undefined {
@@ -119,7 +119,7 @@ export class MyNoticesComponent {
                 return notice.currentlyPublished;
             case 'NEW_MODIFICATION':
                 return notice.waitingForReview;
-            case "REJECTED":
+            case 'REJECTED':
                 return notice.rejected;
             default:
                 return undefined;

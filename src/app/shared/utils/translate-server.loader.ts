@@ -2,15 +2,14 @@
 import { join } from 'path';
 import { Observable } from 'rxjs';
 import { TranslateLoader } from '@ngx-translate/core';
-import { TransferState } from '@angular/platform-browser';
+import { makeStateKey, StateKey, TransferState } from '@angular/core';
 import * as fs from 'fs';
-import { makeStateKey, StateKey } from '@angular/core';
 
 export class TranslateServerLoader implements TranslateLoader {
     constructor(
         private transferState: TransferState,
         private prefix: string = 'i18n',
-        private suffix: string = '.json'
+        private suffix: string = '.json',
     ) {
     }
 
@@ -22,16 +21,16 @@ export class TranslateServerLoader implements TranslateLoader {
                 'chalender-frontend',
                 'browser',
                 'assets',
-                this.prefix
+                this.prefix,
             );
 
             const jsonData = JSON.parse(
-                fs.readFileSync(`${assets_folder}/${lang}${this.suffix}`, 'utf8')
+                fs.readFileSync(`${assets_folder}/${lang}${this.suffix}`, 'utf8'),
             );
 
             // Here we save the translations in the transfer-state
             const key: StateKey<number> = makeStateKey<number>(
-                'transfer-translate-' + lang
+                'transfer-translate-' + lang,
             );
             this.transferState.set(key, jsonData);
 

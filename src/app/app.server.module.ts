@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, TransferState } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TransferState } from '@angular/platform-browser';
 import { translateServerLoaderFactory } from './shared/utils/translate-server.loader';
 import { UniversalDeviceDetectorService } from './services/universal-device-detector.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
@@ -16,14 +15,14 @@ import { DeviceDetectorService } from 'ngx-device-detector';
             loader: {
                 provide: TranslateLoader,
                 useFactory: translateServerLoaderFactory,
-                deps: [TransferState]
-            }
-        })
+                deps: [TransferState],
+            },
+        }),
     ],
     providers: [
         {
             provide: DeviceDetectorService,
-            useClass: UniversalDeviceDetectorService
+            useClass: UniversalDeviceDetectorService,
         },
     ],
     bootstrap: [AppComponent],

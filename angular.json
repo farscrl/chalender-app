@@ -15,11 +15,12 @@
             "prefix": "app",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
+                    "builder": "@angular-devkit/build-angular:application",
                     "options": {
-                        "outputPath": "dist/chalender-frontend/browser",
+                        "outputPath": {
+                            "base": "dist/chalender-frontend"
+                        },
                         "index": "src/index.html",
-                        "main": "src/main.ts",
                         "polyfills": [
                             "zone.js"
                         ],
@@ -37,8 +38,18 @@
                         "scripts": [
                             "node_modules/iframe-resizer/js/iframeResizer.contentWindow.js"
                         ],
-                        "serviceWorker": true,
-                        "ngswConfigPath": "ngsw-config.json"
+                        "serviceWorker": "ngsw-config.json",
+                        "browser": "src/main.ts",
+                        "server": "src/main.server.ts",
+                        "stylePreprocessorOptions": {
+                            "includePaths": [
+                                "."
+                            ]
+                        },
+                        "prerender": false,
+                        "ssr": {
+                            "entry": "server.ts"
+                        }
                     },
                     "configurations": {
                         "prod": {
@@ -94,9 +105,7 @@
                             "outputHashing": "all"
                         },
                         "dev": {
-                            "buildOptimizer": false,
                             "optimization": false,
-                            "vendorChunk": true,
                             "extractLicenses": false,
                             "sourceMap": true,
                             "namedChunks": true
@@ -154,84 +163,6 @@
                             "src/**/*.html"
                         ]
                     }
-                },
-                "server": {
-                    "builder": "@angular-devkit/build-angular:server",
-                    "options": {
-                        "outputPath": "dist/chalender-frontend/server",
-                        "main": "server.ts",
-                        "tsConfig": "tsconfig.server.json",
-                        "inlineStyleLanguage": "scss"
-                    },
-                    "configurations": {
-                        "prod": {
-                            "outputHashing": "media",
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.prod.ts"
-                                }
-                            ]
-                        },
-                        "staging": {
-                            "outputHashing": "media",
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.staging.ts"
-                                }
-                            ]
-                        },
-                        "dev": {
-                            "buildOptimizer": false,
-                            "optimization": false,
-                            "sourceMap": true,
-                            "extractLicenses": false,
-                            "vendorChunk": true
-                        }
-                    },
-                    "defaultConfiguration": "prod"
-                },
-                "serve-ssr": {
-                    "builder": "@angular-devkit/build-angular:ssr-dev-server",
-                    "configurations": {
-                        "dev": {
-                            "browserTarget": "chalender-frontend:build:dev",
-                            "serverTarget": "chalender-frontend:server:dev"
-                        },
-                        "staging": {
-                            "browserTarget": "chalender-frontend:build:staging",
-                            "serverTarget": "chalender-frontend:server:staging"
-                        },
-                        "prod": {
-                            "browserTarget": "chalender-frontend:build:prod",
-                            "serverTarget": "chalender-frontend:server:prod"
-                        }
-                    },
-                    "defaultConfiguration": "prod"
-                },
-                "prerender": {
-                    "builder": "@angular-devkit/build-angular:prerender",
-                    "options": {
-                        "routes": [
-                            "/"
-                        ]
-                    },
-                    "configurations": {
-                        "prod": {
-                            "browserTarget": "chalender-frontend:build:prod",
-                            "serverTarget": "chalender-frontend:server:prod"
-                        },
-                        "staging": {
-                            "browserTarget": "chalender-frontend:build:staging",
-                            "serverTarget": "chalender-frontend:server:staging"
-                        },
-                        "dev": {
-                            "browserTarget": "chalender-frontend:build:dev",
-                            "serverTarget": "chalender-frontend:server:dev"
-                        }
-                    },
-                    "defaultConfiguration": "prod"
                 }
             }
         }

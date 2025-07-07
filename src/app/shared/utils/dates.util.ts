@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { CategorizedEvents, EventLookup } from '../data/event';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class DatesUtil {
     addGroupEvents(groups: CategorizedEvents[], events: EventLookup[]) {
@@ -13,14 +13,14 @@ export class DatesUtil {
             if (group) {
                 group.events.push(el);
             } else {
-                const dateObj = dayjs(el.date, "DD-MM-YYYY");
+                const dateObj = dayjs(el.date, 'DD-MM-YYYY');
 
                 groups.push({
                     date: el.date,
                     formattedDateShort: dateObj.format('DD-MM-YYYY'),
                     formattedWeekday: dateObj.format('dddd'),
                     events: [el],
-                })
+                });
             }
         });
     }
@@ -36,12 +36,12 @@ export class DatesUtil {
     }
 
     isValidEventDate(input: string): string | null {
-        const parts = input.split("-");
+        const parts = input.split('-');
         if (parts.length === 3 && (+parts[0] > 9999)) {
             return 'too_far_future';
         }
 
-        const dateObj = dayjs(input, "YYYY-MM-DD");
+        const dateObj = dayjs(input, 'YYYY-MM-DD');
         const now = dayjs();
         const lastMidnight = now.startOf('day');
         if (dateObj.isBefore(lastMidnight)) {

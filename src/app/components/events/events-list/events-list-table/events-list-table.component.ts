@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { EventFilterModalComponent } from '../../event-filter-modal/event-filter-modal.component';
 import { CategorizedEvents } from '../../../../shared/data/event';
 import { EventsFilterService } from '../../../../shared/services/events-filter.service';
@@ -12,7 +12,7 @@ import { IframeService } from '../../../../services/iframe.service';
 @Component({
     selector: 'app-events-list-table',
     templateUrl: './events-list-table.component.html',
-    styleUrls: ['./events-list-table.component.scss']
+    styleUrls: ['./events-list-table.component.scss'],
 })
 export class EventsListTableComponent {
 
@@ -26,7 +26,7 @@ export class EventsListTableComponent {
         private modalService: NgbModal,
         public eventsFilterService: EventsFilterService,
         private datesUtil: DatesUtil,
-        public iframeService: IframeService
+        public iframeService: IframeService,
     ) {
     }
 

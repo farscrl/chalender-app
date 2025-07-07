@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, debounceTime, Observable, Subject } from "rxjs";
-import { NgbCalendar, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
+import { BehaviorSubject, debounceTime, Observable, Subject } from 'rxjs';
+import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Page } from '../data/page';
 import { EventFilter, EventFilterUrlParams, EventLookup } from '../data/event';
 import { EventsService } from './events.service';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { UrlUtil } from '../utils/url.util';
 import { IframeService } from '../../services/iframe.service';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class EventsFilterService {
     public selectedView: 'cards' | 'list' = 'cards';

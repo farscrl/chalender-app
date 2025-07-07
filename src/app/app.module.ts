@@ -1,4 +1,4 @@
-import { isDevMode, NgModule, TransferState } from '@angular/core';
+import { inject, isDevMode, NgModule, PLATFORM_ID, TransferState } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -6,9 +6,9 @@ import { EventsListComponent } from './pages/events/events-list/events-list.comp
 import { EventsDetailsComponent } from './pages/events/events-details/events-details.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BackButtonComponent } from './components/back-button/back-button.component';
-import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { JWT_OPTIONS, JwtModule } from "@auth0/angular-jwt";
-import { environment } from "../environments/environment";
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
+import { environment } from '../environments/environment';
 import { HelpComponent } from './pages/static/help/help.component';
 import { ImprintComponent } from './pages/static/imprint/imprint.component';
 import { PrivacyComponent } from './pages/static/privacy/privacy.component';
@@ -24,16 +24,16 @@ import { EventDiffComponent } from './components/event-diff/event-diff.component
 import { DiffFieldComponent } from './components/event-diff/diff-field/diff-field.component';
 import { DeleteEventComponent } from './components/modals/delete-event/delete-event.component';
 import { ReasonForChangeComponent } from './components/modals/reason-for-change/reason-for-change.component';
-import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RouteReuseStrategy } from '@angular/router';
 import { RouterReuseStrategy } from './routing/router-reuse.strategy';
 import { AppRouterOutletDirective } from './routing/app-router-outlet.directive';
 import { EventFilterModalComponent } from './components/events/event-filter-modal/event-filter-modal.component';
 import {
-    EventsListCardsComponent
+    EventsListCardsComponent,
 } from './components/events/events-list/events-list-cards/events-list-cards.component';
 import {
-    EventsListTableComponent
+    EventsListTableComponent,
 } from './components/events/events-list/events-list-table/events-list-table.component';
 import { ViewSelectionComponent } from './components/events/view-selection/view-selection.component';
 import { EventListItemComponent } from './components/events/event-list-item/event-list-item.component';
@@ -50,18 +50,18 @@ import { NoEventsComponent } from './components/events/no-events/no-events.compo
 import { ScrollableTitleDirective } from './shared/directives/scrollable-title.directive';
 import { FilterScrollPositionDirective } from './shared/directives/filter-scroll-position.directive';
 import {
-    PwaInstallInstructionsComponent
+    PwaInstallInstructionsComponent,
 } from './components/pwa-install-instructions/pwa-install-instructions.component';
 import { TrackingRtrComponent } from './components/tracking-rtr/tracking-rtr.component';
 import {
-    NoticesListCardsComponent
+    NoticesListCardsComponent,
 } from './components/notices/notices-list/notices-list-cards/notices-list-cards.component';
 import { NoticesListComponent } from './pages/notices/notices-list/notices-list.component';
 import { NoticesDetailsComponent } from './pages/notices/notices-details/notices-details.component';
 import { NoticesFilterComponent } from './components/notices/notices-filter/notices-filter.component';
 import { NoticeCardComponent } from './components/notices/notice-card/notice-card.component';
 import {
-    NoticesListTableComponent
+    NoticesListTableComponent,
 } from './components/notices/notices-list/notices-list-table/notices-list-table.component';
 import { NoticeListItemComponent } from './components/notices/notice-list-item/notice-list-item.component';
 import { NoNoticesComponent } from './components/notices/no-notices/no-notices.component';
@@ -69,13 +69,15 @@ import { NoticeDetailsComponent } from './components/notices/notice-details/noti
 import { NoticePreviewComponent } from './components/notice-preview/notice-preview.component';
 import { NoticeDiffComponent } from './components/notice-diff/notice-diff.component';
 import {
-    NewEventsSubscriptionComponent
+    NewEventsSubscriptionComponent,
 } from './components/modals/new-events-subscription/new-events-subscription.component';
 import {
-    NewNoticesSubscriptionComponent
+    NewNoticesSubscriptionComponent,
 } from './components/modals/new-notices-subscription/new-notices-subscription.component';
 import { HelpIframeComponent } from './pages/static/help-iframe/help-iframe.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SERVER_USER_AGENT } from './tokens/server.tokens';
+import { isPlatformServer } from '@angular/common';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -89,8 +91,8 @@ export function jwtOptionsFactory(authService: AuthenticationService) {
         ],
         tokenGetter: () => {
             return authService.getToken() ?? null;
-        }
-    }
+        },
+    };
 }
 
 export function inIframe() {
@@ -155,42 +157,55 @@ export function inIframe() {
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
-        HttpClientModule,
         JwtModule.forRoot({
             jwtOptionsProvider: {
                 provide: JWT_OPTIONS,
                 useFactory: jwtOptionsFactory,
-                deps: [AuthenticationService]
+                deps: [AuthenticationService],
             },
         }),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
                 useFactory: translateBrowserLoaderFactory,
-                deps: [HttpClient, TransferState]
+                deps: [HttpClient, TransferState],
             },
-            defaultLanguage: 'rm'
+            defaultLanguage: 'rm',
         }),
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: !isDevMode() && !inIframe(),
             // Register the ServiceWorker as soon as the application is stable
             // or after 30 seconds (whichever comes first).
-            registrationStrategy: 'registerWhenStable:30000'
+            registrationStrategy: 'registerWhenStable:30000',
         }),
         SharedModule,
     ],
     providers: [
         {
+            provide: SERVER_USER_AGENT,
+            useFactory: () => {
+                const platformId = inject(PLATFORM_ID);
+                if (isPlatformServer(platformId)) {
+                    const request = globalThis['Request'] as any;
+                    if (request && typeof request.headers === 'object') {
+                        return request.headers.get('user-agent') || '';
+                    }
+                }
+                return '';
+            },
+        },
+        {
             provide: RouteReuseStrategy,
-            useClass: RouterReuseStrategy
+            useClass: RouterReuseStrategy,
         },
         {
             provide: NgbDatepickerI18n,
-            useClass: DatepickerTranslatorService
+            useClass: DatepickerTranslatorService,
         },
-        provideClientHydration()
+        provideClientHydration(),
+        provideHttpClient(withInterceptorsFromDi()),
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 }

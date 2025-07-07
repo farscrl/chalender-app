@@ -6,7 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { NotificationsService } from '../../../shared/services/notifications.service';
 import { DatesUtil } from '../../../shared/utils/dates.util';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { TermsComponent } from '../../../shared/components/terms/terms.component';
 import { debounceTime, fromEvent, take } from 'rxjs';
@@ -17,7 +17,7 @@ import { NoticePreviewComponent } from '../../../components/notice-preview/notic
 @Component({
     selector: 'app-new-notice',
     templateUrl: './new-notice.component.html',
-    styleUrls: ['./new-notice.component.scss']
+    styleUrls: ['./new-notice.component.scss'],
 })
 export class NewNoticeComponent {
     images: Image[] = [];
@@ -44,7 +44,7 @@ export class NewNoticeComponent {
         private router: Router,
         private notificationsService: NotificationsService,
         private el: ElementRef,
-        private datesUtil: DatesUtil
+        private datesUtil: DatesUtil,
     ) {
         const navigation = this.router.getCurrentNavigation();
         if (navigation && navigation.extras.state) {
@@ -95,12 +95,12 @@ export class NewNoticeComponent {
                     if (isDraft) {
                         this.notificationsService.successMessage(
                             'Actualisà il sboz',
-                            "Ti has memorisà cun success in sboz per l’annunzia «" + notice.title + "»."
+                            'Ti has memorisà cun success in sboz per l’annunzia «' + notice.title + '».',
                         );
                     } else {
                         this.notificationsService.successMessage(
                             'Grazia fitg',
-                            "La redacziun controllescha ussa l’annunzia «" + notice.title + "». Quai po cuzzar in amen."
+                            'La redacziun controllescha ussa l’annunzia «' + notice.title + '». Quai po cuzzar in amen.',
                         );
                     }
 
@@ -113,8 +113,8 @@ export class NewNoticeComponent {
                 },
                 error: error => {
                     this.isSaving = false;
-                    console.error(error)
-                }
+                    console.error(error);
+                },
             });
         } else {
             this.noticesService.createNotice(notice).subscribe({
@@ -122,12 +122,12 @@ export class NewNoticeComponent {
                     if (isDraft) {
                         this.notificationsService.successMessage(
                             'Creà il sboz',
-                            "Ti has memorisà cun success in sboz per l’annunzia «" + notice.title + "»."
+                            'Ti has memorisà cun success in sboz per l’annunzia «' + notice.title + '».',
                         );
                     } else {
                         this.notificationsService.successMessage(
                             'Grazia fitg',
-                            "La redacziun controllescha ussa l’annunzia «" + notice.title + "». Quai po cuzzar in amen."
+                            'La redacziun controllescha ussa l’annunzia «' + notice.title + '». Quai po cuzzar in amen.',
                         );
                     }
 
@@ -145,7 +145,7 @@ export class NewNoticeComponent {
                 error: err => {
                     this.isSaving = false;
                     console.error(err);
-                }
+                },
             });
         }
     }
@@ -153,7 +153,7 @@ export class NewNoticeComponent {
     preview(): void {
         this.isPreviewOpen = true;
         const dto = this.transformToNoticeBoardItemDto(true);
-        const modalRef = this.modalService.open(NoticePreviewComponent, {size: 'xl', centered: true});
+        const modalRef = this.modalService.open(NoticePreviewComponent, { size: 'xl', centered: true });
         modalRef.componentInstance.noticeDto = dto;
         modalRef.closed.subscribe(value => {
             this.isPreviewOpen = false;
@@ -205,7 +205,7 @@ export class NewNoticeComponent {
             return false;
         }
 
-        if (this.noticeToChange && this.noticeToChange.status !== "DRAFT") {
+        if (this.noticeToChange && this.noticeToChange.status !== 'DRAFT') {
             return false;
         }
 
@@ -213,7 +213,7 @@ export class NewNoticeComponent {
     }
 
     openTerms() {
-        this.modalService.open(TermsComponent, {size: 'xl', centered: true});
+        this.modalService.open(TermsComponent, { size: 'xl', centered: true });
     }
 
     get descriptionSize(): string {
@@ -245,21 +245,21 @@ export class NewNoticeComponent {
 
     private scrollToFirstInvalidControl() {
         const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
-            "form .ng-invalid"
+            'form .ng-invalid',
         );
 
         window.scroll({
             top: this.getTopOffset(firstInvalidControl),
             left: 0,
-            behavior: "smooth"
+            behavior: 'smooth',
         });
 
         // focus field after scroll
         // https://medium.com/javascript-everyday/how-to-scroll-to-first-invalid-control-once-a-form-has-been-submitted-eb47d9fbc6e
-        fromEvent(window, "scroll")
+        fromEvent(window, 'scroll')
             .pipe(
                 debounceTime(100),
-                take(1)
+                take(1),
             )
             .subscribe(() => firstInvalidControl.focus());
     }

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { OnAttach, OnDetach } from '../../../routing/app-router-outlet.directive';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { EventsFilterService } from '../../../shared/services/events-filter.service';
 import { NotificationsService } from '../../../shared/services/notifications.service';
@@ -27,9 +27,9 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
                 opacity: 0,
             })),
             transition('in => out', animate('400ms ease-in-out')),
-            transition('out => in', animate('400ms ease-in-out'))
+            transition('out => in', animate('400ms ease-in-out')),
         ]),
-    ]
+    ],
 })
 export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestroy {
 
@@ -66,14 +66,14 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
 
         this.route.queryParams.pipe(first()).subscribe(params => {
             if (!!params['regions']) {
-                const regions: number[] = params['regions'].split(",");
+                const regions: number[] = params['regions'].split(',');
                 regions.forEach(regionId => {
                     this.eventsFilterService.toggleRegion(+regionId);
                 });
             }
 
             if (!!params['genres']) {
-                const genres: number[] = params['genres'].split(",");
+                const genres: number[] = params['genres'].split(',');
                 genres.forEach(genreId => {
                     this.eventsFilterService.toggleGenre(+genreId);
                 });
@@ -81,7 +81,7 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
 
             if (!!params['startDate']) {
                 const data = params['startDate'].split('-');
-                this.eventsFilterService.setStartDate({day: +data[0], month: +data[1], year: +data[2]});
+                this.eventsFilterService.setStartDate({ day: +data[0], month: +data[1], year: +data[2] });
             }
 
             if (!!params['searchTerm']) {
@@ -95,7 +95,7 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
                         relativeTo: this.route,
                         queryParams: params,
                         queryParamsHandling: '',
-                    }
+                    },
                 );
             });
         });
@@ -116,7 +116,7 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
                     relativeTo: this.route,
                     queryParams: params,
                     queryParamsHandling: '',
-                }
+                },
             );
         });
     }

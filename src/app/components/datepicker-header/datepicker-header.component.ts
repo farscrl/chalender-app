@@ -1,22 +1,21 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NgbDatepicker, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DatesUtil } from '../../shared/utils/dates.util';
-import * as dayjs from 'dayjs';
-import { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { Subscription } from 'rxjs';
 import { EventsFilterService } from '../../shared/services/events-filter.service';
 
 @Component({
     selector: 'app-datepicker-header',
     templateUrl: './datepicker-header.component.html',
-    styleUrls: ['./datepicker-header.component.scss']
+    styleUrls: ['./datepicker-header.component.scss'],
 })
 export class DatepickerHeaderComponent implements OnInit, OnDestroy {
 
     @Input()
     datepicker!: NgbDatepicker;
 
-    date = "";
+    date = '';
 
     private currentMonth: Dayjs | undefined;
 
@@ -46,17 +45,17 @@ export class DatepickerHeaderComponent implements OnInit, OnDestroy {
 
     today() {
         this.eventsFilterService.resetDateFilter();
-        this.datepicker.navigateTo({year: dayjs().year(), month: dayjs().month() + 1});
+        this.datepicker.navigateTo({ year: dayjs().year(), month: dayjs().month() + 1 });
     }
 
     back() {
         const month = this.currentMonth?.subtract(1, 'month');
-        this.datepicker.navigateTo({year: month!.year(), month: month!.month() + 1});
+        this.datepicker.navigateTo({ year: month!.year(), month: month!.month() + 1 });
     }
 
     forward() {
         const month = this.currentMonth?.add(1, 'month');
-        this.datepicker.navigateTo({year: month!.year(), month: month!.month() + 1});
+        this.datepicker.navigateTo({ year: month!.year(), month: month!.month() + 1 });
     }
 
     get isToday() {

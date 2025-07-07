@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { EventPreviewComponent } from "../../../components/event-preview/event-preview.component";
-import * as dayjs from 'dayjs';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EventPreviewComponent } from '../../../components/event-preview/event-preview.component';
+import dayjs from 'dayjs';
 import { Router } from '@angular/router';
 import { EventLanguage, Genre, Region } from '../../../shared/data/static-data';
 import { Document, EventDto, Image, PublicationTypes } from '../../../shared/data/event';
@@ -22,7 +22,7 @@ const regexUrl = '^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\
 @Component({
     selector: 'app-new-event',
     templateUrl: './new-event.component.html',
-    styleUrls: ['./new-event.component.scss']
+    styleUrls: ['./new-event.component.scss'],
 })
 export class NewEventComponent implements OnInit {
 
@@ -56,7 +56,7 @@ export class NewEventComponent implements OnInit {
         private router: Router,
         private notificationsService: NotificationsService,
         private el: ElementRef,
-        private datesUtil: DatesUtil
+        private datesUtil: DatesUtil,
     ) {
         const navigation = this.router.getCurrentNavigation();
         if (navigation && navigation.extras.state) {
@@ -108,12 +108,12 @@ export class NewEventComponent implements OnInit {
                     if (isDraft) {
                         this.notificationsService.successMessage(
                             'Actualisà il sboz',
-                            "Ti has memorisà cun success in sboz per l’occurrenza «" + event.title + "»."
+                            'Ti has memorisà cun success in sboz per l’occurrenza «' + event.title + '».',
                         );
                     } else {
                         this.notificationsService.successMessage(
                             'Grazia fitg',
-                            "La redacziun controllescha ussa l’occurrenza «" + event.title + "». Quai po cuzzar in amen."
+                            'La redacziun controllescha ussa l’occurrenza «' + event.title + '». Quai po cuzzar in amen.',
                         );
                     }
 
@@ -126,8 +126,8 @@ export class NewEventComponent implements OnInit {
                 },
                 error: error => {
                     this.isSaving = false;
-                    console.error(error)
-                }
+                    console.error(error);
+                },
             });
         } else {
             this.eventsService.createEvent(event).subscribe({
@@ -135,12 +135,12 @@ export class NewEventComponent implements OnInit {
                     if (isDraft) {
                         this.notificationsService.successMessage(
                             'Creà il sboz',
-                            "Ti has memorisà cun success in sboz per l’occurrenza «" + event.title + "»."
+                            'Ti has memorisà cun success in sboz per l’occurrenza «' + event.title + '».',
                         );
                     } else {
                         this.notificationsService.successMessage(
                             'Grazia fitg',
-                            "La redacziun controllescha ussa l’occurrenza «" + event.title + "». Quai po cuzzar in amen."
+                            'La redacziun controllescha ussa l’occurrenza «' + event.title + '». Quai po cuzzar in amen.',
                         );
                     }
 
@@ -158,7 +158,7 @@ export class NewEventComponent implements OnInit {
                 error: err => {
                     this.isSaving = false;
                     console.error(err);
-                }
+                },
             });
         }
     }
@@ -166,7 +166,7 @@ export class NewEventComponent implements OnInit {
     preview() {
         this.isPreviewOpen = true;
         const dto = this.transformToEventDto(true);
-        const modalRef = this.modalService.open(EventPreviewComponent, {size: 'xl', centered: true});
+        const modalRef = this.modalService.open(EventPreviewComponent, { size: 'xl', centered: true });
         modalRef.componentInstance.eventDto = dto;
         modalRef.closed.subscribe(value => {
             this.isPreviewOpen = false;
@@ -343,7 +343,7 @@ export class NewEventComponent implements OnInit {
             return false;
         }
 
-        if (this.eventToChange && this.eventToChange.status !== "DRAFT") {
+        if (this.eventToChange && this.eventToChange.status !== 'DRAFT') {
             return false;
         }
 
@@ -351,7 +351,7 @@ export class NewEventComponent implements OnInit {
     }
 
     openTerms() {
-        this.modalService.open(TermsComponent, {size: 'xl', centered: true});
+        this.modalService.open(TermsComponent, { size: 'xl', centered: true });
     }
 
     get descriptionSize(): string {
@@ -467,21 +467,21 @@ export class NewEventComponent implements OnInit {
 
     private scrollToFirstInvalidControl() {
         const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
-            "form .ng-invalid"
+            'form .ng-invalid',
         );
 
         window.scroll({
             top: this.getTopOffset(firstInvalidControl),
             left: 0,
-            behavior: "smooth"
+            behavior: 'smooth',
         });
 
         // focus field after scroll
         // https://medium.com/javascript-everyday/how-to-scroll-to-first-invalid-control-once-a-form-has-been-submitted-eb47d9fbc6e
-        fromEvent(window, "scroll")
+        fromEvent(window, 'scroll')
             .pipe(
                 debounceTime(100),
-                take(1)
+                take(1),
             )
             .subscribe(() => firstInvalidControl.focus());
     }

@@ -1,16 +1,16 @@
 import { Component, Inject, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
 import { EventDto } from '../../../shared/data/event';
 import { EventsService } from '../../../shared/services/events.service';
 import { UrlUtil } from '../../../shared/utils/url.util';
 import { DOCUMENT, isPlatformServer } from '@angular/common';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 @Component({
     selector: 'app-events-details',
     templateUrl: './events-details.component.html',
-    styleUrls: ['./events-details.component.scss']
+    styleUrls: ['./events-details.component.scss'],
 })
 export class EventsDetailsComponent implements OnInit {
 
@@ -53,7 +53,7 @@ export class EventsDetailsComponent implements OnInit {
             if (error.status === 404) {
                 console.warn('not found the event with ID: ' + this.eventId);
                 this.router.navigate(['/not-found'], {
-                    queryParams: {type: 'event'},
+                    queryParams: { type: 'event' },
                     skipLocationChange: true,
                 });
             }
@@ -62,29 +62,35 @@ export class EventsDetailsComponent implements OnInit {
     }
 
     private setMetaTags() {
-        this.meta.addTag({name: 'title', content: this.urlUtil.truncateString(this.event!.title!, 90)});
-        this.meta.updateTag({name: 'description', content: this.urlUtil.truncateString(this.event!.description!, 300)});
+        this.meta.addTag({ name: 'title', content: this.urlUtil.truncateString(this.event!.title!, 90) });
+        this.meta.updateTag({
+            name: 'description',
+            content: this.urlUtil.truncateString(this.event!.description!, 300),
+        });
 
-        const t = this.meta.addTag({name: 'og:title', content: this.urlUtil.truncateString(this.event!.title!, 90)});
+        const t = this.meta.addTag({ name: 'og:title', content: this.urlUtil.truncateString(this.event!.title!, 90) });
         //console.log(t);
-        this.meta.addTag({name: 'og:description', content: this.urlUtil.truncateString(this.event!.description!, 300)});
-        this.meta.addTag({name: 'og:type', content: 'website'});
-        this.meta.addTag({name: 'og:url', content: this.router.url});
-        this.meta.addTag({name: 'twitter:card', content: 'summary_large_image'});
-        this.meta.addTag({name: 'twitter:title', content: this.urlUtil.truncateString(this.event!.title!, 70)});
+        this.meta.addTag({
+            name: 'og:description',
+            content: this.urlUtil.truncateString(this.event!.description!, 300),
+        });
+        this.meta.addTag({ name: 'og:type', content: 'website' });
+        this.meta.addTag({ name: 'og:url', content: this.router.url });
+        this.meta.addTag({ name: 'twitter:card', content: 'summary_large_image' });
+        this.meta.addTag({ name: 'twitter:title', content: this.urlUtil.truncateString(this.event!.title!, 70) });
         this.meta.addTag({
             name: 'twitter:description',
-            content: this.urlUtil.truncateString(this.event!.description!, 200)
+            content: this.urlUtil.truncateString(this.event!.description!, 200),
         });
 
         if (this.event!.images?.length > 0) {
             this.meta.addTag({
                 name: 'og:image',
-                content: this.event!.images[0]!.url + '?width=1200&height=630&crop_gravity=center&auto_optimize=medium'
+                content: this.event!.images[0]!.url + '?width=1200&height=630&crop_gravity=center&auto_optimize=medium',
             });
             this.meta.addTag({
                 name: 'twitter:image',
-                content: this.event!.images[0]!.url + '?width=1200&height=630&crop_gravity=center&auto_optimize=medium'
+                content: this.event!.images[0]!.url + '?width=1200&height=630&crop_gravity=center&auto_optimize=medium',
             });
         }
 
@@ -145,7 +151,7 @@ export class EventsDetailsComponent implements OnInit {
 
     private escapeJsonString(value?: string): string {
         if (!value) {
-            return "";
+            return '';
         }
         return value
             .replace(/\\/g, '\\\\') // Escape backslashes

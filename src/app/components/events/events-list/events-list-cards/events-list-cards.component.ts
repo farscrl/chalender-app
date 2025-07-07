@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { EventFilterModalComponent } from '../../event-filter-modal/event-filter-modal.component';
 import { Subscription } from 'rxjs';
 import { CategorizedEvents } from '../../../../shared/data/event';
@@ -12,7 +12,7 @@ import { IframeService } from '../../../../services/iframe.service';
 @Component({
     selector: 'app-events-list-cards',
     templateUrl: './events-list-cards.component.html',
-    styleUrls: ['./events-list-cards.component.scss']
+    styleUrls: ['./events-list-cards.component.scss'],
 })
 export class EventsListCardsComponent implements OnInit, OnDestroy {
 
