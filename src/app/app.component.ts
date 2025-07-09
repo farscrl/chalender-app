@@ -1,8 +1,8 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, DOCUMENT } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
 import { ActivatedRoute } from '@angular/router';
 import { IframeService } from './services/iframe.service';
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { EventsFilterService } from './shared/services/events-filter.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Platform } from '@angular/cdk/platform';

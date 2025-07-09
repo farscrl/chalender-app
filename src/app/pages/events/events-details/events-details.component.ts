@@ -1,10 +1,10 @@
-import { Component, Inject, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, Renderer2, DOCUMENT } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
 import { EventDto } from '../../../shared/data/event';
 import { EventsService } from '../../../shared/services/events.service';
 import { UrlUtil } from '../../../shared/utils/url.util';
-import { DOCUMENT, isPlatformServer } from '@angular/common';
+import { isPlatformServer } from '@angular/common';
 import dayjs from 'dayjs';
 
 @Component({
