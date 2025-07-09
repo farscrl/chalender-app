@@ -6,7 +6,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
     selector: 'app-event-preview',
     templateUrl: './event-preview.component.html',
-    styleUrls: ['./event-preview.component.scss']
+    styleUrls: ['./event-preview.component.scss'],
+    standalone: false
 })
 export class EventPreviewComponent implements OnInit {
 

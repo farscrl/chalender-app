@@ -15,7 +15,8 @@ import { DatesUtil } from '../../../shared/utils/dates.util';
 @Component({
     selector: 'app-moderator-events',
     templateUrl: './moderator-events.component.html',
-    styleUrls: ['./moderator-events.component.scss']
+    styleUrls: ['./moderator-events.component.scss'],
+    standalone: false
 })
 export class ModeratorEventsComponent implements OnInit {
 

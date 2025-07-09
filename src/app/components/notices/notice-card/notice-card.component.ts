@@ -4,7 +4,8 @@ import { NoticeBoardItemDto } from '../../../shared/data/notices';
 @Component({
     selector: 'app-notice-card',
     templateUrl: './notice-card.component.html',
-    styleUrls: ['./notice-card.component.scss']
+    styleUrls: ['./notice-card.component.scss'],
+    standalone: false
 })
 export class NoticeCardComponent {
 

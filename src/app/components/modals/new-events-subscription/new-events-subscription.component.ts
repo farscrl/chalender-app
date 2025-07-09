@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-new-events-subscription',
     templateUrl: './new-events-subscription.component.html',
-    styleUrls: ['./new-events-subscription.component.scss']
+    styleUrls: ['./new-events-subscription.component.scss'],
+    standalone: false
 })
 export class NewEventsSubscriptionComponent {
     @Input() subscription: EventsSubscription | undefined;

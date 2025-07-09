@@ -5,7 +5,8 @@ import { IframeService } from '../../../services/iframe.service';
 @Component({
     selector: 'app-new-notice-button',
     templateUrl: './new-notice-button.component.html',
-    styleUrls: ['./new-notice-button.component.scss']
+    styleUrls: ['./new-notice-button.component.scss'],
+    standalone: false
 })
 export class NewNoticeButtonComponent {
     @ViewChild('fab') fab?: ElementRef;

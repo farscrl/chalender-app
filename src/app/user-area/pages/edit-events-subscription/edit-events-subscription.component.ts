@@ -6,7 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
     selector: 'app-edit-events-subscription',
     templateUrl: './edit-events-subscription.component.html',
-    styleUrls: ['./edit-events-subscription.component.scss']
+    styleUrls: ['./edit-events-subscription.component.scss'],
+    standalone: false
 })
 export class EditEventsSubscriptionComponent {
 

@@ -13,6 +13,7 @@ import { IframeService } from '../../../../services/iframe.service';
     selector: 'app-events-list-cards',
     templateUrl: './events-list-cards.component.html',
     styleUrls: ['./events-list-cards.component.scss'],
+    standalone: false
 })
 export class EventsListCardsComponent implements OnInit, OnDestroy {
 

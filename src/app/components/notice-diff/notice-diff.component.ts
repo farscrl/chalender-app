@@ -5,7 +5,8 @@ import { NoticeBoardItemVersion } from '../../shared/data/notices';
 @Component({
     selector: 'app-notice-diff',
     templateUrl: './notice-diff.component.html',
-    styleUrls: ['./notice-diff.component.scss']
+    styleUrls: ['./notice-diff.component.scss'],
+    standalone: false
 })
 export class NoticeDiffComponent {
     @Input()

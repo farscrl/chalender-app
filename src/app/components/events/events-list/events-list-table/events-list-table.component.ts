@@ -13,6 +13,7 @@ import { IframeService } from '../../../../services/iframe.service';
     selector: 'app-events-list-table',
     templateUrl: './events-list-table.component.html',
     styleUrls: ['./events-list-table.component.scss'],
+    standalone: false
 })
 export class EventsListTableComponent {
 

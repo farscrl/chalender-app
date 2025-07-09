@@ -5,7 +5,8 @@ import { NoticeBoardItemDto } from '../../../shared/data/notices';
 @Component({
     selector: 'app-notice-details',
     templateUrl: './notice-details.component.html',
-    styleUrls: ['./notice-details.component.scss']
+    styleUrls: ['./notice-details.component.scss'],
+    standalone: false
 })
 export class NoticeDetailsComponent {
 

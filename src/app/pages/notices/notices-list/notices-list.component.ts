@@ -28,7 +28,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
             transition('in => out', animate('400ms ease-in-out')),
             transition('out => in', animate('400ms ease-in-out'))
         ]),
-    ]
+    ],
+    standalone: false
 })
 export class NoticesListComponent {
     resetFiltersCommandSubject: Subject<void> = new Subject<void>();

@@ -23,6 +23,7 @@ const regexUrl = '^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\
     selector: 'app-new-event',
     templateUrl: './new-event.component.html',
     styleUrls: ['./new-event.component.scss'],
+    standalone: false
 })
 export class NewEventComponent implements OnInit {
 

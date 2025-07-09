@@ -6,7 +6,8 @@ import { NotificationsSubscriptionsService } from '../../../services/notificatio
 @Component({
     selector: 'app-notices-subscription',
     templateUrl: './notices-subscription.component.html',
-    styleUrls: ['./notices-subscription.component.scss']
+    styleUrls: ['./notices-subscription.component.scss'],
+    standalone: false
 })
 export class NoticesSubscriptionComponent {
 

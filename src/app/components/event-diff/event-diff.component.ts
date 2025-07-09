@@ -6,7 +6,8 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
     selector: 'app-event-diff',
     templateUrl: './event-diff.component.html',
-    styleUrls: ['./event-diff.component.scss']
+    styleUrls: ['./event-diff.component.scss'],
+    standalone: false
 })
 export class EventDiffComponent implements OnInit {
 

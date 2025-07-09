@@ -4,7 +4,8 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
     selector: 'app-tracking-rtr',
     templateUrl: './tracking-rtr.component.html',
-    styleUrls: ['./tracking-rtr.component.scss']
+    styleUrls: ['./tracking-rtr.component.scss'],
+    standalone: false
 })
 export class TrackingRtrComponent {
     constructor(

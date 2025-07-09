@@ -8,7 +8,8 @@ import { Platform } from '@angular/cdk/platform';
 @Component({
     selector: 'app-event-details',
     templateUrl: './event-details.component.html',
-    styleUrls: ['./event-details.component.scss']
+    styleUrls: ['./event-details.component.scss'],
+    standalone: false
 })
 export class EventDetailsComponent {
 

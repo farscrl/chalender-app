@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-new-notices-subscription',
     templateUrl: './new-notices-subscription.component.html',
-    styleUrls: ['./new-notices-subscription.component.scss']
+    styleUrls: ['./new-notices-subscription.component.scss'],
+    standalone: false
 })
 export class NewNoticesSubscriptionComponent {
     subscription: NoticesSubscription;

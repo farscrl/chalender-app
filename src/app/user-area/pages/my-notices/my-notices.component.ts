@@ -13,6 +13,7 @@ import { DeleteEventComponent } from '../../../components/modals/delete-event/de
     selector: 'app-my-notices',
     templateUrl: './my-notices.component.html',
     styleUrls: ['./my-notices.component.scss'],
+    standalone: false
 })
 export class MyNoticesComponent {
     notices: NoticeBoardItem[] = [];

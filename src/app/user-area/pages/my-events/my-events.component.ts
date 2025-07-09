@@ -10,7 +10,8 @@ import { ModerationEventsFilter } from '../../../shared/data/filter';
 @Component({
     selector: 'app-my-events',
     templateUrl: './my-events.component.html',
-    styleUrls: ['./my-events.component.scss']
+    styleUrls: ['./my-events.component.scss'],
+    standalone: false
 })
 export class MyEventsComponent {
     events: Event[] = [];

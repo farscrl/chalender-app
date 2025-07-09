@@ -6,7 +6,8 @@ import { NoticeBoardItemVersion } from '../../../shared/data/notices';
 @Component({
     selector: 'app-delete-event',
     templateUrl: './delete-event.component.html',
-    styleUrls: ['./delete-event.component.scss']
+    styleUrls: ['./delete-event.component.scss'],
+    standalone: false
 })
 export class DeleteEventComponent {
     @Input() event: EventVersion | NoticeBoardItemVersion | undefined;

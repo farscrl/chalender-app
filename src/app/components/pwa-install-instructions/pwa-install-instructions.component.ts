@@ -4,7 +4,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
     selector: 'app-pwa-install-instructions',
     templateUrl: './pwa-install-instructions.component.html',
-    styleUrls: ['./pwa-install-instructions.component.scss']
+    styleUrls: ['./pwa-install-instructions.component.scss'],
+    standalone: false
 })
 export class PwaInstallInstructionsComponent implements OnInit {
 

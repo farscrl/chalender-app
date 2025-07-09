@@ -11,6 +11,7 @@ import dayjs from 'dayjs';
     selector: 'app-events-details',
     templateUrl: './events-details.component.html',
     styleUrls: ['./events-details.component.scss'],
+    standalone: false
 })
 export class EventsDetailsComponent implements OnInit {
 

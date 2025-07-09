@@ -12,6 +12,7 @@ import { NoticeBoardItemDto } from '../../../../shared/data/notices';
     selector: 'app-notices-list-cards',
     templateUrl: './notices-list-cards.component.html',
     styleUrls: ['./notices-list-cards.component.scss'],
+    standalone: false
 })
 export class NoticesListCardsComponent {
     @Output() toggleFilter: EventEmitter<void> = new EventEmitter<void>();

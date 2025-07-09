@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import Autolinker, { AutolinkerConfig } from 'autolinker';
 
 @Pipe({
-    name: 'linky'
+    name: 'linky',
+    standalone: false
 })
 export class LinkyPipe implements PipeTransform {
 

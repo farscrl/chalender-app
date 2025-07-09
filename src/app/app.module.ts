@@ -1,4 +1,4 @@
-import { inject, isDevMode, NgModule, PLATFORM_ID, TransferState } from '@angular/core';
+import { isDevMode, NgModule, TransferState } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -76,8 +76,6 @@ import {
 } from './components/modals/new-notices-subscription/new-notices-subscription.component';
 import { HelpIframeComponent } from './pages/static/help-iframe/help-iframe.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SERVER_USER_AGENT } from './tokens/server.tokens';
-import { isPlatformServer } from '@angular/common';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -181,19 +179,6 @@ export function inIframe() {
         SharedModule,
     ],
     providers: [
-        {
-            provide: SERVER_USER_AGENT,
-            useFactory: () => {
-                const platformId = inject(PLATFORM_ID);
-                if (isPlatformServer(platformId)) {
-                    const request = globalThis['Request'] as any;
-                    if (request && typeof request.headers === 'object') {
-                        return request.headers.get('user-agent') || '';
-                    }
-                }
-                return '';
-            },
-        },
         {
             provide: RouteReuseStrategy,
             useClass: RouterReuseStrategy,

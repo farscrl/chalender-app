@@ -12,6 +12,7 @@ import { NoticeBoardItemDto } from '../../../../shared/data/notices';
     selector: 'app-notices-list-table',
     templateUrl: './notices-list-table.component.html',
     styleUrls: ['./notices-list-table.component.scss'],
+    standalone: false
 })
 export class NoticesListTableComponent {
 

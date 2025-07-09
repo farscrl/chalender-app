@@ -5,7 +5,8 @@ import { UrlUtil } from '../../../shared/utils/url.util';
 @Component({
     selector: 'app-notice-list-item',
     templateUrl: './notice-list-item.component.html',
-    styleUrls: ['./notice-list-item.component.scss']
+    styleUrls: ['./notice-list-item.component.scss'],
+    standalone: false
 })
 export class NoticeListItemComponent {
     @Input()

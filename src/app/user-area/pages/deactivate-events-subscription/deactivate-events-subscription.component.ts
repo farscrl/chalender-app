@@ -5,7 +5,8 @@ import { EventsSubscriptionsService } from '../../../shared/services/events-subs
 @Component({
     selector: 'app-deactivate-events-subscription',
     templateUrl: './deactivate-events-subscription.component.html',
-    styleUrls: ['./deactivate-events-subscription.component.scss']
+    styleUrls: ['./deactivate-events-subscription.component.scss'],
+    standalone: false
 })
 export class DeactivateEventsSubscriptionComponent {
 

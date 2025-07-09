@@ -5,7 +5,8 @@ import { AuthenticationService } from '../../../shared/services/authentication.s
 @Component({
     selector: 'app-notices',
     templateUrl: './notices.component.html',
-    styleUrls: ['./notices.component.scss']
+    styleUrls: ['./notices.component.scss'],
+    standalone: false
 })
 export class NoticesComponent {
 

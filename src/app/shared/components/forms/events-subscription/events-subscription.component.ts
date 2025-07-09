@@ -8,7 +8,8 @@ import { EventsSubscriptionsService } from '../../../services/events-subscriptio
 @Component({
     selector: 'app-events-subscription',
     templateUrl: './events-subscription.component.html',
-    styleUrls: ['./events-subscription.component.scss']
+    styleUrls: ['./events-subscription.component.scss'],
+    standalone: false
 })
 export class EventsSubscriptionComponent {
 

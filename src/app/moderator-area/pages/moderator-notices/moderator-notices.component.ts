@@ -17,6 +17,7 @@ import dayjs from 'dayjs';
     selector: 'app-moderator-notices',
     templateUrl: './moderator-notices.component.html',
     styleUrls: ['./moderator-notices.component.scss'],
+    standalone: false
 })
 export class ModeratorNoticesComponent {
 

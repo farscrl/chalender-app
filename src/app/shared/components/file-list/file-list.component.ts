@@ -7,7 +7,8 @@ import { DocumentsService } from '../../services/documents.service';
 @Component({
     selector: 'app-file-list',
     templateUrl: './file-list.component.html',
-    styleUrls: ['./file-list.component.scss']
+    styleUrls: ['./file-list.component.scss'],
+    standalone: false
 })
 export class FileListComponent {
 

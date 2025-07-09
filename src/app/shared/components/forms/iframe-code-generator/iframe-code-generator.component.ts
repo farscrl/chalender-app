@@ -7,7 +7,8 @@ import { Genre, Region } from '../../../data/static-data';
 @Component({
     selector: 'app-iframe-code-generator',
     templateUrl: './iframe-code-generator.component.html',
-    styleUrls: ['./iframe-code-generator.component.scss']
+    styleUrls: ['./iframe-code-generator.component.scss'],
+    standalone: false
 })
 export class IframeCodeGeneratorComponent implements OnInit {
     public url = '';

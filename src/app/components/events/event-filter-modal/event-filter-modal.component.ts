@@ -4,7 +4,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
     selector: 'app-event-filter-modal',
     templateUrl: './event-filter-modal.component.html',
-    styleUrls: ['./event-filter-modal.component.scss']
+    styleUrls: ['./event-filter-modal.component.scss'],
+    standalone: false
 })
 export class EventFilterModalComponent {
 

@@ -18,6 +18,7 @@ import { NoticePreviewComponent } from '../../../components/notice-preview/notic
     selector: 'app-new-notice',
     templateUrl: './new-notice.component.html',
     styleUrls: ['./new-notice.component.scss'],
+    standalone: false
 })
 export class NewNoticeComponent {
     images: Image[] = [];

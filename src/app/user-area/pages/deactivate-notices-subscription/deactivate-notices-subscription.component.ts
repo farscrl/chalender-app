@@ -5,7 +5,8 @@ import { NotificationsSubscriptionsService } from '../../../shared/services/noti
 @Component({
     selector: 'app-deactivate-notices-subscription',
     templateUrl: './deactivate-notices-subscription.component.html',
-    styleUrls: ['./deactivate-notices-subscription.component.scss']
+    styleUrls: ['./deactivate-notices-subscription.component.scss'],
+    standalone: false
 })
 export class DeactivateNoticesSubscriptionComponent {
 

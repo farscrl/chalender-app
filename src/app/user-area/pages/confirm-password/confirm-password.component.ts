@@ -8,7 +8,8 @@ import { NotificationsService } from '../../../shared/services/notifications.ser
 @Component({
     selector: 'app-confirm-password',
     templateUrl: './confirm-password.component.html',
-    styleUrls: ['./confirm-password.component.scss']
+    styleUrls: ['./confirm-password.component.scss'],
+    standalone: false
 })
 export class ConfirmPasswordComponent {
     f: FormGroup = new FormGroup<any>({});

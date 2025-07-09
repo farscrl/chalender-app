@@ -4,7 +4,8 @@ import { EventsFilterService } from '../../../shared/services/events-filter.serv
 @Component({
     selector: 'app-no-events',
     templateUrl: './no-events.component.html',
-    styleUrls: ['./no-events.component.scss']
+    styleUrls: ['./no-events.component.scss'],
+    standalone: false
 })
 export class NoEventsComponent {
 

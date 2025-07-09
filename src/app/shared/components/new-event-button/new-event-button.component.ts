@@ -5,7 +5,8 @@ import { IframeService } from '../../../services/iframe.service';
 @Component({
     selector: 'app-new-event-button',
     templateUrl: './new-event-button.component.html',
-    styleUrls: ['./new-event-button.component.scss']
+    styleUrls: ['./new-event-button.component.scss'],
+    standalone: false
 })
 export class NewEventButtonComponent implements OnInit, OnDestroy, AfterViewInit {
     @ViewChild('fab') fab?: ElementRef;

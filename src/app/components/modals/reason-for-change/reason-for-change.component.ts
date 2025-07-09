@@ -49,7 +49,8 @@ const reasonsEdit: Reason[] = [
 @Component({
     selector: 'app-reason-for-change',
     templateUrl: './reason-for-change.component.html',
-    styleUrls: ['./reason-for-change.component.scss']
+    styleUrls: ['./reason-for-change.component.scss'],
+    standalone: false
 })
 export class ReasonForChangeComponent {
     @Input() event: EventVersion | undefined;

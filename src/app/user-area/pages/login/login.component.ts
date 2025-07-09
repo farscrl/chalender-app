@@ -8,7 +8,8 @@ import { NotificationsService } from '../../../shared/services/notifications.ser
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    styleUrls: ['./login.component.scss'],
+    standalone: false
 })
 export class LoginComponent implements OnInit, OnDestroy {
     f: FormGroup = new FormGroup<any>({});

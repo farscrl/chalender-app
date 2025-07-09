@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-my-events-subscriptions',
     templateUrl: './my-events-subscriptions.component.html',
-    styleUrls: ['./my-events-subscriptions.component.scss']
+    styleUrls: ['./my-events-subscriptions.component.scss'],
+    standalone: false
 })
 export class MyEventsSubscriptionsComponent {
     subscriptions: EventsSubscription[] = [];

@@ -4,7 +4,8 @@ import { EventLookup } from '../../../shared/data/event';
 @Component({
     selector: 'app-event-card',
     templateUrl: './event-card.component.html',
-    styleUrls: ['./event-card.component.scss']
+    styleUrls: ['./event-card.component.scss'],
+    standalone: false
 })
 export class EventCardComponent {
 

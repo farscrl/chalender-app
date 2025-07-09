@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
     selector: '[scrollableTitle]',
+    standalone: false
 })
 export class ScrollableTitleDirective implements OnInit, OnDestroy {
     @HostBinding('class.touchesTop') touchesTop: boolean = false;

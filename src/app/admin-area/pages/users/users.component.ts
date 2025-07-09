@@ -7,7 +7,8 @@ import { UserDto, UserFilter } from '../../../shared/data/user';
 @Component({
     selector: 'app-users',
     templateUrl: './users.component.html',
-    styleUrls: ['./users.component.scss']
+    styleUrls: ['./users.component.scss'],
+    standalone: false
 })
 export class UsersComponent implements OnInit {
     users: UserDto[] = [];

@@ -5,7 +5,8 @@ import { UserFormService } from '../../../../user-area/services/user-form.servic
 @Component({
     selector: 'app-user',
     templateUrl: './user.component.html',
-    styleUrls: ['./user.component.scss']
+    styleUrls: ['./user.component.scss'],
+    standalone: false
 })
 export class UserComponent {
     public roles = [

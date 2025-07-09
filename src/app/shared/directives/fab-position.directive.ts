@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
     selector: '[fabPosition]',
+    standalone: false
 })
 export class FabPositionDirective implements OnInit, OnDestroy {
     @HostBinding('style.bottom') setBottom?: string;

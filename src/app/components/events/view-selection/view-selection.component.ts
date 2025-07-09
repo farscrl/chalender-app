@@ -5,7 +5,8 @@ import { NoticesFilterService } from '../../../shared/services/notices-filter.se
 @Component({
     selector: 'app-view-selection',
     templateUrl: './view-selection.component.html',
-    styleUrls: ['./view-selection.component.scss']
+    styleUrls: ['./view-selection.component.scss'],
+    standalone: false
 })
 export class ViewSelectionComponent {
 

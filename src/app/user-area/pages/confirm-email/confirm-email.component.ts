@@ -6,7 +6,8 @@ import { NotificationsService } from '../../../shared/services/notifications.ser
 @Component({
     selector: 'app-confirm-email',
     templateUrl: './confirm-email.component.html',
-    styleUrls: ['./confirm-email.component.scss']
+    styleUrls: ['./confirm-email.component.scss'],
+    standalone: false
 })
 export class ConfirmEmailComponent implements OnInit {
     private code?: string;

@@ -6,7 +6,8 @@ import { NotificationsSubscriptionsService } from '../../../shared/services/noti
 @Component({
     selector: 'app-edit-notices-subscription',
     templateUrl: './edit-notices-subscription.component.html',
-    styleUrls: ['./edit-notices-subscription.component.scss']
+    styleUrls: ['./edit-notices-subscription.component.scss'],
+    standalone: false
 })
 export class EditNoticesSubscriptionComponent {
 

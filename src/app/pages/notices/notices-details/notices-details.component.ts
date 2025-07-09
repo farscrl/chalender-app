@@ -8,7 +8,8 @@ import { UrlUtil } from '../../../shared/utils/url.util';
 @Component({
     selector: 'app-notices-details',
     templateUrl: './notices-details.component.html',
-    styleUrls: ['./notices-details.component.scss']
+    styleUrls: ['./notices-details.component.scss'],
+    standalone: false
 })
 export class NoticesDetailsComponent {
     public notice?: NoticeBoardItemDto;

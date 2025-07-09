@@ -30,6 +30,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
             transition('out => in', animate('400ms ease-in-out')),
         ]),
     ],
+    standalone: false
 })
 export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestroy {
 

@@ -4,7 +4,8 @@ import { NoticesFilterService } from '../../../shared/services/notices-filter.se
 @Component({
     selector: 'app-no-notices',
     templateUrl: './no-notices.component.html',
-    styleUrls: ['./no-notices.component.scss']
+    styleUrls: ['./no-notices.component.scss'],
+    standalone: false
 })
 export class NoNoticesComponent {
 

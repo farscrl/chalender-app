@@ -3,7 +3,8 @@ import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges,} from 
 @Component({
     selector: 'app-pagination',
     templateUrl: './pagination.component.html',
-    styleUrls: ['./pagination.component.scss']
+    styleUrls: ['./pagination.component.scss'],
+    standalone: false
 })
 export class PaginationComponent implements OnChanges {
     @Input() current: number = 0;

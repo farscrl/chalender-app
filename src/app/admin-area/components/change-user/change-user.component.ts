@@ -6,7 +6,8 @@ import { AdminService } from '../../../shared/services/admin.service';
 @Component({
     selector: 'app-change-user',
     templateUrl: './change-user.component.html',
-    styleUrls: ['./change-user.component.scss']
+    styleUrls: ['./change-user.component.scss'],
+    standalone: false
 })
 export class ChangeUserComponent {
 

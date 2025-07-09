@@ -16,7 +16,8 @@ import {
 @Component({
     selector: 'app-notices-filter',
     templateUrl: './notices-filter.component.html',
-    styleUrls: ['./notices-filter.component.scss']
+    styleUrls: ['./notices-filter.component.scss'],
+    standalone: false
 })
 export class NoticesFilterComponent {
 
