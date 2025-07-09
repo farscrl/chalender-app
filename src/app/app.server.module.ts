@@ -1,6 +1,6 @@
 import { NgModule, TransferState } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
-import { AppModule } from './app.module';
+
 import { AppComponent } from './app.component';
 import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 import { translateServerLoaderFactory } from './shared/utils/translate-server.loader';
@@ -9,9 +9,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 
 @NgModule({
     imports: [
-        AppModule,
-        ServerModule,
-    ],
+    ServerModule,
+],
     providers: [
         {
             provide: DeviceDetectorService,

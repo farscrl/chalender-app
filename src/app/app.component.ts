@@ -11,6 +11,11 @@ import {
     PwaInstallInstructionsComponent
 } from './components/pwa-install-instructions/pwa-install-instructions.component';
 import { NavigationService } from './services/navigation.service';
+import { HeaderComponent } from './components/header/header.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { AppRouterOutletDirective } from './routing/app-router-outlet.directive';
+import { FooterComponent } from './components/footer/footer.component';
+import { TrackingRtrComponent } from './components/tracking-rtr/tracking-rtr.component';
 
 const LOCALSTORAGE_APP_OPEN_TIMES = 'chalender-app-open-times';
 
@@ -18,7 +23,7 @@ const LOCALSTORAGE_APP_OPEN_TIMES = 'chalender-app-open-times';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    standalone: false
+    imports: [HeaderComponent, MessagesComponent, AppRouterOutletDirective, FooterComponent, TrackingRtrComponent]
 })
 export class AppComponent implements OnInit {
 
