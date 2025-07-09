@@ -1,32 +1,32 @@
 <section class="content-narrow">
-    <h1>Mes profil</h1>
+  <h1>Mes profil</h1>
 
-    <ng-container *ngIf="showSuccess">
-        <ngb-alert [type]="'success'">
-            <b>Acualisà cun success.</b>
-            Il profil è vegnì actualisà cun success.
-        </ngb-alert>
-    </ng-container>
+  @if (showSuccess) {
+    <ngb-alert [type]="'success'">
+      <b>Acualisà cun success.</b>
+      Il profil è vegnì actualisà cun success.
+    </ngb-alert>
+  }
 
-    <ng-container *ngIf="showError">
-        <ngb-alert [type]="'danger'">
-            <b>Errur cun actualisar.</b>
-            Ina errur è cumparida cun actualisar il profil. Emprova pli tard anc ina giada.
-        </ngb-alert>
-    </ng-container>
+  @if (showError) {
+    <ngb-alert [type]="'danger'">
+      <b>Errur cun actualisar.</b>
+      Ina errur è cumparida cun actualisar il profil. Emprova pli tard anc ina giada.
+    </ngb-alert>
+  }
 
-    <app-user></app-user>
-    <div class="flex justify-content-end">
-        <button type="button" class="clndr accent" (click)="update()" [disabled]="didSubmit">
-            Actualisar il profil
-        </button>
-    </div>
+  <app-user></app-user>
+  <div class="flex justify-content-end">
+    <button type="button" class="clndr accent" (click)="update()" [disabled]="didSubmit">
+      Actualisar il profil
+    </button>
+  </div>
 
-    <div class="links">
-        <a [routerLink]="'/user/change-password'">Midar il pled-clav</a>
-    </div>
+  <div class="links">
+    <a [routerLink]="'/user/change-password'">Midar il pled-clav</a>
+  </div>
 
-    <div class="danger-zone">
-        <span>Zona da privel:</span>&nbsp;<a (click)="deleteAccount()">Stizzar quest conto</a>
-    </div>
+  <div class="danger-zone">
+    <span>Zona da privel:</span>&nbsp;<a (click)="deleteAccount()">Stizzar quest conto</a>
+  </div>
 </section>

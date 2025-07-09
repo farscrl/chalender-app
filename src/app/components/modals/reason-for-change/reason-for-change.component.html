@@ -1,55 +1,72 @@
-<div class="modal-header" *ngIf="event">
-    <h4 class="modal-title" *ngIf="type === 'accept'">
+@if (event) {
+  <div class="modal-header">
+    @if (type === 'accept') {
+      <h4 class="modal-title">
         {{ 'COMPONENTS.MODALS.FEEDBACK.TITLE_ACCEPT' | translate }}
-    </h4>
-    <h4 class="modal-title" *ngIf="type === 'refuse'">
+      </h4>
+    }
+    @if (type === 'refuse') {
+      <h4 class="modal-title">
         {{ 'COMPONENTS.MODALS.FEEDBACK.TITLE_REJECT' | translate }}
-    </h4>
-    <h4 class="modal-title" *ngIf="type === 'edit'">
+      </h4>
+    }
+    @if (type === 'edit') {
+      <h4 class="modal-title">
         {{ 'COMPONENTS.MODALS.FEEDBACK.TITLE_EDIT' | translate }}
-    </h4>
+      </h4>
+    }
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
-</div>
-<div class="modal-body" *ngIf="event">
+  </div>
+}
+@if (event) {
+  <div class="modal-body">
     <form [formGroup]="f">
-        <p *ngIf="type === 'accept'">
-            {{ 'COMPONENTS.MODALS.FEEDBACK.DESCRIPTION_ACCEPT' | translate:{eventTitle: event.title} }}
+      @if (type === 'accept') {
+        <p>
+          {{ 'COMPONENTS.MODALS.FEEDBACK.DESCRIPTION_ACCEPT' | translate:{eventTitle: event.title} }}
         </p>
-
-        <p *ngIf="type === 'refuse'">
-            {{ 'COMPONENTS.MODALS.FEEDBACK.DESCRIPTION_REJECT' | translate:{eventTitle: event.title} }}
+      }
+      @if (type === 'refuse') {
+        <p>
+          {{ 'COMPONENTS.MODALS.FEEDBACK.DESCRIPTION_REJECT' | translate:{eventTitle: event.title} }}
         </p>
-
-        <p *ngIf="type === 'edit'">
-            {{ 'COMPONENTS.MODALS.FEEDBACK.DESCRIPTION_EDIT' | translate:{eventTitle: event.title} }}
+      }
+      @if (type === 'edit') {
+        <p>
+          {{ 'COMPONENTS.MODALS.FEEDBACK.DESCRIPTION_EDIT' | translate:{eventTitle: event.title} }}
         </p>
-
-        <div class="form-check" *ngFor="let reason of reasons; let i=index">
-            <input class="form-check-input" type="radio" id="reason-{{i}}" formControlName="reason" name="reason"
-                   [value]="reason">
-            <label class="form-check-label" for="reason-{{i}}">
-                {{reason.description}}
-            </label>
+      }
+      @for (reason of reasons; track reason; let i = $index) {
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="reason-{{i}}" formControlName="reason" name="reason"
+            [value]="reason">
+          <label class="form-check-label" for="reason-{{i}}">
+            {{reason.description}}
+          </label>
         </div>
-
-        <div class="mb-3" *ngIf="f.controls['comment'].enabled">
-            <label for="comment" class="form-label">
-                {{ 'COMPONENTS.MODALS.FEEDBACK.PERSONALIZED' | translate }}
-            </label>
-            <input formControlName="comment" type="email" class="form-control" id="comment"
-                   [class.is-invalid]="isFieldInvalid('comment')">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('comment')">
-                {{ 'COMPONENTS.MODALS.FEEDBACK.COMMENT' | translate }}
+      }
+      @if (f.controls['comment'].enabled) {
+        <div class="mb-3">
+          <label for="comment" class="form-label">
+            {{ 'COMPONENTS.MODALS.FEEDBACK.PERSONALIZED' | translate }}
+          </label>
+          <input formControlName="comment" type="email" class="form-control" id="comment"
+            [class.is-invalid]="isFieldInvalid('comment')">
+          @if (isFieldInvalid('comment')) {
+            <div class="invalid-feedback">
+              {{ 'COMPONENTS.MODALS.FEEDBACK.COMMENT' | translate }}
             </div>
+          }
         </div>
+      }
     </form>
-
     <div class="buttons">
-        <button type="button" class="clndr" (click)="activeModal.dismiss('')">
-            {{ 'COMPONENTS.MODALS.FEEDBACK.CANCEL' | translate }}
-        </button>
-        <button type="button" class="clndr accent" (click)="acceptReason()">
-            {{ 'COMPONENTS.MODALS.FEEDBACK.SAVE' | translate }}
-        </button>
+      <button type="button" class="clndr" (click)="activeModal.dismiss('')">
+        {{ 'COMPONENTS.MODALS.FEEDBACK.CANCEL' | translate }}
+      </button>
+      <button type="button" class="clndr accent" (click)="acceptReason()">
+        {{ 'COMPONENTS.MODALS.FEEDBACK.SAVE' | translate }}
+      </button>
     </div>
-</div>
+  </div>
+}

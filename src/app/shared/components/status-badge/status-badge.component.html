@@ -1,18 +1,30 @@
-<span class="badge draft" *ngIf="status === 'DRAFT'">
+@if (status === 'DRAFT') {
+  <span class="badge draft">
     {{ 'COMPONENTS.STATUS.DRAFT' | translate }}
-</span>
-<span class="badge in-review" *ngIf="status === 'IN_REVIEW'">
+  </span>
+}
+@if (status === 'IN_REVIEW') {
+  <span class="badge in-review">
     {{ 'COMPONENTS.STATUS.IN_REVIEW' | translate }}
-</span>
-<span class="badge published" *ngIf="status === 'PUBLISHED'">
+  </span>
+}
+@if (status === 'PUBLISHED') {
+  <span class="badge published">
     {{ 'COMPONENTS.STATUS.PUBLISHED' | translate }}
-</span>
-<span class="badge new-modification" *ngIf="status === 'NEW_MODIFICATION'">
+  </span>
+}
+@if (status === 'NEW_MODIFICATION') {
+  <span class="badge new-modification">
     {{ 'COMPONENTS.STATUS.NEW_MODIFICATION' | translate }}
-</span>
-<span class="badge rejected" *ngIf="status === 'REJECTED'">
+  </span>
+}
+@if (status === 'REJECTED') {
+  <span class="badge rejected">
     {{ 'COMPONENTS.STATUS.REJECTED' | translate }}
-</span>
-<span class="badge invalid" *ngIf="status === 'INVALID'">
+  </span>
+}
+@if (status === 'INVALID') {
+  <span class="badge invalid">
     {{ 'COMPONENTS.STATUS.INVALID' | translate }}
-</span>
+  </span>
+}

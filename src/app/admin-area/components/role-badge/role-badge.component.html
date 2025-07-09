@@ -1,4 +1,10 @@
-<span class="badge administrator" *ngIf="role === 'ROLE_ADMIN'">{{ 'COMPONENTS.ROLE.ADMIN' | translate }}</span>
-<span class="badge moderator" *ngIf="role === 'ROLE_MODERATOR'">{{ 'COMPONENTS.ROLE.MODERATOR' | translate }}</span>
-<span class="badge" *ngIf="role === 'ROLE_USER'">{{ 'COMPONENTS.ROLE.USER' | translate }}</span>
+@if (role === 'ROLE_ADMIN') {
+  <span class="badge administrator">{{ 'COMPONENTS.ROLE.ADMIN' | translate }}</span>
+}
+@if (role === 'ROLE_MODERATOR') {
+  <span class="badge moderator">{{ 'COMPONENTS.ROLE.MODERATOR' | translate }}</span>
+}
+@if (role === 'ROLE_USER') {
+  <span class="badge">{{ 'COMPONENTS.ROLE.USER' | translate }}</span>
+}
 

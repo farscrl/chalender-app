@@ -1,12 +1,12 @@
-<div class="container" *ngIf="notice">
+@if (notice) {
+  <div class="container">
     <div class="navi">
-        <app-back-button [backTo]="'/notices'"/>
+      <app-back-button [backTo]="'/notices'"/>
     </div>
-
-
     <section class="content-narrow">
-        <app-notice-details [notice]="notice"></app-notice-details>
+      <app-notice-details [notice]="notice"></app-notice-details>
     </section>
-</div>
+  </div>
+}
 
 

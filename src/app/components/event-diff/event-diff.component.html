@@ -1,163 +1,175 @@
 <section class="content-wide">
-    <h1>{{ 'COMPONENTS.EVENT_DIFF.TITLE' | translate }}</h1>
+  <h1>{{ 'COMPONENTS.EVENT_DIFF.TITLE' | translate }}</h1>
 
-    <table class="table">
-        <tbody>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.TITLE' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="titleDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="titleDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.DESCRIPTION' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="descriptionDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="descriptionDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.CATEGORIES' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="genresDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="genresDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.REGIONS' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="regionsDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="regionsDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.LANGUAGES' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="eventLanguagesDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="eventLanguagesDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.LOCATION' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="locationDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="locationDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.ADDRESS' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="addressDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="addressDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.ONLINE_ONLY' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="onlyOnlineDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="onlyOnlineDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.ORGANIZER' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="organiserDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="organiserDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.PRICE' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="pricingDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="pricingDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.URL' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="linkDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="linkDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.CONTACT' | translate }}</th>
-            <td>
-                <app-diff-field type="removed" [diff]="contactDiff"></app-diff-field>
-            </td>
-            <td>
-                <app-diff-field type="added" [diff]="contactDiff"></app-diff-field>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.OCCURRENCES' | translate }}</th>
-            <td>
-                <table>
-                    <tr *ngFor="let oDiff of occurrenceDiff">
-                        <td>
-                            <app-diff-field type="removed" [diff]="oDiff"></app-diff-field>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <table>
-                    <tr *ngFor="let oDiff of occurrenceDiff">
-                        <td>
-                            <app-diff-field type="added" [diff]="oDiff"></app-diff-field>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.IMAGES' | translate }}</th>
-            <td>
-                <img src="{{img.url + '?width=150&auto_optimize=medium' }}" alt="{{ img.originalName }}"
-                     *ngFor="let img of oldEventVersion.images">
-            </td>
-            <td>
-                <img src="{{img.url + '?width=150&auto_optimize=medium' }}" alt="{{ img.originalName }}"
-                     *ngFor="let img of newEventVersion.images">
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.DOCUMENTS' | translate }}</th>
-            <td>
-                <a href="{{ doc.url }}" target="_blank" *ngFor="let doc of oldEventVersion.documents"
-                   style="display: block">
-                    {{ doc.originalName }}
-                </a>
-            </td>
-            <td>
-                <a href="{{ doc.url }}" target="_blank" *ngFor="let doc of newEventVersion.documents"
-                   style="display: block">
-                    {{ doc.originalName }}
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.TITLE' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="titleDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="titleDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.DESCRIPTION' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="descriptionDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="descriptionDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.CATEGORIES' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="genresDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="genresDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.REGIONS' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="regionsDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="regionsDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.LANGUAGES' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="eventLanguagesDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="eventLanguagesDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.LOCATION' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="locationDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="locationDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.ADDRESS' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="addressDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="addressDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.ONLINE_ONLY' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="onlyOnlineDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="onlyOnlineDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.ORGANIZER' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="organiserDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="organiserDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.PRICE' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="pricingDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="pricingDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.URL' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="linkDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="linkDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.CONTACT' | translate }}</th>
+        <td>
+          <app-diff-field type="removed" [diff]="contactDiff"></app-diff-field>
+        </td>
+        <td>
+          <app-diff-field type="added" [diff]="contactDiff"></app-diff-field>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.OCCURRENCES' | translate }}</th>
+        <td>
+          <table>
+            @for (oDiff of occurrenceDiff; track oDiff) {
+              <tr>
+                <td>
+                  <app-diff-field type="removed" [diff]="oDiff"></app-diff-field>
+                </td>
+              </tr>
+            }
+          </table>
+        </td>
+        <td>
+          <table>
+            @for (oDiff of occurrenceDiff; track oDiff) {
+              <tr>
+                <td>
+                  <app-diff-field type="added" [diff]="oDiff"></app-diff-field>
+                </td>
+              </tr>
+            }
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.IMAGES' | translate }}</th>
+        <td>
+          @for (img of oldEventVersion.images; track img) {
+            <img src="{{img.url + '?width=150&auto_optimize=medium' }}" alt="{{ img.originalName }}"
+              >
+          }
+        </td>
+        <td>
+          @for (img of newEventVersion.images; track img) {
+            <img src="{{img.url + '?width=150&auto_optimize=medium' }}" alt="{{ img.originalName }}"
+              >
+          }
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">{{ 'COMPONENTS.EVENT_DIFF.FIELDS.DOCUMENTS' | translate }}</th>
+        <td>
+          @for (doc of oldEventVersion.documents; track doc) {
+            <a href="{{ doc.url }}" target="_blank"
+              style="display: block">
+              {{ doc.originalName }}
+            </a>
+          }
+        </td>
+        <td>
+          @for (doc of newEventVersion.documents; track doc) {
+            <a href="{{ doc.url }}" target="_blank"
+              style="display: block">
+              {{ doc.originalName }}
+            </a>
+          }
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </section>

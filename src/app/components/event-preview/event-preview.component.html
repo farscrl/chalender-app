@@ -1,28 +1,32 @@
 <div class="close-button" (click)="close()">
-    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="4.06641" y="28.749" width="35" height="3" rx="1.5" transform="rotate(-45 4.06641 28.749)"
-              fill="#1C2B33"/>
-        <rect x="6.18555" y="4.06494" width="35" height="3" rx="1.5" transform="rotate(45 6.18555 4.06494)"
-              fill="#1C2B33"/>
-    </svg>
+  <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4.06641" y="28.749" width="35" height="3" rx="1.5" transform="rotate(-45 4.06641 28.749)"
+      fill="#1C2B33"/>
+    <rect x="6.18555" y="4.06494" width="35" height="3" rx="1.5" transform="rotate(45 6.18555 4.06494)"
+      fill="#1C2B33"/>
+  </svg>
 </div>
 
-<div class="event-teasers" *ngIf="eventDto">
+@if (eventDto) {
+  <div class="event-teasers">
     <div>
-        <div class="event-teaser-desktop">
-            <div class="inline-description">
-                {{ 'COMPONENTS.MODALS.PREVIEW.OVERVIEW' | translate }}
-            </div>
-            <app-event-card [event]="eventLookup"></app-event-card>
+      <div class="event-teaser-desktop">
+        <div class="inline-description">
+          {{ 'COMPONENTS.MODALS.PREVIEW.OVERVIEW' | translate }}
         </div>
+        <app-event-card [event]="eventLookup"></app-event-card>
+      </div>
     </div>
-</div>
+  </div>
+}
 
 <hr>
 
-<div class="event-details" *ngIf="eventDto">
-    <div class="inline-description">
+  @if (eventDto) {
+    <div class="event-details">
+      <div class="inline-description">
         {{ 'COMPONENTS.MODALS.PREVIEW.DETAIL' | translate }}
+      </div>
+      <app-event-details [event]="eventDto"></app-event-details>
     </div>
-    <app-event-details [event]="eventDto"></app-event-details>
-</div>
+  }

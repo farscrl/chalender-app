@@ -1,6 +1,8 @@
 <section class="content-narrow">
-    <h1>Midar l’abunament</h1>
+  <h1>Midar l’abunament</h1>
 
+  @if (subscription) {
     <app-notices-subscription [subscription]="subscription" (success)="success()" (cancel)="cancel()"
-                              *ngIf="subscription"></app-notices-subscription>
+    ></app-notices-subscription>
+  }
 </section>

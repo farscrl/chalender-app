@@ -1,61 +1,69 @@
 <section class="content-narrow">
-    <h1>Crear in nov conto d’utilisad:ra</h1>
+  <h1>Crear in nov conto d’utilisad:ra</h1>
 
-    <p>Cun in nov conto d'utilisad:ra pos ti abunar occurrenzas ed endatar atgnas occurrenzas per las publitgar en il
-        chalender.</p>
+  <p>Cun in nov conto d'utilisad:ra pos ti abunar occurrenzas ed endatar atgnas occurrenzas per las publitgar en il
+  chalender.</p>
 
-    <form [formGroup]="f">
-        <div class="mb-3">
-            <label for="firstName" class="form-label">Prenum</label>
-            <input type="text" id="firstName" name="firstName" class="form-control" formControlName="firstName"
-                   [class.is-invalid]="isFieldInvalid('firstName')">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('firstName')">
-                Endatescha p.pl. in prenum.
-            </div>
+  <form [formGroup]="f">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Prenum</label>
+      <input type="text" id="firstName" name="firstName" class="form-control" formControlName="firstName"
+        [class.is-invalid]="isFieldInvalid('firstName')">
+      @if (isFieldInvalid('firstName')) {
+        <div class="invalid-feedback">
+          Endatescha p.pl. in prenum.
         </div>
+      }
+    </div>
 
-        <div class="mb-3">
-            <label for="lastName" class="form-label">Num</label>
-            <input type="text" id="lastName" name="lastName" class="form-control" formControlName="lastName"
-                   [class.is-invalid]="isFieldInvalid('lastName')">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('lastName')">
-                Endatescha p.pl. in num.
-            </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Num</label>
+      <input type="text" id="lastName" name="lastName" class="form-control" formControlName="lastName"
+        [class.is-invalid]="isFieldInvalid('lastName')">
+      @if (isFieldInvalid('lastName')) {
+        <div class="invalid-feedback">
+          Endatescha p.pl. in num.
         </div>
+      }
+    </div>
 
-        <div class="mb-3">
-            <label for="organisation" class="form-label">Organisaziun (facultativ)</label>
-            <input type="text" id="organisation" name="organisation" class="form-control"
-                   formControlName="organisation">
-        </div>
+    <div class="mb-3">
+      <label for="organisation" class="form-label">Organisaziun (facultativ)</label>
+      <input type="text" id="organisation" name="organisation" class="form-control"
+        formControlName="organisation">
+    </div>
 
-        <div class="mb-3">
-            <label for="email" class="form-label">Adressa dad e-mail</label>
-            <input type="email" id="email" name="email" class="form-control" formControlName="email"
-                   [class.is-invalid]="isFieldInvalid('email')">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('email')">
-                Endatescha p.pl. ina adressa dad e-mail valida.
-            </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Adressa dad e-mail</label>
+      <input type="email" id="email" name="email" class="form-control" formControlName="email"
+        [class.is-invalid]="isFieldInvalid('email')">
+      @if (isFieldInvalid('email')) {
+        <div class="invalid-feedback">
+          Endatescha p.pl. ina adressa dad e-mail valida.
         </div>
+      }
+    </div>
 
-        <div class="mb-3">
-            <label for="password" class="form-label">Pled-clav</label>
-            <input type="password" id="password" name="password" class="form-control" formControlName="password"
-                   [class.is-invalid]="isFieldInvalid('password')">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('password')">
-                <ng-container *ngIf="isFieldError('password', 'required')">
-                    Endatescha in pled-clav.
-                </ng-container>
-                <ng-container *ngIf="isFieldError('password', 'minlength')">
-                    Il pled-clav sto avair ina lunghezza dad almain 8 caracters.
-                </ng-container>
-            </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Pled-clav</label>
+      <input type="password" id="password" name="password" class="form-control" formControlName="password"
+        [class.is-invalid]="isFieldInvalid('password')">
+      @if (isFieldInvalid('password')) {
+        <div class="invalid-feedback">
+          @if (isFieldError('password', 'required')) {
+            Endatescha in pled-clav.
+          }
+          @if (isFieldError('password', 'minlength')) {
+            Il pled-clav sto avair ina lunghezza dad almain 8 caracters.
+          }
         </div>
+      }
+    </div>
 
-        <div class="flex justify-content-end">
-            <button type="button" class="clndr accent" (click)="register()" [disabled]="didSubmit">
-                Crear il conto d'utilisad:ra
-            </button>
-        </div>
-    </form>
+    <div class="flex justify-content-end">
+      <button type="button" class="clndr accent" (click)="register()" [disabled]="didSubmit">
+        Crear il conto d'utilisad:ra
+      </button>
+    </div>
+  </form>
 </section>

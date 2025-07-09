@@ -1,160 +1,160 @@
 <section class="content-wide">
-    <h1>Moderaziun da las occurrenzas</h1>
+  <h1>Moderaziun da las occurrenzas</h1>
 
-    <div class="filter">
-        <div class="status">
-            <b>Status:</b>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inReview"
-                       [(ngModel)]="filter.includeStateInReview" (ngModelChange)="search()">
-                <label class="form-check-label" for="inReview">nov</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="newModification"
-                       [(ngModel)]="filter.includeStateNewModification" (ngModelChange)="search()">
-                <label class="form-check-label" for="newModification">midada</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="published"
-                       [(ngModel)]="filter.includeStatePublished" (ngModelChange)="search()">
-                <label class="form-check-label" for="published">publitgà</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="rejected"
-                       [(ngModel)]="filter.includeStateRejected" (ngModelChange)="search()">
-                <label class="form-check-label" for="rejected">refusà</label>
-            </div>
-        </div>
-
-
-        <form (ngSubmit)="updateSearchTerm(searchTerm.value)" class="filter-right">
-            <div class="time-selection">
-                <select class="form-select form-select-lg" [(ngModel)]="filter.dates"
-                        [ngModelOptions]="{standalone: true}" (ngModelChange)="search()">
-                    <option value="FUTURE" selected>be futur</option>
-                    <option value="PAST">be passà</option>
-                    <option value="ALL">tut</option>
-                </select>
-            </div>
-
-            <input type="text" class="form-control" #searchTerm>
-            <button class="clndr accent" type="submit">Tschertgar</button>
-        </form>
+  <div class="filter">
+    <div class="status">
+      <b>Status:</b>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inReview"
+          [(ngModel)]="filter.includeStateInReview" (ngModelChange)="search()">
+        <label class="form-check-label" for="inReview">nov</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="newModification"
+          [(ngModel)]="filter.includeStateNewModification" (ngModelChange)="search()">
+        <label class="form-check-label" for="newModification">midada</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="published"
+          [(ngModel)]="filter.includeStatePublished" (ngModelChange)="search()">
+        <label class="form-check-label" for="published">publitgà</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="rejected"
+          [(ngModel)]="filter.includeStateRejected" (ngModelChange)="search()">
+        <label class="form-check-label" for="rejected">refusà</label>
+      </div>
     </div>
-    <table class="table table-striped">
-        <thead class="table-light">
+
+
+    <form (ngSubmit)="updateSearchTerm(searchTerm.value)" class="filter-right">
+      <div class="time-selection">
+        <select class="form-select form-select-lg" [(ngModel)]="filter.dates"
+          [ngModelOptions]="{standalone: true}" (ngModelChange)="search()">
+          <option value="FUTURE" selected>be futur</option>
+          <option value="PAST">be passà</option>
+          <option value="ALL">tut</option>
+        </select>
+      </div>
+
+      <input type="text" class="form-control" #searchTerm>
+      <button class="clndr accent" type="submit">Tschertgar</button>
+    </form>
+  </div>
+  <table class="table table-striped">
+    <thead class="table-light">
+      <tr>
+        <th scope="col" sortable="MODIFIED_DATE" (sort)="onSort($event)">Ultima midada</th>
+        <th scope="col" sortable="USER" (sort)="onSort($event)">User</th>
+        <th scope="col" sortable="DATE" (sort)="onSort($event)">Datas</th>
+        <th scope="col" sortable="TITLE" (sort)="onSort($event)">Titel</th>
+        <th scope="col" sortable="STATE" (sort)="onSort($event)">Status</th>
+        <th scope="col" style="width: 245px">Acziuns</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (event of events; track event; let i = $index) {
         <tr>
-            <th scope="col" sortable="MODIFIED_DATE" (sort)="onSort($event)">Ultima midada</th>
-            <th scope="col" sortable="USER" (sort)="onSort($event)">User</th>
-            <th scope="col" sortable="DATE" (sort)="onSort($event)">Datas</th>
-            <th scope="col" sortable="TITLE" (sort)="onSort($event)">Titel</th>
-            <th scope="col" sortable="STATE" (sort)="onSort($event)">Status</th>
-            <th scope="col" style="width: 245px">Acziuns</th>
+          <td>{{ datesUtil.getDateTimeString(event.lastModifiedDate!) }}</td>
+          <td>{{event.ownerEmail}}</td>
+          <td>
+            @for (occurrence of getEventVersion(event)?.occurrences; track occurrence) {
+              <div class="date"
+              >{{occurrence.date}}</div>
+            }
+          </td>
+          <td>{{getEventVersion(event)?.title}}</td>
+          <td>
+            <app-status-badge [status]="event.publicationStatus!"></app-status-badge>
+          </td>
+          <td>
+            <div class="button stroke" placement="bottom" ngbTooltip="Prevista" (click)="showPreview(event)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"
+                  stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+                <path
+                  d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="button stroke" placement="bottom" ngbTooltip="Mussar differenzas"
+              (click)="event.publicationStatus === 'NEW_MODIFICATION' ? showDiff(event) : false"
+              [class.inactive]="!canShowDiff(event)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.6562 2.7085L21.8989 6.95114L17.6562 11.1938" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21.8984 6.9511L8.99974 6.95144" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.24219 21.1923L1.99955 16.9497L6.24219 12.707" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1.99961 16.9496L14.9993 16.9485" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="vr"></div>
+            <div class="button stroke" placement="bottom" ngbTooltip="Acceptar"
+              (click)="hasChanges(event) ? accept(event) : false"
+              [class.inactive]="!hasChanges(event)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M9 11L12 14L22 4" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+                <path
+                  d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="button stroke" placement="bottom" ngbTooltip="Refusar"
+              (click)="hasChanges(event) ? refuse(event) : false"
+              [class.inactive]="!hasChanges(event)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 9L15 15" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+                <path d="M15 9L9 15" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="button stroke" placement="bottom" ngbTooltip="Modifitgar l'occurrenza"
+              (click)="edit(event)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path
+                  d="M18.5 2.50023C18.8978 2.1024 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.1024 21.5 2.50023C21.8978 2.89805 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.1024 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="vr"></div>
+            <div ngbDropdown container="body" style="display: inline-block;">
+              <button type="button" class="btn btn-sm" ngbDropdownToggle>…</button>
+              <div ngbDropdownMenu>
+                <button ngbDropdownItem (click)="delete(event)" ngbTooltip="Stizzar l’occurrenza">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" style="margin-bottom: 4px;margin-right: 4px;">
+                    <path d="M3 6H5H21" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                    <path
+                      d="M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6"
+                      stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                    <path d="M10 11V17" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                    <path d="M14 11V17" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                  </svg>
+                  <span>Stizzar</span>
+                </button>
+              </div>
+            </div>
+          </td>
         </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let event of events; let i = index">
-            <td>{{ datesUtil.getDateTimeString(event.lastModifiedDate!) }}</td>
-            <td>{{event.ownerEmail}}</td>
-            <td>
-                <div class="date"
-                     *ngFor="let occurrence of getEventVersion(event)?.occurrences">{{occurrence.date}}</div>
-            </td>
-            <td>{{getEventVersion(event)?.title}}</td>
-            <td>
-                <app-status-badge [status]="event.publicationStatus!"></app-status-badge>
-            </td>
-            <td>
-                <div class="button stroke" placement="bottom" ngbTooltip="Prevista" (click)="showPreview(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"
-                              stroke-width="2"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                        <path
-                            d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="button stroke" placement="bottom" ngbTooltip="Mussar differenzas"
-                     (click)="event.publicationStatus === 'NEW_MODIFICATION' ? showDiff(event) : false"
-                     [class.inactive]="!canShowDiff(event)">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.6562 2.7085L21.8989 6.95114L17.6562 11.1938" stroke-width="2"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M21.8984 6.9511L8.99974 6.95144" stroke-width="2"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M6.24219 21.1923L1.99955 16.9497L6.24219 12.707" stroke-width="2"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M1.99961 16.9496L14.9993 16.9485" stroke-width="2"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
+      }
+    </tbody>
+  </table>
 
-                <div class="vr"></div>
-
-                <div class="button stroke" placement="bottom" ngbTooltip="Acceptar"
-                     (click)="hasChanges(event) ? accept(event) : false"
-                     [class.inactive]="!hasChanges(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M9 11L12 14L22 4" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path
-                            d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="button stroke" placement="bottom" ngbTooltip="Refusar"
-                     (click)="hasChanges(event) ? refuse(event) : false"
-                     [class.inactive]="!hasChanges(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path
-                            d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9 9L15 15" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path d="M15 9L9 15" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="button stroke" placement="bottom" ngbTooltip="Modifitgar l'occurrenza"
-                     (click)="edit(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path
-                            d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path
-                            d="M18.5 2.50023C18.8978 2.1024 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.1024 21.5 2.50023C21.8978 2.89805 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.1024 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-
-                <div class="vr"></div>
-
-                <div ngbDropdown container="body" style="display: inline-block;">
-                    <button type="button" class="btn btn-sm" ngbDropdownToggle>…</button>
-                    <div ngbDropdownMenu>
-                        <button ngbDropdownItem (click)="delete(event)" ngbTooltip="Stizzar l’occurrenza">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                 fill="none" style="margin-bottom: 4px;margin-right: 4px;">
-                                <path d="M3 6H5H21" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                                <path
-                                    d="M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6"
-                                    stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"/>
-                                <path d="M10 11V17" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                                <path d="M14 11V17" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                            </svg>
-                            <span>Stizzar</span>
-                        </button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <app-pagination [total]="total" [current]="current" (goTo)="goToPage($event)"></app-pagination>
+  <app-pagination [total]="total" [current]="current" (goTo)="goToPage($event)"></app-pagination>
 </section>

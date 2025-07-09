@@ -1,52 +1,70 @@
-<div class="filter-menu" *ngIf="iframeService.isShowSearchValue() || iframeService.isShowViewSelectionValue()">
-    <button class="filter-button d-none d-md-block" (click)="openDesktopFilter()"
-            [class.active]="eventsFilterService.numberOfFilters > 0"
-            *ngIf="iframeService.isShowSearchValue()">
-        <span class="txt"
-              *ngIf="eventsFilterService.isFilterCollapsed">{{ 'EVENT_LIST.SHOW_FILTER' | translate }}</span>
-        <span class="txt"
-              *ngIf="!eventsFilterService.isFilterCollapsed">{{ 'EVENT_LIST.HIDE_FILTER' | translate }}</span>
-        <span class="counter" *ngIf="eventsFilterService.numberOfFilters > 0">
+@if (iframeService.isShowSearchValue() || iframeService.isShowViewSelectionValue()) {
+  <div class="filter-menu">
+    @if (iframeService.isShowSearchValue()) {
+      <button class="filter-button d-none d-md-block" (click)="openDesktopFilter()"
+        [class.active]="eventsFilterService.numberOfFilters > 0"
+        >
+        @if (eventsFilterService.isFilterCollapsed) {
+          <span class="txt"
+          >{{ 'EVENT_LIST.SHOW_FILTER' | translate }}</span>
+        }
+        @if (!eventsFilterService.isFilterCollapsed) {
+          <span class="txt"
+          >{{ 'EVENT_LIST.HIDE_FILTER' | translate }}</span>
+        }
+        @if (eventsFilterService.numberOfFilters > 0) {
+          <span class="counter">
             {{ eventsFilterService.numberOfFilters }}
-        </span>
-    </button>
-
-    <app-view-selection *ngIf="iframeService.isShowViewSelectionValue()"></app-view-selection>
-
-    <button class="filter-button d-md-none" (click)="openMobileFilter()"
-            [class.active]="eventsFilterService.numberOfFilters > 0"
-            *ngIf="iframeService.isShowSearchValue()">
+          </span>
+        }
+      </button>
+    }
+    @if (iframeService.isShowViewSelectionValue()) {
+      <app-view-selection></app-view-selection>
+    }
+    @if (iframeService.isShowSearchValue()) {
+      <button class="filter-button d-md-none" (click)="openMobileFilter()"
+        [class.active]="eventsFilterService.numberOfFilters > 0"
+        >
         <span class="txt">{{ 'EVENT_LIST.SHOW_FILTER' | translate }}</span>
-        <span class="counter" *ngIf="eventsFilterService.numberOfFilters > 0">
+        @if (eventsFilterService.numberOfFilters > 0) {
+          <span class="counter">
             {{ eventsFilterService.numberOfFilters }}
-        </span>
-    </button>
-</div>
+          </span>
+        }
+      </button>
+    }
+  </div>
+}
 
-<ng-container *ngFor="let cat of categorizedEvents; let i = index">
-    <div>
-        <div class="day-title" [class.first]="i === 0" [class.iframe]="iframeService.isIframeValue()" scrollableTitle>
-            <!--<h2>{{cat.formattedDate}}</h2>-->
-            <h2>{{cat.formattedDateShort}} <span class="weekday">{{ cat.formattedWeekday }}</span></h2>
-        </div>
-        <ul>
-            <li *ngFor="let event of cat.events; let i = index">
-                <app-event-card [event]="event" [isFirst]="i === 0"></app-event-card>
-            </li>
-        </ul>
+@for (cat of categorizedEvents; track cat; let i = $index) {
+  <div>
+    <div class="day-title" [class.first]="i === 0" [class.iframe]="iframeService.isIframeValue()" scrollableTitle>
+      <!--<h2>{{cat.formattedDate}}</h2>-->
+      <h2>{{cat.formattedDateShort}} <span class="weekday">{{ cat.formattedWeekday }}</span></h2>
     </div>
-</ng-container>
+    <ul>
+      @for (event of cat.events; track event; let i = $index) {
+        <li>
+          <app-event-card [event]="event" [isFirst]="i === 0"></app-event-card>
+        </li>
+      }
+    </ul>
+  </div>
+}
 
-<ng-container *ngIf="categorizedEvents.length === 0 && !eventsFilterService.isSearching">
-    <div class="no-events-hack">
-        <div class="day-title first"></div>
-        <app-no-events></app-no-events>
-    </div>
-</ng-container>
+@if (categorizedEvents.length === 0 && !eventsFilterService.isSearching) {
+  <div class="no-events-hack">
+    <div class="day-title first"></div>
+    <app-no-events></app-no-events>
+  </div>
+}
 
-<div class="text-center pb-5" *ngIf="eventsFilterService.hasMorePages">
+@if (eventsFilterService.hasMorePages) {
+  <div class="text-center pb-5">
     <button class="clndr accent load-next-page" (click)="eventsFilterService.loadNextPage()"
-            [disabled]="eventsFilterService.isSearching">
-        {{ 'EVENT_LIST.LOAD_MORE' | translate }}
+      [disabled]="eventsFilterService.isSearching">
+      {{ 'EVENT_LIST.LOAD_MORE' | translate }}
     </button>
-</div>
+  </div>
+}

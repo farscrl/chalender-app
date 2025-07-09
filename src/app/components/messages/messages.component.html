@@ -1,5 +1,9 @@
-<section *ngIf="notificationsService.messages.length > 0">
-    <ngb-alert [type]="message.type" (closed)="notificationsService.dismissMessage(message)"
-               *ngFor="let message of notificationsService.messages"><b>{{ message.title }}.</b> {{ message.message }}
-    </ngb-alert>
-</section>
+@if (notificationsService.messages.length > 0) {
+  <section>
+    @for (message of notificationsService.messages; track message) {
+      <ngb-alert [type]="message.type" (closed)="notificationsService.dismissMessage(message)"
+        ><b>{{ message.title }}.</b> {{ message.message }}
+      </ngb-alert>
+    }
+  </section>
+}

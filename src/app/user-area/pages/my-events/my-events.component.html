@@ -1,70 +1,79 @@
 <section class="content-wide">
-    <h1>Mias occurrenzas</h1>
+  <h1>Mias occurrenzas</h1>
 
-    <div class="filter">
-        <div></div>
-        <form (ngSubmit)="updateSearchTerm(searchTerm.value)" class="filter-right">
-            <div class="time-selection">
-                <select class="form-select form-select-lg" [(ngModel)]="filter.dates"
-                        [ngModelOptions]="{standalone: true}" (ngModelChange)="search()">
-                    <option value="FUTURE" selected>be futur</option>
-                    <option value="PAST">be passà</option>
-                    <option value="ALL">tut</option>
-                </select>
-            </div>
+  <div class="filter">
+    <div></div>
+    <form (ngSubmit)="updateSearchTerm(searchTerm.value)" class="filter-right">
+      <div class="time-selection">
+        <select class="form-select form-select-lg" [(ngModel)]="filter.dates"
+          [ngModelOptions]="{standalone: true}" (ngModelChange)="search()">
+          <option value="FUTURE" selected>be futur</option>
+          <option value="PAST">be passà</option>
+          <option value="ALL">tut</option>
+        </select>
+      </div>
 
-            <input type="text" class="form-control" #searchTerm>
-            <button class="clndr accent" type="submit">Tschertgar</button>
-        </form>
-    </div>
-    <table class="table table-striped" *ngIf="!isLoading && events.length > 0">
-        <thead class="table-light">
+      <input type="text" class="form-control" #searchTerm>
+      <button class="clndr accent" type="submit">Tschertgar</button>
+    </form>
+  </div>
+  @if (!isLoading && events.length > 0) {
+    <table class="table table-striped">
+      <thead class="table-light">
         <tr>
-            <th scope="col">Datas</th>
-            <th scope="col">Titel</th>
-            <th scope="col">Status</th>
-            <th scope="col">Acziuns</th>
+          <th scope="col">Datas</th>
+          <th scope="col">Titel</th>
+          <th scope="col">Status</th>
+          <th scope="col">Acziuns</th>
         </tr>
-        </thead>
-
-        <tbody>
-        <tr *ngFor="let event of events; let i = index">
+      </thead>
+      <tbody>
+        @for (event of events; track event; let i = $index) {
+          <tr>
             <td>
+              @for (occurrence of getEventVersion(event)?.occurrences; track occurrence) {
                 <div class="date"
-                     *ngFor="let occurrence of getEventVersion(event)?.occurrences">{{occurrence.date}}</div>
+                >{{occurrence.date}}</div>
+              }
             </td>
             <th scope="row">{{getEventVersion(event)?.title}}</th>
             <td>
-                <app-status-badge [status]="event.publicationStatus!"></app-status-badge>
+              <app-status-badge [status]="event.publicationStatus!"></app-status-badge>
             </td>
             <td>
-                <div class="button" placement="bottom" ngbTooltip="Prevista" (click)="showPreview(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                        <path
-                            d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"/>
-                    </svg>
-                </div>
-                <div class="button" placement="bottom" ngbTooltip="Modifitgar occurrenza" (click)="edit(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                        <path
-                            d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/>
-                    </svg>
-                </div>
-                <!--<div class="button" placement="bottom" ngbTooltip="Stizzar occurrenza" (click)="delete(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path
-                        d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"/></svg>
-                </div>-->
-            </td>
+              <div class="button" placement="bottom" ngbTooltip="Prevista" (click)="showPreview(event)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                  <path
+                    d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"/>
+                </svg>
+              </div>
+              <div class="button" placement="bottom" ngbTooltip="Modifitgar occurrenza" (click)="edit(event)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                  <path
+                    d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/>
+                </svg>
+              </div>
+              <!--<div class="button" placement="bottom" ngbTooltip="Stizzar occurrenza" (click)="delete(event)">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path
+              d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"/></svg>
+            </div>-->
+          </td>
         </tr>
-        </tbody>
-    </table>
+      }
+    </tbody>
+  </table>
+}
 
-    <app-pagination [total]="total" [current]="current" (goTo)="goToPage($event)"
-                    *ngIf="!isLoading && events.length > 0"></app-pagination>
+@if (!isLoading && events.length > 0) {
+  <app-pagination [total]="total" [current]="current" (goTo)="goToPage($event)"
+  ></app-pagination>
+}
 
-    <p *ngIf="!isLoading && events.length === 0">
-        Ti has registrà anc naginas occurrenzas.
-    </p>
+@if (!isLoading && events.length === 0) {
+  <p>
+    Ti has registrà anc naginas occurrenzas.
+  </p>
+}
 </section>
 
 <app-new-event-button/>

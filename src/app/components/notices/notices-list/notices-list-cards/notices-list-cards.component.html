@@ -1,41 +1,61 @@
-<div class="filter-menu" *ngIf="iframeService.isShowSearchValue() || iframeService.isShowViewSelectionValue()">
-    <button class="filter-button d-none d-md-block" (click)="openDesktopFilter()"
-            [class.active]="noticesFilterService.numberOfFilters > 0"
-            *ngIf="iframeService.isShowSearchValue()">
-        <span class="txt"
-              *ngIf="noticesFilterService.isFilterCollapsed">{{ 'EVENT_LIST.SHOW_FILTER' | translate }}</span>
-        <span class="txt"
-              *ngIf="!noticesFilterService.isFilterCollapsed">{{ 'EVENT_LIST.HIDE_FILTER' | translate }}</span>
-        <span class="counter" *ngIf="noticesFilterService.numberOfFilters > 0">
+@if (iframeService.isShowSearchValue() || iframeService.isShowViewSelectionValue()) {
+  <div class="filter-menu">
+    @if (iframeService.isShowSearchValue()) {
+      <button class="filter-button d-none d-md-block" (click)="openDesktopFilter()"
+        [class.active]="noticesFilterService.numberOfFilters > 0"
+        >
+        @if (noticesFilterService.isFilterCollapsed) {
+          <span class="txt"
+          >{{ 'EVENT_LIST.SHOW_FILTER' | translate }}</span>
+        }
+        @if (!noticesFilterService.isFilterCollapsed) {
+          <span class="txt"
+          >{{ 'EVENT_LIST.HIDE_FILTER' | translate }}</span>
+        }
+        @if (noticesFilterService.numberOfFilters > 0) {
+          <span class="counter">
             {{ noticesFilterService.numberOfFilters }}
-        </span>
-    </button>
-
-    <app-view-selection *ngIf="iframeService.isShowViewSelectionValue()" type="notices"></app-view-selection>
-
-    <button class="filter-button d-md-none" (click)="openMobileFilter()"
-            [class.active]="noticesFilterService.numberOfFilters > 0"
-            *ngIf="iframeService.isShowSearchValue()">
+          </span>
+        }
+      </button>
+    }
+    @if (iframeService.isShowViewSelectionValue()) {
+      <app-view-selection type="notices"></app-view-selection>
+    }
+    @if (iframeService.isShowSearchValue()) {
+      <button class="filter-button d-md-none" (click)="openMobileFilter()"
+        [class.active]="noticesFilterService.numberOfFilters > 0"
+        >
         <span class="txt">{{ 'EVENT_LIST.SHOW_FILTER' | translate }}</span>
-        <span class="counter" *ngIf="noticesFilterService.numberOfFilters > 0">
+        @if (noticesFilterService.numberOfFilters > 0) {
+          <span class="counter">
             {{ noticesFilterService.numberOfFilters }}
-        </span>
-    </button>
-</div>
+          </span>
+        }
+      </button>
+    }
+  </div>
+}
 
-<ul *ngIf="notices.length > 0">
-    <li *ngFor="let notice of notices; let i = index">
+@if (notices.length > 0) {
+  <ul>
+    @for (notice of notices; track notice; let i = $index) {
+      <li>
         <app-notice-card [notice]="notice" [isFirst]="i === 0"></app-notice-card>
-    </li>
-</ul>
+      </li>
+    }
+  </ul>
+}
 
-<ng-container *ngIf="notices.length === 0 && !noticesFilterService.isSearching">
-    <app-no-notices></app-no-notices>
-</ng-container>
+@if (notices.length === 0 && !noticesFilterService.isSearching) {
+  <app-no-notices></app-no-notices>
+}
 
-<div class="text-center pb-5" *ngIf="noticesFilterService.hasMorePages">
+@if (noticesFilterService.hasMorePages) {
+  <div class="text-center pb-5">
     <button class="clndr accent load-next-page" (click)="noticesFilterService.loadNextPage()"
-            [disabled]="noticesFilterService.isSearching">
-        {{ 'NOTICE_LIST.LOAD_MORE' | translate }}
+      [disabled]="noticesFilterService.isSearching">
+      {{ 'NOTICE_LIST.LOAD_MORE' | translate }}
     </button>
-</div>
+  </div>
+}

@@ -1,23 +1,29 @@
-<section class="content-narrow" *ngIf="type === 'event'">
+@if (type === 'event') {
+  <section class="content-narrow">
     <h1>{{ 'NOT_FOUND.EVENT.TITLE' | translate }}</h1>
     <p>{{ 'NOT_FOUND.EVENT.DESCRIPTION' | translate }}</p>
     <button class="clndr accent" (click)="redirect()">
-        {{ 'NOT_FOUND.EVENT.BUTTON' | translate }}
+      {{ 'NOT_FOUND.EVENT.BUTTON' | translate }}
     </button>
-</section>
+  </section>
+}
 
-<section class="content-narrow" *ngIf="type === 'notice'">
+@if (type === 'notice') {
+  <section class="content-narrow">
     <h1>{{ 'NOT_FOUND.NOTICE.TITLE' | translate }}</h1>
     <p>{{ 'NOT_FOUND.NOTICE.DESCRIPTION' | translate }}</p>
     <button class="clndr accent" (click)="redirect()">
-        {{ 'NOT_FOUND.NOTICE.BUTTON' | translate }}
+      {{ 'NOT_FOUND.NOTICE.BUTTON' | translate }}
     </button>
-</section>
+  </section>
+}
 
-<section class="content-narrow" *ngIf="type === 'default'">
+@if (type === 'default') {
+  <section class="content-narrow">
     <h1>{{ 'NOT_FOUND.PAGE.TITLE' | translate }}</h1>
     <p>{{ 'NOT_FOUND.PAGE.DESCRIPTION' | translate }}</p>
     <button class="clndr accent" (click)="redirect()">
-        {{ 'NOT_FOUND.PAGE.BUTTON' | translate }}
+      {{ 'NOT_FOUND.PAGE.BUTTON' | translate }}
     </button>
-</section>
+  </section>
+}

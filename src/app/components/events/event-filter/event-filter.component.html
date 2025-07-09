@@ -1,71 +1,73 @@
 <div class="modal-header d-md-none">
-    <h2>filter</h2>
-    <button type="button" class="close-button" aria-label="Close" (click)="close()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="7 7 25 25" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M30.399 8.60095C31.0337 9.23555 31.0337 10.2644 30.399 10.899L10.899 30.399C10.2644 31.0337 9.23555 31.0337 8.60095 30.399C7.96635 29.7644 7.96635 28.7356 8.60095 28.101L28.101 8.60095C28.7356 7.96635 29.7644 7.96635 30.399 8.60095Z"
-                  fill="#1C2B33"/>
-            <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M8.60095 8.60095C9.23555 7.96635 10.2644 7.96635 10.899 8.60095L30.399 28.101C31.0337 28.7356 31.0337 29.7644 30.399 30.399C29.7644 31.0337 28.7356 31.0337 28.101 30.399L8.60095 10.899C7.96635 10.2644 7.96635 9.23555 8.60095 8.60095Z"
-                  fill="#1C2B33"/>
-        </svg>
-    </button>
+  <h2>filter</h2>
+  <button type="button" class="close-button" aria-label="Close" (click)="close()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="7 7 25 25" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M30.399 8.60095C31.0337 9.23555 31.0337 10.2644 30.399 10.899L10.899 30.399C10.2644 31.0337 9.23555 31.0337 8.60095 30.399C7.96635 29.7644 7.96635 28.7356 8.60095 28.101L28.101 8.60095C28.7356 7.96635 29.7644 7.96635 30.399 8.60095Z"
+        fill="#1C2B33"/>
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M8.60095 8.60095C9.23555 7.96635 10.2644 7.96635 10.899 8.60095L30.399 28.101C31.0337 28.7356 31.0337 29.7644 30.399 30.399C29.7644 31.0337 28.7356 31.0337 28.101 30.399L8.60095 10.899C7.96635 10.2644 7.96635 9.23555 8.60095 8.60095Z"
+        fill="#1C2B33"/>
+    </svg>
+  </button>
 </div>
 <div class="filter">
-    <div class="has-clear">
-        <input class="search-term" type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchTermUpdated()"
-               [placeholder]="'COMPONENTS.FILTER.SEARCH' | translate">
-        <span class="clear-button" (click)="eventsFilterService.setSearchterm('')" *ngIf="searchTerm.length > 0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M20.2654 5.7338C20.6884 6.15687 20.6884 6.8428 20.2654 7.26587L7.26538 20.2659C6.84231 20.6889 6.15638 20.6889 5.73332 20.2659C5.31025 19.8428 5.31025 19.1569 5.73332 18.7338L18.7333 5.7338C19.1564 5.31074 19.8423 5.31074 20.2654 5.7338Z"
-                    fill="#BBBFC2"/>
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M5.73332 5.7338C6.15638 5.31074 6.84231 5.31074 7.26538 5.7338L20.2654 18.7338C20.6884 19.1569 20.6884 19.8428 20.2654 20.2659C19.8423 20.6889 19.1564 20.6889 18.7333 20.2659L5.73332 7.26587C5.31025 6.8428 5.31025 6.15687 5.73332 5.7338Z"
-                    fill="#BBBFC2"/>
-            </svg>
-        </span>
-    </div>
-    <hr>
+  <div class="has-clear">
+    <input class="search-term" type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchTermUpdated()"
+      [placeholder]="'COMPONENTS.FILTER.SEARCH' | translate">
+    @if (searchTerm.length > 0) {
+      <span class="clear-button" (click)="eventsFilterService.setSearchterm('')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M20.2654 5.7338C20.6884 6.15687 20.6884 6.8428 20.2654 7.26587L7.26538 20.2659C6.84231 20.6889 6.15638 20.6889 5.73332 20.2659C5.31025 19.8428 5.31025 19.1569 5.73332 18.7338L18.7333 5.7338C19.1564 5.31074 19.8423 5.31074 20.2654 5.7338Z"
+            fill="#BBBFC2"/>
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M5.73332 5.7338C6.15638 5.31074 6.84231 5.31074 7.26538 5.7338L20.2654 18.7338C20.6884 19.1569 20.6884 19.8428 20.2654 20.2659C19.8423 20.6889 19.1564 20.6889 18.7333 20.2659L5.73332 7.26587C5.31025 6.8428 5.31025 6.15687 5.73332 5.7338Z"
+            fill="#BBBFC2"/>
+        </svg>
+      </span>
+    }
+  </div>
+  <hr>
 
     <app-datepicker-header [datepicker]="datepicker"></app-datepicker-header>
     <ngb-datepicker #datepicker [(ngModel)]="selectedStartDate" (dateSelect)="dateSelected($event)"
-                    class="no-navigation full-width"></ngb-datepicker>
+    class="no-navigation full-width"></ngb-datepicker>
 
     <hr>
 
-    <h2>{{ 'COMPONENTS.FILTER.REGION' | translate }}</h2>
-    <div class="tags">
-        <ng-container *ngFor="let region of regions">
-                    <span class="tag-element" [class.active]="selectedRegionIds.includes(region.id)"
-                          (click)="toggleRegion(region.id)">{{ region.name }}</span><br>
-        </ng-container>
-    </div>
+      <h2>{{ 'COMPONENTS.FILTER.REGION' | translate }}</h2>
+      <div class="tags">
+        @for (region of regions; track region) {
+          <span class="tag-element" [class.active]="selectedRegionIds.includes(region.id)"
+          (click)="toggleRegion(region.id)">{{ region.name }}</span><br>
+        }
+      </div>
 
-    <hr>
+      <hr>
 
-    <h2>{{ 'COMPONENTS.FILTER.GENRE' | translate }}</h2>
-    <div class="tags">
-        <ng-container *ngFor="let genre of genres">
-                    <span class="tag-element" [class.active]="selectedGenreIds.includes(genre.id)"
-                          (click)="toggleGenre(genre.id)">{{ genre.name }}</span><br>
-        </ng-container>
-    </div>
-</div>
+        <h2>{{ 'COMPONENTS.FILTER.GENRE' | translate }}</h2>
+        <div class="tags">
+          @for (genre of genres; track genre) {
+            <span class="tag-element" [class.active]="selectedGenreIds.includes(genre.id)"
+            (click)="toggleGenre(genre.id)">{{ genre.name }}</span><br>
+          }
+        </div>
+      </div>
 
-<div class="buttons d-md-none">
-    <div class="button-row ">
-        <button type="button" class="clndr accent" (click)="close()">
+      <div class="buttons d-md-none">
+        <div class="button-row ">
+          <button type="button" class="clndr accent" (click)="close()">
             {{ 'COMPONENTS.FILTER.OK' | translate }}
-        </button>
-    </div>
-    <div class="button-row">
-        <button type="button" class="clndr accent" (click)="resetFilters()"
-                [disabled]="eventsFilterService.numberOfFilters === 0">
+          </button>
+        </div>
+        <div class="button-row">
+          <button type="button" class="clndr accent" (click)="resetFilters()"
+            [disabled]="eventsFilterService.numberOfFilters === 0">
             {{ 'COMPONENTS.FILTER.DELETE_FILTER' | translate }}
-        </button>
-        <button type="button" class="clndr accent" (click)="createSubscription()">
+          </button>
+          <button type="button" class="clndr accent" (click)="createSubscription()">
             {{ 'COMPONENTS.FILTER.ABO_FILTER' | translate }}
-        </button>
-    </div>
-</div>
+          </button>
+        </div>
+      </div>

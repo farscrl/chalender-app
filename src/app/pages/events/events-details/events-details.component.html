@@ -1,16 +1,17 @@
-<div class="container" *ngIf="event">
+@if (event) {
+  <div class="container">
     <div class="navi">
-        <app-back-button/>
-
-        <div class="cancelled" *ngIf="allOccurrencesCancelled">
-            {{ 'EVENT_DETAILS.CANCELLED_LNG' | translate }}
+      <app-back-button/>
+      @if (allOccurrencesCancelled) {
+        <div class="cancelled">
+          {{ 'EVENT_DETAILS.CANCELLED_LNG' | translate }}
         </div>
+      }
     </div>
-
-
     <section class="content-narrow">
-        <app-event-details [event]="event"></app-event-details>
+      <app-event-details [event]="event"></app-event-details>
     </section>
-</div>
+  </div>
+}
 
 

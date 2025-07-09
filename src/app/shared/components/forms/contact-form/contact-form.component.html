@@ -1,70 +1,82 @@
 <form [formGroup]="f" (ngSubmit)="onSubmit()">
-    <ngb-alert [type]="message.type" *ngIf="message.title.length > 0">
-        <b>{{ message.title }}.</b> {{ message.message }}
+  @if (message.title.length > 0) {
+    <ngb-alert [type]="message.type">
+      <b>{{ message.title }}.</b> {{ message.message }}
     </ngb-alert>
+  }
 
-    <div class="mb-3">
-        <label for="name" class="form-label">num / prenum * </label>
-        <input formControlName="name" type="text" class="form-control" id="name"
-               [class.is-invalid]="isFieldInvalid('name')">
-        <div class="invalid-feedback" *ngIf="isFieldInvalid('name')">
-            Endatescha p.pl. in num.
-        </div>
-    </div>
+  <div class="mb-3">
+    <label for="name" class="form-label">num / prenum * </label>
+    <input formControlName="name" type="text" class="form-control" id="name"
+      [class.is-invalid]="isFieldInvalid('name')">
+    @if (isFieldInvalid('name')) {
+      <div class="invalid-feedback">
+        Endatescha p.pl. in num.
+      </div>
+    }
+  </div>
 
-    <div class="mb-3">
-        <label for="email" class="form-label">adressa dad e-mail * </label>
-        <input formControlName="email" type="text" class="form-control" id="email"
-               [class.is-invalid]="isFieldInvalid('email')">
-        <div class="invalid-feedback" *ngIf="isFieldInvalid('email')">
-            Endatescha p.pl. ina adressa dad e-mail.
-        </div>
-    </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">adressa dad e-mail * </label>
+    <input formControlName="email" type="text" class="form-control" id="email"
+      [class.is-invalid]="isFieldInvalid('email')">
+    @if (isFieldInvalid('email')) {
+      <div class="invalid-feedback">
+        Endatescha p.pl. ina adressa dad e-mail.
+      </div>
+    }
+  </div>
 
-    <div class="mb-3">
-        <label for="phone" class="form-label">telefon * </label>
-        <input formControlName="phone" type="text" class="form-control" id="phone"
-               [class.is-invalid]="isFieldInvalid('phone')">
-        <div class="invalid-feedback" *ngIf="isFieldInvalid('phone')">
-            Endatescha p.pl. in numer da telefon.
-        </div>
-    </div>
+  <div class="mb-3">
+    <label for="phone" class="form-label">telefon * </label>
+    <input formControlName="phone" type="text" class="form-control" id="phone"
+      [class.is-invalid]="isFieldInvalid('phone')">
+    @if (isFieldInvalid('phone')) {
+      <div class="invalid-feedback">
+        Endatescha p.pl. in numer da telefon.
+      </div>
+    }
+  </div>
 
-    <div class="mb-3">
-        tip da vossa dumonda:<br>
-        <input class="form-check-input" type="radio" name="type" id="typeContent"
-               formControlName="type" value="content">
-        <label class="form-check-label" for="typeContent">
-            cuntegn / moderaziun
-        </label>
-        <br>
+  <div class="mb-3">
+    tip da vossa dumonda:<br>
+    <input class="form-check-input" type="radio" name="type" id="typeContent"
+      formControlName="type" value="content">
+    <label class="form-check-label" for="typeContent">
+      cuntegn / moderaziun
+    </label>
+    <br>
 
-        <input class="form-check-input" type="radio" name="type" id="typeTechnical"
-               formControlName="type" value="technical">
-        <label class="form-check-label" for="typeTechnical">
-            dumonda tecnica
-        </label>
-        <br>
+      <input class="form-check-input" type="radio" name="type" id="typeTechnical"
+        formControlName="type" value="technical">
+      <label class="form-check-label" for="typeTechnical">
+        dumonda tecnica
+      </label>
+      <br>
 
         <input class="form-check-input" type="radio" name="type" id="typeOther"
-               formControlName="type" value="other">
+          formControlName="type" value="other">
         <label class="form-check-label" for="typeOther" [class.is-invalid]="isFieldInvalid('type')">
-            autra dumonda
+          autra dumonda
         </label>
-        <div class="invalid-feedback" *ngIf="isFieldInvalid('type')">
+        @if (isFieldInvalid('type')) {
+          <div class="invalid-feedback">
             Tscherna in tip.
-        </div>
-    </div>
+          </div>
+        }
+      </div>
 
 
-    <div class="mb-3">
+      <div class="mb-3">
         <label for="message" class="form-label">messadi * </label>
         <textarea formControlName="message" class="form-control" id="message" style="height: 150px"
-                  [class.is-invalid]="isFieldInvalid('message')"></textarea>
-        <div class="invalid-feedback" *ngIf="isFieldInvalid('message')">
+        [class.is-invalid]="isFieldInvalid('message')"></textarea>
+        @if (isFieldInvalid('message')) {
+          <div class="invalid-feedback">
             Endatescha p.pl. in messadi.
-        </div>
-    </div>
+          </div>
+        }
+      </div>
 
-    <button type="submit" class="clndr accent" [disabled]="isSending">Trametter</button>
-</form>
+      <button type="submit" class="clndr accent" [disabled]="isSending">Trametter</button>
+    </form>

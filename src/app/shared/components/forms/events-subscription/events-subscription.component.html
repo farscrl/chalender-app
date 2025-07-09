@@ -1,121 +1,145 @@
 <form [formGroup]="f">
-    <p>
-        {{ 'COMPONENTS.MODALS.NEW_SUBSCRIPTION.DESCRIPTION' | translate }}
-    </p>
+  <p>
+    {{ 'COMPONENTS.MODALS.NEW_SUBSCRIPTION.DESCRIPTION' | translate }}
+  </p>
 
+  <div class="mb-3">
+    <label for="name" class="form-label title">
+      {{ 'FORMS.SUBSCRIPTION.NAME' | translate }}
+      <app-info-button>
+        {{ 'FORMS.SUBSCRIPTION.NAME_DESC_TEXT' | translate }}
+      </app-info-button>
+    </label>
+    <input formControlName="name" type="text" class="form-control" id="name"
+      [class.is-invalid]="isFieldInvalid('name')">
+    @if (isFieldInvalid('name')) {
+      <div class="invalid-feedback">
+        {{ 'FORMS.SUBSCRIPTION.NAME_ERROR' | translate }}
+      </div>
+    }
+  </div>
+
+  @if (subscription?.id) {
+    <div class="row">
+      <div class="col" formArrayName="genres">
+        <h2>
+          {{ 'FORMS.SUBSCRIPTION.GENRES' | translate }}
+          <app-info-button>
+            {{ 'FORMS.SUBSCRIPTION.GENRES_DESC_TEXT' | translate }}
+          </app-info-button>
+        </h2>
+        @for (genre of genres; track genre; let i = $index) {
+          <div class="form-check"
+            [class.is-invalid]="isFieldInvalid('genres')">
+            <input class="form-check-input" type="checkbox" value="{{ genre }}" id="genre-{{genre.id}}"
+              [formControlName]="i">
+            <label class="form-check-label" for="genre-{{genre.id}}">
+              {{genre.name}}
+            </label>
+          </div>
+        }
+        @if (isFieldInvalid('genres')) {
+          <div class="invalid-feedback">
+            {{ 'FORMS.SUBSCRIPTION.GENRES_ERROR' | translate }}
+          </div>
+        }
+      </div>
+      <div class="col" formArrayName="regions">
+        <h2>
+          {{ 'FORMS.SUBSCRIPTION.REGIONS' | translate }}
+          <app-info-button>
+            {{ 'FORMS.SUBSCRIPTION.REGIONS_DESC_TEXT' | translate }}
+          </app-info-button>
+        </h2>
+        @for (region of regions; track region; let i = $index) {
+          <div class="form-check"
+            [class.is-invalid]="isFieldInvalid('regions')">
+            <input class="form-check-input" type="checkbox" value="{{ region }}" id="region-{{region.id}}"
+              [formControlName]="i">
+            <label class="form-check-label" for="region-{{region.id}}">
+              {{region.name}}
+            </label>
+          </div>
+        }
+        @if (isFieldInvalid('regions')) {
+          <div class="invalid-feedback">
+            {{ 'FORMS.SUBSCRIPTION.REGIONS_ERROR' | translate }}
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  @if (subscription?.id) {
+    <div class="mb-3 mt-3">
+      <label for="searchTerm" class="form-label title">
+        {{ 'FORMS.SUBSCRIPTION.SEARCH_TERM' | translate }}
+      </label>
+      <app-info-button>
+        {{ 'FORMS.SUBSCRIPTION.SEARCH_TERM_DESC_TEXT' | translate }}
+      </app-info-button>
+      <input formControlName="searchTerm" type="text" class="form-control" id="searchTerm"
+        [class.is-invalid]="isFieldInvalid('searchTerm')">
+      @if (isFieldInvalid('searchTerm')) {
+        <div class="invalid-feedback">
+          {{ 'FORMS.SUBSCRIPTION.SEARCH_TERM_ERROR' | translate }}
+        </div>
+      }
+    </div>
+  }
+
+  <div class="mb-3">
+    <h2>{{ 'FORMS.SUBSCRIPTION.FREQUENCY' | translate }}</h2>
+    <fieldset>
+      <div>
+        <input type="radio" id="weekly" name="type" value="WEEKLY"
+          formControlName="type"/>
+        <label for="weekly">
+          {{ 'FORMS.SUBSCRIPTION.TYPE_DESC_WEEKLY' | translate }}
+        </label>
+      </div>
+
+      <div [class.is-invalid]="isFieldInvalid('type')">
+        <input type="radio" id="instant" name="type" value="INSTANT"
+          formControlName="type"/>
+        <label for="instant">
+          {{ 'FORMS.SUBSCRIPTION.TYPE_DESC_INSTANT' | translate }}
+        </label>
+      </div>
+
+      @if (isFieldInvalid('type')) {
+        <div class="invalid-feedback">
+          {{ 'FORMS.SUBSCRIPTION.TYPE_ERROR' | translate }}
+        </div>
+      }
+    </fieldset>
+  </div>
+
+  @if (subscription?.id) {
     <div class="mb-3">
-        <label for="name" class="form-label title">
-            {{ 'FORMS.SUBSCRIPTION.NAME' | translate }}
-            <app-info-button>
-                {{ 'FORMS.SUBSCRIPTION.NAME_DESC_TEXT' | translate }}
-            </app-info-button>
-        </label>
-        <input formControlName="name" type="text" class="form-control" id="name"
-               [class.is-invalid]="isFieldInvalid('name')">
-        <div class="invalid-feedback" *ngIf="isFieldInvalid('name')">
-            {{ 'FORMS.SUBSCRIPTION.NAME_ERROR' | translate }}
-        </div>
+      <label for="active" class="form-label title">
+        {{ 'FORMS.SUBSCRIPTION.ACTIVE' | translate }}
+      </label>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="active"
+          formControlName="active">
+        <label class="form-check-label"
+        for="active">{{ 'FORMS.SUBSCRIPTION.ACTIVE_DESCRIPTION' | translate }}</label>
+      </div>
     </div>
-
-    <div class="row" *ngIf="subscription?.id">
-        <div class="col" formArrayName="genres">
-            <h2>
-                {{ 'FORMS.SUBSCRIPTION.GENRES' | translate }}
-                <app-info-button>
-                    {{ 'FORMS.SUBSCRIPTION.GENRES_DESC_TEXT' | translate }}
-                </app-info-button>
-            </h2>
-            <div class="form-check" *ngFor="let genre of genres; let i = index"
-                 [class.is-invalid]="isFieldInvalid('genres')">
-                <input class="form-check-input" type="checkbox" value="{{ genre }}" id="genre-{{genre.id}}"
-                       [formControlName]="i">
-                <label class="form-check-label" for="genre-{{genre.id}}">
-                    {{genre.name}}
-                </label>
-            </div>
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('genres')">
-                {{ 'FORMS.SUBSCRIPTION.GENRES_ERROR' | translate }}
-            </div>
-        </div>
-        <div class="col" formArrayName="regions">
-            <h2>
-                {{ 'FORMS.SUBSCRIPTION.REGIONS' | translate }}
-                <app-info-button>
-                    {{ 'FORMS.SUBSCRIPTION.REGIONS_DESC_TEXT' | translate }}
-                </app-info-button>
-            </h2>
-            <div class="form-check" *ngFor="let region of regions; let i = index"
-                 [class.is-invalid]="isFieldInvalid('regions')">
-                <input class="form-check-input" type="checkbox" value="{{ region }}" id="region-{{region.id}}"
-                       [formControlName]="i">
-                <label class="form-check-label" for="region-{{region.id}}">
-                    {{region.name}}
-                </label>
-            </div>
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('regions')">
-                {{ 'FORMS.SUBSCRIPTION.REGIONS_ERROR' | translate }}
-            </div>
-        </div>
-    </div>
-
-    <div class="mb-3 mt-3" *ngIf="subscription?.id">
-        <label for="searchTerm" class="form-label title">
-            {{ 'FORMS.SUBSCRIPTION.SEARCH_TERM' | translate }}
-        </label>
-        <app-info-button>
-            {{ 'FORMS.SUBSCRIPTION.SEARCH_TERM_DESC_TEXT' | translate }}
-        </app-info-button>
-        <input formControlName="searchTerm" type="text" class="form-control" id="searchTerm"
-               [class.is-invalid]="isFieldInvalid('searchTerm')">
-        <div class="invalid-feedback" *ngIf="isFieldInvalid('searchTerm')">
-            {{ 'FORMS.SUBSCRIPTION.SEARCH_TERM_ERROR' | translate }}
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <h2>{{ 'FORMS.SUBSCRIPTION.FREQUENCY' | translate }}</h2>
-        <fieldset>
-            <div>
-                <input type="radio" id="weekly" name="type" value="WEEKLY"
-                       formControlName="type"/>
-                <label for="weekly">
-                    {{ 'FORMS.SUBSCRIPTION.TYPE_DESC_WEEKLY' | translate }}
-                </label>
-            </div>
-
-            <div [class.is-invalid]="isFieldInvalid('type')">
-                <input type="radio" id="instant" name="type" value="INSTANT"
-                       formControlName="type"/>
-                <label for="instant">
-                    {{ 'FORMS.SUBSCRIPTION.TYPE_DESC_INSTANT' | translate }}
-                </label>
-            </div>
-
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('type')">
-                {{ 'FORMS.SUBSCRIPTION.TYPE_ERROR' | translate }}
-            </div>
-        </fieldset>
-    </div>
-
-    <div class="mb-3" *ngIf="subscription?.id">
-        <label for="active" class="form-label title">
-            {{ 'FORMS.SUBSCRIPTION.ACTIVE' | translate }}
-        </label>
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="active"
-                   formControlName="active">
-            <label class="form-check-label"
-                   for="active">{{ 'FORMS.SUBSCRIPTION.ACTIVE_DESCRIPTION' | translate }}</label>
-        </div>
-    </div>
+  }
 </form>
 
 <div class="buttons">
-    <button type="button" class="clndr" (click)="cancel.emit()">
-        {{ 'FORMS.SUBSCRIPTION.CANCEL' | translate }}
-    </button>
-    <button type="button" class="clndr accent" (click)="saveChanges()">
-        <ng-container *ngIf="!subscription?.id">{{ 'FORMS.SUBSCRIPTION.CREATE' | translate }}</ng-container>
-        <ng-container *ngIf="subscription?.id">{{ 'FORMS.SUBSCRIPTION.SAVE' | translate }}</ng-container>
-    </button>
+  <button type="button" class="clndr" (click)="cancel.emit()">
+    {{ 'FORMS.SUBSCRIPTION.CANCEL' | translate }}
+  </button>
+  <button type="button" class="clndr accent" (click)="saveChanges()">
+    @if (!subscription?.id) {
+      {{ 'FORMS.SUBSCRIPTION.CREATE' | translate }}
+    }
+    @if (subscription?.id) {
+      {{ 'FORMS.SUBSCRIPTION.SAVE' | translate }}
+    }
+  </button>
 </div>

@@ -1,57 +1,61 @@
 <section class="content-narrow">
-    <ng-container *ngIf="errorMessage">
-        <ngb-alert [type]="'danger'" [dismissible]="false">
-            <b>{{ errorMessage.title }}.</b>
-            {{ errorMessage.message }}
-        </ngb-alert>
-    </ng-container>
+  @if (errorMessage) {
+    <ngb-alert [type]="'danger'" [dismissible]="false">
+      <b>{{ errorMessage.title }}.</b>
+      {{ errorMessage.message }}
+    </ngb-alert>
+  }
 
-    <form [formGroup]="f">
-        <h1>{{ 'FORMS.DELETE_USER.TITLE' | translate }}</h1>
+  <form [formGroup]="f">
+    <h1>{{ 'FORMS.DELETE_USER.TITLE' | translate }}</h1>
 
-        <p>
-            {{ 'FORMS.DELETE_USER.EXPLICATION' | translate }}
-        </p>
+    <p>
+      {{ 'FORMS.DELETE_USER.EXPLICATION' | translate }}
+    </p>
 
-        <fieldset>
-            <div>
-                <input type="radio" id="keep-events" name="deleteType" value="keep-events"
-                       formControlName="deleteType"/>
-                <label for="keep-events">
-                    {{ 'FORMS.DELETE_USER.KEEP_EVENTS' | translate }}
-                </label>
-            </div>
+    <fieldset>
+      <div>
+        <input type="radio" id="keep-events" name="deleteType" value="keep-events"
+          formControlName="deleteType"/>
+        <label for="keep-events">
+          {{ 'FORMS.DELETE_USER.KEEP_EVENTS' | translate }}
+        </label>
+      </div>
 
-            <div [class.is-invalid]="isFieldInvalid('deleteType')">
-                <input type="radio" id="delete-events" name="deleteType" value="delete-events"
-                       formControlName="deleteType"/>
-                <label for="delete-events">
-                    {{ 'FORMS.DELETE_USER.DELETE_EVENTS' | translate }}
-                </label>
-            </div>
+      <div [class.is-invalid]="isFieldInvalid('deleteType')">
+        <input type="radio" id="delete-events" name="deleteType" value="delete-events"
+          formControlName="deleteType"/>
+        <label for="delete-events">
+          {{ 'FORMS.DELETE_USER.DELETE_EVENTS' | translate }}
+        </label>
+      </div>
 
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('deleteType')">
-                {{ 'FORMS.DELETE_USER.SELECT_DELETE_MODE' | translate }}</div>
-        </fieldset>
+      @if (isFieldInvalid('deleteType')) {
+        <div class="invalid-feedback">
+        {{ 'FORMS.DELETE_USER.SELECT_DELETE_MODE' | translate }}</div>
+      }
+    </fieldset>
 
-        <div class="mb-5 mt-5">
-            <label for="password" class="form-label">{{ 'FORMS.DELETE_USER.PASSWORD' | translate }}</label>
-            <input type="password" id="password" name="password" class="form-control" formControlName="password"
-                   [class.is-invalid]="isFieldInvalid('password')">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('password')">
-                {{ 'FORMS.DELETE_USER.PASSWORD_MISSING' | translate }}
-            </div>
+    <div class="mb-5 mt-5">
+      <label for="password" class="form-label">{{ 'FORMS.DELETE_USER.PASSWORD' | translate }}</label>
+      <input type="password" id="password" name="password" class="form-control" formControlName="password"
+        [class.is-invalid]="isFieldInvalid('password')">
+      @if (isFieldInvalid('password')) {
+        <div class="invalid-feedback">
+          {{ 'FORMS.DELETE_USER.PASSWORD_MISSING' | translate }}
         </div>
+      }
+    </div>
 
-        <div class="buttons">
-            <button type="button" class="clndr" (click)="cancel()" [disabled]="didSubmit">
-                Interrumper
-            </button>
-            
-            <button type="button" class="clndr danger" (click)="delete()"
-                    [disabled]="didSubmit">{{ 'FORMS.DELETE_USER.DELETE_BUTTON' | translate }}</button>
-        </div>
+    <div class="buttons">
+      <button type="button" class="clndr" (click)="cancel()" [disabled]="didSubmit">
+        Interrumper
+      </button>
 
-    </form>
+      <button type="button" class="clndr danger" (click)="delete()"
+      [disabled]="didSubmit">{{ 'FORMS.DELETE_USER.DELETE_BUTTON' | translate }}</button>
+    </div>
+
+  </form>
 
 </section>

@@ -1,91 +1,90 @@
-<ng-container *ngIf="notice">
-    <h1>{{ notice.title }}</h1>
-
-    <div class="content">
-        <div class="description">
-            <div class="line-wrap" [innerHTML]="notice.description | linky"></div>
-
-            <ngb-carousel *ngIf="notice.images" [interval]="0"
-                          [showNavigationArrows]="notice.images.length > 1"
-                          [showNavigationIndicators]="notice.images.length > 1">
-                <ng-template ngbSlide *ngFor="let image of notice.images">
-                    <div class="picsum-img-wrapper">
-                        <img [src]="getImgUrl(image.url!)" alt="{{ image.originalName }}"/>
-                    </div>
-                </ng-template>
-            </ngb-carousel>
-        </div>
-        <div class="event-details">
-            <hr>
-
-            <div class="pricing" *ngIf="notice.contactData">
-                <div class="highlight">{{ 'NOTICE_DETAILS.CONTACT_DATA' | translate }}</div>
-                <div class="line-wrap" [innerHTML]="notice.contactData  | linky"></div>
+@if (notice) {
+  <h1>{{ notice.title }}</h1>
+  <div class="content">
+    <div class="description">
+      <div class="line-wrap" [innerHTML]="notice.description | linky"></div>
+      @if (notice.images) {
+        <ngb-carousel [interval]="0"
+          [showNavigationArrows]="notice.images.length > 1"
+          [showNavigationIndicators]="notice.images.length > 1">
+          @for (image of notice.images; track image) {
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img [src]="getImgUrl(image.url!)" alt="{{ image.originalName }}"/>
+              </div>
+            </ng-template>
+          }
+        </ngb-carousel>
+      }
+    </div>
+    <div class="event-details">
+      <hr>
+        @if (notice.contactData) {
+          <div class="pricing">
+            <div class="highlight">{{ 'NOTICE_DETAILS.CONTACT_DATA' | translate }}</div>
+            <div class="line-wrap" [innerHTML]="notice.contactData  | linky"></div>
+          </div>
+        }
+        <hr>
+          @if (notice.contactData) {
+            <div class="pricing">
+              <div class="highlight">{{ 'NOTICE_DETAILS.PUBLICATION_DATE' | translate }}</div>
+              <div class="line-wrap" [innerHTML]="notice.publicationDate  | linky"></div>
             </div>
-
-            <hr>
-
-            <div class="pricing" *ngIf="notice.contactData">
-                <div class="highlight">{{ 'NOTICE_DETAILS.PUBLICATION_DATE' | translate }}</div>
-                <div class="line-wrap" [innerHTML]="notice.publicationDate  | linky"></div>
-            </div>
-
-            <hr>
-
-            <div class="documents" *ngIf="notice.documents.length > 0">
+          }
+          <hr>
+            @if (notice.documents.length > 0) {
+              <div class="documents">
                 <div class="highlight">{{ 'EVENT_DETAILS.DOCUMENTS' | translate }}</div>
                 <div>
-                    <ng-container *ngFor="let doc of notice.documents">
-                        <a href="{{ doc.url }}" target="_blank" style="display: block">{{ doc.originalName }}</a>
-                    </ng-container>
+                  @for (doc of notice.documents; track doc) {
+                    <a href="{{ doc.url }}" target="_blank" style="display: block">{{ doc.originalName }}</a>
+                  }
                 </div>
-            </div>
-
+              </div>
+            }
             <hr>
-
-            <div class="d-flex share">
+              <div class="d-flex share">
                 <div class="share-icon fb" (click)="shareOnFacebook()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path
-                            d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z"
-                            stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z"
+                      stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
                 </div>
                 <div class="share-icon wa" (click)="shareOnWhatsapp()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path
-                            d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"
-                            stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"
+                      stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
                 </div>
                 <div class="share-icon link" (click)="copyLink()"
-                     ngbTooltip="Copià il link"
-                     [autoClose]="false"
-                     triggers="manual"
-                     placement="bottom"
-                     #copiedLinkTooltip="ngbTooltip">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path
-                            d="M10 13C10.4295 13.5741 10.9774 14.0491 11.6066 14.3929C12.2357 14.7367 12.9315 14.9411 13.6467 14.9923C14.3618 15.0435 15.0796 14.9403 15.7513 14.6897C16.4231 14.4392 17.0331 14.047 17.54 13.54L20.54 10.54C21.4508 9.59695 21.9548 8.33394 21.9434 7.02296C21.932 5.71198 21.4061 4.45791 20.4791 3.53087C19.5521 2.60383 18.298 2.07799 16.987 2.0666C15.676 2.0552 14.413 2.55918 13.47 3.46997L11.75 5.17997"
-                            stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path
-                            d="M14.0002 11C13.5707 10.4259 13.0228 9.9508 12.3936 9.60704C11.7645 9.26328 11.0687 9.05886 10.3535 9.00765C9.63841 8.95643 8.92061 9.05961 8.24885 9.3102C7.5771 9.56079 6.96709 9.95291 6.4602 10.46L3.4602 13.46C2.54941 14.403 2.04544 15.666 2.05683 16.977C2.06822 18.288 2.59407 19.542 3.52111 20.4691C4.44815 21.3961 5.70221 21.922 7.01319 21.9334C8.32418 21.9447 9.58719 21.4408 10.5302 20.53L12.2402 18.82"
-                            stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                  ngbTooltip="Copià il link"
+                  [autoClose]="false"
+                  triggers="manual"
+                  placement="bottom"
+                  #copiedLinkTooltip="ngbTooltip">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M10 13C10.4295 13.5741 10.9774 14.0491 11.6066 14.3929C12.2357 14.7367 12.9315 14.9411 13.6467 14.9923C14.3618 15.0435 15.0796 14.9403 15.7513 14.6897C16.4231 14.4392 17.0331 14.047 17.54 13.54L20.54 10.54C21.4508 9.59695 21.9548 8.33394 21.9434 7.02296C21.932 5.71198 21.4061 4.45791 20.4791 3.53087C19.5521 2.60383 18.298 2.07799 16.987 2.0666C15.676 2.0552 14.413 2.55918 13.47 3.46997L11.75 5.17997"
+                      stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path
+                      d="M14.0002 11C13.5707 10.4259 13.0228 9.9508 12.3936 9.60704C11.7645 9.26328 11.0687 9.05886 10.3535 9.00765C9.63841 8.95643 8.92061 9.05961 8.24885 9.3102C7.5771 9.56079 6.96709 9.95291 6.4602 10.46L3.4602 13.46C2.54941 14.403 2.04544 15.666 2.05683 16.977C2.06822 18.288 2.59407 19.542 3.52111 20.4691C4.44815 21.3961 5.70221 21.922 7.01319 21.9334C8.32418 21.9447 9.58719 21.4408 10.5302 20.53L12.2402 18.82"
+                      stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
                 </div>
                 <div class="share-icon mail" (click)="shareViaEmail()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path
-                            d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
-                            stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M22 6L12 13L2 6" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
+                      stroke="#3CBFA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22 6L12 13L2 6" stroke="#3CBFA4" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                  </svg>
                 </div>
+              </div>
+              <hr>
+              </div>
             </div>
-
-            <hr>
-        </div>
-    </div>
-
-</ng-container>
+          }

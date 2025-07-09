@@ -1,17 +1,17 @@
 <section class="content-narrow">
-    <h1>{{ 'COMPONENTS.CHANGE_USER.TITLE' | translate }}</h1>
+  <h1>{{ 'COMPONENTS.CHANGE_USER.TITLE' | translate }}</h1>
 
-    <ng-container *ngIf="showError">
-        <ngb-alert [type]="'danger'">
-            <b>{{ 'COMPONENTS.CHANGE_USER.ERROR.TITLE' | translate }}.</b>
-            {{ 'COMPONENTS.CHANGE_USER.ERROR.MESSAGE' | translate }}
-        </ngb-alert>
-    </ng-container>
+  @if (showError) {
+    <ngb-alert [type]="'danger'">
+      <b>{{ 'COMPONENTS.CHANGE_USER.ERROR.TITLE' | translate }}.</b>
+      {{ 'COMPONENTS.CHANGE_USER.ERROR.MESSAGE' | translate }}
+    </ngb-alert>
+  }
 
-    <app-user></app-user>
-    <div class="flex justify-content-end">
-        <button type="button" class="clndr accent" (click)="update()" [disabled]="didSubmit">
-            {{ 'COMPONENTS.CHANGE_USER.CHANGE' | translate }}
-        </button>
-    </div>
+  <app-user></app-user>
+  <div class="flex justify-content-end">
+    <button type="button" class="clndr accent" (click)="update()" [disabled]="didSubmit">
+      {{ 'COMPONENTS.CHANGE_USER.CHANGE' | translate }}
+    </button>
+  </div>
 </section>

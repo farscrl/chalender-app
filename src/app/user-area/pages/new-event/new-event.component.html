@@ -1,304 +1,341 @@
 <section class="content-narrow">
-    <h1>Registrar in’occurrenza</h1>
+  <h1>Registrar in’occurrenza</h1>
 
-    <form [formGroup]="f">
-        <div class="mb-3" *ngIf="f.controls['contactEmail'].enabled">
-            <label for="contactEmail" class="form-label">{{ 'FORMS.EVENT.CONTACT_EMAIL' | translate }}</label>
-            <input formControlName="contactEmail" type="email" class="form-control" id="contactEmail"
-                   [class.is-invalid]="isFieldInvalid('contactEmail')"
-                   placeholder="{{ 'FORMS.EVENT.CONTACT_EMAIL_PLACEHOLDER' | translate }}">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('contactEmail')">
-                {{ 'FORMS.EVENT.CONTACT_EMAIL_ERROR' | translate }}
-            </div>
+  <form [formGroup]="f">
+    @if (f.controls['contactEmail'].enabled) {
+      <div class="mb-3">
+        <label for="contactEmail" class="form-label">{{ 'FORMS.EVENT.CONTACT_EMAIL' | translate }}</label>
+        <input formControlName="contactEmail" type="email" class="form-control" id="contactEmail"
+          [class.is-invalid]="isFieldInvalid('contactEmail')"
+          placeholder="{{ 'FORMS.EVENT.CONTACT_EMAIL_PLACEHOLDER' | translate }}">
+        @if (isFieldInvalid('contactEmail')) {
+          <div class="invalid-feedback">
+            {{ 'FORMS.EVENT.CONTACT_EMAIL_ERROR' | translate }}
+          </div>
+        }
+      </div>
+    }
+
+    <div class="mb-3">
+      <label for="title" class="form-label">{{ 'FORMS.EVENT.TITLE' | translate }} * </label>
+      <input formControlName="title" type="text" class="form-control" id="title"
+        [class.is-invalid]="isFieldInvalid('title')"
+        placeholder="{{ 'FORMS.EVENT.TITLE_PLACEHOLDER' | translate }}">
+      @if (isFieldInvalid('title')) {
+        <div class="invalid-feedback">
+          {{ 'FORMS.EVENT.TITLE_ERROR' | translate }}
         </div>
+      }
+    </div>
 
-        <div class="mb-3">
-            <label for="title" class="form-label">{{ 'FORMS.EVENT.TITLE' | translate }} * </label>
-            <input formControlName="title" type="text" class="form-control" id="title"
-                   [class.is-invalid]="isFieldInvalid('title')"
-                   placeholder="{{ 'FORMS.EVENT.TITLE_PLACEHOLDER' | translate }}">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('title')">
-                {{ 'FORMS.EVENT.TITLE_ERROR' | translate }}
-            </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">{{ 'FORMS.EVENT.DESCRIPTION' | translate }} *</label>
+      <textarea formControlName="description" class="form-control" id="description" style="height: 300px"
+      [class.is-invalid]="isFieldInvalid('description')"></textarea>
+      <span id="description-size">{{ descriptionSize }}</span>
+      @if (isFieldInvalid('description')) {
+        <div class="invalid-feedback">
+          @if (isFieldError('description', 'required')) {
+            {{ 'FORMS.EVENT.DESCRIPTION_REQUIRED' | translate }}
+          }
+          @if (isFieldError('description', 'maxlength')) {
+            {{ 'FORMS.EVENT.DESCRIPTION_TOO_LONG' | translate }}
+          }
         </div>
+      }
+      <div id="descriptionHelp" class="form-text">
+        Hilfe bei der Übersetzung auf Rumantsch / Aiuto con la traduzione in romancio:
+        <a href="https://www.textshuttle.com" target="_blank">www.textshuttle.com</a>
+      </div>
+    </div>
 
-        <div class="mb-3">
-            <label for="description" class="form-label">{{ 'FORMS.EVENT.DESCRIPTION' | translate }} *</label>
-            <textarea formControlName="description" class="form-control" id="description" style="height: 300px"
-                      [class.is-invalid]="isFieldInvalid('description')"></textarea>
-            <span id="description-size">{{ descriptionSize }}</span>
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('description')">
-                <ng-container *ngIf="isFieldError('description', 'required')">
-                    {{ 'FORMS.EVENT.DESCRIPTION_REQUIRED' | translate }}
-                </ng-container>
-                <ng-container *ngIf="isFieldError('description', 'maxlength')">
-                    {{ 'FORMS.EVENT.DESCRIPTION_TOO_LONG' | translate }}
-                </ng-container>
-            </div>
-            <div id="descriptionHelp" class="form-text">
-                Hilfe bei der Übersetzung auf Rumantsch / Aiuto con la traduzione in romancio:
-                <a href="https://www.textshuttle.com" target="_blank">www.textshuttle.com</a>
-            </div>
+    <div class="row">
+      <div class="col" formArrayName="genres">
+        categoria *<br>
+        @for (genre of genres; track genre; let i = $index) {
+          <div class="form-check"
+            [class.is-invalid]="isFieldInvalid('genres')">
+            <input class="form-check-input" type="checkbox" value="{{ genre }}" id="genre-{{genre.id}}"
+              [formControlName]="i">
+            <label class="form-check-label" for="genre-{{genre.id}}">
+              {{genre.name}}
+            </label>
+          </div>
+        }
+        @if (isFieldInvalid('genres')) {
+          <div class="invalid-feedback">
+            Tscherna almain ina categoria.
+          </div>
+        }
+      </div>
+      <div class="col" formArrayName="regions">
+        regiun *<br>
+        @for (region of regions; track region; let i = $index) {
+          <div class="form-check"
+            [class.is-invalid]="isFieldInvalid('regions')">
+            <input class="form-check-input" type="checkbox" value="{{ region }}" id="region-{{region.id}}"
+              [formControlName]="i">
+            <label class="form-check-label" for="region-{{region.id}}">
+              {{region.name}}
+            </label>
+          </div>
+        }
+        @if (isFieldInvalid('regions')) {
+          <div class="invalid-feedback">
+            Tscherna almain ina regiun.
+          </div>
+        }
+      </div>
+      <div class="col" formArrayName="eventLanguages">
+        linguas *<br>
+        @for (language of eventLanguages; track language; let i = $index) {
+          <div class="form-check"
+            [class.is-invalid]="isFieldInvalid('eventLanguages')">
+            <input class="form-check-input" type="checkbox" value="{{ language }}" id="language-{{language.id}}"
+              [formControlName]="i">
+            <label class="form-check-label" for="language-{{language.id}}">
+              {{language.name}}
+            </label>
+          </div>
+        }
+        @if (isFieldInvalid('eventLanguages')) {
+          <div class="invalid-feedback">
+            Tscherna almain ina lingua.
+          </div>
+        }
+      </div>
+    </div>
+
+    <h2>lieu da l’occurrenza:</h2>
+    <div class="mb-3">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="online-only" id="online-only"
+          formControlName="onlineOnly">
+        <label class="form-check-label" for="online-only">
+          l’occurrenza ha mo lieu online
+        </label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">{{ 'FORMS.EVENT.LOCATION' | translate }} *</label>
+      <app-info-button>
+        <b>Lieu da l’occurrenza (Veranstaltungsort/luogo dell'evento):</b>
+        Num da la localitad, p. ex. «Teater Cuira» u «Halla polivalenta Sagogn»
+      </app-info-button>
+
+      <input type="email" class="form-control" id="location" formControlName="location"
+        [class.is-invalid]="isFieldInvalid('location')"
+        placeholder="{{ 'FORMS.EVENT.LOCATION_PLACEHOLDER' | translate }}">
+      @if (isFieldInvalid('location')) {
+        <div class="invalid-feedback">
+          {{ 'FORMS.EVENT.LOCATION_ERROR' | translate }}
         </div>
+      }
+    </div>
 
-        <div class="row">
-            <div class="col" formArrayName="genres">
-                categoria *<br>
-                <div class="form-check" *ngFor="let genre of genres; let i = index"
-                     [class.is-invalid]="isFieldInvalid('genres')">
-                    <input class="form-check-input" type="checkbox" value="{{ genre }}" id="genre-{{genre.id}}"
-                           [formControlName]="i">
-                    <label class="form-check-label" for="genre-{{genre.id}}">
-                        {{genre.name}}
-                    </label>
+    <div class="mb-3">
+      <label for="address" class="form-label">{{ 'FORMS.EVENT.ADDRESS' | translate }} *</label>
+      <app-info-button>
+        <b>Via e lieu (Strasse und Ort/indirizzo e località):</b>
+        Inditgar ina adressa unica cun lieu. P.ex. «Via principala 1, Laax» betg mo «Via principala 1».
+      </app-info-button>
+      <textarea class="form-control" id="address" style="height: 100px" formControlName="address"
+        [class.is-invalid]="isFieldInvalid('address')"
+      placeholder="{{ 'FORMS.EVENT.ADDRESS_PLACEHOLDER' | translate }}"></textarea>
+      @if (isFieldInvalid('address')) {
+        <div class="invalid-feedback">
+          {{ 'FORMS.EVENT.ADDRESS_ERROR' | translate }}
+        </div>
+      }
+    </div>
+
+    <h2>
+      datas da l’occurrenza:
+      <app-info-button>
+        <b>Data e temp da l’occurrenza (Datum und Zeit der Veranstaltung / data e ora dell'evento):</b>
+        En cas ch’ina occurrenza n’ha betg lieu (per motivs da malsogna, pervia da l’aura etc.), per plaschair
+        marcar qua l’occurrenza sco «annullada», betg stizzar la data.
+      </app-info-button>
+    </h2>
+    <div class="mb-3" formArrayName="occurrences">
+      @for (occurrence of eventOccurrencesFormArray.controls; track occurrence; let i = $index) {
+        <div class="form-check occurrence-item"
+          [class.is-invalid]="isFieldInvalid('occurrences')" [formGroupName]="i">
+          <div class="row">
+            <div class="col-md-3">
+              <label for="date-{{i}}" class="form-label">Data *</label>
+              <input type="date" class="form-control" id="date-{{i}}" formControlName="date"
+                [class.is-invalid]="isOccurrenceFieldInvalid(i, 'date')">
+              @if (isOccurrenceFieldInvalid(i, 'date')) {
+                <div class="invalid-feedback">
+                  @if (isOccurrenceFieldError(i, 'date', 'required')) {
+                    Endatescha p.pl. ina data.
+                  }
+                  @if (isOccurrenceFieldError(i, 'date', 'isInPast')) {
+                    Impussibel da registrar occurrenzas en il passà.
+                  }
+                  @if (isOccurrenceFieldError(i, 'date', 'isInFuture')) {
+                    Impussibel da registrar occurrenzas suenter ils 31-12-2039.
+                  }
                 </div>
-                <div class="invalid-feedback" *ngIf="isFieldInvalid('genres')">
-                    Tscherna almain ina categoria.
+              }
+            </div>
+            <div class="col-md-2" [class.is-invalid]="isOccurrenceFieldInvalid(i, 'start')">
+              <label for="start-{{i}}" class="form-label">entschatta *</label>
+              <input type="time" class="form-control" id="start-{{i}}" formControlName="start"
+                [class.is-invalid]="isOccurrenceFieldInvalid(i, 'start')">
+              @if (isOccurrenceFieldInvalid(i, 'start')) {
+                <div class="invalid-feedback">
+                  <div>Endatescha p.pl. in temp da cumenzament.</div>
                 </div>
+              }
             </div>
-            <div class="col" formArrayName="regions">
-                regiun *<br>
-                <div class="form-check" *ngFor="let region of regions; let i = index"
-                     [class.is-invalid]="isFieldInvalid('regions')">
-                    <input class="form-check-input" type="checkbox" value="{{ region }}" id="region-{{region.id}}"
-                           [formControlName]="i">
-                    <label class="form-check-label" for="region-{{region.id}}">
-                        {{region.name}}
-                    </label>
+            <div class="col-md-2" [class.is-invalid]="isOccurrenceFieldInvalid(i, 'end')">
+              <label for="end-{{i}}" class="form-label">fin</label>
+              <input type="time" class="form-control" id="end-{{i}}" formControlName="end"
+                [class.is-invalid]="isOccurrenceFieldInvalid(i, 'end')">
+              @if (isOccurrenceFieldInvalid(i, 'end')) {
+                <div class="invalid-feedback">
+                  <div>Endatescha p.pl. in temp da finiziun valaivel.</div>
                 </div>
-                <div class="invalid-feedback" *ngIf="isFieldInvalid('regions')">
-                    Tscherna almain ina regiun.
-                </div>
+              }
             </div>
-            <div class="col" formArrayName="eventLanguages">
-                linguas *<br>
-                <div class="form-check" *ngFor="let language of eventLanguages; let i = index"
-                     [class.is-invalid]="isFieldInvalid('eventLanguages')">
-                    <input class="form-check-input" type="checkbox" value="{{ language }}" id="language-{{language.id}}"
-                           [formControlName]="i">
-                    <label class="form-check-label" for="language-{{language.id}}">
-                        {{language.name}}
-                    </label>
-                </div>
-                <div class="invalid-feedback" *ngIf="isFieldInvalid('eventLanguages')">
-                    Tscherna almain ina lingua.
-                </div>
+            <div class="col-md-1">&nbsp;</div>
+            <div class="col-md-2 no-label">
+              <input class="form-check-input no-negative" type="checkbox" value="isAllDay" id="isAllDay-{{i}}"
+                formControlName="isAllDay" (change)="didToggleAllDay(i)">
+              <label class="form-check-label" for="isAllDay-{{i}}">tutta di</label>
             </div>
-        </div>
-
-        <h2>lieu da l’occurrenza:</h2>
-        <div class="mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="online-only" id="online-only"
-                       formControlName="onlineOnly">
-                <label class="form-check-label" for="online-only">
-                    l’occurrenza ha mo lieu online
-                </label>
+            <div class="col-md-2 no-label">
+              @if (eventOccurrencesFormArray.controls.length !== 1) {
+                <button type="button" class="clndr accent" (click)="removeOccurrence(i)"
+                  >stizzar
+                </button>
+              }
             </div>
+          </div>
+          <div>
+            <input class="form-check-input form-input-no-margin" type="checkbox" value="isCancelled"
+              id="isCancelled-{{i}}" formControlName="isCancelled">
+            <label class="form-check-label" for="isCancelled-{{i}}">marcar questa occurrenza sco
+            annullada.</label>
+          </div>
         </div>
+      }
 
-        <div class="mb-3">
-            <label for="location" class="form-label">{{ 'FORMS.EVENT.LOCATION' | translate }} *</label>
-            <app-info-button>
-                <b>Lieu da l’occurrenza (Veranstaltungsort/luogo dell'evento):</b>
-                Num da la localitad, p. ex. «Teater Cuira» u «Halla polivalenta Sagogn»
-            </app-info-button>
+      <button type="button" class="clndr accent" (click)="addNewOccurrence()">Agiuntar ina data</button>
+    </div>
 
-            <input type="email" class="form-control" id="location" formControlName="location"
-                   [class.is-invalid]="isFieldInvalid('location')"
-                   placeholder="{{ 'FORMS.EVENT.LOCATION_PLACEHOLDER' | translate }}">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('location')">
-                {{ 'FORMS.EVENT.LOCATION_ERROR' | translate }}
-            </div>
+    <h2>ulteriuras infurmaziuns:</h2>
+
+    <div class="mb-3">
+      <label for="organiser" class="form-label">{{ 'FORMS.EVENT.ORGANIZER' | translate }}</label>
+      <input type="text" class="form-control" id="organiser" formControlName="organiser"
+        [class.is-invalid]="isFieldInvalid('organiser')"
+        placeholder="{{ 'FORMS.EVENT.ORGANIZER_PLACEHOLDER' | translate }}">
+      @if (isFieldInvalid('organiser')) {
+        <div class="invalid-feedback">
+          {{ 'FORMS.EVENT.ORGANIZER_ERROR' | translate }}
         </div>
+      }
+    </div>
 
-        <div class="mb-3">
-            <label for="address" class="form-label">{{ 'FORMS.EVENT.ADDRESS' | translate }} *</label>
-            <app-info-button>
-                <b>Via e lieu (Strasse und Ort/indirizzo e località):</b>
-                Inditgar ina adressa unica cun lieu. P.ex. «Via principala 1, Laax» betg mo «Via principala 1».
-            </app-info-button>
-            <textarea class="form-control" id="address" style="height: 100px" formControlName="address"
-                      [class.is-invalid]="isFieldInvalid('address')"
-                      placeholder="{{ 'FORMS.EVENT.ADDRESS_PLACEHOLDER' | translate }}"></textarea>
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('address')">
+    <div class="mb-3">
+      <label for="contact" class="form-label">{{ 'FORMS.EVENT.CONTACT' | translate }}</label>
+      <textarea class="form-control" id="contact" style="height: 100px" formControlName="contact"
+      placeholder="{{ 'FORMS.EVENT.CONTACT_PLACEHOLDER' | translate }}"></textarea>
+    </div>
 
-                {{ 'FORMS.EVENT.ADDRESS_ERROR' | translate }}
-            </div>
-        </div>
+    <div class="mb-3">
+      <label for="link" class="form-label">{{ 'FORMS.EVENT.URL' | translate }}</label>
+      <input type="text" class="form-control" id="link" formControlName="link"
+        [class.is-invalid]="isFieldInvalid('link')"
+        placeholder="{{ 'FORMS.EVENT.URL_PLACEHOLDER' | translate }}">
+    </div>
 
-        <h2>
-            datas da l’occurrenza:
-            <app-info-button>
-                <b>Data e temp da l’occurrenza (Datum und Zeit der Veranstaltung / data e ora dell'evento):</b>
-                En cas ch’ina occurrenza n’ha betg lieu (per motivs da malsogna, pervia da l’aura etc.), per plaschair
-                marcar qua l’occurrenza sco «annullada», betg stizzar la data.
-            </app-info-button>
-        </h2>
-        <div class="mb-3" formArrayName="occurrences">
-            <div class="form-check occurrence-item"
-                 *ngFor="let occurrence of eventOccurrencesFormArray.controls; let i = index"
-                 [class.is-invalid]="isFieldInvalid('occurrences')" [formGroupName]="i">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="date-{{i}}" class="form-label">Data *</label>
-                        <input type="date" class="form-control" id="date-{{i}}" formControlName="date"
-                               [class.is-invalid]="isOccurrenceFieldInvalid(i, 'date')">
-                        <div class="invalid-feedback" *ngIf="isOccurrenceFieldInvalid(i, 'date')">
-                            <ng-container *ngIf="isOccurrenceFieldError(i, 'date', 'required')">
-                                Endatescha p.pl. ina data.
-                            </ng-container>
-                            <ng-container *ngIf="isOccurrenceFieldError(i, 'date', 'isInPast')">
-                                Impussibel da registrar occurrenzas en il passà.
-                            </ng-container>
-                            <ng-container *ngIf="isOccurrenceFieldError(i, 'date', 'isInFuture')">
-                                Impussibel da registrar occurrenzas suenter ils 31-12-2039.
-                            </ng-container>
-                        </div>
-                    </div>
-                    <div class="col-md-2" [class.is-invalid]="isOccurrenceFieldInvalid(i, 'start')">
-                        <label for="start-{{i}}" class="form-label">entschatta *</label>
-                        <input type="time" class="form-control" id="start-{{i}}" formControlName="start"
-                               [class.is-invalid]="isOccurrenceFieldInvalid(i, 'start')">
-                        <div class="invalid-feedback" *ngIf="isOccurrenceFieldInvalid(i, 'start')">
-                            <div>Endatescha p.pl. in temp da cumenzament.</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2" [class.is-invalid]="isOccurrenceFieldInvalid(i, 'end')">
-                        <label for="end-{{i}}" class="form-label">fin</label>
-                        <input type="time" class="form-control" id="end-{{i}}" formControlName="end"
-                               [class.is-invalid]="isOccurrenceFieldInvalid(i, 'end')">
-                        <div class="invalid-feedback" *ngIf="isOccurrenceFieldInvalid(i, 'end')">
-                            <div>Endatescha p.pl. in temp da finiziun valaivel.</div>
-                        </div>
-                    </div>
-                    <div class="col-md-1">&nbsp;</div>
-                    <div class="col-md-2 no-label">
-                        <input class="form-check-input no-negative" type="checkbox" value="isAllDay" id="isAllDay-{{i}}"
-                               formControlName="isAllDay" (change)="didToggleAllDay(i)">
-                        <label class="form-check-label" for="isAllDay-{{i}}">tutta di</label>
-                    </div>
-                    <div class="col-md-2 no-label">
-                        <button type="button" class="clndr accent" (click)="removeOccurrence(i)"
-                                *ngIf="eventOccurrencesFormArray.controls.length !== 1">stizzar
-                        </button>
-                    </div>
-                </div>
-                <div>
-                    <input class="form-check-input form-input-no-margin" type="checkbox" value="isCancelled"
-                           id="isCancelled-{{i}}" formControlName="isCancelled">
-                    <label class="form-check-label" for="isCancelled-{{i}}">marcar questa occurrenza sco
-                        annullada.</label>
-                </div>
+    <div class="mb-3">
+      <label for="pricing" class="form-label">{{ 'FORMS.EVENT.PRICING' | translate }}</label>
+      <app-info-button>
+        <b>Pretschs e prevendita (Eintritt und Vorverkauf / entrata e prevendita):</b>
+        È l’entrada gratuita? Ston ins s’annunziar? Sche gea, nua? Datti ina reducziun per persunas giuvnas? A
+        partir da cura è la cassa averta?
+      </app-info-button>
+      <textarea class="form-control" id="pricing" style="height: 100px" formControlName="pricing"
+      placeholder="{{ 'FORMS.EVENT.PRICING_PLACEHOLDER' | translate }}"></textarea>
+    </div>
 
-            </div>
+    <h2>
+      maletgs:
+      <app-info-button>
+        <b>Maletgs (Bilder / immagine):</b>
+        Attenziun sch’il maletg cuntegna text! L’emprim maletg vegn duvrà per la survista. Il maletg vegn
+        retaglià uschia ch’el daventa quadratic. Ils urs che surpassan il quadrat vegnan tagliads davent.
+      </app-info-button>
+    </h2>
+    <app-file-list [files]="images" [type]="'image'" [isUploading]="isUploadingImage"></app-file-list>
+    <div class="form-text">
+      formats acceptads: JPG, PNG, WebP<br>
+      grondezza maximala: 20 MB<br>
+    </div>
+    <app-file-upload [allowedMimeTypes]="['image/jpeg', 'image/png', 'image/webp']"
+      [(isUploading)]="isUploadingImage"
+    (fileAdded)="images.push($event)" [type]="'image'"></app-file-upload>
+    <br><br>
 
-            <button type="button" class="clndr accent" (click)="addNewOccurrence()">Agiuntar ina data</button>
-        </div>
+    <h2>documents:</h2>
+    <app-file-list [files]="documents" [type]="'document'" [isUploading]="isUploadingDocument"></app-file-list>
+    <div class="form-text">
+      formats acceptads: PDF<br>
+      grondezza maximala: 20 MB<br>
+    </div>
+    <app-file-upload [allowedMimeTypes]="['application/pdf']" [(isUploading)]="isUploadingDocument"
+    (fileAdded)="documents.push($event)" [type]="'document'"></app-file-upload>
+    <br><br>
 
-        <h2>ulteriuras infurmaziuns:</h2>
+    <div class="mb-3">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="acceptTerms" id="acceptTerms"
+          formControlName="acceptTerms" [class.is-invalid]="isFieldInvalid('acceptTerms')">
+        <label class="form-check-label" for="acceptTerms">
+          Jau accept las
+          <a (click)="openTerms()" href="javascript:void(0)">cundiziuns d’utilisaziun</a>
+          ed hai ils dretgs dals maletgs utilisads.
+        </label>
+        @if (isFieldInvalid('acceptTerms')) {
+          <div class="invalid-feedback">
+            Per inoltrar l'occurrenza stos ti acceptar las cundiziuns d'utilisaziun.
+          </div>
+        }
+      </div>
+    </div>
+    <br><br>
 
-        <div class="mb-3">
-            <label for="organiser" class="form-label">{{ 'FORMS.EVENT.ORGANIZER' | translate }}</label>
-            <input type="text" class="form-control" id="organiser" formControlName="organiser"
-                   [class.is-invalid]="isFieldInvalid('organiser')"
-                   placeholder="{{ 'FORMS.EVENT.ORGANIZER_PLACEHOLDER' | translate }}">
-            <div class="invalid-feedback" *ngIf="isFieldInvalid('organiser')">
-                {{ 'FORMS.EVENT.ORGANIZER_ERROR' | translate }}
-            </div>
-        </div>
+    <h2>
+      publicaziun:
+      <app-info-button>
+        <b>Prevista (Vorschau/anteprima):</b> La prevista mussa co l’occurrenza vegn mussada al public.<br><br>
 
-        <div class="mb-3">
-            <label for="contact" class="form-label">{{ 'FORMS.EVENT.CONTACT' | translate }}</label>
-            <textarea class="form-control" id="contact" style="height: 100px" formControlName="contact"
-                      placeholder="{{ 'FORMS.EVENT.CONTACT_PLACEHOLDER' | translate }}"></textarea>
-        </div>
+        <b>Sboz (Entwurf/sbozzo):</b> Cun agid dad in sboz pos ti cuntinuar pli tard, senza publitgar ussa. Ti
+        chattas il sboz lura en «Mias occurrenzas».<br><br>
 
-        <div class="mb-3">
-            <label for="link" class="form-label">{{ 'FORMS.EVENT.URL' | translate }}</label>
-            <input type="text" class="form-control" id="link" formControlName="link"
-                   [class.is-invalid]="isFieldInvalid('link')"
-                   placeholder="{{ 'FORMS.EVENT.URL_PLACEHOLDER' | translate }}">
-        </div>
+        <b>Publitgar (veröffentlichen/pubblicare):</b> «Publitgar» publitgescha tia occurrenza
+        suenter ina controlla da la redacziun.
+      </app-info-button>
+    </h2>
 
-        <div class="mb-3">
-            <label for="pricing" class="form-label">{{ 'FORMS.EVENT.PRICING' | translate }}</label>
-            <app-info-button>
-                <b>Pretschs e prevendita (Eintritt und Vorverkauf / entrata e prevendita):</b>
-                È l’entrada gratuita? Ston ins s’annunziar? Sche gea, nua? Datti ina reducziun per persunas giuvnas? A
-                partir da cura è la cassa averta?
-            </app-info-button>
-            <textarea class="form-control" id="pricing" style="height: 100px" formControlName="pricing"
-                      placeholder="{{ 'FORMS.EVENT.PRICING_PLACEHOLDER' | translate }}"></textarea>
-        </div>
-
-        <h2>
-            maletgs:
-            <app-info-button>
-                <b>Maletgs (Bilder / immagine):</b>
-                Attenziun sch’il maletg cuntegna text! L’emprim maletg vegn duvrà per la survista. Il maletg vegn
-                retaglià uschia ch’el daventa quadratic. Ils urs che surpassan il quadrat vegnan tagliads davent.
-            </app-info-button>
-        </h2>
-        <app-file-list [files]="images" [type]="'image'" [isUploading]="isUploadingImage"></app-file-list>
-        <div class="form-text">
-            formats acceptads: JPG, PNG, WebP<br>
-            grondezza maximala: 20 MB<br>
-        </div>
-        <app-file-upload [allowedMimeTypes]="['image/jpeg', 'image/png', 'image/webp']"
-                         [(isUploading)]="isUploadingImage"
-                         (fileAdded)="images.push($event)" [type]="'image'"></app-file-upload>
-        <br><br>
-
-        <h2>documents:</h2>
-        <app-file-list [files]="documents" [type]="'document'" [isUploading]="isUploadingDocument"></app-file-list>
-        <div class="form-text">
-            formats acceptads: PDF<br>
-            grondezza maximala: 20 MB<br>
-        </div>
-        <app-file-upload [allowedMimeTypes]="['application/pdf']" [(isUploading)]="isUploadingDocument"
-                         (fileAdded)="documents.push($event)" [type]="'document'"></app-file-upload>
-        <br><br>
-
-        <div class="mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="acceptTerms" id="acceptTerms"
-                       formControlName="acceptTerms" [class.is-invalid]="isFieldInvalid('acceptTerms')">
-                <label class="form-check-label" for="acceptTerms">
-                    Jau accept las
-                    <a (click)="openTerms()" href="javascript:void(0)">cundiziuns d’utilisaziun</a>
-                    ed hai ils dretgs dals maletgs utilisads.
-                </label>
-                <div class="invalid-feedback" *ngIf="isFieldInvalid('acceptTerms')">
-                    Per inoltrar l'occurrenza stos ti acceptar las cundiziuns d'utilisaziun.
-                </div>
-            </div>
-        </div>
-        <br><br>
-
-        <h2>
-            publicaziun:
-            <app-info-button>
-                <b>Prevista (Vorschau/anteprima):</b> La prevista mussa co l’occurrenza vegn mussada al public.<br><br>
-
-                <b>Sboz (Entwurf/sbozzo):</b> Cun agid dad in sboz pos ti cuntinuar pli tard, senza publitgar ussa. Ti
-                chattas il sboz lura en «Mias occurrenzas».<br><br>
-
-                <b>Publitgar (veröffentlichen/pubblicare):</b> «Publitgar» publitgescha tia occurrenza
-                suenter ina controlla da la redacziun.
-            </app-info-button>
-        </h2>
-
-        <br>
-        <div class="buttons">
-            <button type="button" class="clndr accent" (click)="preview()">Prevista</button>
-            <button type="button" class="clndr accent" (click)="onSubmit(true)"
-                    *ngIf="canSaveAsDraft()" [disabled]="isSaving">
-                Memorisar sco sboz
-            </button>
-            <button type="button" class="clndr accent" (click)="onSubmit(false)" [disabled]="isSaving">
-                Publitgar
-            </button>
-        </div>
+    <br>
+      <div class="buttons">
+        <button type="button" class="clndr accent" (click)="preview()">Prevista</button>
+        @if (canSaveAsDraft()) {
+          <button type="button" class="clndr accent" (click)="onSubmit(true)"
+            [disabled]="isSaving">
+            Memorisar sco sboz
+          </button>
+        }
+        <button type="button" class="clndr accent" (click)="onSubmit(false)" [disabled]="isSaving">
+          Publitgar
+        </button>
+      </div>
     </form>
-</section>
+  </section>
