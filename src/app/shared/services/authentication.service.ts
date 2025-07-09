@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { SystemRole } from "../data/security";
-import { SsrCookieService } from "ngx-cookie-service-ssr";
-import jwt_decode from "jwt-decode";
-import { UserDto } from "../data/user";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { SystemRole } from '../data/security';
+import { SsrCookieService } from 'ngx-cookie-service-ssr';
+import { jwtDecode } from 'jwt-decode';
+import { UserDto } from '../data/user';
 import { environment } from '../../../environments/environment';
 
 const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class AuthenticationService {
 
@@ -38,7 +38,7 @@ export class AuthenticationService {
     login(email: string, password: string): Observable<any> {
         return this.http.post(environment.apiBasePath + 'user/auth/signin', {
             email: email,
-            password: password
+            password: password,
         }, httpOptions);
     }
 
@@ -49,7 +49,7 @@ export class AuthenticationService {
             organisation: organisation,
             email: email,
             password: password,
-            socialProvider: 'LOCAL'
+            socialProvider: 'LOCAL',
         }, httpOptions);
     }
 
@@ -76,14 +76,14 @@ export class AuthenticationService {
     changePassword(currentPassword: string, newPassword: string): Observable<any> {
         return this.http.post(environment.apiBasePath + 'user/auth/change-password', {
             currentPassword: currentPassword,
-            newPassword: newPassword
+            newPassword: newPassword,
         }, httpOptions);
     }
 
     deleteProfile(password: string, mode: string): Observable<void> {
         const data = {
             password: password,
-            mode: mode
+            mode: mode,
         };
         return this.http.post<void>(environment.apiBasePath + 'user/auth/profile/delete', JSON.stringify(data), httpOptions);
     }
@@ -94,7 +94,7 @@ export class AuthenticationService {
     }
 
     authSuccess(token: string): void {
-        this.cookieService.set(this.TOKEN_KEY, token, {path: '/'});
+        this.cookieService.set(this.TOKEN_KEY, token, { path: '/' });
         this.setToken(token);
     }
 
@@ -171,7 +171,7 @@ export class AuthenticationService {
 
     public getDecodedToken(): any {
         if (this.token) {
-            return jwt_decode(this.token);
+            return jwtDecode(this.token);
         }
         return {};
     }
