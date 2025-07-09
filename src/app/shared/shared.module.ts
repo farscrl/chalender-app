@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateModule } from '@ngx-translate/core';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { UserComponent } from './components/forms/user/user.component';
 import { SortableDirective } from './directives/sortable.directive';
@@ -23,6 +22,7 @@ import { NoticesSubscriptionComponent } from './components/forms/notices-subscri
 import { IframeCodeGeneratorComponent } from './components/forms/iframe-code-generator/iframe-code-generator.component';
 import { ContactFormComponent } from './components/forms/contact-form/contact-form.component';
 import { TermsComponent } from './components/terms/terms.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -50,10 +50,10 @@ import { TermsComponent } from './components/terms/terms.component';
         FormsModule,
         ReactiveFormsModule,
         NgbModule,
-        TranslateModule,
         NgxFileDropModule,
         DragDropModule,
         RouterModule,
+        TranslatePipe,
     ],
     exports: [
         // Export the same modules so they can be used in feature modules
@@ -61,7 +61,6 @@ import { TermsComponent } from './components/terms/terms.component';
         FormsModule,
         ReactiveFormsModule,
         NgbModule,
-        TranslateModule,
 
         PaginationComponent,
         UserComponent,
@@ -81,7 +80,7 @@ import { TermsComponent } from './components/terms/terms.component';
         InfoButtonComponent,
         IframeCodeGeneratorComponent,
         ContactFormComponent,
-    ]
+    ],
 })
 export class SharedModule {
 }

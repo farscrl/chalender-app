@@ -2,7 +2,7 @@ import { NgModule, TransferState } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 import { translateServerLoaderFactory } from './shared/utils/translate-server.loader';
 import { UniversalDeviceDetectorService } from './services/universal-device-detector.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
@@ -11,19 +11,19 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     imports: [
         AppModule,
         ServerModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: translateServerLoaderFactory,
-                deps: [TransferState],
-            },
-        }),
     ],
     providers: [
         {
             provide: DeviceDetectorService,
             useClass: UniversalDeviceDetectorService,
         },
+        provideTranslateService({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: translateServerLoaderFactory,
+                deps: [TransferState],
+            },
+        }),
     ],
     bootstrap: [AppComponent],
 })

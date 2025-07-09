@@ -24,7 +24,7 @@ import { EventDiffComponent } from './components/event-diff/event-diff.component
 import { DiffFieldComponent } from './components/event-diff/diff-field/diff-field.component';
 import { DeleteEventComponent } from './components/modals/delete-event/delete-event.component';
 import { ReasonForChangeComponent } from './components/modals/reason-for-change/reason-for-change.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { provideTranslateService, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
 import { RouteReuseStrategy } from '@angular/router';
 import { RouterReuseStrategy } from './routing/router-reuse.strategy';
 import { AppRouterOutletDirective } from './routing/app-router-outlet.directive';
@@ -162,14 +162,6 @@ export function inIframe() {
                 deps: [AuthenticationService],
             },
         }),
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: translateBrowserLoaderFactory,
-                deps: [HttpClient, TransferState],
-            },
-            defaultLanguage: 'rm',
-        }),
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: !isDevMode() && !inIframe(),
             // Register the ServiceWorker as soon as the application is stable
@@ -177,6 +169,7 @@ export function inIframe() {
             registrationStrategy: 'registerWhenStable:30000',
         }),
         SharedModule,
+        TranslatePipe,
     ],
     providers: [
         {
@@ -189,6 +182,14 @@ export function inIframe() {
         },
         provideClientHydration(),
         provideHttpClient(withInterceptorsFromDi()),
+        provideTranslateService({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: translateBrowserLoaderFactory,
+                deps: [HttpClient, TransferState],
+            },
+            defaultLanguage: 'rm',
+        }),
     ],
     bootstrap: [AppComponent],
 })

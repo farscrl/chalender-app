@@ -22,15 +22,16 @@ import { MyEventsSubscriptionsComponent } from './pages/my-events-subscriptions/
 import { NewEventsSubscriptionComponent } from './pages/new-events-subscription/new-events-subscription.component';
 import { NewNoticesSubscriptionComponent } from './pages/new-notices-subscription/new-notices-subscription.component';
 import {
-    EditNoticesSubscriptionComponent
+    EditNoticesSubscriptionComponent,
 } from './pages/edit-notices-subscription/edit-notices-subscription.component';
 import { EditEventsSubscriptionComponent } from './pages/edit-events-subscription/edit-events-subscription.component';
 import {
-    DeactivateEventsSubscriptionComponent
+    DeactivateEventsSubscriptionComponent,
 } from './pages/deactivate-events-subscription/deactivate-events-subscription.component';
 import {
-    DeactivateNoticesSubscriptionComponent
+    DeactivateNoticesSubscriptionComponent,
 } from './pages/deactivate-notices-subscription/deactivate-notices-subscription.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
     declarations: [
@@ -62,7 +63,8 @@ import {
         CommonModule,
         UserAreaRoutingModule,
         SharedModule,
-    ]
+        TranslatePipe,
+    ],
 })
 export class UserAreaModule {
 }
