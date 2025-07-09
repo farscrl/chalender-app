@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, NgbTooltip } from "@ng-bootstrap/ng-bootstrap";
 import { EventPreviewComponent } from "../../../components/event-preview/event-preview.component";
 import { Router } from '@angular/router';
 import { Event, EventVersion } from '../../../shared/data/event';
 import { UserService } from '../../../shared/services/user.service';
 import { EventsService } from '../../../shared/services/events.service';
 import { ModerationEventsFilter } from '../../../shared/data/filter';
+import { FormsModule } from '@angular/forms';
+import { StatusBadgeComponent } from '../../../shared/components/status-badge/status-badge.component';
+import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
+import { NewEventButtonComponent } from '../../../shared/components/new-event-button/new-event-button.component';
 
 @Component({
     selector: 'app-my-events',
     templateUrl: './my-events.component.html',
     styleUrls: ['./my-events.component.scss'],
-    standalone: false
+    imports: [FormsModule, StatusBadgeComponent, NgbTooltip, PaginationComponent, NewEventButtonComponent]
 })
 export class MyEventsComponent {
     events: Event[] = [];

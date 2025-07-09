@@ -8,8 +8,8 @@ describe('EventDiffComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EventDiffComponent]
-    });
+    imports: [EventDiffComponent]
+});
     fixture = TestBed.createComponent(EventDiffComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

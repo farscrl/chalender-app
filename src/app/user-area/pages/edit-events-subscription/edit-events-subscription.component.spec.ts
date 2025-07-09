@@ -8,8 +8,8 @@ describe('EditEventsSubscriptionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EditEventsSubscriptionComponent]
-    });
+    imports: [EditEventsSubscriptionComponent]
+});
     fixture = TestBed.createComponent(EditEventsSubscriptionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -4,12 +4,14 @@ import { Meta } from '@angular/platform-browser';
 import { NoticesService } from '../../../shared/services/notices.service';
 import { NoticeBoardItemDto } from '../../../shared/data/notices';
 import { UrlUtil } from '../../../shared/utils/url.util';
+import { BackButtonComponent } from '../../../components/back-button/back-button.component';
+import { NoticeDetailsComponent } from '../../../components/notices/notice-details/notice-details.component';
 
 @Component({
     selector: 'app-notices-details',
     templateUrl: './notices-details.component.html',
     styleUrls: ['./notices-details.component.scss'],
-    standalone: false
+    imports: [BackButtonComponent, NoticeDetailsComponent]
 })
 export class NoticesDetailsComponent {
     public notice?: NoticeBoardItemDto;

@@ -1,13 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Diff, diff_match_patch } from "diff-match-patch";
 import { EventOccurrences, EventVersion } from '../../shared/data/event';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
+import { DiffFieldComponent } from './diff-field/diff-field.component';
 
 @Component({
     selector: 'app-event-diff',
     templateUrl: './event-diff.component.html',
     styleUrls: ['./event-diff.component.scss'],
-    standalone: false
+    imports: [DiffFieldComponent, TranslatePipe]
 })
 export class EventDiffComponent implements OnInit {
 

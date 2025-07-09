@@ -7,12 +7,16 @@ import { rmLocale } from '../../../../shared/utils/day-js-locale';
 import { EventFilterModalComponent } from '../../../events/event-filter-modal/event-filter-modal.component';
 import { NoticesFilterService } from '../../../../shared/services/notices-filter.service';
 import { NoticeBoardItemDto } from '../../../../shared/data/notices';
+import { ViewSelectionComponent } from '../../../events/view-selection/view-selection.component';
+import { NoticeCardComponent } from '../../notice-card/notice-card.component';
+import { NoNoticesComponent } from '../../no-notices/no-notices.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-notices-list-cards',
     templateUrl: './notices-list-cards.component.html',
     styleUrls: ['./notices-list-cards.component.scss'],
-    standalone: false
+    imports: [ViewSelectionComponent, NoticeCardComponent, NoNoticesComponent, TranslatePipe]
 })
 export class NoticesListCardsComponent {
     @Output() toggleFilter: EventEmitter<void> = new EventEmitter<void>();

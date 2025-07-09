@@ -8,8 +8,8 @@ describe('ReasonForChangeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ReasonForChangeComponent]
-    });
+    imports: [ReasonForChangeComponent]
+});
     fixture = TestBed.createComponent(ReasonForChangeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

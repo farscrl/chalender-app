@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContactFormService } from '../../../services/contact-form.service';
 import { Message } from '../../../data/notifications';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-contact-form',
     templateUrl: './contact-form.component.html',
     styleUrls: ['./contact-form.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, NgbAlert]
 })
 export class ContactFormComponent {
     f: FormGroup = new FormGroup<any>({});

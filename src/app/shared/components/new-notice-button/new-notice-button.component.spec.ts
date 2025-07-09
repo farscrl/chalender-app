@@ -8,8 +8,8 @@ describe('NewNoticeButtonComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NewNoticeButtonComponent]
-    });
+    imports: [NewNoticeButtonComponent]
+});
     fixture = TestBed.createComponent(NewNoticeButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

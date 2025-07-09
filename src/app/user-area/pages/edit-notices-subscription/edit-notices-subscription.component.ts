@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { NoticesSubscription } from '../../../shared/data/subscription';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsSubscriptionsService } from '../../../shared/services/notifications-subscriptions.service';
+import { NoticesSubscriptionComponent } from '../../../shared/components/forms/notices-subscription/notices-subscription.component';
 
 @Component({
     selector: 'app-edit-notices-subscription',
     templateUrl: './edit-notices-subscription.component.html',
     styleUrls: ['./edit-notices-subscription.component.scss'],
-    standalone: false
+    imports: [NoticesSubscriptionComponent]
 })
 export class EditNoticesSubscriptionComponent {
 

@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { EventsFilterService } from '../../../shared/services/events-filter.service';
 import { NoticesFilterService } from '../../../shared/services/notices-filter.service';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-view-selection',
     templateUrl: './view-selection.component.html',
     styleUrls: ['./view-selection.component.scss'],
-    standalone: false
+    imports: [NgbTooltip, TranslatePipe]
 })
 export class ViewSelectionComponent {
 

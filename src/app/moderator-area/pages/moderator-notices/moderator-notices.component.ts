@@ -2,7 +2,7 @@ import { Component, QueryList, ViewChildren } from '@angular/core';
 import { ModerationNoticeBoardFilter } from '../../../shared/data/filter';
 import { SortableDirective, SortEvent } from '../../../shared/directives/sortable.directive';
 import { ModeratorService } from '../../../shared/services/moderator.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbTooltip, NgbDropdown, NgbDropdownToggle, NgbDropdownMenu, NgbDropdownButtonItem, NgbDropdownItem } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { DatesUtil } from '../../../shared/utils/dates.util';
 import { ReasonForChangeComponent } from '../../../components/modals/reason-for-change/reason-for-change.component';
@@ -12,12 +12,15 @@ import { NoticePreviewComponent } from '../../../components/notice-preview/notic
 import { NoticesService } from '../../../shared/services/notices.service';
 import { NoticeDiffComponent } from '../../../components/notice-diff/notice-diff.component';
 import dayjs from 'dayjs';
+import { FormsModule } from '@angular/forms';
+import { StatusBadgeComponent } from '../../../shared/components/status-badge/status-badge.component';
+import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
 
 @Component({
     selector: 'app-moderator-notices',
     templateUrl: './moderator-notices.component.html',
     styleUrls: ['./moderator-notices.component.scss'],
-    standalone: false
+    imports: [FormsModule, SortableDirective, StatusBadgeComponent, NgbTooltip, NgbDropdown, NgbDropdownToggle, NgbDropdownMenu, NgbDropdownButtonItem, NgbDropdownItem, PaginationComponent]
 })
 export class ModeratorNoticesComponent {
 

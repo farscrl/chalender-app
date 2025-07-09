@@ -8,8 +8,7 @@ import { EventsFilterService } from '../../shared/services/events-filter.service
 @Component({
     selector: 'app-datepicker-header',
     templateUrl: './datepicker-header.component.html',
-    styleUrls: ['./datepicker-header.component.scss'],
-    standalone: false
+    styleUrls: ['./datepicker-header.component.scss']
 })
 export class DatepickerHeaderComponent implements OnInit, OnDestroy {
 

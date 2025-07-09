@@ -8,8 +8,8 @@ describe('IframeCodeGeneratorComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [IframeCodeGeneratorComponent]
-    });
+    imports: [IframeCodeGeneratorComponent]
+});
     fixture = TestBed.createComponent(IframeCodeGeneratorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

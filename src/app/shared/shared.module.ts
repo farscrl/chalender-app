@@ -26,7 +26,15 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 
 @NgModule({
-    declarations: [
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgbModule,
+        NgxFileDropModule,
+        DragDropModule,
+        RouterModule,
+        TranslatePipe,
         PaginationComponent,
         UserComponent,
         SortableDirective,
@@ -45,23 +53,12 @@ import { TranslatePipe } from '@ngx-translate/core';
         ContactFormComponent,
         TermsComponent,
     ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgbModule,
-        NgxFileDropModule,
-        DragDropModule,
-        RouterModule,
-        TranslatePipe,
-    ],
     exports: [
         // Export the same modules so they can be used in feature modules
         CommonModule, // It's a good practice to export CommonModule
         FormsModule,
         ReactiveFormsModule,
         NgbModule,
-
         PaginationComponent,
         UserComponent,
         StatusBadgeComponent,
@@ -71,10 +68,8 @@ import { TranslatePipe } from '@ngx-translate/core';
         NewNoticeButtonComponent,
         EventsSubscriptionComponent,
         NoticesSubscriptionComponent,
-
         SortableDirective,
         FabPositionDirective,
-
         LinkyPipe,
         ShortDomainPipe,
         InfoButtonComponent,

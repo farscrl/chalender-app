@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 
 @Component({
     selector: 'app-forgot-password',
     templateUrl: './forgot-password.component.html',
     styleUrls: ['./forgot-password.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule]
 })
 export class ForgotPasswordComponent {
     f: FormGroup;

@@ -2,14 +2,17 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { EventsService } from '../../../shared/services/events.service';
 import { EventDto } from '../../../shared/data/event';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltip, NgbCarousel, NgbSlide } from '@ng-bootstrap/ng-bootstrap';
 import { Platform } from '@angular/cdk/platform';
+import { LinkyPipe } from '../../../shared/pipes/linky.pipe';
+import { ShortDomainPipe } from '../../../shared/pipes/short-domain.pipe';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-event-details',
     templateUrl: './event-details.component.html',
     styleUrls: ['./event-details.component.scss'],
-    standalone: false
+    imports: [NgbCarousel, NgbSlide, NgbTooltip, LinkyPipe, ShortDomainPipe, TranslatePipe]
 })
 export class EventDetailsComponent {
 

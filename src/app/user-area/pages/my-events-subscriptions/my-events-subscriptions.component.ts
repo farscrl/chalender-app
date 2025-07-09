@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { EventsSubscription } from '../../../shared/data/subscription';
 import { EventsSubscriptionsService } from '../../../shared/services/events-subscriptions.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-my-events-subscriptions',
     templateUrl: './my-events-subscriptions.component.html',
     styleUrls: ['./my-events-subscriptions.component.scss'],
-    standalone: false
+    imports: [NgbTooltip]
 })
 export class MyEventsSubscriptionsComponent {
     subscriptions: EventsSubscription[] = [];

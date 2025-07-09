@@ -34,7 +34,11 @@ import {
 import { TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
-    declarations: [
+    imports: [
+        CommonModule,
+        UserAreaRoutingModule,
+        SharedModule,
+        TranslatePipe,
         NewEventComponent,
         MyEventsComponent,
         ProfileComponent,
@@ -58,12 +62,6 @@ import { TranslatePipe } from '@ngx-translate/core';
         EditEventsSubscriptionComponent,
         DeactivateEventsSubscriptionComponent,
         DeactivateNoticesSubscriptionComponent,
-    ],
-    imports: [
-        CommonModule,
-        UserAreaRoutingModule,
-        SharedModule,
-        TranslatePipe,
     ],
 })
 export class UserAreaModule {

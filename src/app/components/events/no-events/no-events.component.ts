@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { EventsFilterService } from '../../../shared/services/events-filter.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-no-events',
     templateUrl: './no-events.component.html',
     styleUrls: ['./no-events.component.scss'],
-    standalone: false
+    imports: [TranslatePipe]
 })
 export class NoEventsComponent {
 

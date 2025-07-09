@@ -8,8 +8,8 @@ describe('PwaInstallInstructionsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PwaInstallInstructionsComponent]
-    });
+    imports: [PwaInstallInstructionsComponent]
+});
     fixture = TestBed.createComponent(PwaInstallInstructionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,10 +1,7 @@
 import { Directive, ElementRef, HostBinding, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
-@Directive({
-    selector: '[filterScrollPosition]',
-    standalone: false
-})
+@Directive({ selector: '[filterScrollPosition]' })
 export class FilterScrollPositionDirective implements OnInit, OnDestroy {
     @HostBinding('style.maxHeight') heightStyle?: string;
 

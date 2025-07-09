@@ -1,15 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { Message } from '../../../shared/data/notifications';
 import { NotificationsService } from '../../../shared/services/notifications.service';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    standalone: false
+    imports: [NgbAlert, FormsModule, ReactiveFormsModule, RouterLink]
 })
 export class LoginComponent implements OnInit, OnDestroy {
     f: FormGroup = new FormGroup<any>({});

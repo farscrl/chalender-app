@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventPreviewComponent } from '../../../components/event-preview/event-preview.component';
 import dayjs from 'dayjs';
@@ -16,6 +16,10 @@ import { debounceTime, fromEvent, take } from 'rxjs';
 import { TermsComponent } from '../../../shared/components/terms/terms.component';
 import { dateValidator } from '../../../shared/validators/date.validator';
 import { DatesUtil } from '../../../shared/utils/dates.util';
+import { InfoButtonComponent } from '../../../shared/components/forms/info-button/info-button.component';
+import { FileListComponent } from '../../../shared/components/file-list/file-list.component';
+import { FileUploadComponent } from '../../../shared/components/file-upload/file-upload.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 const regexUrl = '^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$';
 
@@ -23,7 +27,7 @@ const regexUrl = '^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\
     selector: 'app-new-event',
     templateUrl: './new-event.component.html',
     styleUrls: ['./new-event.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, InfoButtonComponent, FileListComponent, FileUploadComponent, TranslatePipe]
 })
 export class NewEventComponent implements OnInit {
 

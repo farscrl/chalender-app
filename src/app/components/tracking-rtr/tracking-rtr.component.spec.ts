@@ -8,8 +8,8 @@ describe('TrackingRtrComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TrackingRtrComponent]
-    });
+    imports: [TrackingRtrComponent]
+});
     fixture = TestBed.createComponent(TrackingRtrComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

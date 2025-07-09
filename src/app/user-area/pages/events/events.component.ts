@@ -5,8 +5,7 @@ import { AuthenticationService } from '../../../shared/services/authentication.s
 @Component({
     selector: 'app-events',
     templateUrl: './events.component.html',
-    styleUrls: ['./events.component.scss'],
-    standalone: false
+    styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit {
 

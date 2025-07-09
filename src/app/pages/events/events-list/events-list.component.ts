@@ -9,6 +9,12 @@ import { first, Subject, Subscription } from 'rxjs';
 import { IframeService } from '../../../services/iframe.service';
 import { ScrollPositionService } from '../../../services/scroll-position.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { FilterScrollPositionDirective } from '../../../shared/directives/filter-scroll-position.directive';
+import { EventFilterComponent } from '../../../components/events/event-filter/event-filter.component';
+import { EventsListCardsComponent } from '../../../components/events/events-list/events-list-cards/events-list-cards.component';
+import { EventsListTableComponent } from '../../../components/events/events-list/events-list-table/events-list-table.component';
+import { NewEventButtonComponent } from '../../../shared/components/new-event-button/new-event-button.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-events-list',
@@ -30,7 +36,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
             transition('out => in', animate('400ms ease-in-out')),
         ]),
     ],
-    standalone: false
+    imports: [FilterScrollPositionDirective, EventFilterComponent, EventsListCardsComponent, EventsListTableComponent, NewEventButtonComponent, TranslatePipe]
 })
 export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestroy {
 

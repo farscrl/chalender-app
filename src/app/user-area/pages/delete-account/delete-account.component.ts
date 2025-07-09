@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { Message } from '../../../shared/data/notifications';
 import { NotificationsService } from '../../../shared/services/notifications.service';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-delete-account',
     templateUrl: './delete-account.component.html',
     styleUrls: ['./delete-account.component.scss'],
-    standalone: false
+    imports: [NgbAlert, FormsModule, ReactiveFormsModule, TranslatePipe]
 })
 export class DeleteAccountComponent {
 

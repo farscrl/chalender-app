@@ -8,8 +8,8 @@ describe('NotLoggedInComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NotLoggedInComponent]
-    });
+    imports: [NotLoggedInComponent]
+});
     fixture = TestBed.createComponent(NotLoggedInComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

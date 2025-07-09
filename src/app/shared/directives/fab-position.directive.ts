@@ -1,10 +1,7 @@
 import { Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
-@Directive({
-    selector: '[fabPosition]',
-    standalone: false
-})
+@Directive({ selector: '[fabPosition]' })
 export class FabPositionDirective implements OnInit, OnDestroy {
     @HostBinding('style.bottom') setBottom?: string;
     @Input() fabPosition = true;

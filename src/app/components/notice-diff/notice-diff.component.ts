@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { Diff, diff_match_patch } from 'diff-match-patch';
 import { NoticeBoardItemVersion } from '../../shared/data/notices';
+import { DiffFieldComponent } from '../event-diff/diff-field/diff-field.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-notice-diff',
     templateUrl: './notice-diff.component.html',
     styleUrls: ['./notice-diff.component.scss'],
-    standalone: false
+    imports: [DiffFieldComponent, TranslatePipe]
 })
 export class NoticeDiffComponent {
     @Input()

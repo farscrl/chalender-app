@@ -7,12 +7,16 @@ import { rmLocale } from '../../../../shared/utils/day-js-locale';
 import { EventFilterModalComponent } from '../../../events/event-filter-modal/event-filter-modal.component';
 import { NoticesFilterService } from '../../../../shared/services/notices-filter.service';
 import { NoticeBoardItemDto } from '../../../../shared/data/notices';
+import { ViewSelectionComponent } from '../../../events/view-selection/view-selection.component';
+import { NoticeListItemComponent } from '../../notice-list-item/notice-list-item.component';
+import { NoNoticesComponent } from '../../no-notices/no-notices.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-notices-list-table',
     templateUrl: './notices-list-table.component.html',
     styleUrls: ['./notices-list-table.component.scss'],
-    standalone: false
+    imports: [ViewSelectionComponent, NoticeListItemComponent, NoNoticesComponent, TranslatePipe]
 })
 export class NoticesListTableComponent {
 

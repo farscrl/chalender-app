@@ -15,8 +15,7 @@ export interface SortEvent {
         '[class.asc]': 'direction === "ASC"',
         '[class.desc]': 'direction === "DESC"',
         '(click)': 'rotate()',
-    },
-    standalone: false
+    }
 })
 export class SortableDirective {
 

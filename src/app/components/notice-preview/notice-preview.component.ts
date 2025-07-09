@@ -1,12 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NoticeBoardItemDto } from '../../shared/data/notices';
+import { NoticeCardComponent } from '../notices/notice-card/notice-card.component';
+import { NoticeDetailsComponent } from '../notices/notice-details/notice-details.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-notice-preview',
     templateUrl: './notice-preview.component.html',
     styleUrls: ['./notice-preview.component.scss'],
-    standalone: false
+    imports: [NoticeCardComponent, NoticeDetailsComponent, TranslatePipe]
 })
 export class NoticePreviewComponent {
 

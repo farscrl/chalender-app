@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { NoticeBoardItemDto } from '../../../shared/data/notices';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-notice-card',
     templateUrl: './notice-card.component.html',
     styleUrls: ['./notice-card.component.scss'],
-    standalone: false
+    imports: [RouterLink]
 })
 export class NoticeCardComponent {
 

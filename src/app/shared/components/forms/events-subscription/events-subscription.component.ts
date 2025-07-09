@@ -1,15 +1,17 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EventsSubscription } from '../../../data/subscription';
 import { Genre, Region } from '../../../data/static-data';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StaticDataService } from '../../../services/static-data.service';
 import { EventsSubscriptionsService } from '../../../services/events-subscriptions.service';
+import { InfoButtonComponent } from '../info-button/info-button.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-events-subscription',
     templateUrl: './events-subscription.component.html',
     styleUrls: ['./events-subscription.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, InfoButtonComponent, TranslatePipe]
 })
 export class EventsSubscriptionComponent {
 

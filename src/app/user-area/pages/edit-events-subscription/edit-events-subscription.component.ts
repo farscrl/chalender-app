@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { EventsSubscription } from '../../../shared/data/subscription';
 import { EventsSubscriptionsService } from '../../../shared/services/events-subscriptions.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EventsSubscriptionComponent } from '../../../shared/components/forms/events-subscription/events-subscription.component';
 
 @Component({
     selector: 'app-edit-events-subscription',
     templateUrl: './edit-events-subscription.component.html',
     styleUrls: ['./edit-events-subscription.component.scss'],
-    standalone: false
+    imports: [EventsSubscriptionComponent]
 })
 export class EditEventsSubscriptionComponent {
 

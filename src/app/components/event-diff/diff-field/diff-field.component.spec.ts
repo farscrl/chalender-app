@@ -8,8 +8,8 @@ describe('DiffFieldComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DiffFieldComponent]
-    });
+    imports: [DiffFieldComponent]
+});
     fixture = TestBed.createComponent(DiffFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

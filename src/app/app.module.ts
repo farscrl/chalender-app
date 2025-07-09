@@ -102,8 +102,26 @@ export function inIframe() {
 }
 
 @NgModule({
-    declarations: [
-        AppComponent,
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        JwtModule.forRoot({
+            jwtOptionsProvider: {
+                provide: JWT_OPTIONS,
+                useFactory: jwtOptionsFactory,
+                deps: [AuthenticationService],
+            },
+        }),
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode() && !inIframe(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000',
+        }),
+        SharedModule,
+        TranslatePipe,
         EventsListComponent,
         EventsDetailsComponent,
         HeaderComponent,
@@ -150,26 +168,6 @@ export function inIframe() {
         NewEventsSubscriptionComponent,
         NewNoticesSubscriptionComponent,
         HelpIframeComponent,
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        JwtModule.forRoot({
-            jwtOptionsProvider: {
-                provide: JWT_OPTIONS,
-                useFactory: jwtOptionsFactory,
-                deps: [AuthenticationService],
-            },
-        }),
-        ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: !isDevMode() && !inIframe(),
-            // Register the ServiceWorker as soon as the application is stable
-            // or after 30 seconds (whichever comes first).
-            registrationStrategy: 'registerWhenStable:30000',
-        }),
-        SharedModule,
-        TranslatePipe,
     ],
     providers: [
         {

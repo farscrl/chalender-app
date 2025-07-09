@@ -12,12 +12,14 @@ import { NoticesFilterService } from '../../../shared/services/notices-filter.se
 import {
     NewNoticesSubscriptionComponent
 } from '../../modals/new-notices-subscription/new-notices-subscription.component';
+import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-notices-filter',
     templateUrl: './notices-filter.component.html',
     styleUrls: ['./notices-filter.component.scss'],
-    standalone: false
+    imports: [FormsModule, TranslatePipe]
 })
 export class NoticesFilterComponent {
 

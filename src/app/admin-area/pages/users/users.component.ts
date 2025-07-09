@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, NgbTooltip } from "@ng-bootstrap/ng-bootstrap";
 import { AdminService } from '../../../shared/services/admin.service';
 import { ChangeUserComponent } from '../../components/change-user/change-user.component';
 import { UserDto, UserFilter } from '../../../shared/data/user';
+import { FormsModule } from '@angular/forms';
+import { RoleBadgeComponent } from '../../components/role-badge/role-badge.component';
+import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-users',
     templateUrl: './users.component.html',
     styleUrls: ['./users.component.scss'],
-    standalone: false
+    imports: [FormsModule, RoleBadgeComponent, NgbTooltip, PaginationComponent, TranslatePipe]
 })
 export class UsersComponent implements OnInit {
     users: UserDto[] = [];

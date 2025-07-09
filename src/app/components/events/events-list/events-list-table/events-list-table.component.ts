@@ -8,12 +8,16 @@ import { EventsFilterService } from '../../../../shared/services/events-filter.s
 import { DatesUtil } from '../../../../shared/utils/dates.util';
 import { rmLocale } from '../../../../shared/utils/day-js-locale';
 import { IframeService } from '../../../../services/iframe.service';
+import { ViewSelectionComponent } from '../../view-selection/view-selection.component';
+import { EventListItemComponent } from '../../event-list-item/event-list-item.component';
+import { NoEventsComponent } from '../../no-events/no-events.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-events-list-table',
     templateUrl: './events-list-table.component.html',
     styleUrls: ['./events-list-table.component.scss'],
-    standalone: false
+    imports: [ViewSelectionComponent, EventListItemComponent, NoEventsComponent, TranslatePipe]
 })
 export class EventsListTableComponent {
 

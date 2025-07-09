@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { FormArray, FormControl } from "@angular/forms";
+import { FormArray, FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { UserFormService } from '../../../../user-area/services/user-form.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-user',
     templateUrl: './user.component.html',
     styleUrls: ['./user.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, TranslatePipe]
 })
 export class UserComponent {
     public roles = [

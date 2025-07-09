@@ -4,8 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
     selector: 'app-terms',
     templateUrl: './terms.component.html',
-    styleUrls: ['./terms.component.scss'],
-    standalone: false
+    styleUrls: ['./terms.component.scss']
 })
 export class TermsComponent {
     constructor(private modal: NgbActiveModal) {

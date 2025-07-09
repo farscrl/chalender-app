@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { EventVersion } from '../../../shared/data/event';
+import { TranslatePipe } from '@ngx-translate/core';
 
 type Reason = { id: string, description: string };
 
@@ -50,7 +51,7 @@ const reasonsEdit: Reason[] = [
     selector: 'app-reason-for-change',
     templateUrl: './reason-for-change.component.html',
     styleUrls: ['./reason-for-change.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, TranslatePipe]
 })
 export class ReasonForChangeComponent {
     @Input() event: EventVersion | undefined;

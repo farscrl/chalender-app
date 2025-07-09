@@ -8,8 +8,8 @@ describe('NoticeDiffComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NoticeDiffComponent]
-    });
+    imports: [NoticeDiffComponent]
+});
     fixture = TestBed.createComponent(NoticeDiffComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

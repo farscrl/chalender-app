@@ -8,8 +8,8 @@ describe('DeleteEventComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DeleteEventComponent]
-    });
+    imports: [DeleteEventComponent]
+});
     fixture = TestBed.createComponent(DeleteEventComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

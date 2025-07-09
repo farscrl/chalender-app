@@ -9,13 +9,16 @@ import { AuthenticationService } from '../../../shared/services/authentication.s
 import { EventsSubscription } from '../../../shared/data/subscription';
 import { Observable, Subscription as RxSubscription } from 'rxjs';
 import { NewEventsSubscriptionComponent } from '../../modals/new-events-subscription/new-events-subscription.component';
+import { FormsModule } from '@angular/forms';
+import { DatepickerHeaderComponent } from '../../datepicker-header/datepicker-header.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
     selector: 'app-event-filter',
     templateUrl: './event-filter.component.html',
     styleUrls: ['./event-filter.component.scss'],
-    standalone: false
+    imports: [FormsModule, DatepickerHeaderComponent, NgbDatepicker, TranslatePipe]
 })
 export class EventFilterComponent implements OnInit, OnDestroy {
 

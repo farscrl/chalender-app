@@ -1,9 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
-@Pipe({
-    name: 'shortDomain',
-    standalone: false
-})
+@Pipe({ name: 'shortDomain' })
 export class ShortDomainPipe implements PipeTransform {
 
     transform(url: string, args?: any): any {

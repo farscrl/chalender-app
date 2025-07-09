@@ -8,8 +8,8 @@ describe('NoEventsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NoEventsComponent]
-    });
+    imports: [NoEventsComponent]
+});
     fixture = TestBed.createComponent(NoEventsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

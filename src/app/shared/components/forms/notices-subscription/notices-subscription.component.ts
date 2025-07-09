@@ -1,13 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EventsSubscription, NoticesSubscription } from '../../../data/subscription';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationsSubscriptionsService } from '../../../services/notifications-subscriptions.service';
+import { InfoButtonComponent } from '../info-button/info-button.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-notices-subscription',
     templateUrl: './notices-subscription.component.html',
     styleUrls: ['./notices-subscription.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, InfoButtonComponent, TranslatePipe]
 })
 export class NoticesSubscriptionComponent {
 

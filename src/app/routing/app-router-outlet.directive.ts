@@ -17,10 +17,7 @@ export interface OnDetach {
     onDetach(): void;
 }
 
-@Directive({
-    selector: 'app-router-outlet',
-    standalone: false
-})
+@Directive({ selector: 'app-router-outlet' })
 export class AppRouterOutletDirective extends RouterOutlet {
 
     override detach(): ComponentRef<any> {

@@ -8,6 +8,12 @@ import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { NoticesFilterService } from '../../../shared/services/notices-filter.service';
 import { ScrollPositionService } from '../../../services/scroll-position.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { FilterScrollPositionDirective } from '../../../shared/directives/filter-scroll-position.directive';
+import { NoticesFilterComponent } from '../../../components/notices/notices-filter/notices-filter.component';
+import { NoticesListCardsComponent } from '../../../components/notices/notices-list/notices-list-cards/notices-list-cards.component';
+import { NoticesListTableComponent } from '../../../components/notices/notices-list/notices-list-table/notices-list-table.component';
+import { NewNoticeButtonComponent } from '../../../shared/components/new-notice-button/new-notice-button.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-notices-list',
@@ -29,7 +35,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
             transition('out => in', animate('400ms ease-in-out'))
         ]),
     ],
-    standalone: false
+    imports: [FilterScrollPositionDirective, NoticesFilterComponent, NoticesListCardsComponent, NoticesListTableComponent, NewNoticeButtonComponent, TranslatePipe]
 })
 export class NoticesListComponent {
     resetFiltersCommandSubject: Subject<void> = new Subject<void>();

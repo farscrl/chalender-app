@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { NotificationsService } from '../../../shared/services/notifications.service';
 
@@ -11,7 +11,7 @@ class NotificationService {
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule]
 })
 export class RegisterComponent implements OnInit {
     f: FormGroup = new FormGroup<any>({});

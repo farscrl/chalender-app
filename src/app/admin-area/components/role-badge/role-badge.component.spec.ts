@@ -8,8 +8,8 @@ describe('RoleBadgeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RoleBadgeComponent]
-    });
+    imports: [RoleBadgeComponent]
+});
     fixture = TestBed.createComponent(RoleBadgeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

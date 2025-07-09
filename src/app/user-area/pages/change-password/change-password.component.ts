@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { confirmPasswordsValidator } from '../../../shared/validators/confirm-passwords.validator';
 import { Router } from '@angular/router';
 import { Message } from '../../../shared/data/notifications';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-change-password',
     templateUrl: './change-password.component.html',
     styleUrls: ['./change-password.component.scss'],
-    standalone: false
+    imports: [NgbAlert, FormsModule, ReactiveFormsModule]
 })
 export class ChangePasswordComponent {
     f: FormGroup = new FormGroup<any>({});

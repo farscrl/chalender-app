@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { NoticesSubscription } from '../../../shared/data/subscription';
 import { Router } from '@angular/router';
 import { NotificationsSubscriptionsService } from '../../../shared/services/notifications-subscriptions.service';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-my-notices-subscriptions',
     templateUrl: './my-notices-subscriptions.component.html',
     styleUrls: ['./my-notices-subscriptions.component.scss'],
-    standalone: false
+    imports: [NgbTooltip]
 })
 export class MyNoticesSubscriptionsComponent {
     subscriptions: NoticesSubscription[] = [];

@@ -8,8 +8,8 @@ describe('StatusBadgeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [StatusBadgeComponent]
-    });
+    imports: [StatusBadgeComponent]
+});
     fixture = TestBed.createComponent(StatusBadgeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

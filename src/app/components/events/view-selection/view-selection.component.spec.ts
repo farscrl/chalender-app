@@ -8,8 +8,8 @@ describe('ViewSelectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ViewSelectionComponent]
-    });
+    imports: [ViewSelectionComponent]
+});
     fixture = TestBed.createComponent(ViewSelectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

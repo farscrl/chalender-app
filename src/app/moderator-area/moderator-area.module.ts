@@ -7,14 +7,12 @@ import { ModeratorNoticesComponent } from './pages/moderator-notices/moderator-n
 
 
 @NgModule({
-    declarations: [
-        ModeratorEventsComponent,
-        ModeratorNoticesComponent,
-    ],
     imports: [
         CommonModule,
         ModeratorAreaRoutingModule,
         SharedModule,
+        ModeratorEventsComponent,
+        ModeratorNoticesComponent,
     ]
 })
 export class ModeratorAreaModule {

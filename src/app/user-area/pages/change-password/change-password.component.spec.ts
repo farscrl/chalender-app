@@ -8,8 +8,8 @@ describe('ChangePasswordComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ChangePasswordComponent]
-    });
+    imports: [ChangePasswordComponent]
+});
     fixture = TestBed.createComponent(ChangePasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-pwa-install-instructions',
     templateUrl: './pwa-install-instructions.component.html',
     styleUrls: ['./pwa-install-instructions.component.scss'],
-    standalone: false
+    imports: [TranslatePipe]
 })
 export class PwaInstallInstructionsComponent implements OnInit {
 

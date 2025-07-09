@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { Message } from '../../../shared/data/notifications';
 import { NotificationsService } from '../../../shared/services/notifications.service';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-confirm-password',
     templateUrl: './confirm-password.component.html',
     styleUrls: ['./confirm-password.component.scss'],
-    standalone: false
+    imports: [NgbAlert, FormsModule, ReactiveFormsModule]
 })
 export class ConfirmPasswordComponent {
     f: FormGroup = new FormGroup<any>({});

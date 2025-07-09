@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserFormService } from '../../services/user-form.service';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+import { UserComponent } from '../../../shared/components/forms/user/user.component';
 
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.scss'],
-    standalone: false
+    imports: [NgbAlert, UserComponent, RouterLink]
 })
 export class ProfileComponent implements OnInit {
     didSubmit = false;

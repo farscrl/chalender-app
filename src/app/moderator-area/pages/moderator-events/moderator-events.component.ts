@@ -1,5 +1,5 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, NgbTooltip, NgbDropdown, NgbDropdownToggle, NgbDropdownMenu, NgbDropdownButtonItem, NgbDropdownItem } from "@ng-bootstrap/ng-bootstrap";
 import { EventPreviewComponent } from "../../../components/event-preview/event-preview.component";
 import { EventDiffComponent } from "../../../components/event-diff/event-diff.component";
 import { DeleteEventComponent } from "../../../components/modals/delete-event/delete-event.component";
@@ -11,12 +11,15 @@ import { ModerationEventsFilter } from '../../../shared/data/filter';
 import { Event, EventVersion } from '../../../shared/data/event';
 import { SortableDirective, SortEvent } from '../../../shared/directives/sortable.directive';
 import { DatesUtil } from '../../../shared/utils/dates.util';
+import { FormsModule } from '@angular/forms';
+import { StatusBadgeComponent } from '../../../shared/components/status-badge/status-badge.component';
+import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
 
 @Component({
     selector: 'app-moderator-events',
     templateUrl: './moderator-events.component.html',
     styleUrls: ['./moderator-events.component.scss'],
-    standalone: false
+    imports: [FormsModule, SortableDirective, StatusBadgeComponent, NgbTooltip, NgbDropdown, NgbDropdownToggle, NgbDropdownMenu, NgbDropdownButtonItem, NgbDropdownItem, PaginationComponent]
 })
 export class ModeratorEventsComponent implements OnInit {
 

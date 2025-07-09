@@ -1,12 +1,15 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IframeService } from '../../../services/iframe.service';
+import { FabPositionDirective } from '../../directives/fab-position.directive';
+import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-new-notice-button',
     templateUrl: './new-notice-button.component.html',
     styleUrls: ['./new-notice-button.component.scss'],
-    standalone: false
+    imports: [FabPositionDirective, RouterLink, TranslatePipe]
 })
 export class NewNoticeButtonComponent {
     @ViewChild('fab') fab?: ElementRef;

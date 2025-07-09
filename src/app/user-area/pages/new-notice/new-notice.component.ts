@@ -1,6 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { Document, Image, PublicationTypes } from '../../../shared/data/event';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
@@ -13,12 +13,15 @@ import { debounceTime, fromEvent, take } from 'rxjs';
 import { NoticeBoardItemDto } from '../../../shared/data/notices';
 import { NoticesService } from '../../../shared/services/notices.service';
 import { NoticePreviewComponent } from '../../../components/notice-preview/notice-preview.component';
+import { InfoButtonComponent } from '../../../shared/components/forms/info-button/info-button.component';
+import { FileListComponent } from '../../../shared/components/file-list/file-list.component';
+import { FileUploadComponent } from '../../../shared/components/file-upload/file-upload.component';
 
 @Component({
     selector: 'app-new-notice',
     templateUrl: './new-notice.component.html',
     styleUrls: ['./new-notice.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, InfoButtonComponent, FileListComponent, FileUploadComponent]
 })
 export class NewNoticeComponent {
     images: Image[] = [];

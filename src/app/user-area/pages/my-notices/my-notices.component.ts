@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../../shared/services/user.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { NoticesService } from '../../../shared/services/notices.service';
 import { NoticeBoardItem, NoticeBoardItemVersion } from '../../../shared/data/notices';
@@ -8,12 +8,16 @@ import { NoticePreviewComponent } from '../../../components/notice-preview/notic
 import { ModerationNoticeBoardFilter } from '../../../shared/data/filter';
 import dayjs from 'dayjs';
 import { DeleteEventComponent } from '../../../components/modals/delete-event/delete-event.component';
+import { FormsModule } from '@angular/forms';
+import { StatusBadgeComponent } from '../../../shared/components/status-badge/status-badge.component';
+import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
+import { NewNoticeButtonComponent } from '../../../shared/components/new-notice-button/new-notice-button.component';
 
 @Component({
     selector: 'app-my-notices',
     templateUrl: './my-notices.component.html',
     styleUrls: ['./my-notices.component.scss'],
-    standalone: false
+    imports: [FormsModule, StatusBadgeComponent, NgbTooltip, PaginationComponent, NewNoticeButtonComponent]
 })
 export class MyNoticesComponent {
     notices: NoticeBoardItem[] = [];

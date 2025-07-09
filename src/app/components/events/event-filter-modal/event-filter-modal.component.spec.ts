@@ -8,8 +8,8 @@ describe('EventFilterModalComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EventFilterModalComponent]
-    });
+    imports: [EventFilterModalComponent]
+});
     fixture = TestBed.createComponent(EventFilterModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

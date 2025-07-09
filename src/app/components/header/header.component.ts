@@ -3,13 +3,14 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from '../../shared/services/authentication.service';
 import { IframeService } from '../../services/iframe.service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    standalone: false
+    imports: [RouterLink, TranslatePipe]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
     public isMenuOpen = false;

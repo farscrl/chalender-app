@@ -8,8 +8,8 @@ describe('DeleteAccountComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DeleteAccountComponent]
-    });
+    imports: [DeleteAccountComponent]
+});
     fixture = TestBed.createComponent(DeleteAccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,12 +1,15 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IframeService } from '../../../services/iframe.service';
+import { FabPositionDirective } from '../../directives/fab-position.directive';
+import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-new-event-button',
     templateUrl: './new-event-button.component.html',
     styleUrls: ['./new-event-button.component.scss'],
-    standalone: false
+    imports: [FabPositionDirective, RouterLink, TranslatePipe]
 })
 export class NewEventButtonComponent implements OnInit, OnDestroy, AfterViewInit {
     @ViewChild('fab') fab?: ElementRef;

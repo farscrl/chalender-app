@@ -1,12 +1,14 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltip, NgbCarousel, NgbSlide } from '@ng-bootstrap/ng-bootstrap';
 import { NoticeBoardItemDto } from '../../../shared/data/notices';
+import { LinkyPipe } from '../../../shared/pipes/linky.pipe';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-notice-details',
     templateUrl: './notice-details.component.html',
     styleUrls: ['./notice-details.component.scss'],
-    standalone: false
+    imports: [NgbCarousel, NgbSlide, NgbTooltip, LinkyPipe, TranslatePipe]
 })
 export class NoticeDetailsComponent {
 

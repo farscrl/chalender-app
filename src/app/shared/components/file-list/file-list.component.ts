@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Document, Image } from '../../data/event';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
 import { ImagesService } from '../../services/images.service';
 import { DocumentsService } from '../../services/documents.service';
 
@@ -8,7 +8,7 @@ import { DocumentsService } from '../../services/documents.service';
     selector: 'app-file-list',
     templateUrl: './file-list.component.html',
     styleUrls: ['./file-list.component.scss'],
-    standalone: false
+    imports: [CdkDropList, CdkDrag, CdkDragHandle]
 })
 export class FileListComponent {
 

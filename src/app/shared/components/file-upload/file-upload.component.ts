@@ -1,15 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgxFileDropEntry } from "ngx-file-drop";
+import { NgxFileDropEntry, NgxFileDropModule } from "ngx-file-drop";
 import { concatMap, Subject } from "rxjs";
 import { ImagesService } from "../../services/images.service";
 import { Document, Image } from '../../data/event';
 import { DocumentsService } from '../../services/documents.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-file-upload',
     templateUrl: './file-upload.component.html',
     styleUrls: ['./file-upload.component.scss'],
-    standalone: false
+    imports: [NgxFileDropModule, TranslatePipe]
 })
 export class FileUploadComponent {
 

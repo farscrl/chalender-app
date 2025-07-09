@@ -8,12 +8,17 @@ import { EventsFilterService } from '../../../../shared/services/events-filter.s
 import { DatesUtil } from '../../../../shared/utils/dates.util';
 import { rmLocale } from '../../../../shared/utils/day-js-locale';
 import { IframeService } from '../../../../services/iframe.service';
+import { ViewSelectionComponent } from '../../view-selection/view-selection.component';
+import { ScrollableTitleDirective } from '../../../../shared/directives/scrollable-title.directive';
+import { EventCardComponent } from '../../event-card/event-card.component';
+import { NoEventsComponent } from '../../no-events/no-events.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-events-list-cards',
     templateUrl: './events-list-cards.component.html',
     styleUrls: ['./events-list-cards.component.scss'],
-    standalone: false
+    imports: [ViewSelectionComponent, ScrollableTitleDirective, EventCardComponent, NoEventsComponent, TranslatePipe]
 })
 export class EventsListCardsComponent implements OnInit, OnDestroy {
 

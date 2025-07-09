@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { NotificationsService } from '../../../shared/services/notifications.service';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-confirm-email',
     templateUrl: './confirm-email.component.html',
     styleUrls: ['./confirm-email.component.scss'],
-    standalone: false
+    imports: [NgbAlert]
 })
 export class ConfirmEmailComponent implements OnInit {
     private code?: string;

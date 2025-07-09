@@ -3,12 +3,13 @@ import { environment } from '../../../../../environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { StaticDataService } from '../../../services/static-data.service';
 import { Genre, Region } from '../../../data/static-data';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-iframe-code-generator',
     templateUrl: './iframe-code-generator.component.html',
     styleUrls: ['./iframe-code-generator.component.scss'],
-    standalone: false
+    imports: [FormsModule]
 })
 export class IframeCodeGeneratorComponent implements OnInit {
     public url = '';

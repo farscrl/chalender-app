@@ -8,8 +8,8 @@ describe('DatepickerHeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DatepickerHeaderComponent]
-    });
+    imports: [DatepickerHeaderComponent]
+});
     fixture = TestBed.createComponent(DatepickerHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

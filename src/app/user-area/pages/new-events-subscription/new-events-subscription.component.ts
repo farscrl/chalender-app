@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { EventsSubscription } from '../../../shared/data/subscription';
 import { Router } from '@angular/router';
+import { EventsSubscriptionComponent } from '../../../shared/components/forms/events-subscription/events-subscription.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-new-events-subscription',
     templateUrl: './new-events-subscription.component.html',
     styleUrls: ['./new-events-subscription.component.scss'],
-    standalone: false
+    imports: [EventsSubscriptionComponent, TranslatePipe]
 })
 export class NewEventsSubscriptionComponent {
     subscription: EventsSubscription;

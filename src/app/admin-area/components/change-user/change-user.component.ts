@@ -1,13 +1,15 @@
 import { Component, Input } from '@angular/core';
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbActiveModal, NgbAlert } from "@ng-bootstrap/ng-bootstrap";
 import { UserFormService } from '../../../user-area/services/user-form.service';
 import { AdminService } from '../../../shared/services/admin.service';
+import { UserComponent } from '../../../shared/components/forms/user/user.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-change-user',
     templateUrl: './change-user.component.html',
     styleUrls: ['./change-user.component.scss'],
-    standalone: false
+    imports: [NgbAlert, UserComponent, TranslatePipe]
 })
 export class ChangeUserComponent {
 

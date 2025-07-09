@@ -6,12 +6,15 @@ import { EventsService } from '../../../shared/services/events.service';
 import { UrlUtil } from '../../../shared/utils/url.util';
 import { isPlatformServer } from '@angular/common';
 import dayjs from 'dayjs';
+import { BackButtonComponent } from '../../../components/back-button/back-button.component';
+import { EventDetailsComponent } from '../../../components/events/event-details/event-details.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-events-details',
     templateUrl: './events-details.component.html',
     styleUrls: ['./events-details.component.scss'],
-    standalone: false
+    imports: [BackButtonComponent, EventDetailsComponent, TranslatePipe]
 })
 export class EventsDetailsComponent implements OnInit {
 

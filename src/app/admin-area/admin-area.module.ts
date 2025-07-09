@@ -9,16 +9,14 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 
 @NgModule({
-    declarations: [
-        UsersComponent,
-        ChangeUserComponent,
-        RoleBadgeComponent,
-    ],
     imports: [
         CommonModule,
         AdminAreaRoutingModule,
         SharedModule,
         TranslatePipe,
+        UsersComponent,
+        ChangeUserComponent,
+        RoleBadgeComponent,
     ],
 })
 export class AdminAreaModule {
