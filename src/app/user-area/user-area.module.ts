@@ -13,7 +13,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.component';
 import { ConfirmPasswordComponent } from './pages/confirm-password/confirm-password.component';
 import { UserAreaRoutingModule } from './user-area-routing.module';
-import { SharedModule } from '../shared/shared.module';
+
 import { NewNoticeComponent } from './pages/new-notice/new-notice.component';
 import { NoticesComponent } from './pages/notices/notices.component';
 import { MyNoticesComponent } from './pages/my-notices/my-notices.component';
@@ -35,34 +35,33 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
     imports: [
-        CommonModule,
-        UserAreaRoutingModule,
-        SharedModule,
-        TranslatePipe,
-        NewEventComponent,
-        MyEventsComponent,
-        ProfileComponent,
-        ChangePasswordComponent,
-        DeleteAccountComponent,
-        LoginComponent,
-        LogoutComponent,
-        EventsComponent,
-        ForgotPasswordComponent,
-        RegisterComponent,
-        ConfirmEmailComponent,
-        ConfirmPasswordComponent,
-        NewNoticeComponent,
-        NoticesComponent,
-        MyNoticesComponent,
-        MyNoticesSubscriptionsComponent,
-        MyEventsSubscriptionsComponent,
-        NewEventsSubscriptionComponent,
-        NewNoticesSubscriptionComponent,
-        EditNoticesSubscriptionComponent,
-        EditEventsSubscriptionComponent,
-        DeactivateEventsSubscriptionComponent,
-        DeactivateNoticesSubscriptionComponent,
-    ],
+    CommonModule,
+    UserAreaRoutingModule,
+    TranslatePipe,
+    NewEventComponent,
+    MyEventsComponent,
+    ProfileComponent,
+    ChangePasswordComponent,
+    DeleteAccountComponent,
+    LoginComponent,
+    LogoutComponent,
+    EventsComponent,
+    ForgotPasswordComponent,
+    RegisterComponent,
+    ConfirmEmailComponent,
+    ConfirmPasswordComponent,
+    NewNoticeComponent,
+    NoticesComponent,
+    MyNoticesComponent,
+    MyNoticesSubscriptionsComponent,
+    MyEventsSubscriptionsComponent,
+    NewEventsSubscriptionComponent,
+    NewNoticesSubscriptionComponent,
+    EditNoticesSubscriptionComponent,
+    EditEventsSubscriptionComponent,
+    DeactivateEventsSubscriptionComponent,
+    DeactivateNoticesSubscriptionComponent,
+],
 })
 export class UserAreaModule {
 }
