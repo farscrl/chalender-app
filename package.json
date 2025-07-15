@@ -8,8 +8,9 @@
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "lint": "ng lint",
-        "build:ssr:staging": "ng build -c=staging && ng run chalender-frontend:server:staging",
-        "build:ssr:prod": "ng build -c=prod && ng run chalender-frontend:server:prod",
+        "build:ssr:staging": "ng build -c=staging",
+        "build:ssr:prod": "ng build -c=prod",
+        "serve:ssr": "node dist/chalender‑frontend/server/main.js",
         "serve:ssr:chalender-frontend": "node dist/chalender-frontend/server/server.mjs"
     },
     "private": true,
