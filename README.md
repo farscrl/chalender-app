@@ -18,7 +18,7 @@ To get started with Chalender.ch, follow these steps:
 Ensure you have the following installed:
 
 - Node.js (LTS version)
-- npm (latest version)
+- pnpm (latest version)
 
 ### Installation
 
@@ -28,7 +28,7 @@ Ensure you have the following installed:
 
 3. Install dependencies:
 
-   `npm install`
+   `pnpm install`
 
 ### Running the Application
 
@@ -36,7 +36,7 @@ To run the application locally:
 
 1. Build and serve the application with SSR:
 
-   `npm run dev:ssr`
+   `pnpm run dev:ssr`
 
 2. Open your browser and navigate to `http://localhost:4200`.
 
