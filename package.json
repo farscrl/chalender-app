@@ -10,7 +10,7 @@
         "lint": "ng lint",
         "build:ssr:staging": "ng build -c=staging",
         "build:ssr:prod": "ng build -c=prod",
-        "serve:ssr": "node dist/chalender‑frontend/server/main.js",
+        "serve:ssr": "node dist/chalender-frontend/server/server.mjs",
         "serve:ssr:chalender-frontend": "node dist/chalender-frontend/server/server.mjs"
     },
     "private": true,
