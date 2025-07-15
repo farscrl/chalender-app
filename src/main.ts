@@ -1,21 +1,21 @@
 /// <reference types="@angular/localize" />
 
-import { RouteReuseStrategy } from '@angular/router';
+import { provideRouter, RouteReuseStrategy, withEnabledBlockingInitialNavigation } from '@angular/router';
 import { RouterReuseStrategy } from './app/routing/router-reuse.strategy';
 import { NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 import { DatepickerTranslatorService } from './app/shared/services/datepicker-translator.service';
 import { bootstrapApplication, BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { provideTranslateService, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
 import { translateBrowserLoaderFactory } from './app/shared/utils/translate-browser.loader';
 import { importProvidersFrom, isDevMode, TransferState } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app/app-routing.module';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { AuthenticationService } from './app/shared/services/authentication.service';
 import { environment } from './environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app/app.component';
+import { appRoutes } from './app/app.routes';
 
 export function jwtOptionsFactory(authService: AuthenticationService) {
     return {
@@ -44,9 +44,9 @@ export function inIframe() {
 
 bootstrapApplication(AppComponent, {
     providers: [
+        provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
         importProvidersFrom(
             BrowserModule,
-            AppRoutingModule,
             JwtModule.forRoot({
                 jwtOptionsProvider: {
                     provide: JWT_OPTIONS,
@@ -71,7 +71,7 @@ bootstrapApplication(AppComponent, {
             useClass: DatepickerTranslatorService,
         },
         provideClientHydration(),
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withInterceptorsFromDi(), withFetch()),
         provideTranslateService({
             loader: {
                 provide: TranslateLoader,

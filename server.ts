@@ -3,8 +3,11 @@ import { CommonEngine } from '@angular/ssr/node';
 import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
-import AppServerModule from './src/main.server';
 import { REQUEST, RESPONSE } from './src/express.tokens';
+import { renderApplication } from '@angular/platform-server';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './src/app/app.component';
+import { serverConfig } from './src/app/app.config.server';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -27,23 +30,29 @@ export function app(): express.Express {
     }));
 
     // All regular routes use the Angular engine
-    server.get('**', (req, res, next) => {
-        const {protocol, originalUrl, baseUrl, headers} = req;
+    server.get('**', async (req, res, next) => {
+        try {
+            const html = await renderApplication(
+                () => bootstrapApplication(AppComponent, {
+                    providers: [
+                        ...serverConfig.providers,
+                        { provide: APP_BASE_HREF, useValue: req.baseUrl },
+                        { provide: REQUEST, useValue: req },
+                        { provide: RESPONSE, useValue: res },
+                    ],
+                }),
+                {
+                    document: indexHtml,
+                    url: req.originalUrl,
+                    // platform‑level providers (e.g. for zone shims) go here:
+                    platformProviders: [],
+                },
+            );
 
-        commonEngine
-            .render({
-                bootstrap: AppServerModule,
-                documentFilePath: indexHtml,
-                url: `${protocol}://${headers.host}${originalUrl}`,
-                publicPath: browserDistFolder,
-                providers: [
-                    {provide: APP_BASE_HREF, useValue: baseUrl},
-                    {provide: RESPONSE, useValue: res},
-                    {provide: REQUEST, useValue: req}
-                ],
-            })
-            .then((html) => res.send(html))
-            .catch((err) => next(err));
+            res.send(html);
+        } catch (err) {
+            next(err);
+        }
     });
 
     return server;
