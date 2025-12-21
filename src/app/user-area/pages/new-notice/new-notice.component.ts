@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { NotificationsService } from '../../../shared/services/notifications.service';
 import { DatesUtil } from '../../../shared/utils/dates.util';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { TermsComponent } from '../../../shared/components/terms/terms.component';
 import { debounceTime, fromEvent, take } from 'rxjs';
@@ -65,7 +66,6 @@ export class NewNoticeComponent {
     }
 
     ngOnInit(): void {
-        const customParseFormat = require('dayjs/plugin/customParseFormat');
         dayjs.extend(customParseFormat);
         dayjs.locale('rm', rmLocale);
 

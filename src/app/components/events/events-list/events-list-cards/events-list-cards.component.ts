@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { EventFilterModalComponent } from '../../event-filter-modal/event-filter-modal.component';
 import { Subscription } from 'rxjs';
 import { CategorizedEvents } from '../../../../shared/data/event';
@@ -37,7 +38,6 @@ export class EventsListCardsComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        const customParseFormat = require('dayjs/plugin/customParseFormat');
         dayjs.extend(customParseFormat);
         dayjs.locale('rm', rmLocale);
 

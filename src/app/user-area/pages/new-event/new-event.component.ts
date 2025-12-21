@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators, FormsModule
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventPreviewComponent } from '../../../components/event-preview/event-preview.component';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { Router } from '@angular/router';
 import { EventLanguage, Genre, Region } from '../../../shared/data/static-data';
 import { Document, EventDto, Image, PublicationTypes } from '../../../shared/data/event';
@@ -78,7 +79,6 @@ export class NewEventComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const customParseFormat = require('dayjs/plugin/customParseFormat');
         dayjs.extend(customParseFormat);
         dayjs.locale('rm', rmLocale);
 

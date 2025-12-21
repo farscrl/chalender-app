@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { EventFilterModalComponent } from '../../event-filter-modal/event-filter-modal.component';
 import { CategorizedEvents } from '../../../../shared/data/event';
 import { EventsFilterService } from '../../../../shared/services/events-filter.service';
@@ -36,7 +37,6 @@ export class EventsListTableComponent {
     }
 
     ngOnInit() {
-        const customParseFormat = require('dayjs/plugin/customParseFormat');
         dayjs.extend(customParseFormat);
         dayjs.locale('rm', rmLocale);
 

@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IframeService } from '../../../../services/iframe.service';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { rmLocale } from '../../../../shared/utils/day-js-locale';
 import { EventFilterModalComponent } from '../../../events/event-filter-modal/event-filter-modal.component';
 import { NoticesFilterService } from '../../../../shared/services/notices-filter.service';
@@ -35,7 +36,6 @@ export class NoticesListTableComponent {
     }
 
     ngOnInit() {
-        const customParseFormat = require('dayjs/plugin/customParseFormat');
         dayjs.extend(customParseFormat);
         dayjs.locale('rm', rmLocale);
 

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { OnAttach, OnDetach } from '../../../routing/app-router-outlet.directive';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { EventsFilterService } from '../../../shared/services/events-filter.service';
 import { NotificationsService } from '../../../shared/services/notifications.service';
@@ -65,7 +66,6 @@ export class EventsListComponent implements OnInit, OnAttach, OnDetach, OnDestro
     }
 
     ngOnInit() {
-        const customParseFormat = require('dayjs/plugin/customParseFormat');
         dayjs.extend(customParseFormat);
         dayjs.locale('rm', rmLocale);
 

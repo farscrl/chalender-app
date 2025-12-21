@@ -4,6 +4,7 @@ import { NotificationsService } from '../../../shared/services/notifications.ser
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { IframeService } from '../../../services/iframe.service';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { NoticesFilterService } from '../../../shared/services/notices-filter.service';
 import { ScrollPositionService } from '../../../services/scroll-position.service';
@@ -63,7 +64,6 @@ export class NoticesListComponent {
     }
 
     ngOnInit() {
-        const customParseFormat = require('dayjs/plugin/customParseFormat');
         dayjs.extend(customParseFormat);
         dayjs.locale('rm', rmLocale);
 
