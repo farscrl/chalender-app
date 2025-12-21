@@ -8,6 +8,7 @@ import { UniversalDeviceDetectorService } from './services/universal-device-dete
 import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 export const serverConfig: ApplicationConfig = {
     providers: [
@@ -16,6 +17,7 @@ export const serverConfig: ApplicationConfig = {
             withInterceptorsFromDi(),
             withFetch(),
         ),
+        provideNoopAnimations(),
         {
             provide: DeviceDetectorService,
             useClass: UniversalDeviceDetectorService,
