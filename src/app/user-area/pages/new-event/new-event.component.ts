@@ -15,7 +15,7 @@ import { rmLocale } from '../../../shared/utils/day-js-locale';
 import { minCheckboxValidator } from '../../../shared/validators/mincheckbox.validator';
 import { debounceTime, fromEvent, take } from 'rxjs';
 import { TermsComponent } from '../../../shared/components/terms/terms.component';
-import { dateValidator } from '../../../shared/validators/date.validator';
+import { dateValidator, atLeastOneFutureOccurrenceValidator } from '../../../shared/validators/date.validator';
 import { DatesUtil } from '../../../shared/utils/dates.util';
 import { InfoButtonComponent } from '../../../shared/components/forms/info-button/info-button.component';
 import { FileListComponent } from '../../../shared/components/file-list/file-list.component';
@@ -261,6 +261,9 @@ export class NewEventComponent implements OnInit {
             this.documents = this.eventToChange.documents;
         }
 
+        // When editing an event, apply the FormArray-level validator to ensure at least one future occurrence
+        const occurrencesValidators = this.eventToChange ? [atLeastOneFutureOccurrenceValidator(this.datesUtil)] : [];
+
         this.f = this.fb.group({
             contactEmail: [this.eventToChange ? this.eventToChange.contactEmail : '', [Validators.required, Validators.email]],
             title: [this.eventToChange ? this.eventToChange.title : '', Validators.required],
@@ -276,7 +279,7 @@ export class NewEventComponent implements OnInit {
             link: [this.eventToChange ? this.eventToChange.link : '', Validators.pattern(regexUrl)],
             pricing: [this.eventToChange ? this.eventToChange.pricing : ''],
             acceptTerms: [this.eventToChange ? this.eventToChange.acceptTerms : false, Validators.requiredTrue],
-            occurrences: new FormArray([]),
+            occurrences: new FormArray([], occurrencesValidators),
         });
         this.addOccurrences();
 
@@ -307,9 +310,11 @@ export class NewEventComponent implements OnInit {
 
     addOccurrences() {
         if (this.eventToChange) {
+            // When editing, allow past dates for individual occurrences
+            // The FormArray-level validator ensures at least one occurrence is in the future
             this.eventToChange.occurrences.forEach((occurrence, idx) => {
                 const o = this.fb.group({
-                    date: [dayjs(occurrence.date, 'D-M-YYYY').format('YYYY-MM-DD'), [Validators.required, dateValidator(this.datesUtil)]],
+                    date: [dayjs(occurrence.date, 'D-M-YYYY').format('YYYY-MM-DD'), [Validators.required, dateValidator(this.datesUtil, true)]],
                     start: [occurrence.start, Validators.required],
                     end: [occurrence.end],
                     isAllDay: [occurrence.isAllDay],
