@@ -8,7 +8,7 @@ import { bootstrapApplication, BrowserModule, provideClientHydration } from '@an
 import { HttpClient, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { provideTranslateService, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
 import { translateBrowserLoaderFactory } from './app/shared/utils/translate-browser.loader';
-import { importProvidersFrom, isDevMode, TransferState } from '@angular/core';
+import { importProvidersFrom, isDevMode, provideZoneChangeDetection, TransferState } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { AuthenticationService } from './app/shared/services/authentication.service';
@@ -44,6 +44,7 @@ export function inIframe() {
 
 bootstrapApplication(AppComponent, {
     providers: [
+        provideZoneChangeDetection(),
         provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
         importProvidersFrom(
             BrowserModule,

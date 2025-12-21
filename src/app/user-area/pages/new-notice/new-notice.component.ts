@@ -51,7 +51,7 @@ export class NewNoticeComponent {
         private el: ElementRef,
         private datesUtil: DatesUtil,
     ) {
-        const navigation = this.router.getCurrentNavigation();
+        const navigation = this.router.currentNavigation();
         if (navigation && navigation.extras.state) {
             const notice = navigation.extras.state['notice'];
             if (notice) {

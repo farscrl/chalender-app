@@ -64,7 +64,7 @@ export class NewEventComponent implements OnInit {
         private el: ElementRef,
         private datesUtil: DatesUtil,
     ) {
-        const navigation = this.router.getCurrentNavigation();
+        const navigation = this.router.currentNavigation();
         if (navigation && navigation.extras.state) {
             const event = navigation.extras.state['event'];
             if (event) {

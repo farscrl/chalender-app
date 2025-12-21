@@ -1,3 +1,4 @@
+import { provideZoneChangeDetection } from '@angular/core';
 import 'zone.js/node';
 import { APP_BASE_HREF } from '@angular/common';
 import { REQUEST, RESPONSE } from './src/express.tokens';
@@ -28,6 +29,7 @@ export function app(): express.Express {
             const html = await renderApplication(
                 () => bootstrapApplication(AppComponent, {
                     providers: [
+                        provideZoneChangeDetection(),
                         ...serverConfig.providers,
                         { provide: APP_BASE_HREF, useValue: req.baseUrl },
                         { provide: REQUEST, useValue: req },
