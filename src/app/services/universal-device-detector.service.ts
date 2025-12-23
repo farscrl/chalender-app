@@ -9,7 +9,7 @@ import { REQUEST } from '../../express.tokens';
 export class UniversalDeviceDetectorService extends DeviceDetectorService {
 
     constructor(@Inject(PLATFORM_ID) platformId: any, @Optional() @Inject(REQUEST) request: Request) {
-        super(platformId);
+        super();
         if (isPlatformServer(platformId)) {
             // @ts-ignore
             const userAgent = this.request?.headers?.['user-agent'] as string || '';
