@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit, PLATFORM_ID, DOCUMENT } from '@angular/core';
-import { TranslateService } from "@ngx-translate/core";
+import { Component, DOCUMENT, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { IframeService } from './services/iframe.service';
 import { isPlatformBrowser } from '@angular/common';
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
         private navigationService: NavigationService,
     ) {
         // this language will be used as a fallback when a translation isn't found in the current language
-        translate.setDefaultLang('rm');
+        translate.setFallbackLang('rm');
 
         // the lang to use, if the lang isn't available, it will use the current loader to get them
         translate.use('rm');

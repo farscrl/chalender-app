@@ -1,9 +1,9 @@
-import { NgModule, TransferState } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 
 import { AppComponent } from './app.component';
-import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
-import { translateServerLoaderFactory } from './shared/utils/translate-server.loader';
+import { provideTranslateService } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UniversalDeviceDetectorService } from './services/universal-device-detector.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
@@ -17,11 +17,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
             useClass: UniversalDeviceDetectorService,
         },
         provideTranslateService({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: translateServerLoaderFactory,
-                deps: [TransferState],
-            },
+            loader: provideTranslateHttpLoader({prefix: "./assets/i18n/", suffix:".json"}),
         }),
     ],
     bootstrap: [AppComponent],

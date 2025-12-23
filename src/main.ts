@@ -5,10 +5,10 @@ import { RouterReuseStrategy } from './app/routing/router-reuse.strategy';
 import { NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 import { DatepickerTranslatorService } from './app/shared/services/datepicker-translator.service';
 import { bootstrapApplication, BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { HttpClient, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
-import { provideTranslateService, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
-import { translateBrowserLoaderFactory } from './app/shared/utils/translate-browser.loader';
-import { importProvidersFrom, isDevMode, provideZoneChangeDetection, TransferState } from '@angular/core';
+import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
+import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { importProvidersFrom, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { AuthenticationService } from './app/shared/services/authentication.service';
@@ -74,12 +74,8 @@ bootstrapApplication(AppComponent, {
         provideClientHydration(),
         provideHttpClient(withInterceptorsFromDi(), withFetch()),
         provideTranslateService({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: translateBrowserLoaderFactory,
-                deps: [HttpClient, TransferState],
-            },
-            defaultLanguage: 'rm',
+            loader: provideTranslateHttpLoader({prefix: "./assets/i18n/", suffix:".json"}),
+            fallbackLang: 'rm',
         }),
         provideAnimations(),
     ],
