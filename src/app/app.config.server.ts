@@ -1,4 +1,5 @@
 import { ApplicationConfig, TransferState } from '@angular/core';
+import { provideServerRendering } from '@angular/platform-server';
 
 import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 import { translateServerLoaderFactory } from './shared/utils/translate-server.loader';
@@ -12,6 +13,7 @@ import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 export const serverConfig: ApplicationConfig = {
     providers: [
+        provideServerRendering(),
         provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
         provideHttpClient(
             withInterceptorsFromDi(),
