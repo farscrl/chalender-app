@@ -1,19 +1,21 @@
-import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID, REQUEST } from '@angular/core';
 import { isPlatformServer } from '@angular/common';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { REQUEST } from '../../express.tokens';
 
 @Injectable({
     providedIn: 'root',
 })
 export class UniversalDeviceDetectorService extends DeviceDetectorService {
 
-    constructor(@Inject(PLATFORM_ID) platformId: any, @Optional() @Inject(REQUEST) request: Request) {
+    private readonly _platformId = inject(PLATFORM_ID);
+    private readonly _request = inject(REQUEST, { optional: true });
+
+    constructor() {
         super();
-        if (isPlatformServer(platformId)) {
-            // @ts-ignore
-            const userAgent = this.request?.headers?.['user-agent'] as string || '';
-            super.setDeviceInfo(userAgent);
+
+        if (isPlatformServer(this._platformId)) {
+            const userAgent = this._request?.headers.get('user-agent') || '';
+            this.setDeviceInfo(userAgent);
         }
     }
 }

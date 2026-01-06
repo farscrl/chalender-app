@@ -1,27 +1,14 @@
-import { ApplicationConfig, TransferState } from '@angular/core';
-
+import { ApplicationConfig, mergeApplicationConfig, TransferState } from '@angular/core';
+import { provideServerRendering, withRoutes } from '@angular/ssr';
+import { serverRoutes } from './app.routes.server';
+import { appConfig } from './app.config';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 import { translateServerLoaderFactory } from './shared/utils/translate-server.loader';
 
-import { DeviceDetectorService } from 'ngx-device-detector';
-import { UniversalDeviceDetectorService } from './services/universal-device-detector.service';
-import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/router';
-import { appRoutes } from './app.routes';
-import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
-import { provideNoopAnimations } from '@angular/platform-browser/animations';
-
-export const serverConfig: ApplicationConfig = {
+const serverConfig: ApplicationConfig = {
     providers: [
-        provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
-        provideHttpClient(
-            withInterceptorsFromDi(),
-            withFetch(),
-        ),
-        provideNoopAnimations(),
-        {
-            provide: DeviceDetectorService,
-            useClass: UniversalDeviceDetectorService,
-        },
+        provideServerRendering(withRoutes(serverRoutes)),
         provideTranslateService({
             loader: {
                 provide: TranslateLoader,
@@ -29,5 +16,8 @@ export const serverConfig: ApplicationConfig = {
                 deps: [TransferState],
             },
         }),
-    ],
+        provideNoopAnimations(),
+    ]
 };
+
+export const config = mergeApplicationConfig(appConfig, serverConfig);
