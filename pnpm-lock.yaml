@@ -75,8 +75,8 @@ importers:
         specifier: ^5.2.1
         version: 5.2.1
       iframe-resizer:
-        specifier: ^5.5.7
-        version: 5.5.7
+        specifier: ^4.4.5
+        version: 4.4.5
       jwt-decode:
         specifier: ^4.0.0
         version: 4.0.0
@@ -940,18 +940,6 @@ packages:
   '@humanwhocodes/retry@0.4.3':
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
-
-  '@iframe-resizer/child@5.5.7':
-    resolution: {integrity: sha512-+/t5E9/wbB+sWg6xM6fRWvNZ48WcZSJXHwXt58EdsWnb1vW+N4wf0Tp6Bwq9JPN4GR64yjXAhb0bBq67ECr/lg==}
-
-  '@iframe-resizer/core@5.5.7':
-    resolution: {integrity: sha512-jxKF0uGS8RfJSkDoRJ697JbmuykGvEhl9nOLnBXdkaARcsFgTT1/Uvz3mxNHw3AqDgNCxCySuI5jYpYM7M4Xbw==}
-
-  '@iframe-resizer/jquery@5.5.7':
-    resolution: {integrity: sha512-sp9Jfv/SR6u9ConfBAx8tGB7/w4IZjmELUuVjvhns8PFw2P0ODvCk6VUt2FSoRJgC1isQQyien9afDCg3u/MaA==}
-
-  '@iframe-resizer/parent@5.5.7':
-    resolution: {integrity: sha512-1dDlHFl7TOgu7odDcz/AQkJRcm9Ztpw2F8af/IU5ZAJhVlQkj8pjdnc5RfniGqY3AHOnryFATtrk7TDgZqPQFg==}
 
   '@inquirer/ansi@1.0.2':
     resolution: {integrity: sha512-S8qNSZiYzFd0wAcyG5AXCvUHC5Sr7xpZ9wZ2py9XR88jUz8wooStVx5M6dRzczbBWjic9NP7+rY0Xi7qqK/aMQ==}
@@ -1921,9 +1909,6 @@ packages:
   async@2.6.4:
     resolution: {integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==}
 
-  auto-console-group@1.2.11:
-    resolution: {integrity: sha512-/RFCswabfQZR4CDYser0V+AC+6+Q1ro2+RrP0AinOXDYnWsm3w14uc2MVdEaaSCDfpiTtETfahE9N7z9Yb1JiA==}
-
   autolinker@4.1.5:
     resolution: {integrity: sha512-vEfYZPmvVOIuE567XBVCsx8SBgOYtjB2+S1iAaJ+HgH+DNjAcrHem2hmAeC9yaNGWayicv4yR+9UaJlkF3pvtw==}
     engines: {pnpm: '>=10.10.0'}
@@ -2616,8 +2601,9 @@ packages:
     resolution: {integrity: sha512-2Tth85cXwGFHfvRgZWszZSvdo+0Xsqmw8k8ZwxScfcBneNUraK+dxRxRm24nszx80Y0TVio8kKLt5sLE7ZCLlw==}
     engines: {node: '>=0.10.0'}
 
-  iframe-resizer@5.5.7:
-    resolution: {integrity: sha512-vSAHzH1x+OnHn+O34wpS6qb2CEQhsgoCYV3iivrb0TQp4Wm2xKzTxl5kG8yNoJVLU3OOEFv4CRDL/ns6Or5g3w==}
+  iframe-resizer@4.4.5:
+    resolution: {integrity: sha512-U8bCywf/Gh07O69RXo6dXAzTtODQrxaHGHRI7Nt4ipXsuq6EMxVsOP/jjaP43YtXz/ibESS0uSVDN3sOGCzSmw==}
+    engines: {node: '>=0.8.0'}
 
   ignore-walk@8.0.0:
     resolution: {integrity: sha512-FCeMZT4NiRQGh+YkeKMtWrOmBgWjHjMJ26WQWrRQyoyzqevdaGSakUaJW5xQYmjLlUVk2qUnCjYVBax9EKKg8A==}
@@ -4613,23 +4599,6 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@iframe-resizer/child@5.5.7':
-    dependencies:
-      auto-console-group: 1.2.11
-
-  '@iframe-resizer/core@5.5.7':
-    dependencies:
-      auto-console-group: 1.2.11
-
-  '@iframe-resizer/jquery@5.5.7':
-    dependencies:
-      '@iframe-resizer/core': 5.5.7
-
-  '@iframe-resizer/parent@5.5.7':
-    dependencies:
-      '@iframe-resizer/core': 5.5.7
-      auto-console-group: 1.2.11
-
   '@inquirer/ansi@1.0.2': {}
 
   '@inquirer/checkbox@4.3.2(@types/node@22.19.3)':
@@ -5513,8 +5482,6 @@ snapshots:
     dependencies:
       lodash: 4.17.21
 
-  auto-console-group@1.2.11: {}
-
   autolinker@4.1.5:
     dependencies:
       tslib: 2.8.1
@@ -6380,11 +6347,7 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  iframe-resizer@5.5.7:
-    dependencies:
-      '@iframe-resizer/child': 5.5.7
-      '@iframe-resizer/jquery': 5.5.7
-      '@iframe-resizer/parent': 5.5.7
+  iframe-resizer@4.4.5: {}
 
   ignore-walk@8.0.0:
     dependencies:
